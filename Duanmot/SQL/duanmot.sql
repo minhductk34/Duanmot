@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 10, 2023 at 03:57 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 14, 2023 lúc 05:08 AM
+-- Phiên bản máy phục vụ: 10.4.28-MariaDB
+-- Phiên bản PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,269 +18,236 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `duanmot`
+-- Cơ sở dữ liệu: `duanmot`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `binhluan`
+-- Cấu trúc bảng cho bảng `bill`
 --
 
-CREATE TABLE `binhluan` (
-  `id_bl` int(11) NOT NULL,
+CREATE TABLE `bill` (
+  `id_bill` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_sp` int(11) NOT NULL,
-  `noi_dung_bl` varchar(255) NOT NULL,
-  `ngay_binh_luan` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `danh_gia` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `type_payment` tinyint(3) NOT NULL COMMENT '1: Trả tiền khi nhận hàng \r\n2: Chuyển khoản ngân hàng \r\n3: Thanh toán Online\r\n',
+  `quantty` int(11) NOT NULL,
+  `total` decimal(11,0) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0: Đơn hàng mới\r\n1: Đơn hàng đã chuẩn bị\r\n2: Đang giao hàng\r\n3: Đã giao thành công',
+  `create_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chatbot`
+-- Cấu trúc bảng cho bảng `bill_details`
 --
 
-CREATE TABLE `chatbot` (
-  `id` int(11) NOT NULL,
-  `queries` varchar(500) NOT NULL,
-  `replies` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `chatbot`
---
-
-INSERT INTO `chatbot` (`id`, `queries`, `replies`) VALUES
-(1, 'Chào', 'Xin chào bạn!'),
-(2, 'mua hàng', 'Bạn có thể đặt hàng online!'),
-(3, 'đồ ăn', 'Mua đồ ăn tại đây: '),
-(4, 'đồ uống', 'Mua đồ uống tại đây:'),
-(5, 'liên lạc', 'Liên lạc tại đây'),
-(6, 'Xin chào', 'xin chào bạn'),
-(7, 'hello', 'hello bạn nhỏ');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `don_hang`
---
-
-CREATE TABLE `don_hang` (
-  `id_dh` int(11) NOT NULL,
-  `id_sp` int(11) NOT NULL,
+CREATE TABLE `bill_details` (
+  `id_bill_deatail` int(11) NOT NULL,
+  `id_bill` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `bill_pttt` tinyint(4) NOT NULL COMMENT '1: Trả tiền khi nhận hàng | 2: Chuyển khoản ngân hàng | 3: Thanh toán Online',
-  `so_luong` int(3) NOT NULL,
-  `thanh_tien` int(11) NOT NULL,
-  `id_thanh_toan` int(3) NOT NULL,
-  `id_trang_thai_dh` int(11) NOT NULL,
-  `ngay_dat_hang` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `don_hang_chi_tiet`
---
-
-CREATE TABLE `don_hang_chi_tiet` (
-  `id_dh_chi_tiet` int(11) NOT NULL,
-  `id_dh` int(11) NOT NULL,
-  `id_sp` int(11) NOT NULL,
-  `so_luong` int(3) NOT NULL,
   `bill_name` varchar(50) NOT NULL,
-  `bill_email` varchar(50) NOT NULL,
-  `bill_adress` varchar(50) NOT NULL,
-  `bill_tel` int(50) NOT NULL,
-  `gia_sp` int(11) NOT NULL,
-  `thanh_tien` int(11) NOT NULL,
+  `bill_address` varchar(100) NOT NULL,
+  `bill_tel` int(11) NOT NULL,
+  `quantity` int(3) NOT NULL,
+  `total` decimal(11,0) NOT NULL,
+  `create_at` date NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0: Đơn hàng mới \r\n1: Đơn hàng đã chuẩn bị \r\n2: Đang giao hàng \r\n3: Đã giao thành công	',
+  `type_payment` tinyint(3) NOT NULL COMMENT '1: Trả tiền khi nhận hàng 2: Chuyển khoản ngân hàng 3: Thanh toán Online',
+  `img_product` varchar(50) NOT NULL,
+  `name_product` varchar(50) NOT NULL,
+  `id_product` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `cart`
+--
+
+CREATE TABLE `cart` (
+  `id_cart` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_trang_thai_dh` int(11) NOT NULL,
-  `ngay_dat_hang` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_product` int(11) NOT NULL,
+  `img_product` varchar(50) NOT NULL,
+  `name_product` varchar(100) NOT NULL,
+  `price_product` decimal(11,0) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `id_bill` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gio_hang`
+-- Cấu trúc bảng cho bảng `category`
 --
 
-CREATE TABLE `gio_hang` (
-  `id_gio_hang` int(11) NOT NULL,
+CREATE TABLE `category` (
+  `id_category` int(11) NOT NULL,
+  `name_category` varchar(50) NOT NULL,
+  `desc_category` text NOT NULL,
+  `status` tinyint(2) NOT NULL DEFAULT 0 COMMENT '0: Còn hàng\r\n1: Hết hàng'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `comment`
+--
+
+CREATE TABLE `comment` (
+  `id_comment` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_sp` int(11) NOT NULL,
-  `anh_sp` varchar(50) NOT NULL,
-  `ten_sp` varchar(50) NOT NULL,
-  `gia_sp` int(11) NOT NULL,
-  `id_dh` int(11) NOT NULL,
-  `so_luong` int(3) NOT NULL,
-  `thanh_tien` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `id_product` int(11) NOT NULL,
+  `content` varchar(250) NOT NULL,
+  `create_at` date NOT NULL,
+  `rate` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loaihang`
+-- Cấu trúc bảng cho bảng `discount`
 --
 
-CREATE TABLE `loaihang` (
-  `id_lh` int(10) NOT NULL,
-  `ten_loai_hang` varchar(50) NOT NULL,
-  `trang_thai` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `discount` (
+  `id_discount` int(11) NOT NULL,
+  `name_discount` varchar(100) NOT NULL,
+  `percent_discount` tinyint(2) NOT NULL,
+  `active` tinyint(2) NOT NULL DEFAULT 1 COMMENT '0: Hiệu lực\r\n1: Hết hiệu lực',
+  `create_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sanpham`
+-- Cấu trúc bảng cho bảng `product`
 --
 
-CREATE TABLE `sanpham` (
-  `id_sp` int(11) NOT NULL,
-  `ten_san_pham` varchar(50) NOT NULL,
-  `mo_ta` text NOT NULL,
-  `hinh_anh` varchar(100) NOT NULL,
-  `chi_tiet_sp` varchar(100) NOT NULL,
-  `gia_sp` int(11) NOT NULL,
-  `giam_gia` int(11) NOT NULL,
-  `so_luong` int(3) NOT NULL,
-  `id_lh` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `product` (
+  `id_product` int(11) NOT NULL,
+  `name_product` varchar(100) NOT NULL,
+  `desc_product` text NOT NULL,
+  `image_product` varchar(50) NOT NULL,
+  `price_product` decimal(11,0) NOT NULL,
+  `status` tinyint(2) NOT NULL DEFAULT 0 COMMENT '0: Còn hàng\r\n1: Hết hàng',
+  `quantity` int(11) NOT NULL,
+  `id_category` int(11) NOT NULL,
+  `id_discount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tai_khoan`
+-- Cấu trúc bảng cho bảng `user`
 --
 
-CREATE TABLE `tai_khoan` (
+CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
-  `user_name` varchar(50) NOT NULL,
-  `password` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `sdt` int(11) NOT NULL,
-  `user_image` int(50) NOT NULL,
-  `adress` varchar(50) NOT NULL,
-  `trang_thai` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0: User còn hiệu lực\r\n1: User hết hiệu lực',
-  `phan_quyen` tinyint(3) NOT NULL DEFAULT 0 COMMENT '0: Khách hàng\r\n1: Quản trị viên\r\n2: Nhân Viên'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
+  `number_phone` int(11) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `status` tinyint(2) NOT NULL COMMENT '0: Còn hiệu lực\r\n1: Hết hiệu lực',
+  `permissions` tinyint(3) NOT NULL DEFAULT 0 COMMENT '0: Khách hàng \r\n1: Quản trị viên\r\n2: Nhân viên',
+  `full_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Table structure for table `trang_thai_don_hang`
---
-
-CREATE TABLE `trang_thai_don_hang` (
-  `id_trang_thai_dh` int(11) NOT NULL,
-  `ten_trang_thai_dh` tinyint(4) NOT NULL COMMENT '1: Trả tiền khi nhận hàng | 2: Chuyển khoản ngân hàng | 3: Thanh toán Online'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `binhluan`
+-- Chỉ mục cho bảng `bill`
 --
-ALTER TABLE `binhluan`
-  ADD PRIMARY KEY (`id_bl`);
+ALTER TABLE `bill`
+  ADD PRIMARY KEY (`id_bill`);
 
 --
--- Indexes for table `chatbot`
+-- Chỉ mục cho bảng `cart`
 --
-ALTER TABLE `chatbot`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id_cart`);
 
 --
--- Indexes for table `don_hang`
+-- Chỉ mục cho bảng `category`
 --
-ALTER TABLE `don_hang`
-  ADD PRIMARY KEY (`id_dh`);
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id_category`);
 
 --
--- Indexes for table `don_hang_chi_tiet`
+-- Chỉ mục cho bảng `comment`
 --
-ALTER TABLE `don_hang_chi_tiet`
-  ADD PRIMARY KEY (`id_dh_chi_tiet`);
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id_comment`);
 
 --
--- Indexes for table `loaihang`
+-- Chỉ mục cho bảng `discount`
 --
-ALTER TABLE `loaihang`
-  ADD PRIMARY KEY (`id_lh`);
+ALTER TABLE `discount`
+  ADD PRIMARY KEY (`id_discount`);
 
 --
--- Indexes for table `sanpham`
+-- Chỉ mục cho bảng `product`
 --
-ALTER TABLE `sanpham`
-  ADD PRIMARY KEY (`id_sp`);
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id_product`);
 
 --
--- Indexes for table `tai_khoan`
+-- Chỉ mục cho bảng `user`
 --
-ALTER TABLE `tai_khoan`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Indexes for table `trang_thai_don_hang`
---
-ALTER TABLE `trang_thai_don_hang`
-  ADD PRIMARY KEY (`id_trang_thai_dh`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `binhluan`
+-- AUTO_INCREMENT cho bảng `bill`
 --
-ALTER TABLE `binhluan`
-  MODIFY `id_bl` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `bill`
+  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `chatbot`
+-- AUTO_INCREMENT cho bảng `cart`
 --
-ALTER TABLE `chatbot`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `cart`
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `don_hang`
+-- AUTO_INCREMENT cho bảng `category`
 --
-ALTER TABLE `don_hang`
-  MODIFY `id_dh` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `category`
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `don_hang_chi_tiet`
+-- AUTO_INCREMENT cho bảng `comment`
 --
-ALTER TABLE `don_hang_chi_tiet`
-  MODIFY `id_dh_chi_tiet` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `comment`
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `loaihang`
+-- AUTO_INCREMENT cho bảng `discount`
 --
-ALTER TABLE `loaihang`
-  MODIFY `id_lh` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `discount`
+  MODIFY `id_discount` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `sanpham`
+-- AUTO_INCREMENT cho bảng `product`
 --
-ALTER TABLE `sanpham`
-  MODIFY `id_sp` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `product`
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tai_khoan`
+-- AUTO_INCREMENT cho bảng `user`
 --
-ALTER TABLE `tai_khoan`
+ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `trang_thai_don_hang`
---
-ALTER TABLE `trang_thai_don_hang`
-  MODIFY `id_trang_thai_dh` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
