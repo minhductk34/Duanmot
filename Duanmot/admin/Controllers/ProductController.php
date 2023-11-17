@@ -17,20 +17,20 @@ class ProductController extends BaseController
      *
      * @return void
      */
-    public function index()
-    {
-        // Lấy danh sách các sản phẩm từ model.
-        $products = $this->productModel->getAll(
-            ['id_product', 'name_product'],
-            ['column' => 'id_product', 'orderBy' => 'asc']
-        );
+    // public function index()
+    // {
+    //     // Lấy danh sách các sản phẩm từ model.
+    //     $products = $this->productModel->getAll(
+    //         ['id_product', 'name_product'],
+    //         ['column' => 'id_product', 'orderBy' => 'asc']
+    //     );
 
-        // Truyền dữ liệu cho view và hiển thị trang sản phẩm.
-        return $this->view('frontend/products.index', [
-            'pageTitle' => "Trang sản phẩm",
-            'products' => $products
-        ]);
-    }
+    //     // Truyền dữ liệu cho view và hiển thị trang sản phẩm.
+    //     return $this->view('frontend/products.index', [
+    //         'pageTitle' => "Trang sản phẩm",
+    //         'products' => $products
+    //     ]);
+    // }
 
     /**
      * Tạo mới một sản phẩm.
