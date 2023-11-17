@@ -22,6 +22,7 @@ class Login
         $this->status = $status;
         $this->permissions = $permissions;
         $this->full_name = $full_name;
+        
     }
 }
 
