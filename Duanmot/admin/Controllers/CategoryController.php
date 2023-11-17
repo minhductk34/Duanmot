@@ -17,36 +17,36 @@ class Categorycontroller extends BaseController
      *
      * @return void
      */
-    public function index()
-    {
-        // Lấy danh sách các danh mục từ model.
-        $categories = $this->categoryModel->getAll(
-            ['id_category', 'name_category'],
-            ['column' => 'id_category', 'orderBy' => 'asc'],
-            2
-        );
+    // public function index()
+    // {
+    //     // Lấy danh sách các danh mục từ model.
+    //     $categories = $this->categoryModel->getAll(
+    //         ['id_category', 'name_category'],
+    //         ['column' => 'id_category', 'orderBy' => 'asc'],
+    //         2
+    //     );
 
-        // Truyền dữ liệu cho view và hiển thị trang danh mục.
-        return $this->view('frontend.categories.index', [
-            'pageTitle' => "Trang danh mục",
-            'categories' => $categories,
-        ]);
-    }
+    //     // Truyền dữ liệu cho view và hiển thị trang danh mục.
+    //     return $this->view('frontend.categories.index', [
+    //         'pageTitle' => "Trang danh mục",
+    //         'categories' => $categories,
+    //     ]);
+    // }
 
     /**
      * Tìm kiếm danh mục dựa trên ID.
      *
      * @return void
      */
-    public function findByID()
-    {
-        // Lấy ID danh mục từ tham số GET.
-        $id = $_GET['id'];
+    // public function findByID()
+    // {
+    //     // Lấy ID danh mục từ tham số GET.
+    //     $id = $_GET['id'];
 
-        // Lấy thông tin danh mục từ model dựa trên ID và hiển thị kết quả.
-        $category = $this->categoryModel->get_by_id($id);
-        print_r($category);
-    }
+    //     // Lấy thông tin danh mục từ model dựa trên ID và hiển thị kết quả.
+    //     $category = $this->categoryModel->get_by_id($id);
+    //     print_r($category);
+    // }
 
     /**
      * Tạo mới danh mục.

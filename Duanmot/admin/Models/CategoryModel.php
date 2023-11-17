@@ -12,10 +12,10 @@ class CategoryModel extends BaseModel
      * @param int $limit Số lượng bản ghi trả về (mặc định là 10).
      * @return array Mảng chứa các bản ghi.
      */
-    public function getAll($select = ['*'], $orderBy = [], $limit = 10)
-    {
-        return $this->all(self::TABLE, $select, $orderBy, $limit);
-    }
+    // public function getAll($select = ['*'], $orderBy = [], $limit = 10)
+    // {
+    //     return $this->all(self::TABLE, $select, $orderBy, $limit);
+    // }
 
     /**
      * Lấy thông tin danh mục dựa trên ID.
@@ -23,10 +23,10 @@ class CategoryModel extends BaseModel
      * @param int $id ID của danh mục.
      * @return array|null Mảng chứa thông tin danh mục hoặc null nếu không tìm thấy.
      */
-    public function get_by_id($id)
-    {
-        return $this->find(self::TABLE, $id);
-    }
+    // public function get_by_id($id)
+    // {
+    //     return $this->find(self::TABLE, $id);
+    // }
 
     /**
      * Cập nhật thông tin danh mục.
