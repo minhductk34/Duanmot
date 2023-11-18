@@ -318,7 +318,7 @@
 }
 
 
-@include lg {
+@require_once lg {
   .blog-single {
     .blog-author {
       padding: 25px 25px;
@@ -350,7 +350,7 @@
   }
 }
 
-@include md {
+@require_once md {
   .blog-style3 {
     display: block;
 
@@ -371,7 +371,7 @@
 }
 
 
-@include sm {
+@require_once sm {
   .blog-grid {
     &.grid-wide {
       .blog-content {

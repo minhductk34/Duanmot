@@ -152,7 +152,7 @@
 }
 
 
-@include lg {
+@require_once lg {
   .cat-style2 {
     padding: 58px 15px 0 15px;
 

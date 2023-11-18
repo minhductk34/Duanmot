@@ -13,7 +13,7 @@
 }
 
 
-@include lg {
+@require_once lg {
   .award-box {
     padding: 35px 20px 32px 20px;
 

@@ -756,7 +756,7 @@
 
 }
 
-@include lg {
+@require_once lg {
   .vs-product-box6 {
     .product-img {
       max-width: 210px;
@@ -777,7 +777,7 @@
 }
 
 
-@include md {
+@require_once md {
   .dishes-box .dishes-content {
     padding: 23px 20px 17px 20px;
   }

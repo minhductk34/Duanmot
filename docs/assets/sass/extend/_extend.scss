@@ -36,5 +36,5 @@
 
 
 .transition {
-  @include transition(all ease 0.4s);
+  @require_once transition(all ease 0.4s);
 }

@@ -16,7 +16,7 @@
   
 }
 
-@include sm {
+@require_once sm {
   .testimonial-style2 {
     .text {
       font-size: 18px;

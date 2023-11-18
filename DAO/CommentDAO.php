@@ -1,5 +1,5 @@
 <?php
-include 'modles/comment.php';
+require_once 'modles/comment.php';
 class CommentDAO
 {
     private $PDO;
@@ -24,7 +24,7 @@ class CommentDAO
     //    echo $currentDateTime; // có thể test ngay tại đây
     public function show($id_pro)
     {
-        $sql = "SELECT user,noidung,ngaycomment FROM `comment` JOIN taikhoan ON comment.iduser=taikhoan.id_ac JOIN product ON product.id_pro=comment.idpro WHERE idpro = '$id_pro'";
+        $sql = "SELECT user,noidung,ngaycomment FROM `comment` JOIN taikhoan ON comment.iduser=taikhoan.id_user JOIN product ON product.id_pro=comment.idpro WHERE idpro = '$id_pro'";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
 

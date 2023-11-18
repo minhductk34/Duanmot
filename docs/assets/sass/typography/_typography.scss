@@ -147,7 +147,7 @@ p {
 
 
 
-@include xl-desktop {
+@require_once xl-desktop {
 
 	body {
 		letter-spacing: 0.10px;
@@ -156,14 +156,14 @@ p {
 }
 
 
-@include tablet {
+@require_once tablet {
 	body {
 		letter-spacing: 0;
 	}
 }
 
 
-@include phone {
+@require_once phone {
 	h3 {
 		font-size: 24px;
 		margin-bottom: 15px;

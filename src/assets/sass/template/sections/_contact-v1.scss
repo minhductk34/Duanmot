@@ -5,7 +5,7 @@
     border-color: #eeeeee;
     color: $title-color;
 
-    @include inputPlaceholder {
+    @require_once inputPlaceholder {
       color: $body-color2;
     }
   }

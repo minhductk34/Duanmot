@@ -7,7 +7,7 @@
   z-index: 999999;
   width: 0;
   height: 100%;
-  @include transition(all ease 0.8s);
+  @require_once transition(all ease 0.8s);
 
 
 
@@ -20,7 +20,7 @@
     left: -1000px;
     opacity: 0;
     visibility: hidden;
-    @include transition(all ease 1s);
+    @require_once transition(all ease 1s);
 
 
     
@@ -146,13 +146,13 @@
     opacity: 1;
     visibility: visible;
     width: 100%;
-    @include transition(all ease 0.8s);
+    @require_once transition(all ease 0.8s);
 
     .vs-menu-area {
       left: 0;
       opacity: 1;
       visibility: visible;
-      @include transition(all ease 1s);
+      @require_once transition(all ease 1s);
     }
 
   }

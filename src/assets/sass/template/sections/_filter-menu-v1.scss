@@ -260,7 +260,7 @@
 
 }
 
-@include ml {
+@require_once ml {
   .filter-menu2 {
     position: relative;
     left: 0;
@@ -273,7 +273,7 @@
   }
 }
 
-@include lg {
+@require_once lg {
 
   .filter-menu4 {
     button {
@@ -286,7 +286,7 @@
   }
 } 
 
-@include md {
+@require_once md {
   .filter-menu-style1.mb-65 {
     margin-bottom: 35px;
   }
@@ -312,7 +312,7 @@
 
 }
 
-@include sm {
+@require_once sm {
   .filter-menu3 {
     button {
       font-size: 14px;
@@ -334,7 +334,7 @@
 }
 
 
-@include xs {
+@require_once xs {
   .filter-menu-style1  {
     display: flex;
     flex-wrap: wrap;

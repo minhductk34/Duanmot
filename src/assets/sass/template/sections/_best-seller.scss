@@ -44,7 +44,7 @@
 }
 
 
-@include sm {
+@require_once sm {
   .best-seller-wrapper {
     .px-70 {
       padding-left: 40px;
@@ -59,7 +59,7 @@
 }
 
 
-@include xs {
+@require_once xs {
   .best-seller-wrapper {
     .px-70 {
       padding-left: 30px;

@@ -8,7 +8,7 @@
 }
 
 
-@include md {
+@require_once md {
   .brand-style1 {
     border-right: none;
   }

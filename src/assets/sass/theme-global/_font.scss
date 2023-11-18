@@ -41,7 +41,7 @@
 }
 
 
-@include lg {
+@require_once lg {
   .fs-20 {
     font-size: 18px;
   }

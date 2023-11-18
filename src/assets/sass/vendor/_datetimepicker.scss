@@ -10,7 +10,7 @@
 }
 
 
-@include xs {
+@require_once xs {
   .xdsoft_datetimepicker {
     transform: scale(0.7);
     transform-origin: top center;

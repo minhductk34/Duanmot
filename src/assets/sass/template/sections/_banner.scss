@@ -145,7 +145,7 @@
 }
 
 
-@include xl {
+@require_once xl {
   .banner-style1 {
     height: 290px;
 
@@ -170,7 +170,7 @@
   }
 }
 
-@include lg {
+@require_once lg {
   .banner-style2 {
     text-align: center;
     padding: 110px 0;
@@ -188,7 +188,7 @@
   }
 }
 
-@include md {
+@require_once md {
   .banner-wrap1 {
     padding-bottom: 60px;
     margin-bottom: 0;
@@ -199,7 +199,7 @@
   }
 }
 
-@include sm {
+@require_once sm {
   .banner-style2 {
     padding: 60px 30px;
 

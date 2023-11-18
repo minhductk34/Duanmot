@@ -273,7 +273,7 @@
 
 
 
-@include ml {
+@require_once ml {
   .blog-single {
     .blog-header {
       padding: 0 30px 0 30px;
@@ -297,7 +297,7 @@
   }
 }
 
-@include md {
+@require_once md {
   .related-post-wrapper.pt-40 {
     padding-top: 0;
   }
@@ -317,7 +317,7 @@
 }
 
 
-@include sm {
+@require_once sm {
   .blog-single {
     .blog-title {
       font-size: 28px;
@@ -347,7 +347,7 @@
   }
 }
 
-@include xs {
+@require_once xs {
   .blog-single {
     .blog-header {
       padding: 0 20px 0 20px;

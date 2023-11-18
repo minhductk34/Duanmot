@@ -1,81 +1,136 @@
 <?php
 session_start();
-// Include các tệp và khởi tạo các controller
-include 'controller/HomeController.php';
-include 'controller/ProductController.php';
-include 'controller/LoginController.php';
-include 'controller/UserController.php';
+// require_once các tệp và khởi tạo các controller
+require_once 'controller/HomeController.php';
+require_once 'controller/ProductController.php';
+require_once 'controller/LoginController.php';
+require_once 'controller/UserController.php';
+require_once 'controller/CategoryController.php';
 $controller = $_GET['controller'] ?? 'home';
 
 switch ($controller) {
+        //home controller----------------------------------------------------------------
     case 'home':
         $homeController = new HomeController();
         $homeController->index();
         break;
-    case 'category':
-        $productController = new ProductController();
-        $productController->category();
+
+        //CRUD category ----------------------------------------------------------------
+    case 'category_show':
+        $CategoryController = new CategoryController();
+        $CategoryController->showCategory();
         break;
-    case 'hanghoa':
-        $productController = new ProductController();
-        $productController->product();
+
+    case 'category_add':
+        $CategoryController = new CategoryController();
+        $CategoryController->addCategory();
         break;
-    case 'khachang':
+
+    case 'category_delete':
+        $CategoryController = new CategoryController();
+        $CategoryController->deleteCategory();
+        break;
+
+    case 'category_update':
+        $CategoryController = new CategoryController();
+        $CategoryController->updateCategory();
+        break;
+
+        //CRDU product ------------------------------------------------------------------
+    case 'product_show':
+        $ProductController = new ProductController();
+        $ProductController->showProduct();
+        break;
+
+    case 'product_add':
+        $ProductController = new ProductController();
+        $ProductController->addProduct();
+        break;
+
+    case 'product_delete':
+        $ProductController = new ProductController();
+        $ProductController->deleteProduct();
+        break;
+
+    case 'product_update':
+        $ProductController = new ProductController();
+        $ProductController->updateProduct();
+        break;
+
+        //User controller -------------------------------------------------------------------
+    case 'user':
         $UserController = new UserController();
         $UserController->index();
+        break;
+
+    case 'login':
+        $LoginController = new LoginController();
+        $LoginController->login();
+        break;
+    case 'signup':
+        $LoginController = new LoginController();
+        $LoginController->index();
         break;
     case 'logout':
         $LoginController = new LoginController();
         $LoginController->logout();
         break;
+        //comment
     case 'comment':
-        $productController = new ProductController();
-        $productController->comment();
+        $CommentController = new CommentController();
+        $CommentController->index();
         break;
-    case 'product':
-        if (isset($_GET["act"])) {
-            if ($_GET['act'] == 'add') {
-                $productController = new ProductController();
-                $productController->product();
-            }
-            if ($_GET['act'] == 'delete') {
-                $productController = new ProductController();
-                $productController->product();
-            }
-            if ($_GET['act'] == 'fix') {
-                $productController = new ProductController();
-                $productController->product();
-            }
-            if ($_GET['act'] == 'item') {
-                $productController = new ProductController();
-                $productController->item();
-            }
-            if ($_GET['act'] == 'bl') {
-                $productController = new ProductController();
-                $productController->comment();
-            }
-        } else {
-            $productController = new ProductController();
-            $productController->index();
-        }
+    case 'commentStatus':
+        $CommentController = new CommentController();
+        $CommentController->status();
         break;
-    case 'login':
-        if ($_GET['act'] == 'signup') {
-            $LoginController = new LoginController();
-            $LoginController->index();
-        } elseif ($_GET['act'] == 'signin') {
-            $LoginController = new LoginController();
-            $LoginController->login();
-        }
-        if (isset($_SESSION["permissions"])) {
-            $UserController = new UserController();
-            $UserController->index();
-        } else {
-            $LoginController = new LoginController();
-            $LoginController->index();
-        }
+    case 'addComment':
+        $CommentController = new CommentController();
+        $CommentController->add();
         break;
+
+        //Cart Controller ----------------------------------------------------------------
+    case 'addCart':
+        $CartController = new CartController();
+        $CartController->add();
+        break;
+    case 'updateCart':
+        $CartController = new CartController();
+        $CartController->edit();
+        break;
+    case 'deleteCart':
+        $CartController = new CartController();
+        $CartController->delete();
+        break;
+    case 'listCart':
+        $CartController = new CartController();
+        $CartController->show();
+        break;
+    case 'historyCart':
+        $CartController = new CartController();
+        $CartController->history();
+        break;
+
+        //Billing Controller ------------------------------------------------------------------
+    case 'addToBill':
+        $BillController = new BillController();
+        $BillController->add();
+        break;
+    case 'listBill':
+        $BillController = new BillController();
+        $BillController->show();
+        break;
+    case 'StatusOfBill':
+        $BillController = new BillController();
+        $BillController->status();
+        break;
+    case 'editBill':
+        $BillController = new BillController();
+        $BillController->edit();
+        break;
+
     default:
         // Xử lý controller không hợp lệ
         break;
+
 }

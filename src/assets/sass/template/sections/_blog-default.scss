@@ -201,7 +201,7 @@ blockquote.wp-block-quote.has-text-align-right {
 
 
 
-@include md  {
+@require_once md  {
   blockquote {
     font-size: 18px;
     line-height: 34px;

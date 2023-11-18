@@ -32,7 +32,7 @@
   }
 
   .author-img {
-    @include equal-size(100px);
+    @require_once equal-size(100px);
     margin-right: 30px;
     border-radius: 50%;
     overflow: hidden;
@@ -121,7 +121,7 @@
 
 
 
-@include md {
+@require_once md {
   .vs-comments-layout1 {
     &.pt-70 {
       padding-top: 30px;
@@ -135,7 +135,7 @@
 }
 
 
-@include sm {
+@require_once sm {
   .vs-comments-layout1 {
     .vs-post-comment {
       display: block;

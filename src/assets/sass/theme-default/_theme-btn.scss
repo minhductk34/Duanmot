@@ -149,7 +149,7 @@
   background-color: #f5efef;
   text-align: center;
   position: relative;
-  @include equal-size(35px);
+  @require_once equal-size(35px);
   line-height: 35px;
   border: none;
   font-size: 12px;
@@ -177,7 +177,7 @@
 
 
   &.style2 {
-    @include equal-size(60px);
+    @require_once equal-size(60px);
     line-height: 60px;
     background-color: #eff3f1;
     color: $title-color;
@@ -186,7 +186,7 @@
 
 
   &.style3 {
-    @include equal-size(35px);
+    @require_once equal-size(35px);
     line-height: 35px;
     font-size: 16px;
     background-color: $secondary-color;
@@ -229,7 +229,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    @include equal-size(100%);
+    @require_once equal-size(100%);
     border-radius: inherit;
     background-color: $theme-color;
     @extend .ripple-animation;
@@ -314,7 +314,7 @@
 // Scroll To Top
 .scrollToTop {
   display: inline-block;
-  @include equal-size(60px);
+  @require_once equal-size(60px);
   line-height: 60px;
   text-align: center;
   background-color: $theme-color;
@@ -341,8 +341,8 @@
     color: $white-color;
   }
 
-  @include sm {
-    @include equal-size(40px);
+  @require_once sm {
+    @require_once equal-size(40px);
     line-height: 40px;
     right: 15px;
     bottom: 50px;
@@ -359,14 +359,14 @@
   text-align: center;
 }
 
-@include lg {
+@require_once lg {
   .play-btn.style2 {
     --icon-size: 80px;
     --icon-font-size: 20px;
   }
 }
 
-@include md {
+@require_once md {
   .play-btn>i {
     width: 100px;
     height: 100px;

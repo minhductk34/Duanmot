@@ -162,7 +162,7 @@
   }
 }
 
-@include lg {
+@require_once lg {
   .testi-slideTab {
     left: 50px;
     bottom: 50px;
@@ -173,7 +173,7 @@
   }
 }
 
-@include md {
+@require_once md {
   .testimonial-box {
     padding: 30px 30px 10px 30px;
 
@@ -183,7 +183,7 @@
   }
 }
 
-@include sm {
+@require_once sm {
   .testimonial-box {
     padding: 20px 20px 1px 20px;
 

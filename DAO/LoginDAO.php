@@ -1,5 +1,5 @@
 <?php
-include 'modles/Login.php';
+require_once 'modles/Login.php';
 class LoginDAO
 {
     private $PDO;
@@ -10,10 +10,10 @@ class LoginDAO
     }
     function Login($user, $pass)
     {
-        $sql = "SELECT id_ac, permissions FROM user WHERE email = :user AND pass = :pass";
+        $sql = "SELECT id_user, permissions FROM user WHERE email = :user AND pass = :pass";
         $stmt = $this->PDO->prepare($sql);
-        $stmt->bindParam(':user', $user, PDO::PARAM_STR);
-        $stmt->bindParam(':pass', $pass, PDO::PARAM_STR);
+        $stmt->bindValue(':user', $user, PDO::PARAM_STR);
+        $stmt->bindValue(':pass', $pass, PDO::PARAM_STR);
         $stmt->execute();
 
         $data = array();
@@ -21,7 +21,7 @@ class LoginDAO
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Create an associative array with 'id_user' and 'permissions' keys
             $userData = array(
-                'id_user' => $row['id_ac'],
+                'id_user' => $row['id_user'],
                 'permissions' => $row['permissions']
             );
 

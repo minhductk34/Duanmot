@@ -5,7 +5,7 @@
 
   .feature-icon {
     display: inline-block;
-    @include equal-size(134px);
+    @require_once equal-size(134px);
     line-height: 134px;
     text-align: center;
     position: relative;
@@ -42,7 +42,7 @@
     }
 
     .badge {
-      @include equal-size(41px);
+      @require_once equal-size(41px);
       line-height: 41px;
       font-size: 14px;
       font-weight: 600;
@@ -164,7 +164,7 @@
 
 }
 
-@include lg {
+@require_once lg {
   .vs-feature-box1 {
     margin-left: auto;
     margin-right: auto;
@@ -201,7 +201,7 @@
 }
 
 
-@include md {
+@require_once md {
   .vs-feature-box1 {
     text-align: center;
 
@@ -247,7 +247,7 @@
   }
 }
 
-@include xs {
+@require_once xs {
   .feature-style2 {
     border-right: none;
 

@@ -177,7 +177,7 @@
 
 
 
-@include sm {
+@require_once sm {
   .accordion-style3 {
     .accordion-button {
       font-size: 18px;

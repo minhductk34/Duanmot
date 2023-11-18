@@ -45,7 +45,7 @@
 }
 
 
-@include lg {
+@require_once lg {
   .vs-product-box2 {
     &.d-xl-flex {
       text-align: center;
@@ -66,7 +66,7 @@
 }
 
 
-@include md {
+@require_once md {
   .vs-product-box2 {
     text-align: center;
     

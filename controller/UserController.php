@@ -9,13 +9,13 @@ class UserController
             if ($permissions == 1) {
                 $LoginDAO = new LoginDAO();
                 $users = $LoginDAO->show();
-                include('view/user/useradmin.php');
+                require_once('view/user/useradmin.php');
             } elseif ($permissions == 2) {
                 $LoginDAO = new LoginDAO();
                 $users = $LoginDAO->show();
-                include('view/user/userstaff.php');
+                require_once('view/user/userstaff.php');
             } else {
-                include('view/user/user.php');
+                require_once('view/user/user.php');
             }
         }
     }

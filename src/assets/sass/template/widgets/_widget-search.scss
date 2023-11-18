@@ -14,7 +14,7 @@
       border-radius: 9999px;
       padding-right: 45px;
 
-      @include inputPlaceholder {
+      @require_once inputPlaceholder {
         color: $body-color2;
       }
     }

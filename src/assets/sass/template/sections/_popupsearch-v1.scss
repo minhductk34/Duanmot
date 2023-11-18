@@ -51,7 +51,7 @@
     transform: translate(-50%, -50%) scale(0);
     transition: transform ease 0.4s;
 
-    @include lg {
+    @require_once lg {
       max-width: 600px;
     }
 
@@ -65,7 +65,7 @@
       color: #fff;
       border-radius: 50px;
 
-      @include inputPlaceholder {
+      @require_once inputPlaceholder {
         color: #fff;
       }
     }

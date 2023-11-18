@@ -1,13 +1,13 @@
 <?php
-include 'DAO/LoginDAO.php';
+require_once 'DAO/LoginDAO.php';
 class LoginController
 {
     public function index()
     {
         if (isset($_COOKIE["rank"])) {
-            include('view/home/home.php');
+            require_once('view/home/home.php');
         } else {
-            include('view/login/login.php');
+            require_once('view/login/login.php');
         }
     }
     public function login()
@@ -23,13 +23,13 @@ class LoginController
             // Lấy vai trò (permissions) từ dữ liệu người dùng
             print_r($userInfo);
             $permissions = $userInfo[0]['permissions'];
-            $id_acc = $userInfo[0]['id_user'];
+            $id_user = $userInfo[0]['id_user'];
             //print_r($permissions);
 
             // // Thiết lập cookie cho vai trò (permissions)
             setcookie("permissions", $permissions, time() + 3600, "/");
             $_SESSION['permissions'] = $permissions;
-            $_SESSION['acc'] = $id_acc;
+            $_SESSION['acc'] = $id_user;
 
             // Chuyển hướng sau khi đăng nhập thành công
             header("Location: index.php?controller=home");
@@ -41,6 +41,7 @@ class LoginController
     }
     public function signup()
     {
+        
     }
     public function logout()
     {

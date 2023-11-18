@@ -169,7 +169,7 @@
       position: absolute;
       left: 18px;
       top: -7px;
-      @include equal-size(14px);
+      @require_once equal-size(14px);
       background-color: $white-color;
       z-index: -1;
       transform: rotate(45deg);
@@ -180,7 +180,7 @@
 
   .icon-btn {
     margin-right: 10px;
-    @include equal-size(30px);
+    @require_once equal-size(30px);
     line-height: 30px;
   }
 }
@@ -685,7 +685,7 @@
 }
 
 
-@include hd {
+@require_once hd {
   .header-layout7 {
     .header-shape {
       background-size: 90% 100%;
@@ -700,7 +700,7 @@
 }
 
 
-@include xl {
+@require_once xl {
   .header-layout4 {
     .main-menu ul.mega-menu {
       left: -10%;
@@ -717,7 +717,7 @@
 
 
 
-@include ml {
+@require_once ml {
   .header1-inner {
     position: relative;
     top: 0;
@@ -760,7 +760,7 @@
 
 
 
-@include lg {
+@require_once lg {
   .header-layout2 {
     position: relative;
   }
@@ -828,7 +828,7 @@
   }
 }
 
-@include md {
+@require_once md {
   .header-layout3 {
     &.pb-50 {
       padding-bottom: 0;
@@ -864,7 +864,7 @@
 }
 
 
-@include xs {
+@require_once xs {
   .header-layout4 {
     position: relative;
 

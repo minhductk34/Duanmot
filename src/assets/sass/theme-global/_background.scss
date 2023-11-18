@@ -5,11 +5,11 @@
 }
 
 [data-bg-src] {
-  @include background-content(no-repeat, cover, center center);
+  @require_once background-content(no-repeat, cover, center center);
 }
 
 .bg-fluid {
-  @include background-content(no-repeat, 100% 100%, center center);
+  @require_once background-content(no-repeat, 100% 100%, center center);
 }
 
 .bg-auto {
@@ -31,7 +31,7 @@
   background-size: 100% calc(100% - 98px);
   background-position: bottom center;
   
-  @include lg {
+  @require_once lg {
     background-size: auto calc(100% - 98px);
   }
 }
@@ -84,20 +84,20 @@
   }
 }
 
-@include hd-device {
+@require_once hd-device {
   .bg1 {
     background-size: 100%;
   }
 }
 
 
-@include xl {
+@require_once xl {
   .sec-bg3 {
     padding-top: 130px;
   }
 }
 
-@include lg {
+@require_once lg {
   .sec-bg6 {
     margin-bottom: -160px;
   }
@@ -117,7 +117,7 @@
   }
 }
 
-@include md {
+@require_once md {
   .sec-bg5,
   .sec-bg8,
   .sec-bg3 {
