@@ -9,7 +9,7 @@ class ProductController
             } elseif ($_SESSION["permissions"] == 2) {
                 $ProductDAO = new ProductDAO();
                 $products = $ProductDAO->sharelist($_GET['product']);
-                $danhmucs = $ProductDAO->showCategory();
+                $categorys = $ProductDAO->showCategory();
                 include 'view/product/cli/listitem.php';
             } elseif ($_SESSION["permissions"] == 0) {
                 include('view/home/homeUser.php');
@@ -17,7 +17,7 @@ class ProductController
         } else {
             $ProductDAO = new ProductDAO();
             $products = $ProductDAO->sharelist($_GET['product']);
-            $danhmucs = $ProductDAO->showCategory();
+            $categorys = $ProductDAO->showCategory();
             include 'view/product/cli/listitem.php';
         }
     }
@@ -45,7 +45,7 @@ class ProductController
             $ProductDAO->updateCategory($id_l, $tenmoi);
         }
 
-        $danhmucs = $ProductDAO->showCategory();
+        $categorys = $ProductDAO->showCategory();
         include('view/product/admin/classitemadmin.php');
     }
     public function product()
@@ -73,10 +73,10 @@ class ProductController
         if (isset($_POST['xoa']) && $_POST['xoa'] != '') {
             $ProductDAO->deleteallPRO($_POST['xoa']);
         }
-        $danhmucs = $ProductDAO->showCategory();
+        $categorys = $ProductDAO->showCategory();
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         // $counts = $ProductDAO->countProducts();
-        // $sanphams = $ProductDAO->showPRO($page, 5);
+        // $products = $ProductDAO->showPRO($page, 5);
         include('view/product/admin/iteam.php');
     }
     public function comment()
@@ -85,16 +85,16 @@ class ProductController
             if ($_SESSION["permissions"] == 1) {
                 $commentDAO = new CommentDAO();
                 $count = $commentDAO->count();
-                include('view/binhluan/binhluan.php');
+                include('view/comment/comment.php');
             } else {
                 $ProductDAO = new ProductDAO();
                 $commentDAO = new CommentDAO();
                 $timestamp = $commentDAO->get_time_present();
                 $commentDAO->add($_POST['id_pro'], $_POST['bl'], $_SESSION['acc'], $_POST['time']);
-                $sanpham = $ProductDAO->SelectOneItem($_POST['id_pro']);
+                $product = $ProductDAO->SelectOneItem($_POST['id_pro']);
                 $products = $ProductDAO->lq($_POST['iddm']);
                 $comments =  $commentDAO->show($_POST['id_pro']);
-                $danhmucs = $ProductDAO->showCategory();
+                $categorys = $ProductDAO->showCategory();
                 include('view/product/cli/item.php');
             }
         } else {
@@ -107,10 +107,10 @@ class ProductController
         $ProductDAO = new ProductDAO();
         $commentDAO = new CommentDAO();
         $timestamp = $commentDAO->get_time_present();
-        $sanpham = $ProductDAO->SelectOneItem($_GET['id']);
+        $product = $ProductDAO->SelectOneItem($_GET['id']);
         $products = $ProductDAO->lq($_GET['iddm']);
         $comments =  $commentDAO->show($_GET['id']);
-        $danhmucs = $ProductDAO->showCategory();
+        $categorys = $ProductDAO->showCategory();
 
         include('view/product/cli/item.php');
     }

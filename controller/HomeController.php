@@ -16,12 +16,12 @@ class HomeController
                 if (isset($_POST['search']) && $_POST['search'] != "") {
                     $ProductDAO = new ProductDAO();
                     $products = $ProductDAO->SelectItem($_POST['search']);
-                    $danhmucs = $ProductDAO->showCategory();
+                    $categorys = $ProductDAO->showCategory();
                     include('view/home/home.php');
                 } else {
                     $ProductDAO = new ProductDAO();
                     $products = $ProductDAO->Select();
-                    $danhmucs = $ProductDAO->showCategory();
+                    $categorys = $ProductDAO->showCategory();
                     include('view/home/home.php');
                 }
             }
@@ -29,12 +29,12 @@ class HomeController
             if (isset($_POST['search']) && $_POST['search'] != "") {
                 $ProductDAO = new ProductDAO();
                 $products = $ProductDAO->SelectItem($_POST['search']);
-                $danhmucs = $ProductDAO->showCategory();
+                $categorys = $ProductDAO->showCategory();
                 include('view/home/home.php');
             } else {
                 $ProductDAO = new ProductDAO();
                 $products = $ProductDAO->Select();
-                $danhmucs = $ProductDAO->showCategory();
+                $categorys = $ProductDAO->showCategory();
                 include('view/home/home.php');
             }
         }

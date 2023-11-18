@@ -24,14 +24,14 @@ class CommentDAO
     //    echo $currentDateTime; // có thể test ngay tại đây
     public function show($id_pro)
     {
-        $sql = "SELECT user,noidung,ngaybinhluan FROM `binhluan` JOIN taikhoan ON binhluan.iduser=taikhoan.id_ac JOIN sanpham ON sanpham.id_pro=binhluan.idpro WHERE idpro = '$id_pro'";
+        $sql = "SELECT user,noidung,ngaycomment FROM `comment` JOIN taikhoan ON comment.iduser=taikhoan.id_ac JOIN product ON product.id_pro=comment.idpro WHERE idpro = '$id_pro'";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
 
         $comments = []; // hoặc $products = [];
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $comment = new commentshow($row['user'], $row['noidung'], $row['ngaybinhluan']);
+            $comment = new commentshow($row['user'], $row['noidung'], $row['ngaycomment']);
             $comments[] =  $comment;    
         }
 
@@ -39,17 +39,17 @@ class CommentDAO
     }
     public function add($id_pro, $text, $id_user, $day)
     {
-        $sql = "INSERT INTO `binhluan`(`noidung`, `iduser`, `idpro`, `ngaybinhluan`) VALUES ('$text','$id_user','$id_pro','$day')";
+        $sql = "INSERT INTO `comment`(`noidung`, `iduser`, `idpro`, `ngaycomment`) VALUES ('$text','$id_user','$id_pro','$day')";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
     public function count()
     {
-        $sql = "SELECT danhmuc.name, COUNT(iddm) AS so_luong
-        FROM binhluan
-        JOIN sanpham ON sanpham.id_pro = binhluan.idpro
-        JOIN danhmuc ON danhmuc.id_d = sanpham.iddm
-        GROUP BY danhmuc.id_d, danhmuc.name;";
+        $sql = "SELECT category.name, COUNT(iddm) AS so_luong
+        FROM comment
+        JOIN product ON product.id_pro = comment.idpro
+        JOIN category ON category.id_d = product.iddm
+        GROUP BY category.id_d, category.name;";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         // Lấy kết quả dưới dạng mảng kết hợp

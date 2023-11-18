@@ -12,13 +12,13 @@ switch ($controller) {
         $homeController = new HomeController();
         $homeController->index();
         break;
-    case 'danhmuc':
+    case 'category':
         $productController = new ProductController();
-        $productController->danhmuc();
+        $productController->category();
         break;
     case 'hanghoa':
         $productController = new ProductController();
-        $productController->sanpham();
+        $productController->product();
         break;
     case 'khachang':
         $UserController = new UserController();
@@ -28,23 +28,23 @@ switch ($controller) {
         $LoginController = new LoginController();
         $LoginController->logout();
         break;
-    case 'binhluan':
+    case 'comment':
         $productController = new ProductController();
-        $productController->binhluan();
+        $productController->comment();
         break;
     case 'product':
         if (isset($_GET["act"])) {
             if ($_GET['act'] == 'add') {
                 $productController = new ProductController();
-                $productController->sanpham();
+                $productController->product();
             }
             if ($_GET['act'] == 'delete') {
                 $productController = new ProductController();
-                $productController->sanpham();
+                $productController->product();
             }
             if ($_GET['act'] == 'fix') {
                 $productController = new ProductController();
-                $productController->sanpham();
+                $productController->product();
             }
             if ($_GET['act'] == 'item') {
                 $productController = new ProductController();
@@ -52,7 +52,7 @@ switch ($controller) {
             }
             if ($_GET['act'] == 'bl') {
                 $productController = new ProductController();
-                $productController->binhluan();
+                $productController->comment();
             }
         } else {
             $productController = new ProductController();
