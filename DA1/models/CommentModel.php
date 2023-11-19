@@ -12,6 +12,11 @@
         $comments = pdo_query($sql);
         return $comments;
     }
+    function load_status($id_comment){
+        $sql = "select status from comment where id_comment=".$id_comment;
+        $status =  pdo_query_value($sql);
+        return $status;
+    }
     function change_status($status, $id_comment){
         if ( $status == 0){
             $sql = "update comment set status = '1'";
@@ -19,6 +24,7 @@
             $sql = "update comment set status = '0'";
         }
         $sql.= " where id_comment=".$id_comment;
+        // die($sql);
         pdo_execute($sql);
     }
     

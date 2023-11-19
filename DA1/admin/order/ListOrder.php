@@ -2,44 +2,62 @@
             <div class="">
                 <h1>List Order</h1>
             </div>
+            <form action="index.php?act=list_order" method="post">
+                <input type="text" name="kyw" placeholder="Enter ID Order">
+                <input type="submit" name="ok" value="GO">
+            </form>
             <div class="">
                     <div class="">
                         <table>
                             <tr>
                                 <th></th>
-                                <th>ID Commnet</th>
-                                <th>ID User</th>
-                                <th>ID Product</th>
-                                <th>Content</th>    
-                                <th>Date Comment</th>
-                                <th>Rate</th>
+                                <th>ID Order</th>
+                                <th>User</th>
+                                <th>Quantity</th>
+                                <th>Total</th>    
+                                <th>Date Order</th>
+                                <th>Type Payment</th>
                                 <th>Status</th>
                                 <th></th>
                             </tr>
                             <?php
-                                foreach ( $comments as $comment){
-                                    extract($comment);
-                                    $changeSts = "index.php?act=changeSts&id_comment=".$id_comment;
+                                foreach ( $bills as $bill){
+                                    extract($bill);
+                                    $user = $bill["full_name"].'
+                                    <br> '.$bill["email"].'
+                                    <br> '.$bill["address"].'
+                                    <br> '.$bill["number_phone"]; 
+                                    $showDetail = "index.php?act=showDetail&id_bill=".$id_bill;
                                     if ( $status == 0){
-                                        $check = "Hiển thị";
+                                        $check = "Đơn hàng mới";
+                                    } elseif ($status == 1) {
+                                        $check = "Đơn hàng đã chuẩn bị";
+                                    } elseif ($status == 2) {
+                                        $check = "Đang giao hàng";
                                     } else {
-                                        $check = "Ản";
+                                        $check = "Đã giao thành công";
+                                    }
+                                    if ( $type_payment == 1){
+                                        $pay = "Trả tiền khi nhận hàng";
+                                    } elseif ($type_payment == 2) {
+                                        $pay = "Chuyển khoản ngân hàng";
+                                    } else {
+                                        $pay = "Thanh toán Online";
                                     }
                                     echo '<tr>
                                     <td><input type="checkbox" name="" id=""></td>
-                                    <td>'.$id_comment.'</td>
-                                    <td>'.$id_user.'</td>
-                                    <td>'.$id_product.'</td>
-                                    <td>'.$content.'</td>
+                                    <td>'.$id_bill.'</td>
+                                    <td>'.$user.'</td>
+                                    <td>'.$quantity.'</td>
+                                    <td>'.$total.'  VNĐ</td>
                                     <td>'.$create_at.'</td>
-                                    <td>'.$rate.'</td>
                                     <td>'.$check.'</td>
-                                    <td><a href = "'.$changeSts.'"><input type="button" value="Change Status"></a>
+                                    <td>'.$pay.'</td>
+                                    <td><a href = "'.$showDetail.'"><input type="button" value="Show Detail"></a>
                                     </td>
                                     </tr>';
                                 } 
                             ?>
-                            <a href="'.$chageSts.'"></a>
                         </table>
                     </div>
                     <div class="row mb10">

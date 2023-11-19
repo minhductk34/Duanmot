@@ -27,14 +27,14 @@
                             <?php
                                 foreach ( $comments as $comment){
                                     extract($comment);
-                                    $changeSts = "index.php?act=changeSts&id_comment=".$id_comment;
+                                    $changeSts = "index.php?act=change&id_comment=".$id_comment;
                                     if ( $status == 0){
                                         $check = "Hiển thị";
                                     } else {
                                         $check = "Ản";
                                     }
                                     echo '<tr>
-                                    <td><input type="checkbox" name="" id=""></td>
+                                    <td></td>
                                     <td>'.$id_comment.'</td>
                                     <td>'.$id_user.'</td>
                                     <td>'.$id_product.'</td>
@@ -42,12 +42,11 @@
                                     <td>'.$create_at.'</td>
                                     <td>'.$rate.'</td>
                                     <td>'.$check.'</td>
-                                    <td><a href = "'.$changeSts.'"><input type="button" value="Change Status"></a>
-                                    </td>
+                                    <td> <a href="'.$changeSts.'"><input type="button" value="ChangeStatus" name="change"></a></td>
                                     </tr>';
                                 } 
                             ?>
-                            <a href="'.$chageSts.'"></a>
+                           
                         </table>
                     </div>
                     <div class="row mb10">

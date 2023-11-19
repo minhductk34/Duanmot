@@ -47,6 +47,19 @@
                         <p>Quantity</p><br>
                         <input type="number" name="quantity" value="<?=$quantity?>">
                     </div>
+                    <div>
+                        <p>Status</p><br>
+                        <?php 
+                        if ( $status == 0 ){
+                            $check0 = "checked";
+                            $check1 = "";
+                        } else { 
+                            $check1 = "checked";
+                            $check0 = "";
+                        }
+                    ?> 
+                    <span>Còn hàng </span><input type="radio" name="status" value="0" <?=$check0?>>
+                    <span>Hết hàng </span><input type="radio" name="status" value="1" <?=$check1?>>
                     <div class="">
                         <p>Description Product</p><br>
                         <textarea name="desc_product" cols="100" rows="10"><?=$desc_product?></textarea>

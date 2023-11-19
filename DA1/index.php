@@ -5,6 +5,7 @@ include "models/ProductModel.php";
 include "models/AccountModel.php";
 include "models/CommentModel.php";
 include "models/DiscountModel.php";
+include "models/OrderModel.php";
 include "models/Syn&StaModel.php";
 include "view/globle/headadmin.php";
 
@@ -98,6 +99,7 @@ if (isset($_GET['act'])) {
                 $price_product = $_POST['price_product'];
                 $desc_product = $_POST['desc_product'];
                 $quantity = $_POST['quantity'];
+                $status = $_POST['status'];
                 $image_product = $_FILES['image_product']['name'];
                 $target_dir = "uploads/products/";
                 $target_file = $target_dir .basename($image_product);
@@ -202,7 +204,12 @@ if (isset($_GET['act'])) {
         $comments = loadall_comment($date);
         include "admin/comment/ListComment.php";
         break;
-    case "changeSts":
+    case "change":
+        if ( isset($_GET['id_comment']) && ($_GET['id_comment'] != "")){
+            $id_comment = $_GET['id_comment'];
+            $status =  load_status($id_comment);
+            change_status($status, $id_comment);
+        }
         $comments = loadall_comment('');
         include "admin/comment/ListComment.php";
         break;
@@ -251,9 +258,21 @@ if (isset($_GET['act'])) {
 
         // Order Controller
         case "list_order":
+            if ( isset($_POST['ok']) && ($_POST['ok'])){
+                $kyw = $_POST['kyw'];
+            } else {
+                $kyw = "";  
+            }
+            $bills = loadall_bill($kyw, 0);
             include "admin/order/ListOrder.php";
             break;
-        
+        case "showDetail":
+            if ( isset($_GET['id_bill']) && ($_GET['id_bill'] > 0)){
+                $id_bill = $_GET['id_bill'];
+                $details = showdetail($id_bill);
+            }
+            include "admin/order/ShowDetail.php";
+            break;
         //Synthetic & Statistical
         case 'synStat':
             $list = loadall();
