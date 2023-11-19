@@ -29,11 +29,11 @@ class HomeController
                 if (isset($_POST['search']) && $_POST['search'] != "") {
                     $products = $this->products->Search($_POST['search']);
                     $categorys = $this->categorys->showCategory();
-                    require_once('view/home/admin/home.php');
+                    require_once('view/home/user/home.php');
                 } else {
                     $products = $this->products->Select();
                     $categorys = $this->categorys->showCategory();
-                    require_once('view/home/admin/home.php');
+                    require_once('view/home/user/home.php');
                 }
             }
         } else {
