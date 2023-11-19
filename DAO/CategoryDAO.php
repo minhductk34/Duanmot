@@ -1,5 +1,5 @@
 <?php
-
+require_once ('modles/Cartegory.php');
 class CategoryDAO
 {
     private $PDO;
@@ -9,22 +9,24 @@ class CategoryDAO
         $this->PDO = $pdo;
     }
 
-    //Show category
+    //Show category (checked)
 
     public function showCategory()
     {
-        $sql = "SELECT * FROM `category`";
+        $sql = "SELECT * FROM category";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
+        // //echo $sql;
 
-        $categories = array();
+        $categorys = array();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $category = new Category($row['id'], $row['name_category'], $row['desc_category'], $row['status']);
-            $categories[] = $category;
+            $categorys = new Category($row['id'], $row['name_category'], $row['desc_category'], $row['status']);
+            $categories[] = $categorys;
         }
-
+        // print_r($categories);
         return $categories;
+        
     }
     //ADD category
     public function addCategory($name, $description, $status)

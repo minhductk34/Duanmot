@@ -11,26 +11,29 @@ class ProductController
         $this->ProductDAO = new ProductDAO();
         $this->CategoryDAO = new CategoryDAO();
         $this->CommentDAO = new CommentDAO();
-        require_once('view/product/admin/iteam.php');
+        // require_once('view/product/admin/iteam.php');
     }
     public function showProduct()
     {
         if (isset($_SESSION["permissions"])) {
             if ($_SESSION["permissions"] == 1) {
+                $products = $this->ProductDAO->getProductsByCategory($_GET['product']);
+                $categorys = $this->CategoryDAO->showCategory();
                 require_once('view/home/homeAdmin.php');
             } elseif ($_SESSION["permissions"] == 2) {
 
                 $products = $this->ProductDAO->getProductsByCategory($_GET['product']);
                 $categorys = $this->CategoryDAO->showCategory();
-                require_once 'view/product/cli/listitem.php';
+                // require_once 'view/product/cli/listitem.php';
             } elseif ($_SESSION["permissions"] == 0) {
                 require_once('view/home/homeUser.php');
             }
         } else {
 
-            $products = $this->ProductDAO->getProductsByCategory($_GET['product']);
+            // $productsbyCategory = $this->ProductDAO->getProductsByCategory($_GET['product']);
+            $products = $this->ProductDAO->Select();
             $categorys = $this->CategoryDAO->showCategory();
-            require_once 'view/product/cli/listitem.php';
+            require_once 'view/product/client/show.php';
         }
     }
 

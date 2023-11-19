@@ -21,7 +21,7 @@ class CommentDAO
 
     //    $timestamp = get_time_present(); // lấy dãy số thời gian hiện tại về
     //    $currentDateTime = date("Y-m-d H:i:s", $timestamp);// chuyển đổi dãy số về dạng năm-tháng-ngày giờ-phút-giây
-    //    echo $currentDateTime; // có thể test ngay tại đây
+    //    //echo $currentDateTime; // có thể test ngay tại đây
     public function show($id_pro)
     {
         $sql = "SELECT user,noidung,ngaycomment FROM `comment` JOIN taikhoan ON comment.iduser=taikhoan.id_user JOIN product ON product.id_pro=comment.idpro WHERE idpro = '$id_pro'";

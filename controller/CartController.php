@@ -3,7 +3,7 @@ class CartController
 {
     public function show()
     {
-        echo 'listCart';
+        //echo 'listCart';
         if (isset($_SESSION["permissions"])) {
             //code
 
@@ -14,7 +14,7 @@ class CartController
     }
     public function add()
     {
-        echo 'addCart';
+        //echo 'addCart';
         //code
 
         if (isset($_SESSION["permissions"])) {
@@ -27,7 +27,7 @@ class CartController
     }
     public function edit()
     {
-        echo 'edittCart';
+        //echo 'edittCart';
         if (isset($_SESSION["permissions"])) {
             //code
 
@@ -38,7 +38,7 @@ class CartController
     }
     public function delete()
     {
-        echo 'deleteCart';
+        //echo 'deleteCart';
         if (isset($_SESSION["permissions"])) {
             //code
 
@@ -49,7 +49,7 @@ class CartController
     }
     public function history()
     {
-        echo 'historyCart';
+        //echo 'historyCart';
         if (isset($_SESSION["permissions"])) {
             //code
 

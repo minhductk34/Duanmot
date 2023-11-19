@@ -52,7 +52,7 @@ class CategoryController
 
     public function deleteCategory()
     {
-        echo 'deleteCategory';
+        //echo 'deleteCategory';
         if (isset($_SESSION["permissions"])) {
             if ($_SESSION['permissions'] == 1) {
                 //code
@@ -60,7 +60,7 @@ class CategoryController
                     $id = $_POST['id'];
                     $this->CategoryDAO->deleteCategory($id);
                 }
-                require_once('view/category/admin/Delete.php');  
+                require_once('view/category/admin/Delete.php');
             } else {
                 require_once('404.php');
             }
@@ -71,7 +71,7 @@ class CategoryController
 
     public function updateCategory()
     {
-        echo 'updateCategory';
+        //echo 'updateCategory';
         if (isset($_SESSION["permissions"])) {
             if ($_SESSION['permissions'] == 1) {
                 if (isset($_POST['tenmoi']) && $_POST['tenmoi'] != '') {
@@ -90,17 +90,17 @@ class CategoryController
 
     public function showCategory()
     {
-        echo 'showCategory';
+        //echo 'showCategory';
         if (isset($_SESSION["permissions"])) {
             if ($_SESSION['permissions'] == 1) {
                 $CategoryDAO = new CategoryDAO();
                 $categorys = $CategoryDAO->showCategory();
-                // echo "categoryshow";
+                // //echo "categoryshow";
                 require_once('view/category/admin/List.php');
             } elseif ($_SESSION['permissions'] == 2) {
                 $CategoryDAO = new CategoryDAO();
                 $categorys = $CategoryDAO->showCategory();
-                // echo "categoryshow";
+                // //echo "categoryshow";
                 require_once('view/category/staff/List.php');
             } else {
                 require_once('404.php');
@@ -108,5 +108,16 @@ class CategoryController
         } else {
             require_once('404.php');
         }
+    }
+
+
+    public function showProduct_test()
+    {
+        //echo 'showProduct_test';
+        //echo '</br>';
+        $ProductController = new ProductController();
+        $ProductController->showProduct();
+        // //echo "categoryshow";
+        require_once('view/category/admin/List.php');
     }
 }

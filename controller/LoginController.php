@@ -36,7 +36,7 @@ class LoginController
             exit();
         } else {
             // Đăng nhập thất bại, xử lý lỗi ở đây (ví dụ: thông báo lỗi)
-            echo "Đăng nhập thất bại.";
+            //echo "Đăng nhập thất bại.";
         }
     }
     public function signup()

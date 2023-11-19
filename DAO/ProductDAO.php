@@ -15,9 +15,10 @@ class ProductDAO {
     // lấy toàn bộ
     function Select()
     {
-        $sql = "SELECT * FROM `products`";
+        $sql = "SELECT * FROM products";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
+        // //echo $sql;
 
         $products = array(); // hoặc $products = [];
 
@@ -26,6 +27,7 @@ class ProductDAO {
             $product = new Product($row['id'], $row['name_product'], $row['desc_product'], $row['image_product'], $row['price_product'], $row['status'], $row['quantity'], $row['id_category'], $row['id_discount']);
             $products[] = $product;
         }
+        // print_r($products);
 
         return $products;
     }

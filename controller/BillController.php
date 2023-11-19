@@ -4,7 +4,7 @@ class BillController
 {
     public function show()
     {
-        echo 'showBill';
+        //echo 'showBill';
         if (isset($_SESSION["permissions"])) {
             if ($_SESSION['permissions'] == 1) {
                 //code 
@@ -26,7 +26,7 @@ class BillController
     }
     public function edit()
     {
-        echo 'editBill';
+        //echo 'editBill';
         if (isset($_SESSION["permissions"])) {
             if ($_SESSION['permissions'] == 1) {
                 //code 
@@ -41,7 +41,7 @@ class BillController
     }
     public function status()
     {
-        echo 'statusBill';
+        //echo 'statusBill';
         if (isset($_SESSION["permissions"])) {
             if ($_SESSION['permissions'] == 1) {
                 //code 
