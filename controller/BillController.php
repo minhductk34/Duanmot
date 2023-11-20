@@ -14,7 +14,7 @@ class BillController
                 require_once('view/bill/staff/list.php');
             } else {
                 //code
-                require_once('view/bill/user/list.php');
+                header('view/bill/user/list.php');
             }
         } else {
             require_once('404.php');
@@ -51,5 +51,11 @@ class BillController
         } else {
             require_once('404.php');
         }
+    }
+
+    public function checkout(){
+        //code here
+
+        header('view/bill/user/checkout.php');
     }
 }

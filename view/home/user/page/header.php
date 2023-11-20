@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>FeeTech - Organic Food Store HTML Template - Shop List</title>
+    <title>FeeTech - Organic Food Store HTML Template - Contact Us</title>
     <meta name="author" content="">
     <meta name="description" content="FeeTech - Organic Food Store HTML Template">
     <meta name="keywords" content="FeeTech - Organic Food Store HTML Template" />
@@ -490,14 +490,11 @@
         data-bg-src="assets/img/breadcumb/breadcumb-img-1.jpg">
         <div class="container">
             <div class="breadcumb-content text-center">
-                <h1 class="breadcumb-title">Organic</h1>
+                <h1 class="breadcumb-title">Contact Us</h1>
                 <ul class="breadcumb-menu-style1 mx-auto">
                     <li><a href="index.html">Home</a></li>
-                    <li class="active">Shop</li>
+                    <li class="active">Contact</li>
                 </ul>
             </div>
         </div>
     </div>
-    <!--==============================
-    Feature Products
-    ==============================-->

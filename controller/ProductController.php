@@ -33,7 +33,7 @@ class ProductController
             // $productsbyCategory = $this->ProductDAO->getProductsByCategory($_GET['product']);
             $products = $this->ProductDAO->Select();
             $categorys = $this->CategoryDAO->showCategory();
-            require_once 'view/product/client/show.php';
+            header('view/product/client/show.php');
         }
     }
 
@@ -131,7 +131,7 @@ class ProductController
     }
 
 
-    public function item()
+    public function productDetails()
     {
         $_GET['id'];
 
@@ -140,7 +140,6 @@ class ProductController
         $products = $this->ProductDAO->lq($_GET['iddm']);
         $comments =  $this->CommentDAO->show($_GET['id']);
         $categorys = $this->CategoryDAO->showCategory();
-
-        require_once('view/product/client/listItem.php');
+        header('view/product/client/shopDetails.php');
     }
 }

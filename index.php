@@ -42,6 +42,10 @@ switch ($controller) {
         $ProductController->showProduct();
         break;
 
+    case 'product_details':
+        $ProductController = new ProductController();
+        $ProductController->productDetails();
+        break;
     case 'product_add':
         $ProductController = new ProductController();
         $ProductController->addProduct();
@@ -128,10 +132,12 @@ switch ($controller) {
         $BillController = new BillController();
         $BillController->edit();
         break;
-   
+    case 'checkout':
+        $BillController = new BillController();
+        $BillController->checkout();
+        break;
 
     default:
         // Xử lý controller không hợp lệ
         break;
-
 }
