@@ -71,7 +71,7 @@ require_once('view/globle/user/header.php');
               background-size: inherit;
               background-position: inherit;
             " class="ls-l ls-hide-tablet ls-hide-phone" data-ls="offsetyin:100; durationin:1500; delayin:800; easingin:easeOutQuint; offsetyout:200; durationout:1500; easingout:easeOutQuint;">
-        <a href="shop.html" class="vs-btn style5 ls-btn">Start Shopping<i class="far fa-angle-right"></i></a>
+        <a href="index.php?controller=product_show" class="vs-btn style5 ls-btn">Start Shopping<i class="far fa-angle-right"></i></a>
       </div>
       <img width="658" height="543" src="./src/assets/img/hero/hero-6-1-1.png" class="ls-l ls-hide-desktop" alt="image" style="
               top: 54px;
@@ -400,7 +400,7 @@ require_once('view/globle/user/header.php');
               background-size: inherit;
               background-position: inherit;
             " class="ls-l ls-hide-tablet ls-hide-phone" data-ls="offsetyin:100; durationin:1500; delayin:800; easingin:easeOutQuint; offsetyout:200; durationout:1500; easingout:easeOutQuint;">
-        <a href="shop.html" class="vs-btn style5 ls-btn">Start Shopping<i class="far fa-angle-right"></i></a>
+        <a href="index.php?controller=product_show" class="vs-btn style5 ls-btn">Start Shopping<i class="far fa-angle-right"></i></a>
       </div>
       <img width="687" height="554" src="./src/assets/img/hero/hero-6-1-2.png" class="ls-l ls-hide-desktop" alt="image" style="
               top: 54px;
@@ -581,7 +581,7 @@ require_once('view/globle/user/header.php');
               background-size: inherit;
               background-position: inherit;
             " class="ls-l ls-hide-tablet ls-hide-phone" data-ls="offsetyin:100; durationin:1500; delayin:800; easingin:easeOutQuint; offsetyout:200; durationout:1500; easingout:easeOutQuint;">
-        <a href="shop.html" class="vs-btn style5 ls-btn">Start Shopping<i class="far fa-angle-right"></i></a>
+        <a href="index.php?controller=product_show" class="vs-btn style5 ls-btn">Start Shopping<i class="far fa-angle-right"></i></a>
       </div>
       <img width="639" height="536" src="./src/assets/img/hero/hero-6-1-3.png" class="ls-l ls-hide-desktop" alt="image" style="
               top: 54px;
@@ -762,7 +762,7 @@ require_once('view/globle/user/header.php');
               background-size: inherit;
               background-position: inherit;
             " class="ls-l ls-hide-tablet ls-hide-phone" data-ls="offsetyin:100; durationin:1500; delayin:800; easingin:easeOutQuint; offsetyout:200; durationout:1500; easingout:easeOutQuint;">
-        <a href="shop.html" class="vs-btn style5 ls-btn">Start Shopping<i class="far fa-angle-right"></i></a>
+        <a href="index.php?controller=product_show" class="vs-btn style5 ls-btn">Start Shopping<i class="far fa-angle-right"></i></a>
       </div>
       <img width="627" height="537" src="./src/assets/img/hero/hero-6-1-4.png" class="ls-l ls-hide-desktop" alt="image" style="
               top: 54px;
@@ -943,7 +943,7 @@ require_once('view/globle/user/header.php');
               background-size: inherit;
               background-position: inherit;
             " class="ls-l ls-hide-tablet ls-hide-phone" data-ls="offsetyin:100; durationin:1500; delayin:800; easingin:easeOutQuint; offsetyout:200; durationout:1500; easingout:easeOutQuint;">
-        <a href="shop.html" class="vs-btn style5 ls-btn">Start Shopping<i class="far fa-angle-right"></i></a>
+        <a href="index.php?controller=product_show" class="vs-btn style5 ls-btn">Start Shopping<i class="far fa-angle-right"></i></a>
       </div>
       <img width="649" height="537" src="./src/assets/img/hero/hero-6-1-5.png" class="ls-l ls-hide-desktop" alt="image" style="
               top: 54px;
@@ -1077,7 +1077,7 @@ require_once('view/globle/user/header.php');
 <!--==============================
     Categories Area
     ==============================-->
-<section class="space-top">
+<!-- <section class="space-top">
   <div class="container">
     <div class="row vs-carousel" data-slide-show="3" id="catboxSlide4645">
       <div class="col-xl-4">
@@ -1086,7 +1086,7 @@ require_once('view/globle/user/header.php');
             <img src="./src/assets/img/category/cat-1-1.png" alt="Category image" />
           </div>
           <h3 class="cat-box__title">
-            <a href="shop.html">Organic Fruits</a>
+            <a href="index.php?controller=product_show">Organic Fruits</a>
           </h3>
           <p class="cat-box__text">
             Phasellus enim libero, blandit vel sapien vitae, condimentum
@@ -1100,7 +1100,7 @@ require_once('view/globle/user/header.php');
             <img src="./src/assets/img/category/cat-1-2.png" alt="Category image" />
           </div>
           <h3 class="cat-box__title">
-            <a href="shop.html">Organic Vagitables</a>
+            <a href="index.php?controller=product_show">Organic Vagitables</a>
           </h3>
           <p class="cat-box__text">
             Phasellus enim libero, blandit vel sapien vitae, condimentum
@@ -1114,7 +1114,7 @@ require_once('view/globle/user/header.php');
             <img src="./src/assets/img/category/cat-1-3.png" alt="Category image" />
           </div>
           <h3 class="cat-box__title">
-            <a href="shop.html">Farms and Family</a>
+            <a href="index.php?controller=product_show">Farms and Family</a>
           </h3>
           <p class="cat-box__text">
             Phasellus enim libero, blandit vel sapien vitae, condimentum
@@ -1128,7 +1128,7 @@ require_once('view/globle/user/header.php');
             <img src="./src/assets/img/category/cat-1-4.png" alt="Category image" />
           </div>
           <h3 class="cat-box__title">
-            <a href="shop.html">Dairy Products</a>
+            <a href="index.php?controller=product_show">Dairy Products</a>
           </h3>
           <p class="cat-box__text">
             Phasellus enim libero, blandit vel sapien vitae, condimentum
@@ -1144,7 +1144,7 @@ require_once('view/globle/user/header.php');
         </button>
       </div>
       <div class="col-auto">
-        <a href="shop.html" class="vs-btn style3">Start Shopping<i class="fas fa-angle-right"></i></a>
+        <a href="index.php?controller=product_show" class="vs-btn style3">Start Shopping<i class="fas fa-angle-right"></i></a>
       </div>
       <div class="col-auto d-none d-sm-block">
         <button class="slick-arrow" data-slick-next="#catboxSlide4645" type="button">
@@ -1153,11 +1153,11 @@ require_once('view/globle/user/header.php');
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!--==============================
       About Us Area
     ==============================-->
-<section class="space">
+<!-- <section class="space">
   <div class="container">
     <div class="row justify-content-between align-items-center align-items-xl-start">
       <div class="col-md-9 col-lg-7 col-xl-8">
@@ -1220,7 +1220,7 @@ require_once('view/globle/user/header.php');
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!--==============================
     Feature Products
     ==============================-->
@@ -1267,8 +1267,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-1.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1292,8 +1292,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-2.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1318,8 +1318,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-3.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1343,8 +1343,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-4.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1368,8 +1368,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-5.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1394,8 +1394,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-6.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1419,8 +1419,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-7.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1445,8 +1445,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-8.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1476,8 +1476,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-9.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1502,8 +1502,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-10.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1527,8 +1527,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-11.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1552,8 +1552,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-12.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1577,8 +1577,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-13.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1603,8 +1603,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-14.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1629,8 +1629,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-15.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1655,8 +1655,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-16.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1685,8 +1685,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-17.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1711,8 +1711,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-18.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1736,8 +1736,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-19.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1762,8 +1762,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-20.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1787,8 +1787,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-21.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1813,8 +1813,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-22.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1839,8 +1839,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-23.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1865,8 +1865,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-24.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1895,8 +1895,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-25.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1921,8 +1921,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-26.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1947,8 +1947,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-27.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1972,8 +1972,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-28.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -1998,8 +1998,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-29.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -2023,8 +2023,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-30.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -2049,8 +2049,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-31.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -2075,8 +2075,8 @@ require_once('view/globle/user/header.php');
               </div>
               <div class="actions-btn">
                 <a href="./src/assets/img/shop/product-3-32.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
               </div>
               <div class="product-content">
                 <div class="product-rating-box">
@@ -2097,7 +2097,7 @@ require_once('view/globle/user/header.php');
       </div>
     </div>
     <div class="bottom-btn">
-      <a href="shop.html" class="vs-btn style3">All Product<i class="fas fa-angle-right"></i></a>
+      <a href="index.php?controller=product_show" class="vs-btn style3">All Product<i class="fas fa-angle-right"></i></a>
     </div>
   </div>
 </section>
@@ -2130,7 +2130,7 @@ require_once('view/globle/user/header.php');
             </div>
           </div>
           <div>
-            <a href="cart.html" class="vs-btn style4"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+            <a href="index.php?controller=listCart" class="vs-btn style4"><i class="fal fa-cart-plus"></i>Add To Cart</a>
           </div>
         </div>
       </div>
@@ -2234,7 +2234,7 @@ require_once('view/globle/user/header.php');
               <li><i class="far fa-check"></i>Spain Italy Courgettes</li>
             </ul>
           </div>
-          <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+          <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
         </div>
       </div>
       <div class="col-xl-4">
@@ -2260,7 +2260,7 @@ require_once('view/globle/user/header.php');
               <li><i class="far fa-check"></i>Spain Italy Courgettes</li>
             </ul>
           </div>
-          <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+          <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
         </div>
       </div>
       <div class="col-xl-4">
@@ -2288,7 +2288,7 @@ require_once('view/globle/user/header.php');
               <li><i class="far fa-check"></i>Spain Italy Courgettes</li>
             </ul>
           </div>
-          <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+          <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
         </div>
       </div>
       <div class="col-xl-4">
@@ -2316,7 +2316,7 @@ require_once('view/globle/user/header.php');
               <li><i class="far fa-check"></i>Spain Italy Courgettes</li>
             </ul>
           </div>
-          <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+          <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
         </div>
       </div>
     </div>
@@ -2362,8 +2362,8 @@ require_once('view/globle/user/header.php');
                 </div>
                 <div class="actions-btn">
                   <a href="./src/assets/img/shop/product-3-32.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                  <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                  <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                  <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                  <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
                 </div>
                 <div class="product-content">
                   <div class="product-rating-box">
@@ -2387,8 +2387,8 @@ require_once('view/globle/user/header.php');
                 </div>
                 <div class="actions-btn">
                   <a href="./src/assets/img/shop/product-3-13.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                  <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                  <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                  <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                  <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
                 </div>
                 <div class="product-content">
                   <div class="product-rating-box">
@@ -2414,7 +2414,7 @@ require_once('view/globle/user/header.php');
 <!--==============================
     Subscribe Area
     ==============================-->
-<section class="space" data-bg-src="./src/assets/img/bg/newsletter-bg-1-2.jpg">
+<!-- <section class="space" data-bg-src="./src/assets/img/bg/newsletter-bg-1-2.jpg">
   <div class="container">
     <div class="newsletter-style2" data-bg-src="./src/assets/img/shape/newsletter-bg-1-1.png">
       <div class="shape-1 d-none d-md-block">
@@ -2430,7 +2430,7 @@ require_once('view/globle/user/header.php');
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!--==============================
         Blog Area
     ==============================-->

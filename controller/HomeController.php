@@ -48,4 +48,13 @@ class HomeController
             }
         }
     }
+    public function contact()
+    {
+        require_once('view/home/user/contact.php');
+    }
+    public function chatBox()
+    {
+        header('Location: ./view/chatbox/index.php');
+        exit;
+    }
 }

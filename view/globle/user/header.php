@@ -103,16 +103,16 @@
                                 <a href="index.php?controller=home">Home</a>
                             </li>
                             <li class="menu-item-has-children">
-                            <a href="?url=index.php?controller=product_show">Shop</a>
+                            <a href="index.php?controller=product_show">Shop</a>
                                 <!-- <a href="index.php?controller=product_show">Shop</a> -->
                                 <ul class="sub-menu">
                                     <li><a href="index.php?controller=product_show">Shop</a></li>
-                                    <li><a href="./view/product/client/Listiems.php">Shop List</a></li>
-                                    <li><a href="view/product/client/shopDetails.php">Shop Details</a></li>
-                                    <li><a href="cart.html">Shopping Cart</a></li>
+                                    <li><a href="#">Shop List</a></li>
+                                    <li><a href="index.php?controller=product_details">Shop Details</a></li>
+                                    <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
                                     <li><a href="checkout.html">Check Out</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="login-register.html">Login & Register</a></li>
+                                    <li><a href="index.php?controller=wishlistCart">Wishlist</a></li>
+                                    <li><a href="index.php?controller=login">Login & Register</a></li>
                                 </ul>
                             </li>
                             <li class="menu-item-has-children">
@@ -128,13 +128,11 @@
                                     <li><a href="blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li class="mega-menu-wrap menu-item-has-children">
-                                <a href="index.php?controller=product_show">Pages</a>
+                            <li class="mega-menu-wrap menu-item">
+                            <a href="index.php?controller=contact">Contact Us</a>
                             </li>
                         </ul>
-                        <li>
-                            <a href="contact.html">Contact Us</a>
-                        </li>
+                    
                         </ul>
                     </nav>
                     <button class="vs-menu-toggle d-inline-block d-lg-none">
@@ -212,7 +210,7 @@
                         <span class="amount"> <span>$</span>318.00 </span>
                     </p>
                     <p class="buttons">
-                        <a href="cart.html" class="vs-btn">View cart</a>
+                        <a href="index.php?controller=listCart" class="vs-btn">View cart</a>
                         <a href="checkout.html" class="vs-btn">Checkout</a>
                     </p>
                 </div>
@@ -249,10 +247,10 @@
                     <div class="col-lg-auto text-center text-lg-end">
                         <div class="header-infos">
                             <p class="info">
-                                <i class="fas fa-phone-alt"></i>Phone:<a href="tel:02073885619">0846086806</a>
+                                <i class="fas fa-phone-alt"></i>Phone:<a href="tel:0964255760">0964255760</a>
                             </p>
                             <p class="info d-none d-md-inline-block">
-                                <i class="fas fa-envelope"></i>Email:<a href="mailto:devfsoft06@gmail.com">devfsoft06@gmail.com</a>
+                                <i class="fas fa-envelope"></i>Email:<a href="mailto:dttfoodshop@gmail.com">dttfoodshop@gmail.com</a>
                             </p>
                         </div>
                     </div>
@@ -270,7 +268,7 @@
                     <div class="col-auto">
                         <nav class="main-menu mobile-menu-active menu-style2">
                             <ul>
-                                <li class="menu-item-has-children">
+                                <li class="menu-item">
                                     <a href="index.php?controller=home">Home</a>
                                 </li>
                                 <li class="menu-item-has-children">
@@ -278,12 +276,12 @@
                                     <ul class="sub-menu">
                                         <li><a href="index.php?controller=product_show">Shop</a></li>
                                         <li><a href="index.php?controller=home">Shop List</a></li>
-                                        <li><a href="shop-details.html">Shop Details</a></li>
-                                        <li><a href="cart.html">Shopping Cart</a></li>
+                                        <li><a href="index.php?controller=product_details">Shop Details</a></li>
+                                        <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
                                         <li><a href="checkout.html">Check Out</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                        <li><a href="index.php?controller=wishlistCart">Wishlist</a></li>
                                         <li>
-                                            <a href="login-register.html">Login & Register</a>
+                                            <a href="index.php?controller=login">Login & Register</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -300,14 +298,14 @@
                                         <li><a href="blog-details.html">Blog Details</a></li>
                                     </ul>
                                 </li>
-                                <li class="mega-menu-wrap menu-item-has-children">
+                                <!-- <li class="mega-menu-wrap menu-item-has-children">
                                     <a href="#">Pages</a>
                                     <ul class="mega-menu">
                                         <li><a href="index.php?controller=product_show">Pagelist 1</a></li>
                                     </ul>
-                                </li>
+                                </li> -->
                                 <li>
-                                    <a href="contact.html">Contact Us</a>
+                                    <a href="index.php?controller=contact">Contact Us</a>
                                 </li>
                             </ul>
                         </nav>
@@ -317,7 +315,7 @@
                             <button type="button" class="searchBoxTggler">
                                 <i class="far fa-search"></i>
                             </button>
-                            <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                            <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
                             <button class="sideMenuToggler has-badge" type="button">
                                 <i class="fal fa-shopping-cart"></i><span class="badge">0</span>
                             </button>

@@ -1,6 +1,21 @@
 <?php 
-require_once('view/home/user/page/header.php');
+require_once ('view/home/user/page/header.php');
 ?>
+    <!--==============================
+    Breadcumb
+============================== -->
+    <div class="breadcumb-wrapper breadcumb-layout1 bg-fluid pt-200 pb-200"
+        data-bg-src="./src/assets/img/breadcumb/breadcumb-img-1.jpg">
+        <div class="container">
+            <div class="breadcumb-content text-center">
+                <h1 class="breadcumb-title">Cart</h1>
+                <ul class="breadcumb-menu-style1 mx-auto">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Cart</li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <!--==============================
     Cart Area
     ==============================-->
@@ -25,7 +40,7 @@ require_once('view/home/user/page/header.php');
                         <tr class="cart_item">
                             <td data-title="Product">
                                 <a class="cart-productimage" href="shop-details.html"><img width="91" height="91"
-                                        src="assets/img/cart/cat-img-1.png" alt="Image"></a>
+                                        src="./src/assets/img/cart/cat-img-1.png" alt="Image"></a>
                             </td>
                             <td data-title="Name">
                                 <a class="cart-productname" href="shop-details.html">Parmesan Vegetable</a>
@@ -50,7 +65,7 @@ require_once('view/home/user/page/header.php');
                         <tr class="cart_item">
                             <td data-title="Product">
                                 <a class="cart-productimage" href="shop-details.html"><img width="91" height="91"
-                                        src="assets/img/cart/cat-img-2.png" alt="Image"></a>
+                                        src="./src/assets/img/cart/cat-img-2.png" alt="Image"></a>
                             </td>
                             <td data-title="Name">
                                 <a class="cart-productname" href="shop-details.html">Parmesan Vegetable</a>
@@ -167,10 +182,6 @@ require_once('view/home/user/page/header.php');
     <!--==============================
 			Footer Area
 	==============================-->
-<?php 
-require_once('view/home/user/page/footer.php');
+    <?php 
+require_once ('view/home/user/page/footer.php');
 ?>
-  
-</body>
-
-</html>

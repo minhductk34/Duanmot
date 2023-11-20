@@ -6,6 +6,7 @@ require_once 'controller/ProductController.php';
 require_once 'controller/LoginController.php';
 require_once 'controller/UserController.php';
 require_once 'controller/CategoryController.php';
+require_once 'controller/CartController.php';
 $controller = $_GET['controller'] ?? 'home';
 
 switch ($controller) {
@@ -46,6 +47,11 @@ switch ($controller) {
         $ProductController = new ProductController();
         $ProductController->productDetails();
         break;
+    case 'product_favorite':
+        $ProductController = new ProductController();
+        $ProductController->productFav();
+        break;
+
     case 'product_add':
         $ProductController = new ProductController();
         $ProductController->addProduct();
@@ -110,6 +116,10 @@ switch ($controller) {
         $CartController = new CartController();
         $CartController->show();
         break;
+    case 'wishlistCart':
+        $CartController = new CartController();
+        $CartController->wishlist();
+        break;
     case 'historyCart':
         $CartController = new CartController();
         $CartController->history();
@@ -132,9 +142,17 @@ switch ($controller) {
         $BillController = new BillController();
         $BillController->edit();
         break;
-    case 'checkout':
+    case 'checkOut':
         $BillController = new BillController();
         $BillController->checkout();
+        break;
+    case 'contact':
+        $homeController = new HomeController();
+        $homeController->contact();
+        break;
+    case 'chatBox':
+        $homeController = new HomeController();
+        $homeController->chatBox();
         break;
 
     default:

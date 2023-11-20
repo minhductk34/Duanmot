@@ -29,11 +29,11 @@ class ProductController
                 require_once('view/home/homeUser.php');
             }
         } else {
-
+            // echo'product_show';
             // $productsbyCategory = $this->ProductDAO->getProductsByCategory($_GET['product']);
             $products = $this->ProductDAO->Select();
             $categorys = $this->CategoryDAO->showCategory();
-            header('view/product/client/show.php');
+            require_once('view/product/client/show.php');
         }
     }
 
@@ -133,13 +133,24 @@ class ProductController
 
     public function productDetails()
     {
-        $_GET['id'];
+        // $_GET['id'];
 
-        $timestamp = $this->CommentDAO->get_time_present();
-        $product = $this->ProductDAO->SelectOneItem($_GET['id']);
-        $products = $this->ProductDAO->lq($_GET['iddm']);
-        $comments =  $this->CommentDAO->show($_GET['id']);
-        $categorys = $this->CategoryDAO->showCategory();
-        header('view/product/client/shopDetails.php');
+        // $timestamp = $this->CommentDAO->get_time_present();
+        // $product = $this->ProductDAO->SelectOneItem($_GET['id']);
+        // $products = $this->ProductDAO->lq($_GET['iddm']);
+        // $comments =  $this->CommentDAO->show($_GET['id']);
+        // $categorys = $this->CategoryDAO->showCategory();
+        require_once('view/product/client/shopDetails.php');
+    }
+    public function productFav()
+    {
+        // $_GET['id'];
+
+        // $timestamp = $this->CommentDAO->get_time_present();
+        // $product = $this->ProductDAO->SelectOneItem($_GET['id']);
+        // $products = $this->ProductDAO->lq($_GET['iddm']);
+        // $comments =  $this->CommentDAO->show($_GET['id']);
+        // $categorys = $this->CategoryDAO->showCategory();
+        require_once('view/product/client/shopFav.php');
     }
 }

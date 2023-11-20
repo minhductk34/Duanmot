@@ -46,14 +46,14 @@ require_once('view/home/user/page/header.php');
                                     <div class="vs-product-box1 thumb_swap">
                                         <div class="product-tag1">sale</div>
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-1.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-8.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-1.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-8.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content">
                                             <div class="actions-btn">
-                                                <a href="cart.html"><i class="fal fa-cart-plus"></i></a>
-                                                <a href="assets/img/shop/product-1-1.png" class="popup-image"><i class="far fa-search"></i></a>
-                                                <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                                                <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
+                                                <a href="./src/assets/img/shop/product-1-1.png" class="popup-image"><i class="far fa-search"></i></a>
+                                                <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
                                             </div>
                                             <h4 class="product-title h5 mb-0"><a href="shop-details.html">Apple
                                                     juice</a></h4>
@@ -72,14 +72,14 @@ require_once('view/home/user/page/header.php');
                                     <div class="vs-product-box1 thumb_swap">
                                         <div class="product-tag2">Hot</div>
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-2.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-7.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-2.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-7.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content">
                                             <div class="actions-btn">
-                                                <a href="cart.html"><i class="fal fa-cart-plus"></i></a>
-                                                <a href="assets/img/shop/product-1-2.png" class="popup-image"><i class="far fa-search"></i></a>
-                                                <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                                                <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
+                                                <a href="./src/assets/img/shop/product-1-2.png" class="popup-image"><i class="far fa-search"></i></a>
+                                                <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
                                             </div>
                                             <h4 class="product-title h5 mb-0"><a href="shop-details.html">Black
                                                     Beans</a></h4>
@@ -97,14 +97,14 @@ require_once('view/home/user/page/header.php');
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="vs-product-box1 thumb_swap">
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-3.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-6.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-3.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-6.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content">
                                             <div class="actions-btn">
-                                                <a href="cart.html"><i class="fal fa-cart-plus"></i></a>
-                                                <a href="assets/img/shop/product-1-3.png" class="popup-image"><i class="far fa-search"></i></a>
-                                                <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                                                <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
+                                                <a href="./src/assets/img/shop/product-1-3.png" class="popup-image"><i class="far fa-search"></i></a>
+                                                <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
                                             </div>
                                             <h4 class="product-title h5 mb-0"><a href="shop-details.html">Plum
                                                     Silho</a></h4>
@@ -123,14 +123,14 @@ require_once('view/home/user/page/header.php');
                                     <div class="vs-product-box1 thumb_swap">
                                         <div class="product-tag1">sale</div>
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-4.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-5.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-4.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-5.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content">
                                             <div class="actions-btn">
-                                                <a href="cart.html"><i class="fal fa-cart-plus"></i></a>
-                                                <a href="assets/img/shop/product-1-4.png" class="popup-image"><i class="far fa-search"></i></a>
-                                                <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                                                <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
+                                                <a href="./src/assets/img/shop/product-1-4.png" class="popup-image"><i class="far fa-search"></i></a>
+                                                <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
                                             </div>
                                             <h4 class="product-title h5 mb-0"><a href="shop-details.html">Carne
                                                     Asada</a></h4>
@@ -148,14 +148,14 @@ require_once('view/home/user/page/header.php');
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="vs-product-box1 thumb_swap">
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-5.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-4.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-5.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-4.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content">
                                             <div class="actions-btn">
-                                                <a href="cart.html"><i class="fal fa-cart-plus"></i></a>
-                                                <a href="assets/img/shop/product-1-5.png" class="popup-image"><i class="far fa-search"></i></a>
-                                                <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                                                <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
+                                                <a href="./src/assets/img/shop/product-1-5.png" class="popup-image"><i class="far fa-search"></i></a>
+                                                <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
                                             </div>
                                             <h4 class="product-title h5 mb-0"><a href="shop-details.html">Quesadilla</a></h4>
                                             <span class="price font-theme"><strong>$26.78</strong></span>
@@ -172,14 +172,14 @@ require_once('view/home/user/page/header.php');
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="vs-product-box1 thumb_swap">
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-6.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-3.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-6.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-3.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content">
                                             <div class="actions-btn">
-                                                <a href="cart.html"><i class="fal fa-cart-plus"></i></a>
-                                                <a href="assets/img/shop/product-1-6.png" class="popup-image"><i class="far fa-search"></i></a>
-                                                <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                                                <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
+                                                <a href="./src/assets/img/shop/product-1-6.png" class="popup-image"><i class="far fa-search"></i></a>
+                                                <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
                                             </div>
                                             <h4 class="product-title h5 mb-0"><a href="shop-details.html">Pepperoni</a></h4>
                                             <span class="price font-theme"><strong>$40.00</strong></span>
@@ -196,14 +196,14 @@ require_once('view/home/user/page/header.php');
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="vs-product-box1 thumb_swap">
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-7.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-2.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-7.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-2.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content">
                                             <div class="actions-btn">
-                                                <a href="cart.html"><i class="fal fa-cart-plus"></i></a>
-                                                <a href="assets/img/shop/product-1-7.png" class="popup-image"><i class="far fa-search"></i></a>
-                                                <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                                                <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
+                                                <a href="./src/assets/img/shop/product-1-7.png" class="popup-image"><i class="far fa-search"></i></a>
+                                                <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
                                             </div>
                                             <h4 class="product-title h5 mb-0"><a href="shop-details.html">Meatballs</a></h4>
                                             <span class="price font-theme"><strong>$11.00</strong></span>
@@ -221,14 +221,14 @@ require_once('view/home/user/page/header.php');
                                     <div class="vs-product-box1 thumb_swap">
                                         <div class="product-tag1">sale</div>
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-8.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-1.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-8.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-1.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content">
                                             <div class="actions-btn">
-                                                <a href="cart.html"><i class="fal fa-cart-plus"></i></a>
-                                                <a href="assets/img/shop/product-1-8.png" class="popup-image"><i class="far fa-search"></i></a>
-                                                <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                                                <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
+                                                <a href="./src/assets/img/shop/product-1-8.png" class="popup-image"><i class="far fa-search"></i></a>
+                                                <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
                                             </div>
                                             <h4 class="product-title h5 mb-0"><a href="shop-details.html">kidney
                                                     beans</a></h4>
@@ -247,14 +247,14 @@ require_once('view/home/user/page/header.php');
                                     <div class="vs-product-box1 thumb_swap">
                                         <div class="product-tag1">sale</div>
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-9.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-1-6.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-9.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-6.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content">
                                             <div class="actions-btn">
-                                                <a href="cart.html"><i class="fal fa-cart-plus"></i></a>
-                                                <a href="assets/img/shop/product-1-9.png" class="popup-image"><i class="far fa-search"></i></a>
-                                                <a href="wishlist.html"><i class="fal fa-heart"></i></a>
+                                                <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
+                                                <a href="./src/assets/img/shop/product-1-9.png" class="popup-image"><i class="far fa-search"></i></a>
+                                                <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
                                             </div>
                                             <h4 class="product-title h5 mb-0"><a href="shop-details.html">Ziti
                                                     Food</a></h4>
@@ -276,8 +276,8 @@ require_once('view/home/user/page/header.php');
                                 <div class="col-sm-6 col-lg-6 col-xl-6">
                                     <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-1.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-8.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-1.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-8.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content d-xl-flex align-items-center">
                                             <div>
@@ -299,8 +299,8 @@ require_once('view/home/user/page/header.php');
                                     <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                         <div class="product-tag1">sale</div>
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-2.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-7.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-2.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-7.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content d-xl-flex align-items-center">
                                             <div>
@@ -321,8 +321,8 @@ require_once('view/home/user/page/header.php');
                                 <div class="col-sm-6 col-lg-6 col-xl-6">
                                     <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-3.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-6.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-3.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-6.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content d-xl-flex align-items-center">
                                             <div>
@@ -343,8 +343,8 @@ require_once('view/home/user/page/header.php');
                                 <div class="col-sm-6 col-lg-6 col-xl-6">
                                     <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-4.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-5.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-4.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-5.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content d-xl-flex align-items-center">
                                             <div>
@@ -365,8 +365,8 @@ require_once('view/home/user/page/header.php');
                                 <div class="col-sm-6 col-lg-6 col-xl-6">
                                     <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-5.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-4.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-5.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-4.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content d-xl-flex align-items-center">
                                             <div>
@@ -387,8 +387,8 @@ require_once('view/home/user/page/header.php');
                                     <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                         <div class="product-tag1">sale</div>
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-6.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-3.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-6.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-3.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content d-xl-flex align-items-center">
                                             <div>
@@ -408,8 +408,8 @@ require_once('view/home/user/page/header.php');
                                 <div class="col-sm-6 col-lg-6 col-xl-6">
                                     <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-7.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-2.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-7.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-2.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content d-xl-flex align-items-center">
                                             <div>
@@ -429,8 +429,8 @@ require_once('view/home/user/page/header.php');
                                 <div class="col-sm-6 col-lg-6 col-xl-6">
                                     <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                         <div class="product-img">
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-8.png" alt="Product Image" class="w-100"></a>
-                                            <a href="shop-details.html"><img src="assets/img/shop/product-2-1.png" alt="Product Image" class="w-100 img_swap"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-8.png" alt="Product Image" class="w-100"></a>
+                                            <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-1.png" alt="Product Image" class="w-100 img_swap"></a>
                                         </div>
                                         <div class="product-content d-xl-flex align-items-center">
                                             <div>
@@ -534,7 +534,7 @@ require_once('view/home/user/page/header.php');
                         <div class="vs-widget-recent-post">
                             <div class="recent-post d-flex align-items-center">
                                 <div class="media-img">
-                                    <img src="assets/img/widget/recent-1.jpg" width="100" height="73" alt="Recent Post Image">
+                                    <img src="./src/assets/img/widget/recent-1.jpg" width="100" height="73" alt="Recent Post Image">
                                 </div>
                                 <div class="media-body pl-30">
                                     <h4 class="recent-post-title h5 mb-0"><a href="blog.html">100% organic
@@ -544,7 +544,7 @@ require_once('view/home/user/page/header.php');
                             </div>
                             <div class="recent-post d-flex align-items-center">
                                 <div class="media-img">
-                                    <img src="assets/img/widget/recent-2.jpg" width="100" height="73" alt="Recent Post Image">
+                                    <img src="./src/assets/img/widget/recent-2.jpg" width="100" height="73" alt="Recent Post Image">
                                 </div>
                                 <div class="media-body pl-30">
                                     <h4 class="recent-post-title h5 mb-0"><a href="blog.html">Keep Your Fruits
@@ -554,7 +554,7 @@ require_once('view/home/user/page/header.php');
                             </div>
                             <div class="recent-post d-flex align-items-center">
                                 <div class="media-img">
-                                    <img src="assets/img/widget/recent-3.jpg" width="100" height="73" alt="Recent Post Image">
+                                    <img src="./src/assets/img/widget/recent-3.jpg" width="100" height="73" alt="Recent Post Image">
                                 </div>
                                 <div class="media-body pl-30">
                                     <h4 class="recent-post-title h5 mb-0"><a href="blog.html">Get natural healthy

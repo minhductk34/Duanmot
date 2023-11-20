@@ -1,51 +1,69 @@
-<?php
+
+<?php 
 require_once('view/home/user/page/header.php');
 ?>
+<!--==============================
+    Breadcumb
+============================== -->
+<div class="breadcumb-wrapper breadcumb-layout1 bg-fluid pt-200 pb-200" data-bg-src="./src/assets/img/breadcumb/breadcumb-img-1.jpg">
+    <div class="container">
+        <div class="breadcumb-content text-center">
+            <h1 class="breadcumb-title">Organic</h1>
+            <ul class="breadcumb-menu-style1 mx-auto">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Shop</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--==============================
+    Shop Details
+    ==============================-->
 <section class="vs-shop-wrapper shop-details space-top space-md-bottom">
     <div class="container">
         <div class="row mb-5">
             <div class="col-md-6 col-xl-5 mb-30 mb-md-0">
                 <div class="product-big-img vs-carousel" data-slide-show="1" data-lg-slide-show="1" data-md-slide-show="1" data-sm-slide-show="1" data-fade="true" data-dots="true" data-asnavfor="#thumbproductimg" id="bigproductimg">
                     <div class="product-img">
-                        <img src="assets/img/shop/shop-details-1.jpg" alt="Shop Image" class="w-100">
+                        <img src="./src/assets/img/shop/shop-details-1.jpg" alt="Shop Image" class="w-100">
                     </div>
                     <div class="product-img">
-                        <img src="assets/img/shop/shop-details-2.jpg" alt="Shop Image" class="w-100">
+                        <img src="./src/assets/img/shop/shop-details-2.jpg" alt="Shop Image" class="w-100">
                     </div>
                     <div class="product-img">
-                        <img src="assets/img/shop/shop-details-3.jpg" alt="Shop Image" class="w-100">
+                        <img src="./src/assets/img/shop/shop-details-3.jpg" alt="Shop Image" class="w-100">
                     </div>
                     <div class="product-img">
-                        <img src="assets/img/shop/shop-details-4.jpg" alt="Shop Image" class="w-100">
+                        <img src="./src/assets/img/shop/shop-details-4.jpg" alt="Shop Image" class="w-100">
                     </div>
                     <div class="product-img">
-                        <img src="assets/img/shop/shop-details-5.jpg" alt="Shop Image" class="w-100">
+                        <img src="./src/assets/img/shop/shop-details-5.jpg" alt="Shop Image" class="w-100">
                     </div>
                 </div>
                 <div class="row gx-2 product-thumb-img pt-10 vs-carousel" data-slide-show="4" data-md-slide-show="3" data-sm-slide-show="3" data-xs-slide-show="2" data-arrows="true" data-next-arrow="far fa-long-arrow-right" data-prev-arrow="far fa-long-arrow-left" id="thumbproductimg" data-asnavfor="#bigproductimg">
                     <div class="col-auto">
                         <div class="thumb">
-                            <img src="assets/img/shop/shop-thumb-1.jpg" alt="Thumb Image" class="w-100">
+                            <img src="./src/assets/img/shop/shop-thumb-1.jpg" alt="Thumb Image" class="w-100">
                         </div>
                     </div>
                     <div class="col-auto">
                         <div class="thumb">
-                            <img src="assets/img/shop/shop-thumb-2.jpg" alt="Thumb Image" class="w-100">
+                            <img src="./src/assets/img/shop/shop-thumb-2.jpg" alt="Thumb Image" class="w-100">
                         </div>
                     </div>
                     <div class="col-auto">
                         <div class="thumb">
-                            <img src="assets/img/shop/shop-thumb-3.jpg" alt="Thumb Image" class="w-100">
+                            <img src="./src/assets/img/shop/shop-thumb-3.jpg" alt="Thumb Image" class="w-100">
                         </div>
                     </div>
                     <div class="col-auto">
                         <div class="thumb">
-                            <img src="assets/img/shop/shop-thumb-4.jpg" alt="Thumb Image" class="w-100">
+                            <img src="./src/assets/img/shop/shop-thumb-4.jpg" alt="Thumb Image" class="w-100">
                         </div>
                     </div>
                     <div class="col-auto">
                         <div class="thumb">
-                            <img src="assets/img/shop/shop-thumb-5.jpg" alt="Thumb Image" class="w-100">
+                            <img src="./src/assets/img/shop/shop-thumb-5.jpg" alt="Thumb Image" class="w-100">
                         </div>
                     </div>
                 </div>
@@ -71,7 +89,7 @@ require_once('view/home/user/page/header.php');
                             <button class="quantity-minus qut-btn"><i class="far fa-chevron-down"></i></button>
                             <button class="quantity-plus qut-btn"><i class="far fa-chevron-up"></i></button>
                         </div>
-                        <a href="cart.html" class="vs-btn shadow-none">Add To Cart</a>
+                        <a href="index.php?controller=listCart" class="vs-btn shadow-none">Add To Cart</a>
                     </div>
                     <div class="product_meta">
                         <span class="sku_wrapper">SKU: <span class="sku">D2300-3-1</span></span>
@@ -86,7 +104,7 @@ require_once('view/home/user/page/header.php');
                     <div class="vs-widget-recent-post">
                         <div class="recent-post d-flex align-items-center">
                             <div class="media-img">
-                                <img src="assets/img/widget/recent-1.jpg" width="100" height="73" alt="Recent Post Image">
+                                <img src="./src/assets/img/widget/recent-1.jpg" width="100" height="73" alt="Recent Post Image">
                             </div>
                             <div class="media-body pl-30">
                                 <h4 class="recent-post-title h5 mb-0"><a href="blog.html">100% organic healthy</a>
@@ -96,7 +114,7 @@ require_once('view/home/user/page/header.php');
                         </div>
                         <div class="recent-post d-flex align-items-center">
                             <div class="media-img">
-                                <img src="assets/img/widget/recent-2.jpg" width="100" height="73" alt="Recent Post Image">
+                                <img src="./src/assets/img/widget/recent-2.jpg" width="100" height="73" alt="Recent Post Image">
                             </div>
                             <div class="media-body pl-30">
                                 <h4 class="recent-post-title h5 mb-0"><a href="blog.html">Keep Your Fruits frash</a>
@@ -106,7 +124,7 @@ require_once('view/home/user/page/header.php');
                         </div>
                         <div class="recent-post d-flex align-items-center">
                             <div class="media-img">
-                                <img src="assets/img/widget/recent-3.jpg" width="100" height="73" alt="Recent Post Image">
+                                <img src="./src/assets/img/widget/recent-3.jpg" width="100" height="73" alt="Recent Post Image">
                             </div>
                             <div class="media-body pl-30">
                                 <h4 class="recent-post-title h5 mb-0"><a href="blog.html">Get natural healthy
@@ -135,10 +153,10 @@ require_once('view/home/user/page/header.php');
                     cupidatat non proident, </p>
                 <div class="row mt-30">
                     <div class="col-md-6 mb-30">
-                        <img src="assets/img/shop/shop-desc-1.jpg" class="w-100" alt="Shop Image">
+                        <img src="./src/assets/img/shop/shop-desc-1.jpg" class="w-100" alt="Shop Image">
                     </div>
                     <div class="col-md-6 mb-30">
-                        <img src="assets/img/shop/shop-desc-2.jpg" class="w-100" alt="Shop Image">
+                        <img src="./src/assets/img/shop/shop-desc-2.jpg" class="w-100" alt="Shop Image">
                     </div>
                 </div>
                 <div class="product-inner-list mb-4">
@@ -164,7 +182,7 @@ require_once('view/home/user/page/header.php');
                         <li class="review vs-comment">
                             <div class="vs-post-comment">
                                 <div class="author-img">
-                                    <img src="assets/img/blog/comment-author-1.jpg" alt="Comment Author">
+                                    <img src="./src/assets/img/blog/comment-author-1.jpg" alt="Comment Author">
                                 </div>
                                 <div class="comment-content">
                                     <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
@@ -184,7 +202,7 @@ require_once('view/home/user/page/header.php');
                         <li class="review vs-comment">
                             <div class="vs-post-comment">
                                 <div class="author-img">
-                                    <img src="assets/img/blog/comment-author-2.jpg" alt="Comment Author">
+                                    <img src="./src/assets/img/blog/comment-author-2.jpg" alt="Comment Author">
                                 </div>
                                 <div class="comment-content">
                                     <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
@@ -202,7 +220,7 @@ require_once('view/home/user/page/header.php');
                         <li class="review vs-comment">
                             <div class="vs-post-comment">
                                 <div class="author-img">
-                                    <img src="assets/img/blog/comment-author-1.jpg" alt="Comment Author">
+                                    <img src="./src/assets/img/blog/comment-author-1.jpg" alt="Comment Author">
                                 </div>
                                 <div class="comment-content">
                                     <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
@@ -260,6 +278,39 @@ require_once('view/home/user/page/header.php');
         </div>
     </div>
 </section>
-<?php
-require_once('view/home/user/page/footer.php');
+<!--==============================
+			Footer Area
+	==============================-->
+<div class="bg2" data-bg-src="./src/assets/img/footer/footer-bg-1.jpg">
+    <!--==============================
+    Subscribe Area
+    ==============================-->
+    <section class="vs-newsletter-wrpper   ">
+        <div class="container">
+            <div class="inner-wrap1 bg-fluid px-70 py-70" data-bg-src="./src/assets/img/bg/newsletter-bg-1-1.png">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="form-title mb-30 mb-xl-0 text-center text-xl-start">
+                            <span class="sub-title3">Get Connected</span>
+                            <h2 class="h1 mb-0 lh-1">Subscribe <span class="fw-light text-theme">Newsletter</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-xl-6">
+                        <form action="#" class="newsletter-style1">
+                            <div class="form-group m-0">
+                                <input type="text" placeholder="Enter Your mail" class="form-control">
+                                <button class="vs-btn style2">Subscribe Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php 
+require_once ('view/home/user/page/footer.php');
 ?>
+</body>
+
+</html>

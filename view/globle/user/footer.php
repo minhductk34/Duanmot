@@ -10,11 +10,11 @@
                             </div>
                             <div class="footer-info">
                                 <i class="fas fa-phone-alt"></i>
-                                <a href="tel:+387643932728">+387643932728</a>
+                                <a href="tel:0964255760">0964255760</a>
                             </div>
                             <div class="footer-info">
                                 <i class="fas fa-map-marker-alt"></i>
-                                Harbour House, 60 Purewell, Christchurch, England
+                                Tòa nhà FPT Polytechnic., Cổng số 2, 13 P. Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm
                             </div>
                         </div>
                     </div>
@@ -72,14 +72,13 @@
                 <div class="col-lg-auto text-center text-lg-start">
                     <div class="copyright">
                         <p class="mb-0 link-inherit">
-                            Copyright &copy; 2024 <a href="index.html">FeeTech</a> - All
-                            Rights Reserved<a href="https://themeforest.net/user/vecuro_themes"></a>
+                            Copyright &copy; 2024 <a href="index.php?controller=home">FoodShop-DTT</a>
                         </p>
                     </div>
                 </div>
                 <div class="col-auto d-none d-lg-block">
                     <div class="copyright-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a>
+                        <a href="https://www.facebook.com/minhductk34/"><i class="fab fa-facebook-f"></i>Facebook</a>
                         <a href="#"><i class="fab fa-twitter"></i>Twitter</a>
                         <a href="#"><i class="fab fa-linkedin-in"></i>Linked In</a>
                     </div>

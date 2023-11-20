@@ -1,6 +1,5 @@
 <?php
 require_once 'modles/product.php';
-require_once('config/pdo.php');
 // require 'modles/Category.php';
 class ProductDAO { 
     private $PDO;
