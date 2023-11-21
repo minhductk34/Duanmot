@@ -1,4 +1,4 @@
-<div class="">
+<div class="card-body">
             <div class="">
                 <h1>Add Product</h1>
             </div>
@@ -46,3 +46,5 @@
                 </form>
             </div>
         </div>   
+    </div> 
+</div> 

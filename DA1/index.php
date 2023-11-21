@@ -1,15 +1,14 @@
 <?php
-include "config/pdo.php";
-include "models/CategoryModel.php";
-include "models/ProductModel.php";
-include "models/AccountModel.php";
-include "models/CommentModel.php";
-include "models/DiscountModel.php";
-include "models/OrderModel.php";
-include "models/Syn&StaModel.php";
-include "view/globle/headadmin.php";
+    include "config/pdo.php";
+    include "models/CategoryModel.php";
+    include "models/ProductModel.php";
+    include "models/AccountModel.php";
+    include "models/CommentModel.php";
+    include "models/DiscountModel.php";
+    include "models/OrderModel.php";
+    include "models/Syn&StaModel.php";
 
-if (isset($_GET['act'])) {
+    if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
 
@@ -284,12 +283,10 @@ if (isset($_GET['act'])) {
             break;
 
         default:
-            include "view/home/homeadmin.php";
-            break;
+        include("view/home.php");
+        break;
     }
 } else {
-    include "view/home/homeadmin.php";
+    include("view/home.php");
 }
-   
-    include "view/globle/footer.php";
 ?>

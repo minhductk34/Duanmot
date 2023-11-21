@@ -18,7 +18,6 @@
                 <form action="index.php?act=update_product" method="post" enctype="multipart/form-data">
                     <div class="">
                     <select name="id_category">
-                                <option value="0" selected>All</option>
                                 <?php
                                     foreach($Categories as $category){
                                         extract($category);

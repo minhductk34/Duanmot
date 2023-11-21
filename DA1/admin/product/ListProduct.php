@@ -1,4 +1,5 @@
-<div class="">
+<div class="card shadow mb-4">
+    <div class="card-body">
             <div class="">
                 <h1>List Product</h1>
             </div>
@@ -32,22 +33,22 @@
                             <?php
                                 foreach ( $products as $product){
                                     extract($product);
-                                    $editPro = "index.php?act=editPro&id_product=".$id_product;
-                                    $deletePro = "index.php?act=deletePro&id_product=".$id_product;
+                                    $editPro = "index.php?act=editPro&id_product=".$id;
+                                    $deletePro = "index.php?act=deletePro&id_product=".$id;
                                     $imgPath = "uploads/products/".$image_product;
                                     if ( is_file($imgPath)){
                                         $image_product = "<img src='".$imgPath."' height='80'>";
                                     } else {
                                         $image_product = "No Photo";
                                     }
-                                    if ( $quantity > 0){
+                                    if ( $quantity > 0 ){
                                         $check = "Còn hàng";
                                     } else { 
                                         $check = "Hết hàng";
                                     }
                                     echo '<tr>
                                     <td><input type="checkbox" name="" id=""></td>
-                                    <td>'.$id_product.'</td>
+                                    <td>'.$id.'</td>
                                     <td>'.$name_product.'</td>
                                     <td>'.$image_product.'</td>
                                     <td>'.$price_product.'</td>
@@ -66,5 +67,6 @@
                         <a href="index.php?act=add_product"> <input type="button" value="Add new"></a>
                     </div>
                 </form>
-            </div>
-</div>  
+            </div> 
+    </div>
+</div>
