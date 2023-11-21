@@ -1,11 +1,11 @@
 <?php
     include "header.php";
     include "../models/pdo.php";
-    include "../models/product.php";
-    include "../models/category.php";
+    // include "../models/product.php";
+    // include "../models/category.php";
     include "../models/user.php";
-    include "../models/comment.php";
-    include "../model/thongke.php";
+    // include "../models/comment.php";
+    // include "../model/thongke.php";
 
     controller
 

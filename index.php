@@ -2,7 +2,7 @@
     session_start();
     include "models/pdo.php";
     // include "models/product.php";
-    include "models/category.php";
+    // include "models/category.php";
     include "models/user.php";
     include "view/header.php";
     include "global.php";
@@ -66,10 +66,11 @@
                     $username=$_POST['username'];
                     $password=$_POST['password'];
                     $checkuser=checkuser($username,$password);
+                    
                     if(is_array($checkuser)){
                         $_SESSION['username']=$checkuser;
                         // $thongbao="Bạn đã đăng nhập thành công!"; 
-                        header('Location: index.php');       
+                        header('Location:index.php?act=gioithieu');       
                 }else{
                     $thongbao="Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
                 }

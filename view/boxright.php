@@ -18,7 +18,7 @@
                             <li>
                                 <a href="index.php?act=edit_user">Cập nhật tài khoản</a>
                             </li>
-                            <?php if($permissions==0){ ?>
+                            <?php if($permissions==1){ ?>
                             <li>
                                 <a href="admin/index.php">Đăng nhập Admin</a>
                             </li>

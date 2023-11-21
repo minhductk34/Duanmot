@@ -19,8 +19,8 @@
                             <div class="row img">
                             <a href="'.$linksp.'"><img src="'.$hinh.'" alt=""></a>
                             </div>
-                                <p style=" text-align: center;font-size:1.0vw" > $'.$price.'</p>
-                                <a style=" text-align: center; font-size:1.1vw; margin-left: 20px;" href="'.$linksp.'">'.$ten.'</a>
+                                <p style=" text-align: center;font-size:1.0vw" > $'.$price_product.'</p>
+                                <a style=" text-align: center; font-size:1.1vw; margin-left: 20px;" href="'.$linksp.'">'.$name_product.'</a>
                             </div>';
                             $i=$i+1;
                         }                   
