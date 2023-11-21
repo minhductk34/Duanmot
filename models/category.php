@@ -1,38 +1,28 @@
-<?php
-function addcategory($name_category)();{
-    $conn=connectdb();
-    $sql = "INSERT INTO category (name_category) VALUES ('".$name_category."')";
-    //user exec() because no results are returned
-    $conn->exec($sql);
+<?php 
+function insert_category($name_category){
+    $sql="insert into category(name) value('$name_category')";
+    pdo_execute($sql);
 }
-function delcategory($id_category){
-    $conn=connectdb();
-    $sql = "DELETE FROM category WHERE id_category=".$id_category;
-    //user exec() because no results are returned
-    $conn->exec($sql);
+function delete_category($id_category){
+    $sql="delete from category where id_category=".$id_category;
+    pdo_execute($sql);
 }
-function updatecategory($id_category,$name_category,$desc_category){
-    $conn=connectdb();
-    $sql = "UPDATE category SET name_category='".$name_category' WHERE id_category='".$id_category."' AND desc_category='".$desc_category.";
-    // Prepare statement
-    $stmt = $conn->prepare($sql);
-    //execute the query 
-    $stmt->exec($sql);
+function loadall_category(){
+    $sql="select * from category order by id_category desc ";
+    $listcategory=pdo_query($sql);
+    return $listcategory;
+
+
 }
-function getonecategory($id_category,$name_category,$desc_category){
-    $conn=connectdb();
-    $stmt = $conn->prepare("SELECT * FROM category WHERE id_category='".$id_category.);
-    $stmt->exec($sql);
-    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    $kq=$stmt->fetchAll();
-    return $kq;
+function loadone_category($id_category){
+    $sql="select * from category where id_category=".$id_category;
+    $dm=pdo_query_one($sql);
+    return $dm;
+
+
 }
-function getallcategory($id_category,$name_category,$desc_category){
-    $conn=connectdb();
-    $stmt = $conn->prepare("SELECT * FROM category");
-    $stmt->exec($sql);
-    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    $kq=$stmt->fetchAll();
-    return $kq;
+function update_category($id_category,$name_category){
+    $sql="update category set name='".$name_category."' where id_category=".$id_category;
+    pdo_execute($sql);
 }
 ?>

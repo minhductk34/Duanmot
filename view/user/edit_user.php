@@ -1,9 +1,12 @@
 <div class="row mb ">
-<div class="boxtitle">UPDATE USER</div>
-            <div class="CSS">
+    <div class="boxtrai mr mb10">
+        <div class="row mb">
+
+            <div class="boxtitle">CẬP NHẬT TÀI KHOẢN</div>
+            <div class="boxconter row formtaikhoan">
                 <?php
-                    if (isset($_SESSION['user'])&&(is_array($_SESSION['user']))){
-                        extract($_SESSION['user']);
+                    if (isset($_SESSION['username'])&&(is_array($_SESSION['username']))){
+                        extract($_SESSION['username']);
                     }
                 ?>
 
@@ -26,11 +29,15 @@
                     </div>
                     <div class="row mb10">
                         Điện thoại
-                        <input type="text" name="numberphone" value="<?=$number_phone?>">
+                        <input type="text" name="phone" value="<?=$phone?>">
                     </div>
+                    <!-- <div class="row mb10">
+                        Full Name
+                        <input type="text" name="full_name" value="<?=$full_name?>">
+                    </div> -->
                     <div class="row mb10">
-                        <input type="hidden" name="id" value="<?=$id_user?>">
-                        <input type="submit" value="Cập nhật" name="update">
+                        <input type="hidden" name="id_user" value="<?=$id_user?>">
+                        <input type="submit" value="Cập nhật" name="capnhat">
                     </div><div class="row mb10">
                         <input type="reset" value="Nhập lại">
                     </div>
@@ -45,8 +52,10 @@
                 ?>
                 </h2>
             </div>              
-               
+        </div>
+                
+    </div>     
     <div class="boxphai">
-        <?php include "view/box.php" ?>
+        <?php include "view/boxright.php" ?>
     </div>
 </div>
