@@ -23,14 +23,14 @@ require_once('view/home/user/page/header.php');
                 <div class="vs-sort-bar row justify-content-center justify-content-sm-between align-items-center pb-4 mb-1 ">
                     <div class="col-auto mb-3 mb-sm-0">
                         <div class="nav" permissions="tablist">
-                            <a href="shop.html" class="icon-btn style3 active me-2" id="tab-shop-grid" data-bs-toggle="tab" data-bs-target="#tab-grid" permissions="tab" aria-controls="tab-grid" aria-selected="true"><i class="fas fa-th"></i></a>
-                            <a href="shop-list.html" class="icon-btn style3  " id="tab-shop-list" data-bs-toggle="tab" data-bs-target="#tab-list" permissions="tab" aria-controls="tab-grid" aria-selected="false"><i class="far fa-bars"></i></a>
+                            <!-- <a href="shop.html" class="icon-btn style3 active me-2" id="tab-shop-grid" data-bs-toggle="tab" data-bs-target="#tab-grid" permissions="tab" aria-controls="tab-grid" aria-selected="true"><i class="fas fa-th"></i></a>
+                            <a href="shop-list.html" class="icon-btn style3  " id="tab-shop-list" data-bs-toggle="tab" data-bs-target="#tab-list" permissions="tab" aria-controls="tab-grid" aria-selected="false"><i class="far fa-bars"></i></a> -->
                         </div>
                     </div>
                     <div class="col d-none d-md-block">
                         <div class="border-top"></div>
                     </div>
-                    <div class="col-sm-9 col-md-7 col-lg-8 col-xl-6">
+                    <!-- <div class="col-sm-9 col-md-7 col-lg-8 col-xl-6">
                         <div class="row justify-content-center justify-content-sm-between">
                             <div class="col-auto d-flex align-items-center mb-3 mb-sm-0">
                                 <label class="text-body2" for="sortBy">Sort by</label>
@@ -51,241 +51,51 @@ require_once('view/home/user/page/header.php');
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="tab-grid" permissions="tabpanel" aria-labelledby="tab-shop-grid">
                         <div class="row">
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="vs-product-box1 thumb_swap">
-                                    <div class="product-tag1">sale</div>
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-1.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-8.png" alt="Product Image" class="w-100 img_swap"></a>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="actions-btn">
-                                            <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
-                                            <a href="./src/assets/img/shop/product-1-1.png" class="popup-image"><i class="far fa-search"></i></a>
-                                            <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
+
+                            <?php
+                            require_once 'DAO/ProductDAO.php';
+
+                            $productDao = new ProductDao();
+                            $products = $productDao->select(); // Lấy danh sách sản phẩm
+
+                            $linkpro = "index.php?controller=product_details&idpro="; // Xây dựng đường dẫn sản phẩm
+                            ?>
+
+                            <?php foreach ($products as $product) : ?>
+
+                                <div class="col-sm-6 col-xl-4">
+                                    <div class="vs-product-box1 thumb_swap">
+                                        <div class="product-tag1">sale</div>
+                                        <div class="product-img">
+                                            <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-1-1.png" alt="Product Image" class="w-100"></a>
+                                            <!-- <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-1-8.png" alt="Product Image" class="w-100 img_swap"></a>
+                                     -->
+                                            <!-- <a href=<?php echo $linkpro . $product->getId(); ?>><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a>-->
                                         </div>
-                                        <h4 class="product-title h5 mb-0"><a href="shop-details.html">Apple
-                                                juice</a></h4>
-                                        <span class="price font-theme"><strong>$40.00</strong></span>
-                                        <p class="m-0 rating fs-xs text-theme lh-base">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </p>
+                                        <div class="product-content">
+                                            <div class="actions-btn">
+                                                <a href="<?php echo $linkpro . $product->getId(); ?>"><i class="fal fa-cart-plus"></i></a>
+                                                <a href="./src/assets/img/shop/product-1-1.png" class="popup-image"><i class="far fa-search"></i></a>
+                                                <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
+                                            </div>
+                                            <h4 class="product-title h5 mb-0"><a href=<?php echo $linkpro . $product->getId(); ?>><?php echo $product->getName(); ?></a></h4>
+                                            <span class="price font-theme"><strong><?php echo $product->getPrice(); ?></strong></span>
+                                            <p class="m-0 rating fs-xs text-theme lh-base">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="vs-product-box1 thumb_swap">
-                                    <div class="product-tag2">Hot</div>
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-2.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-7.png" alt="Product Image" class="w-100 img_swap"></a>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="actions-btn">
-                                            <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
-                                            <a href="./src/assets/img/shop/product-1-2.png" class="popup-image"><i class="far fa-search"></i></a>
-                                            <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
-                                        </div>
-                                        <h4 class="product-title h5 mb-0"><a href="shop-details.html">Black
-                                                Beans</a></h4>
-                                        <span class="price font-theme"><strong>$22.00</strong></span>
-                                        <p class="m-0 rating fs-xs text-theme lh-base">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="vs-product-box1 thumb_swap">
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-3.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-6.png" alt="Product Image" class="w-100 img_swap"></a>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="actions-btn">
-                                            <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
-                                            <a href="./src/assets/img/shop/product-1-3.png" class="popup-image"><i class="far fa-search"></i></a>
-                                            <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
-                                        </div>
-                                        <h4 class="product-title h5 mb-0"><a href="shop-details.html">Plum Silho</a>
-                                        </h4>
-                                        <span class="price font-theme"><strong>$40.00</strong></span>
-                                        <p class="m-0 rating fs-xs text-theme lh-base">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="vs-product-box1 thumb_swap">
-                                    <div class="product-tag1">sale</div>
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-4.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-5.png" alt="Product Image" class="w-100 img_swap"></a>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="actions-btn">
-                                            <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
-                                            <a href="./src/assets/img/shop/product-1-4.png" class="popup-image"><i class="far fa-search"></i></a>
-                                            <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
-                                        </div>
-                                        <h4 class="product-title h5 mb-0"><a href="shop-details.html">Carne
-                                                Asada</a></h4>
-                                        <span class="price font-theme"><strong>$99.12</strong></span>
-                                        <p class="m-0 rating fs-xs text-theme lh-base">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="vs-product-box1 thumb_swap">
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-5.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-4.png" alt="Product Image" class="w-100 img_swap"></a>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="actions-btn">
-                                            <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
-                                            <a href="./src/assets/img/shop/product-1-5.png" class="popup-image"><i class="far fa-search"></i></a>
-                                            <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
-                                        </div>
-                                        <h4 class="product-title h5 mb-0"><a href="shop-details.html">Quesadilla</a>
-                                        </h4>
-                                        <span class="price font-theme"><strong>$26.78</strong></span>
-                                        <p class="m-0 rating fs-xs text-theme lh-base">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="vs-product-box1 thumb_swap">
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-6.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-3.png" alt="Product Image" class="w-100 img_swap"></a>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="actions-btn">
-                                            <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
-                                            <a href="./src/assets/img/shop/product-1-6.png" class="popup-image"><i class="far fa-search"></i></a>
-                                            <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
-                                        </div>
-                                        <h4 class="product-title h5 mb-0"><a href="shop-details.html">Pepperoni</a>
-                                        </h4>
-                                        <span class="price font-theme"><strong>$40.00</strong></span>
-                                        <p class="m-0 rating fs-xs text-theme lh-base">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="vs-product-box1 thumb_swap">
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-7.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-2.png" alt="Product Image" class="w-100 img_swap"></a>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="actions-btn">
-                                            <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
-                                            <a href="./src/assets/img/shop/product-1-7.png" class="popup-image"><i class="far fa-search"></i></a>
-                                            <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
-                                        </div>
-                                        <h4 class="product-title h5 mb-0"><a href="shop-details.html">Meatballs</a>
-                                        </h4>
-                                        <span class="price font-theme"><strong>$11.00</strong></span>
-                                        <p class="m-0 rating fs-xs text-theme lh-base">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="vs-product-box1 thumb_swap">
-                                    <div class="product-tag1">sale</div>
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-8.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-1.png" alt="Product Image" class="w-100 img_swap"></a>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="actions-btn">
-                                            <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
-                                            <a href="./src/assets/img/shop/product-1-8.png" class="popup-image"><i class="far fa-search"></i></a>
-                                            <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
-                                        </div>
-                                        <h4 class="product-title h5 mb-0"><a href="shop-details.html">kidney
-                                                beans</a></h4>
-                                        <span class="price font-theme"><strong>$40.00</strong></span>
-                                        <p class="m-0 rating fs-xs text-theme lh-base">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="vs-product-box1 thumb_swap">
-                                    <div class="product-tag1">sale</div>
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-9.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-1-6.png" alt="Product Image" class="w-100 img_swap"></a>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="actions-btn">
-                                            <a href="index.php?controller=listCart"><i class="fal fa-cart-plus"></i></a>
-                                            <a href="./src/assets/img/shop/product-1-9.png" class="popup-image"><i class="far fa-search"></i></a>
-                                            <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
-                                        </div>
-                                        <h4 class="product-title h5 mb-0"><a href="shop-details.html">Ziti Food</a>
-                                        </h4>
-                                        <span class="price font-theme"><strong>$40.00</strong></span>
-                                        <p class="m-0 rating fs-xs text-theme lh-base">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="tab-list" permissions="tabpanel" aria-labelledby="tab-shop-list">
@@ -293,12 +103,12 @@ require_once('view/home/user/page/header.php');
                             <div class="col-sm-6 col-lg-6 col-xl-6">
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-1.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-8.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-1.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-8.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href="shop-details.html">Apple
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Apple
                                                     juice</a></h4>
                                             <span class="price font-theme"><strong>$40.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
@@ -316,12 +126,12 @@ require_once('view/home/user/page/header.php');
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-tag1">sale</div>
                                     <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-2.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-7.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-2.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-7.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href="shop-details.html">Black
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Black
                                                     Beans</a></h4>
                                             <span class="price font-theme"><strong>$22 .00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
@@ -338,12 +148,12 @@ require_once('view/home/user/page/header.php');
                             <div class="col-sm-6 col-lg-6 col-xl-6">
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-3.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-6.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-3.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-6.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href="shop-details.html">Plum
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Plum
                                                     Silho</a></h4>
                                             <span class="price font-theme"><strong>$83.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
@@ -360,12 +170,12 @@ require_once('view/home/user/page/header.php');
                             <div class="col-sm-6 col-lg-6 col-xl-6">
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-4.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-5.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-4.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-5.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href="shop-details.html">Carne
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Carne
                                                     Asada</a></h4>
                                             <span class="price font-theme"><strong>$78.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
@@ -382,12 +192,12 @@ require_once('view/home/user/page/header.php');
                             <div class="col-sm-6 col-lg-6 col-xl-6">
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-5.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-4.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-5.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-4.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href="shop-details.html">Quesadilla</a></h4>
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Quesadilla</a></h4>
                                             <span class="price font-theme"><strong>$48.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
                                                 <i class="fas fa-star"></i>
@@ -404,12 +214,12 @@ require_once('view/home/user/page/header.php');
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-tag1">sale</div>
                                     <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-6.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-3.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-6.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-3.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href="shop-details.html">Pepperoni</a></h4>
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Pepperoni</a></h4>
                                             <span class="price font-theme"><strong>$45.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
                                                 <i class="fas fa-star"></i>
@@ -425,12 +235,12 @@ require_once('view/home/user/page/header.php');
                             <div class="col-sm-6 col-lg-6 col-xl-6">
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-7.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-2.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-7.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-2.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href="shop-details.html">Meatballs</a></h4>
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Meatballs</a></h4>
                                             <span class="price font-theme"><strong>$52.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
                                                 <i class="fas fa-star"></i>
@@ -446,12 +256,12 @@ require_once('view/home/user/page/header.php');
                             <div class="col-sm-6 col-lg-6 col-xl-6">
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-img">
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-8.png" alt="Product Image" class="w-100"></a>
-                                        <a href="shop-details.html"><img src="./src/assets/img/shop/product-2-1.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-8.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-1.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href="shop-details.html">kidney
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>kidney
                                                     beans</a></h4>
                                             <span class="price font-theme"><strong>$23.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
@@ -491,98 +301,45 @@ require_once('view/home/user/page/header.php');
                             </div>
                         </div>
                     </div>
-                    <div class="widget widget_categories   ">
+
+
+
+                    <?php
+                    // Nạp file chứa hàm showCategory()
+                    require_once('DAO/CategoryDAO.php');
+                    $categoryDao = new CategoryDAO();
+
+                    // Gọi hàm showCategory() để lấy danh sách danh mục
+                    $categories = $categoryDao->showCategory();
+                    ?>
+                    <div class="widget widget_categories">
+
                         <h3 class="widget_title">Categories</h3>
                         <ul>
-                            <li>
-                                <a href="#">Juice</a>
-                                <span>(06)</span>
-                            </li>
-                            <li>
-                                <a href="#">Fresh</a>
-                                <span>(10)</span>
-                            </li>
-                            <li>
-                                <a href="#">Smoothie</a>
-                                <span>(06)</span>
-                            </li>
+                            <?php foreach ($categories as $category) : ?>
+                                <li>
+                                    <input type="checkbox">
+                                    <label><?php echo $category->getName(); ?></label>
+
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
-                    <div class="widget widget_categories   ">
-                        <h3 class="widget_title">Categories</h3>
-                        <ul>
-                            <li>
-                                <input type="checkbox" name="juice" id="juice">
-                                <label for="juice">Juice</label>
-                                <span>(06)</span>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="Fresh" id="Fresh">
-                                <label for="Fresh">Fresh</label>
-                                <span>(06)</span>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="Smoothie" id="Smoothie">
-                                <label for="Smoothie">Smoothie</label>
-                                <span>(06)</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="widget widget_search   ">
+
+
+
+                    <div class="widget widget_search">
                         <h3 class="widget_title">Product Name</h3>
-                        <form class="search-form">
-                            <input type="text" placeholder="Search">
+                        <form class="search-form" action="index.php?controller=product_search" method="post">
+                            <input type="text" placeholder="Search" name="search">
                             <button type="submit"><i class="far fa-search"></i></button>
                         </form>
                     </div>
-                    <div class="widget widget_tag_cloud   ">
-                        <h3 class="widget_title">Size</h3>
-                        <div class="tagcloud">
-                            <a href="shop.html">300G</a>
-                            <a href="shop.html">450G</a>
-                            <a href="shop.html">1000G</a>
-                            <a href="shop.html">500G</a>
-                            <a href="shop.html">1200G</a>
-                        </div>
-                    </div>
-                    <div class="widget   ">
-                        <h3 class="widget_title">Best Seller</h3>
-                        <div class="vs-widget-recent-post">
-                            <div class="recent-post d-flex align-items-center">
-                                <div class="media-img">
-                                    <img src="./src/assets/img/widget/recent-1.jpg" width="100" height="73" alt="Recent Post Image">
-                                </div>
-                                <div class="media-body pl-30">
-                                    <h4 class="recent-post-title h5 mb-0"><a href="blog.html">100% organic
-                                            healthy</a></h4>
-                                    <a href="#" class="text-theme fs-12">January 04, 2022</a>
-                                </div>
-                            </div>
-                            <div class="recent-post d-flex align-items-center">
-                                <div class="media-img">
-                                    <img src="./src/assets/img/widget/recent-2.jpg" width="100" height="73" alt="Recent Post Image">
-                                </div>
-                                <div class="media-body pl-30">
-                                    <h4 class="recent-post-title h5 mb-0"><a href="blog.html">Keep Your Fruits
-                                            frash</a></h4>
-                                    <a href="#" class="text-theme fs-12">March 04, 2022</a>
-                                </div>
-                            </div>
-                            <div class="recent-post d-flex align-items-center">
-                                <div class="media-img">
-                                    <img src="./src/assets/img/widget/recent-3.jpg" width="100" height="73" alt="Recent Post Image">
-                                </div>
-                                <div class="media-body pl-30">
-                                    <h4 class="recent-post-title h5 mb-0"><a href="blog.html">Get natural healthy
-                                            food</a></h4>
-                                    <a href="#" class="text-theme fs-12">April 04, 2022</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
             </div>
+
+            </aside>
         </div>
+    </div>
     </div>
 </section>
 <!--==============================

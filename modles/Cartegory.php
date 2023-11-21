@@ -2,29 +2,48 @@
 
 class Category
 {
-    public $id;
+    public $id_category ;
     public $name;
     public $description;
     public $status;
 
     public function __construct($id, $name, $description, $status)
     {
-        $this->id = $id;
+        $this->id_category  = $id;
         $this->name = $name;
         $this->description = $description;
         $this->status = $status;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function status()
+    {
+        return $this->status;
+    }
+
+    public function getId()
+    {
+        return $this->id_category ;
+    }
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
 
 // Sử dụng lớp Category
 $row = [
-    'id' => 1,
-    'name_category' => 'Category 1',
-    'desc_category' => 'Description 1',
-    'status' => 'Active'
+    'id_category ' => '',
+    'name_category' => '',
+    'desc_category' => '',
+    'status' => ''
 ];
 
-$category = new Category($row['id'], $row['name_category'], $row['desc_category'], $row['status']);
+$category = new Category($row['id_category '], $row['name_category'], $row['desc_category'], $row['status']);
 
 // Truy cập vào các thuộc tính của đối tượng Category
 //echo $category->id; // Output: 1

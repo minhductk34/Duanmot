@@ -1,3 +1,9 @@
+<?php
+require_once('DAO/CategoryDAO.php');
+require_once('DAO/ProductDAO.php');
+require_once('DAO/CartDAO.php');
+?>
+
 <!doctype html>
 <html class="no-js" lang="zxx" dir="ltr">
 
@@ -18,9 +24,7 @@
 	============================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200;300;400;500;600;700&family=Amatic+SC:wght@400;700&family=Lato:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200;300;400;500;600;700&family=Amatic+SC:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Favicons - Place favicon.ico in the root directory -->
     <link rel="apple-touch-icon" sizes="57x57" href="./src/assets/img/favicons/apple-icon-57x57.png">
@@ -137,8 +141,7 @@
                     </div> -->
                 </div>
                 <div class="col col-md-5 col-lg-4 text-center">
-                    <p class="text-body2 mb-0 fs-xs fw-semibold font-theme d-none d-md-inline-block"><span
-                            class="text-theme">Free exress</span> international delevery + Easy returens</p>
+                    <p class="text-body2 mb-0 fs-xs fw-semibold font-theme d-none d-md-inline-block"><span class="text-theme">Free exress</span> international delevery + Easy returens</p>
                 </div>
                 <div class="col-sm-5 col-md-3 col-lg-4 text-center text-sm-end">
                     <div class="social-header fs-xs">
@@ -173,8 +176,8 @@
                                 <a href="index.php?controller=product_show">Shop</a>
                                 <ul class="sub-menu">
                                     <li><a href="index.php?controller=product_show">Shop</a></li>
-                                    <li><a href="index.php?controller=product_favorite">Shop List</a></li>
-                                    <li><a href="index.php?controller=product_details">Shop Details</a></li>
+                                    <!-- <li><a href="index.php?controller=product_favorite">Shop List</a></li>
+                                    <li><a href="index.php?controller=product_details">Shop Details</a></li> -->
                                     <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
                                     <li><a href="index.php?controller=checkOut">Check Out</a></li>
                                     <li><a href="index.php?controller=wishlistCart">Wishlist</a></li>
@@ -192,8 +195,8 @@
                                     <li><a href="blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            
-                          
+
+
                             <li>
                                 <a href="index.php?controller=contact">Contact Us</a>
                             </li>
@@ -221,8 +224,7 @@
 ============================== -->
     <div class="sidemenu-wrapper d-none d-lg-block  ">
         <div class="sidemenu-content">
-            <button class="closeButton border-theme text-theme bg-theme-hover sideMenuCls"><i
-                    class="far fa-times"></i></button>
+            <button class="closeButton border-theme text-theme bg-theme-hover sideMenuCls"><i class="far fa-times"></i></button>
             <div class="widget widget_shopping_cart">
                 <h3 class="widget_title">Shopping cart</h3>
                 <div class="widget_shopping_cart_content">
@@ -239,8 +241,7 @@
                         </li>
                         <li class="mini_cart_item">
                             <a href="index.php?controller=product_show" class="remove"><i class="fal fa-trash-alt"></i></a>
-                            <a href="index.php?controller=product_show"><img src="./src/assets/img/cart/cart-img-1-2.jpg"
-                                    alt="Cart Image">Vegetable</a>
+                            <a href="index.php?controller=product_show"><img src="./src/assets/img/cart/cart-img-1-2.jpg" alt="Cart Image">Vegetable</a>
                             <span class="quantity">1 ×
                                 <span class="amount">
                                     <span>$</span>99.00
@@ -305,13 +306,10 @@
                     </div>
                 </div>
                 <div class="col-6 text-end">
-                    <button type="button" class="vs-menu-toggle d-inline-block d-lg-none"><i
-                            class="far fa-bars"></i></button>
+                    <button type="button" class="vs-menu-toggle d-inline-block d-lg-none"><i class="far fa-bars"></i></button>
                     <div class="head-top-links text-body2 d-none d-lg-block">
-                        <a href="index.php?controller=wishlistCart" class="icon-btn has-badge bg3 me-3"><i class="fal fa-heart"></i><span
-                                class="badge">0</span></a>
-                        <a href="#" class="icon-btn has-badge bg2 me-4 sideMenuToggler"><i
-                                class="fal fa-shopping-cart"></i><span class="badge">0</span></a>
+                        <a href="index.php?controller=wishlistCart" class="icon-btn has-badge bg3 me-3"><i class="fal fa-heart"></i><span class="badge">0</span></a>
+                        <a href="#" class="icon-btn has-badge bg2 me-4 sideMenuToggler"><i class="fal fa-shopping-cart"></i><span class="badge">0</span></a>
                         <span class="icon-btn bg4"><i class="fal fa-user"></i></span>
                         <ul>
                             <li><a href="index.php?controller=login">Login</a></li>
@@ -329,14 +327,14 @@
                             <ul>
                                 <li class="menu-item">
                                     <a href="index.php?controller=home">Home</a>
-                                    
+
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="index.php?controller=product_show">Shop</a>
                                     <ul class="sub-menu">
                                         <li><a href="index.php?controller=product_show">Shop</a></li>
-                                        <li><a href="index.php?controller=product_favorite">Shop List</a></li>
-                                        <li><a href="index.php?controller=product_details">Shop Details</a></li>
+                                        <!-- <li><a href="index.php?controller=product_favorite">Shop List</a></li>
+                                        <li><a href="index.php?controller=product_details">Shop Details</a></li> -->
                                         <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
                                         <li><a href="index.php?controller=checkOut">Check Out</a></li>
                                         <li><a href="index.php?controller=wishlistCart">Wishlist</a></li>
@@ -409,10 +407,13 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-xl-5">
-                        <form action="#" class="header-search">
-                            <input type="text" placeholder="Search your product" class="form-control">
+                        <form action="index.php?controller=product_search" method="post" class="header-search">
+
+                            <input type="text" placeholder="Search your product" class="form-control" name="search">
+                            
                             <button type="submit" class="vs-btn">Search</button>
                         </form>
+
                     </div>
                 </div>
             </div>

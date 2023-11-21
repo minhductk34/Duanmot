@@ -107,8 +107,8 @@
                                 <!-- <a href="index.php?controller=product_show">Shop</a> -->
                                 <ul class="sub-menu">
                                     <li><a href="index.php?controller=product_show">Shop</a></li>
-                                    <li><a href="#">Shop List</a></li>
-                                    <li><a href="index.php?controller=product_details">Shop Details</a></li>
+                                    <!-- <li><a href="#">Shop List</a></li>
+                                    <li><a href="index.php?controller=product_details">Shop Details</a></li> -->
                                     <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
                                     <li><a href="checkout.html">Check Out</a></li>
                                     <li><a href="index.php?controller=wishlistCart">Wishlist</a></li>
@@ -224,8 +224,8 @@
         <button class="searchClose border-theme text-theme">
             <i class="fal fa-times"></i>
         </button>
-        <form action="#">
-            <input type="text" class="border-theme" placeholder="What are you looking for" />
+        <form action="index.php?controller=product_search" method="post">
+            <input type="text" class="border-theme" name="search" placeholder="What are you looking for" />
             <button type="submit"><i class="fal fa-search"></i></button>
         </form>
     </div>
@@ -275,8 +275,8 @@
                                     <a href="index.php?controller=product_show">Shop</a>
                                     <ul class="sub-menu">
                                         <li><a href="index.php?controller=product_show">Shop</a></li>
-                                        <li><a href="index.php?controller=home">Shop List</a></li>
-                                        <li><a href="index.php?controller=product_details">Shop Details</a></li>
+                                        <!-- <li><a href="index.php?controller=home">Shop List</a></li>
+                                        <li><a href="index.php?controller=product_details">Shop Details</a></li> -->
                                         <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
                                         <li><a href="checkout.html">Check Out</a></li>
                                         <li><a href="index.php?controller=wishlistCart">Wishlist</a></li>

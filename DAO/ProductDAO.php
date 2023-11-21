@@ -1,7 +1,9 @@
 <?php
 require_once 'modles/product.php';
+require_once 'modles/Cartegory.php';
 // require 'modles/Category.php';
-class ProductDAO { 
+class ProductDAO
+{
     private $PDO;
     public function __construct()
     {
@@ -14,7 +16,7 @@ class ProductDAO {
     // lấy toàn bộ
     function Select()
     {
-        $sql = "SELECT * FROM products";
+        $sql = "SELECT * FROM products LIMIT 8";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         // //echo $sql;
@@ -32,10 +34,10 @@ class ProductDAO {
     }
 
     //Search
-    function Search($text)
+    public function search($text)
     {
         $keyword = '%' . $text . '%';
-        $sql = "SELECT * FROM `products` WHERE `name_product` LIKE :keyword";
+        $sql = "SELECT * FROM `products` WHERE `name_product` LIKE :keyword OR `desc_product` LIKE :keyword";
         $stmt = $this->PDO->prepare($sql);
         $stmt->bindValue(':keyword', $keyword, PDO::PARAM_STR);
         $stmt->execute();
@@ -61,18 +63,39 @@ class ProductDAO {
         return $products;
     }
     //select products from category
-    public function getProductsByCategory($categories)
+    public function getProductsByCategory($categoryName)
     {
-        $sql = "SELECT products.* FROM `products` 
-        JOIN categories ON categories.id=products.id_category 
-        WHERE categories.name = :categories";
+        $sql = "SELECT p.*, c.name_category, c.desc_category
+        FROM products p
+        JOIN category c ON c.id_category = p.id_category 
+        WHERE c.name_category = :categoryName 
+        ORDER BY c.desc_category ASC, p.status
+        LIMIT 2";
+
+        //Nếu k hiểu đọc cái dưới
+        // $sql = "SELECT products.*, category.name_category AS name_category, category.desc_category AS desc_category
+        // FROM products
+        // JOIN category ON category.id_category = products.id_category
+        // WHERE category.name_category = ''
+        // ORDER BY category.desc_category
+        // ASC, products.status";
+
         $stmt = $this->PDO->prepare($sql);
-        $stmt->bindValue(':categories', $categories, PDO::PARAM_STR);
-        $stmt->execute();
+        $stmt->execute([':categoryName' => $categoryName]);
 
         $products = array();
+        $category = null;
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            if ($category === null) {
+                $category = new Category(
+                    $row['id_category'],
+                    $row['name_category'],
+                    $row['desc_category'],
+                    $row['status']
+                );
+            }
+
             $product = new Product(
                 $row['id'],
                 $row['name_product'],
@@ -82,13 +105,15 @@ class ProductDAO {
                 $row['status'],
                 $row['quantity'],
                 $row['id_category'],
-                $row['id_discount'],
-
+                $row['id_discount']
             );
             $products[] = $product;
         }
 
-        return $products;
+        return array(
+            'products' => $products,
+            'category' => $category
+        );
     }
 
     //  product count
@@ -253,4 +278,37 @@ class ProductDAO {
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    function SelectTop8()
+    {
+        $sql = "SELECT * FROM products ORDER BY price_product LIMIT 8";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+
+        $products = array();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $product = new Product($row['id'], $row['name_product'], $row['desc_product'], $row['image_product'], $row['price_product'], $row['status'], $row['quantity'], $row['id_category'], $row['id_discount']);
+            $products[] = $product;
+        }
+
+        return $products;
+    }
+    function SelectFav()
+    {
+        $sql = "SELECT * FROM products ORDER BY price_product LIMIT 4";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+
+        $products = array();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $product = new Product($row['id'], $row['name_product'], $row['desc_product'], $row['image_product'], $row['price_product'], $row['status'], $row['quantity'], $row['id_category'], $row['id_discount']);
+            $products[] = $product;
+        }
+
+        return $products;
+    }
+    
+
 }

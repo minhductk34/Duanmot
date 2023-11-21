@@ -30,7 +30,9 @@ class ProductController
             }
         } else {
             // echo'product_show';
+
             // $productsbyCategory = $this->ProductDAO->getProductsByCategory($_GET['product']);
+
             $products = $this->ProductDAO->Select();
             $categorys = $this->CategoryDAO->showCategory();
             require_once('view/product/client/show.php');
@@ -133,24 +135,36 @@ class ProductController
 
     public function productDetails()
     {
-        // $_GET['id'];
+        $id = isset($_POST['id']) ? $_POST['id'] : '';
 
         // $timestamp = $this->CommentDAO->get_time_present();
-        // $product = $this->ProductDAO->SelectOneItem($_GET['id']);
-        // $products = $this->ProductDAO->lq($_GET['iddm']);
-        // $comments =  $this->CommentDAO->show($_GET['id']);
+        $product = $this->ProductDAO->selectOneItem($id);
+        // $comments = $this->CommentDAO->show($_GET['id']);
         // $categorys = $this->CategoryDAO->showCategory();
         require_once('view/product/client/shopDetails.php');
+        // require_once('test.php');
+        
     }
-    public function productFav()
-    {
-        // $_GET['id'];
+    // public function productFav()
+    // {
+    //     // $_GET['id'];
 
-        // $timestamp = $this->CommentDAO->get_time_present();
-        // $product = $this->ProductDAO->SelectOneItem($_GET['id']);
-        // $products = $this->ProductDAO->lq($_GET['iddm']);
-        // $comments =  $this->CommentDAO->show($_GET['id']);
-        // $categorys = $this->CategoryDAO->showCategory();
+    //     // $timestamp = $this->CommentDAO->get_time_present();
+    //     // $product = $this->ProductDAO->SelectOneItem($_GET['id']);
+    //     // $products = $this->ProductDAO->lq($_GET['iddm']);
+    //     // $comments =  $this->CommentDAO->show($_GET['id']);
+    //     // $categorys = $this->CategoryDAO->showCategory();
+    //     require_once('view/product/client/shopFav.php');
+    // }
+    public function product_Search()
+    {
+        $text = isset($_POST['search']) ? $_POST['search'] : '';
+        $products = $this->ProductDAO->search($text);
+        // echo ($text);
         require_once('view/product/client/shopFav.php');
+        header('view/product/client/shopFav.php');
+        // require_once('./check.php');
+
+        // header(' ./check.php');
     }
 }

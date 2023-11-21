@@ -1,6 +1,6 @@
 <?php
 require_once('view/globle/user/header.php');
-
+require_once('DAO/ProductDAO.php');
 ?>
 <!-- <h1>Home user</h1> -->
 <!--==============================
@@ -1259,851 +1259,67 @@ require_once('view/globle/user/header.php');
     <div class="vs-carousel" data-slide-show="1" data-lg-slide-show="1" data-md-slide-show="1" data-sm-slide-show="1" data-fade="true" id="shopSlide8440">
       <div id="BestSeller">
         <div class="row gx-2px justify-content-center">
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-1.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag2">New</span><span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-1.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Organic Apple Juice</a>
-                </h4>
-                <span class="price"><strong>$18.00</strong><del>$47.00</del></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-2.png" alt="Product Image" class="w-100" /></a>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-2.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Clark’s Nutrition</a>
-                </h4>
-                <span class="price"><strong>$45.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-3.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag2">New</span><span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-3.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Organic Cravings</a>
-                </h4>
-                <span class="price"><strong>$78.00</strong><del>$66.00</del></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-4.png" alt="Product Image" class="w-100" /></a>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-4.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Organic Meats</a>
-                </h4>
-                <span class="price"><strong>$15.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-5.png" alt="Product Image" class="w-100" /></a>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-5.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Untouched Organic</a>
-                </h4>
-                <span class="price"><strong>$56.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-6.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-6.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Balance Bearing</a>
-                </h4>
-                <span class="price"><strong>$41.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-7.png" alt="Product Image" class="w-100" /></a>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-7.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Organic Soulfood</a>
-                </h4>
-                <span class="price"><strong>$36.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-8.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-8.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Organic Conditions</a>
-                </h4>
-                <span class="price"><strong>$49.00</strong></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div id="popular">
-        <div class="row gx-2px justify-content-center">
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-9.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-9.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Grateful Organic</a>
-                </h4>
-                <span class="price"><strong>$78.00</strong><del>$88.00</del></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-10.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag2">New</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-10.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Root For Organics</a>
-                </h4>
-                <span class="price"><strong>$96.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-11.png" alt="Product Image" class="w-100" /></a>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-11.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Elemental Organic</a>
-                </h4>
-                <span class="price"><strong>$75.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-12.png" alt="Product Image" class="w-100" /></a>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-12.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Organic Compliment</a>
-                </h4>
-                <span class="price"><strong>$23.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-13.png" alt="Product Image" class="w-100" /></a>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-13.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Careful Compounds</a>
-                </h4>
-                <span class="price"><strong>$63.00</strong><del>$99.00</del></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-14.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-14.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Organic Delights</a>
-                </h4>
-                <span class="price"><strong>$78.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-15.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag2">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-15.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Madam Nature</a>
-                </h4>
-                <span class="price"><strong>$15.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-16.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-16.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Nature’S Aroma</a>
-                </h4>
-                <span class="price"><strong>$96.00</strong></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+          <?php
+          require_once 'DAO/ProductDAO.php';
 
-      <div id="bestSeller">
-        <div class="row gx-2px justify-content-center">
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-17.png" alt="Product Image" class="w-100" /></a>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-17.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Organic Choice</a>
-                </h4>
-                <span class="price"><strong>$79.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-18.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-18.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">The Nitty-Gritty</a>
-                </h4>
-                <span class="price"><strong>$79.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-19.png" alt="Product Image" class="w-100" /></a>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-19.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Nature’S Own Organic</a>
-                </h4>
-                <span class="price"><strong>$63.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-20.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-20.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Love Light Organics</a>
-                </h4>
-                <span class="price"><strong>$76.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-21.png" alt="Product Image" class="w-100" /></a>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-21.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Double Nature</a>
-                </h4>
-                <span class="price"><strong>$39.00</strong><del>$59.00</del></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-22.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag2">New</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-22.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Straight The Firm</a>
-                </h4>
-                <span class="price"><strong>$19.00</strong><del>$99.00</del></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-23.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag1">Hot</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-23.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">The Right Choice</a>
-                </h4>
-                <span class="price"><strong>$78.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-24.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-24.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Prime Organics Cleanate</a>
-                </h4>
-                <span class="price"><strong>$22.00</strong></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+          $productDao = new ProductDao();
+          $products = $productDao->select(); // Lấy danh sách sản phẩm
+          // var_dump($products);
 
-      <div id="season">
-        <div class="row gx-2px justify-content-center">
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-25.png" alt="Product Image" class="w-100" /></a>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-25.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
+          $linkpro = "index.php?controller=product_details&idpro="; // Xây dựng đường dẫn sản phẩm
+
+
+          ?>
+
+          <?php foreach ($products as $product) : ?>
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+
+              <div class="vs-product-box3">
+                <div class="product-img">
+                  <!-- <a href="shop-details.html"><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a>
+                 -->
+                  <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-3.png" alt="Product Image" class="w-100" /></a>
                 </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Goodness Organics</a>
-                </h4>
-                <span class="price"><strong>$63.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-26.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-26.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
+                <div class="actions-btn">
+                  <a href="<?php echo $product->getImage(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a>
+                  <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                  <a href="<?php echo $linkpro . $product->getId(); ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
                 </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Organic Seed</a>
-                </h4>
-                <span class="price"><strong>$39.00</strong><del>$49.00</del></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-27.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-27.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
+
+                <div class="product-content">
+                  <div class="product-rating-box">
+                    5.0
+                    <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
+                      <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
+                        5</span>
+                    </div>
                   </div>
+                  <h4 class="product-title">
+                    <a href="shop-details.html"><?php echo $product->getName(); ?></a>
+                  </h4>
+                  <span class="price"><strong><?php echo $product->getPrice(); ?></strong><del><?php echo $product->getPrice(); ?></del></span>
                 </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Double Organics</a>
-                </h4>
-                <span class="price"><strong>$79.00</strong><del>$99.00</del></span>
               </div>
+
             </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-28.png" alt="Product Image" class="w-100" /></a>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-28.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">The Organic Base</a>
-                </h4>
-                <span class="price"><strong>$18.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-29.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-29.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">The Organic Body</a>
-                </h4>
-                <span class="price"><strong>$75.00</strong><del>$20.00</del></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-30.png" alt="Product Image" class="w-100" /></a>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-30.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Organic BioKitchen</a>
-                </h4>
-                <span class="price"><strong>$96.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-31.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag3">Sale</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-31.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Earthbar Focus Food</a>
-                </h4>
-                <span class="price"><strong>$75.00</strong></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="vs-product-box3">
-              <div class="product-img">
-                <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-32.png" alt="Product Image" class="w-100" /></a>
-                <span class="product-tag1">Hot</span>
-              </div>
-              <div class="actions-btn">
-                <a href="./src/assets/img/shop/product-3-32.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-              </div>
-              <div class="product-content">
-                <div class="product-rating-box">
-                  5.0
-                  <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                    <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                      5</span>
-                  </div>
-                </div>
-                <h4 class="product-title">
-                  <a href="shop-details.html">Amtaste Farmgain Micro</a>
-                </h4>
-                <span class="price"><strong>$56.00</strong></span>
-              </div>
-            </div>
+          <?php endforeach; ?>
+          <div class="bottom-btn">
+            <a href="index.php?controller=product_show" class="vs-btn style3">All Product<i class="fas fa-angle-right"></i></a>
           </div>
         </div>
       </div>
     </div>
-    <div class="bottom-btn">
-      <a href="index.php?controller=product_show" class="vs-btn style3">All Product<i class="fas fa-angle-right"></i></a>
-    </div>
-  </div>
 </section>
 <!--==============================
     Latest Arrivals
     ==============================-->
+<?php
+require_once 'DAO/ProductDAO.php';
+
+$productDao = new ProductDao();
+$product = $productDao->selectOneItem($id = 20);
+?>
 <section class="mb-60 mb-xl-0">
   <div class="container">
     <div class="section-title text-center">
@@ -2116,13 +1332,17 @@ require_once('view/globle/user/header.php');
     <div class="row align-items-center">
       <div class="col-lg-4 order-3 order-lg-1">
         <div class="content-style1">
-          <span class="about-subtitle">Organic, Fruits</span>
-          <h3 class="about-title">Organic Veggies and Fruits Package</h3>
+
+
+          <span class="about-subtitle"><?php echo $product->getName(); ?></span>
+          <h3 class="about-title"><?php echo $product->getName(); ?></h3>
           <p class="about-text">
-            Alienum phaedrum torquatos nec eu, vis detr traxit periculis ex,
-            nihil is in mei. Mei an peri me culaeuripidis, hincartem ei est.
+            <?php echo $product->getDescription(); ?>
           </p>
-          <div class="about-price">$15.00<del>$45.00</del></div>
+          <div class="about-price"><?php echo $product->getPrice(); ?>
+            <del><?php echo $product->getPrice(); ?></del>
+          </div>
+
           <div class="product-rating-box">
             5.0
             <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
@@ -2130,7 +1350,7 @@ require_once('view/globle/user/header.php');
             </div>
           </div>
           <div>
-            <a href="index.php?controller=listCart" class="vs-btn style4"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+            <a href="<?php echo $linkpro; ?>" class="vs-btn style4"><i class="fal fa-cart-plus"></i>Add To Cart</a>
           </div>
         </div>
       </div>
@@ -2138,9 +1358,14 @@ require_once('view/globle/user/header.php');
         <div class="img-box3">
           <img src="./src/assets/img/about/ab-7-1.png" alt="About Image" />
         </div>
+        <!-- <div class="img-box3">
+                    <img src=" echo $product->getImage(); ?>" alt="About Image" />
+                </div> -->
       </div>
+
+
       <div class="col-lg-auto order-2 order-lg-3">
-        <div class="offer-counter counter-style1" data-offer-date="08/22/2024">
+        <div class="offer-counter counter-style1" data-offer-date="01/2/2024">
           <span class="day">Days</span>
           <span class="hour">Hours</span>
           <span class="minute">Mins</span>
@@ -2203,14 +1428,15 @@ require_once('view/globle/user/header.php');
 <section class="position-relative space-top space-md-bottom">
   <div class="sec-bg4" data-bg-src="./src/assets/img/shape/bg-00779.png"></div>
   <div class="container">
+
     <div class="section-title text-center">
       <div class="sec-icon">
         <img src="./src/assets/img/icons/sec-icon-2.png" alt="icon" />
       </div>
-      <span class="sub-title4">Box contents change weekly</span>
-      <h2 class="sec-title3">Our Most Popular Boxes</h2>
+      <span class="sub-title4">Dưới đây là</span>
+      <h2 class="sec-title3">Những ản phẩm yêu thích nhất</h2>
     </div>
-    <div class="row vs-carousel" data-slide-show="3" data-lg-slide-show="3" data-sm-slide-show="1">
+    <!-- <div class="row vs-carousel" data-slide-show="3" data-lg-slide-show="3" data-sm-slide-show="1">
       <div class="col-xl-4">
         <div class="package-style1">
           <div class="package-img">
@@ -2234,7 +1460,7 @@ require_once('view/globle/user/header.php');
               <li><i class="far fa-check"></i>Spain Italy Courgettes</li>
             </ul>
           </div>
-          <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+          <a href="<?php echo $linkpro; ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
         </div>
       </div>
       <div class="col-xl-4">
@@ -2260,7 +1486,7 @@ require_once('view/globle/user/header.php');
               <li><i class="far fa-check"></i>Spain Italy Courgettes</li>
             </ul>
           </div>
-          <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+          <a href="<?php echo $linkpro; ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
         </div>
       </div>
       <div class="col-xl-4">
@@ -2288,7 +1514,7 @@ require_once('view/globle/user/header.php');
               <li><i class="far fa-check"></i>Spain Italy Courgettes</li>
             </ul>
           </div>
-          <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+          <a href="<?php echo $linkpro; ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
         </div>
       </div>
       <div class="col-xl-4">
@@ -2316,10 +1542,65 @@ require_once('view/globle/user/header.php');
               <li><i class="far fa-check"></i>Spain Italy Courgettes</li>
             </ul>
           </div>
-          <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+          <a href="<?php echo $linkpro; ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+        </div>
+      </div>
+    </div> -->
+    <div class="vs-carousel" data-slide-show="1" data-lg-slide-show="1" data-md-slide-show="1" data-sm-slide-show="1" data-fade="true" id="shopSlide8440">
+      <div id="BestSeller">
+        <div class="row gx-2px justify-content-center">
+
+          <?php
+          require_once 'DAO/ProductDAO.php';
+
+          $productDao = new ProductDao();
+          $products = $productDao->select(); // Lấy danh sách sản phẩm
+          // var_dump($products);
+
+          $linkpro = "index.php?controller=product_details&idpro="; // Xây dựng đường dẫn sản phẩm
+
+
+          ?>
+
+          <?php foreach ($products as $product) : ?>
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+
+              <div class="vs-product-box3">
+                <div class="product-img">
+                  <!-- <a href="shop-details.html"><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a>
+       -->
+                  <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-3.png" alt="Product Image" class="w-100" /></a>
+                </div>
+                <div class="actions-btn">
+                  <a href="<?php echo $product->getImage(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a>
+                  <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                  <a href="<?php echo $linkpro . $product->getId(); ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                </div>
+
+                <div class="product-content">
+                  <div class="product-rating-box">
+                    5.0
+                    <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
+                      <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
+                        5</span>
+                    </div>
+                  </div>
+                  <h4 class="product-title">
+                    <a href="shop-details.html"><?php echo $product->getName(); ?></a>
+                  </h4>
+                  <span class="price"><strong><?php echo $product->getPrice(); ?></strong><del><?php echo $product->getPrice(); ?></del></span>
+                </div>
+              </div>
+
+            </div>
+          <?php endforeach; ?>
+          <div class="bottom-btn">
+            <a href="index.php?controller=product_show" class="vs-btn style3">All Product<i class="fas fa-angle-right"></i></a>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 <!--==============================
@@ -2344,43 +1625,54 @@ require_once('view/globle/user/header.php');
           </div>
         </div>
       </div>
+      <?php
+
+      require_once('DAO/ProductDAO.php');
+      $productDao = new ProductDao();
+      $linkpro = "index.php?controller=product_details&idpro=" . $id;
+      $result = $productDao->getProductsByCategory("Bánh");
+      $products = $result['products'];
+      $category = $result['category'];
+      ?>
       <div class="col-xl-6">
         <div class="content-style2">
-          <span class="sub-title4">Certified Organic</span>
+          <span class="sub-title4"><?php echo $result['category']->getName(); ?></span>
           <h2 class="sec-title3">Buy Whole Food Online at Real Foods</h2>
           <p class="sec-text">
-            Alienum phaedrum torquatos nec eu, vis detrax culis ex, nihis in
-            mei. Mei an periculaeuripidis, hem ei est Alienum Alienum
-            phaedrum tor quato hem ei est Alienum As nec.
+            <?php echo $result['category']->getDescription(); ?>
           </p>
           <div class="row mt-lg-3 pt-3 gy-4">
-            <div class="col-md-6">
-              <div class="vs-product-box3 style2">
-                <div class="product-img">
-                  <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-32.png" alt="Product Image" class="w-100" /></a>
-                  <span class="product-tag1">Hot</span>
-                </div>
-                <div class="actions-btn">
-                  <a href="./src/assets/img/shop/product-3-32.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                  <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                  <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-                </div>
-                <div class="product-content">
-                  <div class="product-rating-box">
-                    5.0
-                    <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                      <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                        5</span>
-                    </div>
+            <?php foreach ($result['products'] as $product) { ?>
+              <div class="col-md-6">
+                <div class="vs-product-box3 style2">
+                  <div class="product-img">
+                    <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-32.png" alt="Product Image" class="w-100" /></a>
+                    <!-- <a href="shop-details.html"><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a> -->
+                    <span class="product-tag1">Hot</span>
                   </div>
-                  <h4 class="product-title">
-                    <a href="shop-details.html">Amtaste Farmgain Micro</a>
-                  </h4>
-                  <span class="price"><strong>$56.00</strong></span>
+                  <div class="actions-btn">
+                    <a href="./src/assets/img/shop/product-3-32.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
+                    <!-- <a href="<?php echo $product->getImage(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a> -->
+                    <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
+                    <a href="<?php echo $linkpro; ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                  </div>
+                  <div class="product-content">
+                    <div class="product-rating-box">
+                      5.0
+                      <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
+                        <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
+                          5</span>
+                      </div>
+                    </div>
+                    <h4 class="product-title">
+                      <a href="<?php echo $linkpro; ?>"><?php echo $product->getName(); ?></a>
+                    </h4>
+                    <span class="price"><strong><?php echo $product->getPrice(); ?></strong></span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-6">
+            <?php } ?>
+            <!-- <div class="col-md-6">
               <div class="vs-product-box3 style2">
                 <div class="product-img">
                   <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-13.png" alt="Product Image" class="w-100" /></a>
@@ -2388,7 +1680,7 @@ require_once('view/globle/user/header.php');
                 <div class="actions-btn">
                   <a href="./src/assets/img/shop/product-3-13.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
                   <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                  <a href="index.php?controller=listCart" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                  <a href="index.php?controller=<?php echo $linkpro; ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
                 </div>
                 <div class="product-content">
                   <div class="product-rating-box">
@@ -2404,9 +1696,11 @@ require_once('view/globle/user/header.php');
                   <span class="price"><strong>$63.00</strong><del>$99.00</del></span>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
+
+
       </div>
     </div>
   </div>
@@ -2602,9 +1896,10 @@ require_once('view/globle/user/header.php');
   </div>
 </section>
 
-			<!-- Footer Area -->
-	<?php
-  require_once('view/globle/user/footer.php');
-  ?>
-  </body>
+<!-- Footer Area -->
+<?php
+require_once('view/globle/user/footer.php');
+?>
+</body>
+
 </html>

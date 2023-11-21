@@ -47,10 +47,10 @@ switch ($controller) {
         $ProductController = new ProductController();
         $ProductController->productDetails();
         break;
-    case 'product_favorite':
-        $ProductController = new ProductController();
-        $ProductController->productFav();
-        break;
+    // case 'product_favorite':
+    //     $ProductController = new ProductController();
+    //     $ProductController->productFav();
+    //     break;
 
     case 'product_add':
         $ProductController = new ProductController();
@@ -65,6 +65,10 @@ switch ($controller) {
     case 'product_update':
         $ProductController = new ProductController();
         $ProductController->updateProduct();
+        break;
+    case 'product_search':
+        $ProductController = new ProductController();
+        $ProductController->product_Search();
         break;
 
         //User controller -------------------------------------------------------------------
@@ -153,6 +157,10 @@ switch ($controller) {
     case 'chatBox':
         $homeController = new HomeController();
         $homeController->chatBox();
+        break;
+    case 'test':
+        header('Location: test.php');
+
         break;
 
     default:

@@ -1,5 +1,5 @@
 <?php
-require_once ('modles/Cartegory.php');
+require_once('modles/Cartegory.php');
 class CategoryDAO
 {
     private $PDO;
@@ -16,18 +16,21 @@ class CategoryDAO
         $sql = "SELECT * FROM category";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
-        // //echo $sql;
-
-        $categorys = array();
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $categorys = new Category($row['id'], $row['name_category'], $row['desc_category'], $row['status']);
-            $categories[] = $categorys;
-        }
-        // print_r($categories);
-        return $categories;
         
+        $categories = []; // Initialize an empty array
+        
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            if (isset($row['name_category'], $row['desc_category'], $row['status'])) {
+                $category = new Category($row['id_category'],$row['name_category'], $row['desc_category'], $row['status']);
+                $categories[] = $category;
+            } else {
+                // Xử lý khi thiếu thông tin cần thiết cho Category
+            }
+        }
+        
+        return $categories;
     }
+
     //ADD category
     public function addCategory($name, $description, $status)
     {
@@ -55,6 +58,4 @@ class CategoryDAO
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
     }
-
-
 }

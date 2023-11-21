@@ -1,5 +1,4 @@
-
-<?php 
+<?php
 require_once('view/home/user/page/header.php');
 ?>
 <!--==============================
@@ -21,6 +20,12 @@ require_once('view/home/user/page/header.php');
     ==============================-->
 <section class="vs-shop-wrapper shop-details space-top space-md-bottom">
     <div class="container">
+        <?php
+        require_once('DAO/ProductDAO.php');
+        $items = new ProductDAO();
+        $id = $_GET['idpro'];
+        $item = $items->selectOneItem($id);
+        ?>
         <div class="row mb-5">
             <div class="col-md-6 col-xl-5 mb-30 mb-md-0">
                 <div class="product-big-img vs-carousel" data-slide-show="1" data-lg-slide-show="1" data-md-slide-show="1" data-sm-slide-show="1" data-fade="true" data-dots="true" data-asnavfor="#thumbproductimg" id="bigproductimg">
@@ -70,16 +75,15 @@ require_once('view/home/user/page/header.php');
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="product-content">
-                    <h3 class="product-title mb-1">Fresh Peach Fruits</h3>
-                    <span class="price font-theme"><strong>$40.00</strong></span>
+                <h3 class="product-title mb-1"><?php echo $item->getName(); ?></h3>
+                    <span class="price font-theme"><strong><?php echo $item->getPrice(); ?></strong></span>
                     <div class="mt-2">
                         <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
                             <span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5 based on
                                 <span class="rating">1</span> customer rating</span>
                         </div>
                     </div>
-                    <p class="fs-xs my-4">Quot semper vivendo ad vix, qui ad diam lucilius repudiare. Autem voluptua
-                        ius id. Invenire antiopam qualisque ne per, ei vim legimus accusam, tale nulla vim ut</p>
+                    <p class="fs-xs my-4"><?php echo $item->getDescription(); ?></p>
                     <div class="mt-2 link-inherit fs-xs">
                         <p><strong class="text-title me-3 font-theme">Availability :</strong><a href="#"><i class="far fa-check-square me-2 ms-1"></i>In Stock</a></p>
                     </div>
@@ -308,9 +312,9 @@ require_once('view/home/user/page/header.php');
             </div>
         </div>
     </section>
-<?php 
-require_once ('view/home/user/page/footer.php');
-?>
-</body>
+    <?php
+    require_once('view/home/user/page/footer.php');
+    ?>
+    </body>
 
-</html>
+    </html>
