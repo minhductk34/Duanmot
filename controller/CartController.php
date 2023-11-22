@@ -1,18 +1,26 @@
 <?php
 require_once('DAO/CartDAO.php');
+require_once('DAO/ProductDAO.php');
+require_once('DAO/BillDAO.php');
 class CartController
 {
     private $CartDAO;
+    private $ProductDAO;
+    private $BillDAO;
 
     public function __construct()
     {
         $this->CartDAO = new CartDAO();
+        $this->ProductDAO = new ProductDAO();
+        $this->BillDAO = new BillDAO();
     }
     public function show()
     {
         //echo 'listCart';
         // if (isset($_SESSION["permissions"])) {
         //     //code
+
+        $this->CartDAO->showCart();
         require_once('view/cart/user/list.php');
         // } else {
         //     require_once('404.php');
@@ -20,30 +28,22 @@ class CartController
     }
     public function add()
     {
-        //echo 'addCart';
-        //code
+
 
         // if (isset($_SESSION["permissions"])) {
         //     //code
 
-        if (isset($_POST['add']) && $_POST['add'] != '') {
-            $userId = $_POST['userId'];
-            $productId = $_POST['productId'];
-            $imgProduct = $_POST['imgProduct'];
-            $nameProduct = $_POST['nameProduct'];
-            $priceProduct = $_POST['priceProduct'];
-            $quantity = $_POST['quantity'];
-            $total = $_POST['total'];
-            $billId = $_POST['billId'];
+        if (isset($_GET['id']) && $_GET['id'] != '') {
+            $userId = 1;
+            $quantity = 1;
+            $typePayment = '';
 
-            // Gọi phương thức addToCart() với các tham số tương ứng
-            $this->CartDAO->addToCart($userId, $productId, $imgProduct, $nameProduct, $priceProduct, $quantity, $total, $billId);
-            // require_once('view/cart/user/add.php');
-
-            require_once('Location: test/billtest.php');
-            exit();
+            $this->CartDAO->addToCart($userId, $_GET['id'], $quantity);
+            require_once('view/cart/user/list.php');
+        } else {
+            echo "Error";
         }
-        header('Location: test/billtest.php');
+
         // } else {
         //     require_once('404.php');
         // }
@@ -53,13 +53,13 @@ class CartController
         // //echo 'edittCart';
         // if (isset($_SESSION["permissions"])) {
         //     //code
-        if (isset($_POST['update']) && $_POST['update'] != '') {
+        if (isset($_POST['updateCart']) && $_POST['updateCart'] != '') {
             $userId = $_POST['userId'];
             $productId = $_POST['productId'];
             $quantity = $_POST['quantity'];
             $total = $_POST['total'];
 
-            $this->CartDAO->updateCart($userId, $productId, $quantity, $total);
+            $this->CartDAO->updateCart($productId, $quantity, $total);
             require_once('view/cart/user/update.php');
         }
 
@@ -71,14 +71,22 @@ class CartController
     public function delete()
     {
         //echo 'deleteCart';
-        if (isset($_SESSION["permissions"])) {
-            //code
-            $cartId = $_POST['cartId'];
-            $this->CartDAO->deleteFromCart($cartId);
-            require_once('view/cart/user/delete.php');
+        // if (isset($_SESSION["permissions"])) {
+        //code
+        if (isset($_GET['id'])) {
+            // echo 'deleteCart';
+            $id = $_GET['id'];
+            $this->CartDAO->deleteFromCart($id);
+            $this->CartDAO->showCart();
+            require_once('view/cart/user/list.php');
         } else {
-            require_once('404.php');
+            echo 'lol';
         }
+        // header('Location: test.php');;
+
+        // } else {
+        //     require_once('404.php');
+        // }
     }
     public function history()
     {

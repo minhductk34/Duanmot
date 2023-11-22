@@ -93,7 +93,7 @@ require_once('view/home/user/page/header.php');
                             <button class="quantity-minus qut-btn"><i class="far fa-chevron-down"></i></button>
                             <button class="quantity-plus qut-btn"><i class="far fa-chevron-up"></i></button>
                         </div>
-                        <a href="index.php?controller=listCart" class="vs-btn shadow-none">Add To Cart</a>
+                        <a href="index.php?controller=listCart&id=<?php echo $item->getId(); ?>" class="vs-btn shadow-none">Add To Cart</a>
                     </div>
                     <div class="product_meta">
                         <span class="sku_wrapper">SKU: <span class="sku">D2300-3-1</span></span>

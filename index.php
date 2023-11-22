@@ -106,7 +106,7 @@ switch ($controller) {
         //Cart Controller ----------------------------------------------------------------
     case 'addCart':
         $CartController = new CartController();
-        $CartController->add();
+        $CartController->show();
         break;
     case 'updateCart':
         $CartController = new CartController();
@@ -118,7 +118,8 @@ switch ($controller) {
         break;
     case 'listCart':
         $CartController = new CartController();
-        $CartController->show();
+        $CartController->add();
+        // $CartController->show();
         break;
     case 'wishlistCart':
         $CartController = new CartController();

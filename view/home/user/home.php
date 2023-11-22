@@ -1074,153 +1074,7 @@ require_once('DAO/ProductDAO.php');
     </div>
   </div>
 </div>
-<!--==============================
-    Categories Area
-    ==============================-->
-<!-- <section class="space-top">
-  <div class="container">
-    <div class="row vs-carousel" data-slide-show="3" id="catboxSlide4645">
-      <div class="col-xl-4">
-        <div class="cat-box">
-          <div class="cat-box__img">
-            <img src="./src/assets/img/category/cat-1-1.png" alt="Category image" />
-          </div>
-          <h3 class="cat-box__title">
-            <a href="index.php?controller=product_show">Organic Fruits</a>
-          </h3>
-          <p class="cat-box__text">
-            Phasellus enim libero, blandit vel sapien vitae, condimentum
-            ultricies magna et. Quisque euismod orci lobortis...
-          </p>
-        </div>
-      </div>
-      <div class="col-xl-4">
-        <div class="cat-box">
-          <div class="cat-box__img">
-            <img src="./src/assets/img/category/cat-1-2.png" alt="Category image" />
-          </div>
-          <h3 class="cat-box__title">
-            <a href="index.php?controller=product_show">Organic Vagitables</a>
-          </h3>
-          <p class="cat-box__text">
-            Phasellus enim libero, blandit vel sapien vitae, condimentum
-            ultricies magna et. Quisque euismod orci lobortis...
-          </p>
-        </div>
-      </div>
-      <div class="col-xl-4">
-        <div class="cat-box">
-          <div class="cat-box__img">
-            <img src="./src/assets/img/category/cat-1-3.png" alt="Category image" />
-          </div>
-          <h3 class="cat-box__title">
-            <a href="index.php?controller=product_show">Farms and Family</a>
-          </h3>
-          <p class="cat-box__text">
-            Phasellus enim libero, blandit vel sapien vitae, condimentum
-            ultricies magna et. Quisque euismod orci lobortis...
-          </p>
-        </div>
-      </div>
-      <div class="col-xl-4">
-        <div class="cat-box">
-          <div class="cat-box__img">
-            <img src="./src/assets/img/category/cat-1-4.png" alt="Category image" />
-          </div>
-          <h3 class="cat-box__title">
-            <a href="index.php?controller=product_show">Dairy Products</a>
-          </h3>
-          <p class="cat-box__text">
-            Phasellus enim libero, blandit vel sapien vitae, condimentum
-            ultricies magna et. Quisque euismod orci lobortis...
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="row text-center justify-content-around align-items-center">
-      <div class="col-auto d-none d-sm-block">
-        <button class="slick-arrow" data-slick-prev="#catboxSlide4645" type="button">
-          <i class="fas fa-angle-left"></i>
-        </button>
-      </div>
-      <div class="col-auto">
-        <a href="index.php?controller=product_show" class="vs-btn style3">Start Shopping<i class="fas fa-angle-right"></i></a>
-      </div>
-      <div class="col-auto d-none d-sm-block">
-        <button class="slick-arrow" data-slick-next="#catboxSlide4645" type="button">
-          <i class="fas fa-angle-right"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</section> -->
-<!--==============================
-      About Us Area
-    ==============================-->
-<!-- <section class="space">
-  <div class="container">
-    <div class="row justify-content-between align-items-center align-items-xl-start">
-      <div class="col-md-9 col-lg-7 col-xl-8">
-        <div class="section-title">
-          <span class="sub-title4">WE ARE FeeTech</span>
-          <h2 class="sec-title3">
-            We believe in working with accredited farmers
-          </h2>
-        </div>
-      </div>
-      <div class="col-auto mb-30 mb-xl-0 d-none d-lg-block">
-        <img src="./src/assets/img/about/ab-6-1.png" alt="About image" />
-      </div>
-    </div>
-  </div>
-  <div class="container vs-container_style3">
-    <div class="row">
-      <div class="col-lg-6 col-xxl-auto mb-40 mb-lg-0">
-        <div class="img-box2">
-          <div class="img-1">
-            <img src="./src/assets/img/about/ab-6-2.png" alt="About image" />
-            <a href="https://www.youtube.com/watch?v=_sI_Ps7JSEk" class="play-btn style2 popup-video"><i class="fas fa-play"></i></a>
-            <div class="img-2">
-              <img src="./src/assets/img/about/ab-6-3.png" alt="About image" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-xxl">
-        <div class="about-box1">
-          <p class="block-text">
-            Alienum phaedrum torquatos nec eu, vis detraxit periculis ex,
-            nihil is in mei. Mei an periculaeuripidis, hincartem ei est.
-            Alienum phaed is in mei. Mei an periculaeuripidis, hincartem ei
-            est.
-          </p>
-          <div class="row justify-content-between">
-            <div class="col-sm-auto">
-              <div class="block-list">
-                <ul>
-                  <li>Natural livestock and crop</li>
-                  <li>through submission</li>
-                  <li>Organic system plan</li>
-                  <li>Production to consumption</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-sm-auto">
-              <div class="block-list">
-                <ul>
-                  <li>farming are maintaining</li>
-                  <li>Nurturing crops</li>
-                  <li>Organic farming</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <a href="about.html" class="vs-btn style3">More Information<i class="fas fa-angle-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
+
 <!--==============================
     Feature Products
     ==============================-->
@@ -1277,14 +1131,14 @@ require_once('DAO/ProductDAO.php');
 
               <div class="vs-product-box3">
                 <div class="product-img">
-                  <!-- <a href="shop-details.html"><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a>
+                  <!-- <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a>
                  -->
-                  <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-3.png" alt="Product Image" class="w-100" /></a>
+                  <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="./src/assets/img/shop/product-3-3.png" alt="Product Image" class="w-100" /></a>
                 </div>
                 <div class="actions-btn">
-                  <a href="<?php echo $product->getImage(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                  <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                  <a href="<?php echo $linkpro . $product->getId(); ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                  <a href="<?php echo $linkpro . $product->getId(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a>
+                  <a href="index.php?controller=wishlistCart&id=<?php echo $product->getId(); ?>" class="icon-btn"><i class="fal fa-heart"></i></a>
+                  <a href="index.php?controller=listCart&id=<?php echo $product->getId(); ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
                 </div>
 
                 <div class="product-content">
@@ -1296,7 +1150,7 @@ require_once('DAO/ProductDAO.php');
                     </div>
                   </div>
                   <h4 class="product-title">
-                    <a href="shop-details.html"><?php echo $product->getName(); ?></a>
+                    <a href="<?php echo $linkpro . $product->getId(); ?>"><?php echo $product->getName(); ?></a>
                   </h4>
                   <span class="price"><strong><?php echo $product->getPrice(); ?></strong><del><?php echo $product->getPrice(); ?></del></span>
                 </div>
@@ -1436,116 +1290,7 @@ $product = $productDao->selectOneItem($id = 20);
       <span class="sub-title4">Dưới đây là</span>
       <h2 class="sec-title3">Những ản phẩm yêu thích nhất</h2>
     </div>
-    <!-- <div class="row vs-carousel" data-slide-show="3" data-lg-slide-show="3" data-sm-slide-show="1">
-      <div class="col-xl-4">
-        <div class="package-style1">
-          <div class="package-img">
-            <img src="./src/assets/img/package/p-1-1.jpg" alt="Package" />
-          </div>
-          <div class="package-quantity" data-bg-src="./src/assets/img/shape/pack-bg.png">
-            <div class="number">12</div>
-            <div class="label">Organic Varieties</div>
-          </div>
-          <div class="package-price">
-            $16.75
-            <div class="text">/ Lowest</div>
-          </div>
-          <h3 class="package-title">Seasonal organic veg box - medium</h3>
-          <div class="package-list">
-            <ul>
-              <li><i class="far fa-check"></i>The UK Red potatoes</li>
-              <li><i class="far fa-check"></i>The UK Carrots</li>
-              <li><i class="far fa-check"></i>The UK Parsnips</li>
-              <li><i class="far fa-check"></i>Spain Broccoli</li>
-              <li><i class="far fa-check"></i>Spain Italy Courgettes</li>
-            </ul>
-          </div>
-          <a href="<?php echo $linkpro; ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-        </div>
-      </div>
-      <div class="col-xl-4">
-        <div class="package-style1">
-          <div class="package-img">
-            <img src="./src/assets/img/package/p-1-2.jpg" alt="Package" />
-          </div>
-          <div class="package-quantity" data-bg-src="./src/assets/img/shape/pack-bg.png">
-            <div class="number">08</div>
-            <div class="label">Organic Varieties</div>
-          </div>
-          <div class="package-price">
-            $35.75
-            <div class="text">/ Medium</div>
-          </div>
-          <h3 class="package-title">Familiar Favourites organic veg box</h3>
-          <div class="package-list">
-            <ul>
-              <li><i class="far fa-check"></i>The UK Red potatoes</li>
-              <li><i class="far fa-check"></i>The UK Carrots</li>
-              <li><i class="far fa-check"></i>The UK Parsnips</li>
-              <li><i class="far fa-check"></i>Spain Broccoli</li>
-              <li><i class="far fa-check"></i>Spain Italy Courgettes</li>
-            </ul>
-          </div>
-          <a href="<?php echo $linkpro; ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-        </div>
-      </div>
-      <div class="col-xl-4">
-        <div class="package-style1">
-          <div class="package-img">
-            <img src="./src/assets/img/package/p-1-3.jpg" alt="Package" />
-          </div>
-          <div class="package-quantity" data-bg-src="./src/assets/img/shape/pack-bg.png">
-            <div class="number">14</div>
-            <div class="label">Organic Varieties</div>
-          </div>
-          <div class="package-price">
-            $45.75
-            <div class="text">/ Highest</div>
-          </div>
-          <h3 class="package-title">
-            Zero packaging organic veg box medium top
-          </h3>
-          <div class="package-list">
-            <ul>
-              <li><i class="far fa-check"></i>The UK Red potatoes</li>
-              <li><i class="far fa-check"></i>The UK Carrots</li>
-              <li><i class="far fa-check"></i>The UK Parsnips</li>
-              <li><i class="far fa-check"></i>Spain Broccoli</li>
-              <li><i class="far fa-check"></i>Spain Italy Courgettes</li>
-            </ul>
-          </div>
-          <a href="<?php echo $linkpro; ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-        </div>
-      </div>
-      <div class="col-xl-4">
-        <div class="package-style1">
-          <div class="package-img">
-            <img src="./src/assets/img/package/p-1-4.jpg" alt="Package" />
-          </div>
-          <div class="package-quantity" data-bg-src="./src/assets/img/shape/pack-bg.png">
-            <div class="number">19</div>
-            <div class="label">Organic Varieties</div>
-          </div>
-          <div class="package-price">
-            $99.75
-            <div class="text">/ VIP</div>
-          </div>
-          <h3 class="package-title">
-            Intermix and alphabets to get to uniqueness
-          </h3>
-          <div class="package-list">
-            <ul>
-              <li><i class="far fa-check"></i>The UK Red potatoes</li>
-              <li><i class="far fa-check"></i>The UK Carrots</li>
-              <li><i class="far fa-check"></i>The UK Parsnips</li>
-              <li><i class="far fa-check"></i>Spain Broccoli</li>
-              <li><i class="far fa-check"></i>Spain Italy Courgettes</li>
-            </ul>
-          </div>
-          <a href="<?php echo $linkpro; ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-        </div>
-      </div>
-    </div> -->
+
     <div class="vs-carousel" data-slide-show="1" data-lg-slide-show="1" data-md-slide-show="1" data-sm-slide-show="1" data-fade="true" id="shopSlide8440">
       <div id="BestSeller">
         <div class="row gx-2px justify-content-center">
@@ -1567,14 +1312,14 @@ $product = $productDao->selectOneItem($id = 20);
 
               <div class="vs-product-box3">
                 <div class="product-img">
-                  <!-- <a href="shop-details.html"><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a>
+                  <!-- <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a>
        -->
-                  <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-3.png" alt="Product Image" class="w-100" /></a>
+                  <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="./src/assets/img/shop/product-3-3.png" alt="Product Image" class="w-100" /></a>
                 </div>
                 <div class="actions-btn">
-                  <a href="<?php echo $product->getImage(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                  <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                  <a href="<?php echo $linkpro . $product->getId(); ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                  <a href="<?php echo $linkpro . $product->getId(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a>
+                  <a href="index.php?controller=wishlistCart&id=<?php echo $product->getId(); ?>" class="icon-btn"><i class="fal fa-heart"></i></a>
+                  <a href="index.php?controller=listCart&id=<?php echo $product->getId(); ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
                 </div>
 
                 <div class="product-content">
@@ -1586,7 +1331,7 @@ $product = $productDao->selectOneItem($id = 20);
                     </div>
                   </div>
                   <h4 class="product-title">
-                    <a href="shop-details.html"><?php echo $product->getName(); ?></a>
+                    <a href="<?php echo $linkpro . $product->getId(); ?>"><?php echo $product->getName(); ?></a>
                   </h4>
                   <span class="price"><strong><?php echo $product->getPrice(); ?></strong><del><?php echo $product->getPrice(); ?></del></span>
                 </div>
@@ -1646,15 +1391,15 @@ $product = $productDao->selectOneItem($id = 20);
               <div class="col-md-6">
                 <div class="vs-product-box3 style2">
                   <div class="product-img">
-                    <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-32.png" alt="Product Image" class="w-100" /></a>
-                    <!-- <a href="shop-details.html"><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a> -->
+                    <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="./src/assets/img/shop/product-3-32.png" alt="Product Image" class="w-100" /></a>
+                    <!-- <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a> -->
                     <span class="product-tag1">Hot</span>
                   </div>
                   <div class="actions-btn">
-                    <a href="./src/assets/img/shop/product-3-32.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
+                    <a href="<?php echo $linkpro . $product->getId(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a>
                     <!-- <a href="<?php echo $product->getImage(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a> -->
-                    <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                    <a href="<?php echo $linkpro; ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                    <a href="index.php?controller=wishlistCart&id=<?php echo $product->getId(); ?>" class="icon-btn"><i class="fal fa-heart"></i></a>
+                    <a href="index.php?controller=listCart&id=<?php echo $product->getId(); ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
                   </div>
                   <div class="product-content">
                     <div class="product-rating-box">
@@ -1672,31 +1417,7 @@ $product = $productDao->selectOneItem($id = 20);
                 </div>
               </div>
             <?php } ?>
-            <!-- <div class="col-md-6">
-              <div class="vs-product-box3 style2">
-                <div class="product-img">
-                  <a href="shop-details.html"><img src="./src/assets/img/shop/product-3-13.png" alt="Product Image" class="w-100" /></a>
-                </div>
-                <div class="actions-btn">
-                  <a href="./src/assets/img/shop/product-3-13.png" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                  <a href="index.php?controller=wishlistCart" class="icon-btn"><i class="fal fa-heart"></i></a>
-                  <a href="index.php?controller=<?php echo $linkpro; ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-                </div>
-                <div class="product-content">
-                  <div class="product-rating-box">
-                    5.0
-                    <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                      <span style="width: 100%">Rated <strong class="rating">5.00</strong> out of
-                        5</span>
-                    </div>
-                  </div>
-                  <h4 class="product-title">
-                    <a href="shop-details.html">Careful Compounds</a>
-                  </h4>
-                  <span class="price"><strong>$63.00</strong><del>$99.00</del></span>
-                </div>
-              </div>
-            </div> -->
+
           </div>
         </div>
 
@@ -1708,23 +1429,7 @@ $product = $productDao->selectOneItem($id = 20);
 <!--==============================
     Subscribe Area
     ==============================-->
-<!-- <section class="space" data-bg-src="./src/assets/img/bg/newsletter-bg-1-2.jpg">
-  <div class="container">
-    <div class="newsletter-style2" data-bg-src="./src/assets/img/shape/newsletter-bg-1-1.png">
-      <div class="shape-1 d-none d-md-block">
-        <img src="./src/assets/img/shape/newsletter-s-008.png" alt="shape" />
-      </div>
-      <span class="sub-title4">Subscribe and Get new Tips and Updates</span>
-      <h2 class="sec-title3">Subscribe & Get 10% Off</h2>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Enter Your Email Address...." />
-        <button class="vs-btn style4" type="submit">
-          <i class="fas fa-envelope"></i>Subscribe
-        </button>
-      </div>
-    </div>
-  </div>
-</section> -->
+  
 <!--==============================
         Blog Area
     ==============================-->
