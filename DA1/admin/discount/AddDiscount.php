@@ -1,30 +1,49 @@
-<div class="">
-            <div class="">
-                <h1>Add Discount</h1>
+<div class="container" ">
+    <div class=" text">
+    Add Discount
+</div>
+<form action="index.php?controller=add_category" method="post" style="min-height: 500px;">
+    <div class=" form-row">
+        <div class="input-data">
+            <input type="text" name="name_discount" required>
+            <div class="underline"></div>
+            <label for="">Name Discount</label>
+        </div>
+    </div>
+    <div class=" form-row">
+        <div class="input-data">
+            <input type="number" name="percent_discount" required>
+            <div class="underline"></div>
+            <label for="">Percent Discount</label>
+        </div>
+    </div>
+    <div class=" form-row">
+        <span style="margin-left: 20px">Active</span>
+        <div class="form-check" style="margin: 20px;">
+            <input class="form-check-input" type="radio" name="active" id="status1">
+            <label class="form-check-label" for="status1">
+                Hiệu lực
+            </label>
+        </div>
+        <div class="form-check" style="margin: 20px;">
+            <input class="form-check-input" type="radio" name="active" id="status2">
+            <label class="form-check-label" for="status2">
+                Hết hiệu lực
+            </label>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="input-data textarea">
+            <div class="form-row submit-btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <input type="submit" value="Add">
+                </div>
             </div>
-            <div class="">
-                <form action="index.php?act=add_discount" method="post">
-                    <div class="">
-                        <p>Name Discount</p><br>
-                        <input type="text" name="name_discount" >
-                    </div>
-                    <div class="">
-                        <p>Percent Discount</p><br>
-                        <input type="number" name="percent_discount" >
-                    </div>
-                    <div class="">
-                        <p>Active</p><br>
-                        <span>Hiệu lực</span><input type="radio" name="active" value = "0" checked>
-                        <span>Hết hiệu lực</span><input type="radio" name="active" value = "1">
-                    </div>
-                    <div class="">
-                        <input type="submit" value="Add new" name="add_discount">
-                        <input type="reset" value="Reset">
-                        <a href="index.php?act=list_discount"><input type="button" value="List"></a>
-                    </div>
-                    <?php
-                        if (isset($noti)&&($noti !="")) echo $noti
-                    ?>
-                </form>
-            </div>
-        </div>   
+        </div>
+</form>
+<?php
+if (isset($noti) && ($noti != "")) echo $noti
+?>
+</div>
+<!-- End of Main Content -->

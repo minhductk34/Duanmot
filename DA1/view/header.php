@@ -11,12 +11,11 @@
     <title>Admin</title>
     <!-- chat -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="assets/css/chatbox/style1.css">
     <!-- Custom fonts for this template-->
     <link href="view/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!--  -->
-    <link rel="stylesheet" href="assets/css/form/style.css">
+    <link rel="stylesheet" href="view/css/form/style.css">
     <!-- Custom styles for this template-->
     <link href="view/css/sb-admin-2.min.css" rel="stylesheet" />
     <!-- Custom styles for this page -->
@@ -65,8 +64,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Category:</h6>
-                        <a class="collapse-item" href="index.php?">List</a>
-                        <a class="collapse-item" href="index.php?">Add</a>
+                        <a class="collapse-item" href="index.php?act=list_category">List</a>
+                        <a class="collapse-item" href="index.php?act=add_category">Add</a>
                     </div>
                 </div>
             </li>
@@ -80,8 +79,8 @@
                 <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Product:</h6>
-                        <a class="collapse-item" href="index.php?">List</a>
-                        <a class="collapse-item" href="index.php?">Add</a>
+                        <a class="collapse-item" href="index.php?act=list_product">List</a>
+                        <a class="collapse-item" href="index.php?act=add_product">Add</a>
                     </div>
                 </div>
             </li>
@@ -95,8 +94,8 @@
                 <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Account:</h6>
-                        <a class="collapse-item" href="index.php?">List</a>
-                        <a class="collapse-item" href="index.php?">Add</a>
+                        <a class="collapse-item" href="index.php?act=list_account">List</a>
+                        <a class="collapse-item" href="index.php?act=add_account">Add</a>
                     </div>
                 </div>
             </li>
@@ -110,7 +109,7 @@
                 <div id="collapseTwo3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Comment:</h6>
-                        <a class="collapse-item" href="index.php?">List</a>
+                        <a class="collapse-item" href="index.php?act=list_comment">List</a>
                     </div>
                 </div>
             </li>
@@ -123,8 +122,8 @@
                 <div id="collapseTwo4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Discount:</h6>
-                        <a class="collapse-item" href="index.php?">List</a>
-                        <a class="collapse-item" href="index.php?">Add</a>
+                        <a class="collapse-item" href="index.php?act=list_discount">List</a>
+                        <a class="collapse-item" href="index.php?act=add_discount">Add</a>
                     </div>
                 </div>
             </li>
@@ -137,7 +136,7 @@
                 <div id="collapseTwo5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Order:</h6>
-                        <a class="collapse-item" href="index.php?">List</a>
+                        <a class="collapse-item" href="index.php?act=list_order">List</a>
                     </div>
                 </div>
             </li>
@@ -163,8 +162,8 @@
                 <div id="collapseTwo8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Synthetic & Statistical:</h6>
-                        <a class="collapse-item" href="index.php?">List</a>
-                        <a class="collapse-item" href="index.php?">Show Chart</a>
+                        <a class="collapse-item" href="index.php?act=synStat">List</a>
+                        <a class="collapse-item" href="index.php?act=showchart">Show Chart</a>
                     </div>
                 </div>
             </li>

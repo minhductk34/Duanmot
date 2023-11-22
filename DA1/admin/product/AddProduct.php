@@ -1,50 +1,57 @@
-<div class="card-body">
-            <div class="">
-                <h1>Add Product</h1>
+
+    <div class="container" ">
+    <div class=" text">
+        Add Product
+    </div>
+    <form action="index.php?act=add_product" method="post" style="min-height: 500px;" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label style="margin-right: 20px">Categoriest</label>
+            <select class="form-select" name="id_category" style="min-height: 40px;min-width: 200px">
+                <?php
+                foreach ($Categories as $category) {
+                    extract($category);
+                    echo '<option value="' . $id_category . '">' . $name_category . '</option>';
+                }
+                ?>
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name Product</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="name_product" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Image Product</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image_product">
+        </div>
+       
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Price Product</label>
+            <input type="number" name="price_product"  class="form-control" id="exampleFormControlInput1" required min="0" step="0.01" >
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Quantity</label>
+            <input type="number" name="quantity"  class="form-control" id="exampleFormControlInput1" required min="0" step="1" >
+        </div>
+       
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc_product"></textarea>
+        </div>
+        <div class="form-row">
+            <div class="input-data textarea">
+                <div class="form-row submit-btn">
+                    <div class="input-data">
+                        <div class="inner"></div>
+                        <input type="submit" value="Add" name="add_product">
+                    </div>
+                </div>
             </div>
-            <div class="">
-                <form action="index.php?act=add_product" method="post" enctype="multipart/form-data" style>
-                    <div class="" >
-                        <p>Category</p><br>
-                        <select name="id_category" style="width: 11%">
-                                <?php
-                                    foreach($Categories as $category){
-                                        extract($category);
-                                        echo '<option value="'.$id_category.'">'.$name_category.'</option>';
-                                    }
-                                ?>
-                        </select>
-                    </div>  
-                    <div class="">
-                        <p>Name Product</p><br>
-                        <input type="text" name="name_product" >
-                    </div>
-                    <div class="">
-                        <p>Price Product</p><br>
-                        <input type="number" name="price_product" >
-                    </div>
-                    <div class="">
-                        <p>Image Product</p><br>
-                        <input type="file" name="image_product" >
-                    </div>
-                    <div class="">
-                        <p>Quantity</p><br>
-                        <input type="number" name="quantity" >
-                    </div>
-                    <div class="">
-                        <p>Description Product</p><br>
-                        <textarea name="desc_product" cols="100" rows="10"></textarea>
-                    </div>
-                    <div class="">
-                        <input type="submit" value="Add new" name = "add_product">
-                        <input type="reset" value="Reset">
-                        <a href="index.php?act=list_product"><input type="button" value="List"></a>
-                    </div>
-                    <?php
-                        if (isset($noti)&&($noti !="")) echo $noti
-                    ?>
-                </form>
-            </div>
-        </div>   
-    </div> 
-</div> 
+        </div>
+    </form>
+    <?php
+    if (isset($noti) && ($noti != "")) echo $noti
+    ?>
+</div>
+<!-- End of Main Content -->

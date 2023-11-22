@@ -1,7 +1,4 @@
-<?php
-    include("view/header.php");
-    
-?>
+
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -322,8 +319,3 @@
     </div>
 
 </div>
-
-<?php
-    include("view/footer.php");
-    
-?>

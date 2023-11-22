@@ -1,4 +1,4 @@
-<div class="row" style="text-align:center">
+<div class="form-row" >
       <script src="https://www.gstatic.com/charts/loader.js"></script>
 
       <body>
