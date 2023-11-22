@@ -8,37 +8,26 @@ class LoginDAO
         require_once('config/PDO.php');
         $this->PDO = $pdo;
     }
-    function Login($user, $pass)
+    function checkuser($username, $password)
     {
-        $sql = "SELECT id_user, permissions FROM user WHERE email = :user AND pass = :pass";
+        $sql = "SELECT * FROM user WHERE username = :username AND password = :password"; // Use parameterized query to prevent SQL injection
         $stmt = $this->PDO->prepare($sql);
-        $stmt->bindValue(':user', $user, PDO::PARAM_STR);
-        $stmt->bindValue(':pass', $pass, PDO::PARAM_STR);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $password);
         $stmt->execute();
 
-        $data = array();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch a single row (assuming unique username)
 
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // Create an associative array with 'id_user' and 'permissions' keys
-            $userData = array(
-                'id_user' => $row['id_user'],
-                'permissions' => $row['permissions']
-            );
-
-            // Add the user data to the data array
-            $data[] = $userData;
-        }
-
-        return $data; // Return an array containing 'id_user' and 'permissions'
+        return $user; // Return the user data if found, or null if not found
     }
     function show()
     {
         $sql = "SELECT *  FROM products ";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
-    
+
         $logins = array();
-    
+
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Create a Login object and add it to the array
             $login = new Login(
@@ -52,10 +41,10 @@ class LoginDAO
                 $row['permissions'],
                 $row['full_name']
             );
-    
+
             $logins[] = $login;
         }
-    
+
         return $logins; // Return an array of Login objects
     }
     function delete($id)
@@ -63,5 +52,26 @@ class LoginDAO
         $sql = "DELETE FROM `user` WHERE id_userser = '$id'";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
+    }
+
+
+
+    function insert_user($email, $username, $password)
+    {
+        $sql = "insert into user(email,username,password) value('$email','$username','$password')";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+    }
+
+    function check_email($email)
+    {
+        $sql = "SELECT * FROM user WHERE email = :email"; // Use parameterized query to prevent SQL injection
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch a single row (assuming unique email)
+
+        return $user; // Return the user data if found, or null if not found
     }
 }

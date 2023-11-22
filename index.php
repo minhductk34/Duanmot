@@ -47,10 +47,10 @@ switch ($controller) {
         $ProductController = new ProductController();
         $ProductController->productDetails();
         break;
-    // case 'product_favorite':
-    //     $ProductController = new ProductController();
-    //     $ProductController->productFav();
-    //     break;
+        // case 'product_favorite':
+        //     $ProductController = new ProductController();
+        //     $ProductController->productFav();
+        //     break;
 
     case 'product_add':
         $ProductController = new ProductController();
@@ -81,14 +81,22 @@ switch ($controller) {
         $LoginController = new LoginController();
         $LoginController->login();
         break;
-    case 'signup':
+    case 'register':
         $LoginController = new LoginController();
-        $LoginController->index();
+        $LoginController->signup();
         break;
     case 'logout':
         $LoginController = new LoginController();
         $LoginController->logout();
         break;
+    case 'forgot_password':
+        $LoginController = new LoginController();
+        $LoginController->forgot();
+        break;
+
+
+
+
         //comment
     case 'comment':
         $CommentController = new CommentController();
