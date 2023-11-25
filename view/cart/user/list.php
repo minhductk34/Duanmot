@@ -22,7 +22,7 @@ require_once('view/home/user/page/header.php');
 <?php
 require_once('DAO/CartDAO.php');
 $items = new CartDAO();
-$id = $_GET['id'];
+
 $item = $items->showCart();
 ?>
 <div class="vs-cart-wrapper  space-top space-md-bottom">
@@ -171,7 +171,7 @@ $item = $items->showCart();
                         <tr class="order-total">
                             <td>Order Total</td>
                             <td data-title="Total">
-                                <strong><span class="amount"><bdi><span>$</span><?php echo $total ?></bdi></span></strong>
+                                <strong><span class="amount"><bdi><span>$</span><?php echo $vl->getPrice() * $vl->getQuantity()  ?></bdi></span></strong>
                             </td>
                         </tr>
                     </tfoot>

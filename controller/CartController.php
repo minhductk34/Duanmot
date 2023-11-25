@@ -28,22 +28,21 @@ class CartController
     }
     public function add()
     {
-
-
         // if (isset($_SESSION["permissions"])) {
         //     //code
-
         if (isset($_GET['id']) && $_GET['id'] != '') {
+
             $userId = 1;
             $quantity = 1;
             $typePayment = '';
 
             $this->CartDAO->addToCart($userId, $_GET['id'], $quantity);
-            require_once('view/cart/user/list.php');
+            header('Location: index.php?controller=addCart');
+            exit(); // Đảm bảo dừng việc thực thi các đoạn mã tiếp theo
         } else {
-            echo "Error";
+            header('Location: index.php?controller=listCart');
+            exit(); // Đảm bảo dừng việc thực thi các đoạn mã tiếp theo
         }
-
         // } else {
         //     require_once('404.php');
         // }
@@ -78,7 +77,7 @@ class CartController
             $id = $_GET['id'];
             $this->CartDAO->deleteFromCart($id);
             $this->CartDAO->showCart();
-            require_once('view/cart/user/list.php');
+            header('Location: index.php?controller=listCart');
         } else {
             echo 'lol';
         }

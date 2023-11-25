@@ -112,7 +112,7 @@ switch ($controller) {
         break;
 
         //Cart Controller ----------------------------------------------------------------
-    case 'addCart':
+    case 'listCart':
         $CartController = new CartController();
         $CartController->show();
         break;
@@ -124,7 +124,7 @@ switch ($controller) {
         $CartController = new CartController();
         $CartController->delete();
         break;
-    case 'listCart':
+    case 'addCart':
         $CartController = new CartController();
         $CartController->add();
         // $CartController->show();

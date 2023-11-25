@@ -23,17 +23,21 @@ class CartDAO
         // Lấy thông tin sản phẩm từ bảng "product" dựa trên $productId
         $productDAO = new ProductDAO();
         $product = $productDAO->selectOneItem($productId);
-
-        // // Tính toán thông tin giỏ hàng
-        // $imgProduct = $product->getImage();
-        // $nameProduct = $product->getName();
-        // $priceProduct = $product->getPrice();
-        // $total = $priceProduct * $quantity;
-
-
-        $query = "INSERT INTO cart (id_user, id_product, quantity) VALUES ($userId, $productId, $quantity)";
+        $query = " SELECT quantity FROM cart WHERE id_user =1 AND id_product= $productId";
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
+
+        $quantity = $stmt->fetchColumn();
+        if ($quantity > 0) {
+            $query = "UPDATE cart SET quantity = $quantity+1 WHERE id_user =1 AND id_product= $productId";
+            $stmt = $this->PDO->prepare($query);
+            $stmt->execute();
+        } else {
+
+            $query = "INSERT INTO cart (id_user, id_product, quantity) VALUES ($userId, $productId, 1)";
+            $stmt = $this->PDO->prepare($query);
+            $stmt->execute();
+        }
     }
 
     public function updateCart($productId, $quantity, $total)
