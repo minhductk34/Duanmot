@@ -33,4 +33,33 @@
         $sql = "delete from product where id =".$id_product;
         pdo_execute($sql);
     }
+    function loadone_name_product($id_product){
+        $sql = "select name_product from products where id_product=".$id_product;
+        $name =  pdo_query_value($sql);
+        return $name; 
+    }
+    function loadall_size(){
+        $sql = "select * from size order by id_size desc";
+        $sizes = pdo_query($sql);
+        return $sizes;
+    }
+    function loadall_box(){
+        $sql = "select * from type_box order by id_box desc";
+        $boxs = pdo_query($sql);
+        return $boxs;
+    }
+    function insert_variant($id_product, $id_size, $id_box, $name_variant){
+        $sql = "insert into variant_product (id_product, id_size, id_box, name_variant) values('$id_product','$id_size','$id_box', '$name_variant')";
+        pdo_execute($sql);
+    }
+    function load_box($id_box){
+        $sql = "select type_box from type_box where id_box=".$id_box;
+        $box =  pdo_query_value($sql);
+        return $box;
+    }
+    function load_size($id_size){
+        $sql = "select type from size where id_size=".$id_size;
+        $size =  pdo_query_value($sql);
+        return $size;
+    }
 ?>

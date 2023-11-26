@@ -21,8 +21,8 @@
                             <th>Quantity</th>
                             <th>Total</th>
                             <th>Date Order</th>
-                            <th>Type Payment</th>
                             <th>Status</th>
+                            <th>Type Payment</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -34,6 +34,7 @@
                                     <br> ' . $bill["address"] . '
                                     <br> ' . $bill["number_phone"];
                                 $showDetail = "index.php?act=showDetail&id_bill=" . $id_bill;
+                                $editBill = "index.php?act=editBill&id_bill=" . $id_bill;
                                 if ($status == 0) {
                                     $check = "Đơn hàng mới";
                                 } elseif ($status == 1) {
@@ -60,6 +61,7 @@
                                     <td>' . $check . '</td>
                                     <td>' . $pay . '</td>
                                     <td><a href = "' . $showDetail . '"><input type="button" value="Show Detail"></a>
+                                        <a href = "' . $editBill . '"><input type="button" value="Update Status"></a>
                                     </td>
                                     </tr>';
                             }
