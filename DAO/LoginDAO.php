@@ -74,4 +74,12 @@ class LoginDAO
 
         return $user; // Return the user data if found, or null if not found
     }
+
+    function update_user($id_user, $username, $password, $email, $address, $phone)
+    {
+        $sql = "update user set username='" . $username . "', password='" . $password . "', email='" . $email . "',  address='" . $address . "', number_phone='" . $phone . "' where id_user=" . $id_user;
+        var_dump($sql);
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+    }
 }

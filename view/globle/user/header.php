@@ -103,7 +103,7 @@
                                 <a href="index.php?controller=home">Home</a>
                             </li>
                             <li class="menu-item-has-children">
-                            <a href="index.php?controller=product_show">Shop</a>
+                                <a href="index.php?controller=product_show">Shop</a>
                                 <!-- <a href="index.php?controller=product_show">Shop</a> -->
                                 <ul class="sub-menu">
                                     <li><a href="index.php?controller=product_show">Shop</a></li>
@@ -129,10 +129,10 @@
                                 </ul>
                             </li>
                             <li class="mega-menu-wrap menu-item">
-                            <a href="index.php?controller=contact">Contact Us</a>
+                                <a href="index.php?controller=contact">Contact Us</a>
                             </li>
                         </ul>
-                    
+
                         </ul>
                     </nav>
                     <button class="vs-menu-toggle d-inline-block d-lg-none">
@@ -142,7 +142,7 @@
             </div>
         </div>
     </div>
-    
+
     <!--==============================
     Mobile Menu
   ============================== -->
@@ -316,9 +316,20 @@
                                 <i class="far fa-search"></i>
                             </button>
                             <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
-                            <button class="sideMenuToggler has-badge" type="button">
-                                <i class="fal fa-shopping-cart"></i><span class="badge">0</span>
+                            <button class="sideMenuToggler" type="button" onclick="redirectToCart()">
+                                <i class="fal fa-shopping-cart" data-href="index.php?controller=listCart"></i>
+                                <span class="badge">0</span>
                             </button>
+
+                            <script>
+                                function redirectToCart() {
+                                    var cartIcon = document.querySelector('.sideMenuToggler i');
+                                    var href = cartIcon.getAttribute('data-href');
+                                    if (href) {
+                                        window.location.href = href;
+                                    }
+                                }
+                            </script>
                         </div>
                     </div>
                     <div class="col-auto d-block d-lg-none">

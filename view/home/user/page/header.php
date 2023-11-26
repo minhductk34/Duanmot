@@ -293,6 +293,7 @@ require_once('DAO/CartDAO.php');
                 </div>
             </div>
         </div>
+        
     </div>
     <!--==============================
         Header Area
@@ -309,7 +310,7 @@ require_once('DAO/CartDAO.php');
                     <button type="button" class="vs-menu-toggle d-inline-block d-lg-none"><i class="far fa-bars"></i></button>
                     <div class="head-top-links text-body2 d-none d-lg-block">
                         <a href="index.php?controller=wishlistCart" class="icon-btn has-badge bg3 me-3"><i class="fal fa-heart"></i><span class="badge">0</span></a>
-                        <a href="#" class="icon-btn has-badge bg2 me-4 sideMenuToggler"><i class="fal fa-shopping-cart"></i><span class="badge">0</span></a>
+                        <a href="index.php?controller=listCart" class="icon-btn has-badge bg2 me-4 "><i class="fal fa-shopping-cart"></i><span class="badge">0</span></a>
                         <span class="icon-btn bg4"><i class="fal fa-user"></i></span>
                         <ul>
                             <li><a href="index.php?controller=login">Login</a></li>

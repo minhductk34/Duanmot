@@ -22,8 +22,8 @@ require_once('view/home/user/page/header.php');
 <?php
 require_once('DAO/CartDAO.php');
 $items = new CartDAO();
-
-$item = $items->showCart();
+$item = $items->showCart($id_user);
+// print_r($item);
 ?>
 <div class="vs-cart-wrapper  space-top space-md-bottom">
     <div class="container">
@@ -68,31 +68,8 @@ $item = $items->showCart();
                             <a href="index.php?controller=deleteCart&id=<?php echo $vl->getProductId() ?>" class="remove"><i class="fal fa-trash-alt"></i></a>
                         </td>
                     </tr>
-                    <?php } ?>
-                    <!-- <tr class="cart_item">
-                        <td data-title="Product">
-                            <a class="cart-productimage" href="shop-details.html"><img width="91" height="91" src="./src/assets/img/cart/cat-img-2.png" alt="Image"></a>
-                        </td>
-                        <td data-title="Name">
-                            <a class="cart-productname" href="shop-details.html">Parmesan Vegetable</a>
-                        </td>
-                        <td data-title="Price">
-                            <span class="amount"><bdi><span>$</span>18</bdi></span>
-                        </td>
-                        <td data-title="Quantity">
-                            <div class="quantity">
-                                <button class="quantity-minus qut-btn"><i class="far fa-minus"></i></button>
-                                <input type="number" class="qty-input" value="1" min="1" max="99">
-                                <button class="quantity-plus qut-btn"><i class="far fa-plus"></i></button>
-                            </div>
-                        </td>
-                        <td data-title="Total">
-                            <span class="amount"><bdi><span>$</span>18</bdi></span>
-                        </td>
-                        <td data-title="Remove">
-                            <a href="shop-details.html" class="remove"><i class="fal fa-trash-alt"></i></a>
-                        </td>
-                    </tr> -->
+                 
+                   
                     <tr>
                         <td colspan="6" class="actions">
                             <div class="vs-cart-coupon">
@@ -176,8 +153,9 @@ $item = $items->showCart();
                         </tr>
                     </tfoot>
                 </table>
+                   <?php } ?>
                 <div class="wc-proceed-to-checkout mb-30">
-                    <a href="shop-details.html" class="vs-btn rounded-1 shadow-none">Proceed to checkout</a>
+                    <a href="index.php?controller=checkOut" class="vs-btn rounded-1 shadow-none" name="checkOut" >Proceed to checkout</a>
                 </div>
             </div>
         </div>

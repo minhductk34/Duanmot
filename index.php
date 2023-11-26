@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+// var_dump( $_SESSION['username']);
+
+
 // require_once các tệp và khởi tạo các controller
 require_once 'controller/HomeController.php';
 require_once 'controller/ProductController.php';
@@ -7,6 +11,7 @@ require_once 'controller/LoginController.php';
 require_once 'controller/UserController.php';
 require_once 'controller/CategoryController.php';
 require_once 'controller/CartController.php';
+require_once 'controller/BillController.php';
 $controller = $_GET['controller'] ?? 'home';
 
 switch ($controller) {
@@ -94,6 +99,11 @@ switch ($controller) {
         $LoginController->forgot();
         break;
 
+    case 'edit_user':
+        $LoginController = new LoginController();
+        $LoginController->edit();
+        break;
+
 
 
 
@@ -115,11 +125,12 @@ switch ($controller) {
     case 'listCart':
         $CartController = new CartController();
         $CartController->show();
+        // die($_SESSION['username']);
         break;
-    case 'updateCart':
-        $CartController = new CartController();
-        $CartController->edit();
-        break;
+        // case 'updateCart':
+        //     $CartController = new CartController();
+        //     $CartController->edit();
+        //     break;
     case 'deleteCart':
         $CartController = new CartController();
         $CartController->delete();
@@ -143,7 +154,7 @@ switch ($controller) {
         $BillController = new BillController();
         $BillController->add();
         break;
-    case 'listBill':
+    case 'billConfirm':
         $BillController = new BillController();
         $BillController->show();
         break;

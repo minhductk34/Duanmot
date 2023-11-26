@@ -21,9 +21,10 @@ class CartDAO
     public function addToCart($userId, $productId, $quantity)
     {
         // Lấy thông tin sản phẩm từ bảng "product" dựa trên $productId
+
         $productDAO = new ProductDAO();
         $product = $productDAO->selectOneItem($productId);
-        $query = " SELECT quantity FROM cart WHERE id_user =1 AND id_product= $productId";
+        $query = " SELECT quantity FROM cart WHERE id_user = $userId AND id_product= $productId";
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
 
@@ -62,11 +63,16 @@ class CartDAO
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function showCart()
+    public function showCart($id_user)
     {
 
-
-        $query = "SELECT `id_cart`, `id_user`,id_product, products.name_product,products.image_product,products.price_product, cart.quantity FROM `cart` JOIN products on  products.id  = cart.id_product WHERE id_user = 1 ";
+        $query = "SELECT cart.id_cart, cart.id_user, cart.id_product, products.name_product,
+        products.image_product, products.price_product, cart.quantity
+        FROM cart JOIN products 
+        ON products.id_product = cart.id_product 
+        WHERE cart.id_user = $id_user";
+        // die($query);
+        
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
 

@@ -25,7 +25,7 @@ class ProductDAO
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new Product($row['id'], $row['name_product'], $row['desc_product'], $row['image_product'], $row['price_product'], $row['status'], $row['quantity'], $row['id_category'], $row['id_discount']);
+            $product = new Product($row['id_product'], $row['name_product'], $row['desc_product'], $row['image_product'], $row['price_product'], $row['status'], $row['quantity'], $row['id_cat'], $row['id_discount']);
             $products[] = $product;
         }
         // print_r($products);
@@ -46,14 +46,14 @@ class ProductDAO
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $product = new Product(
-                $row['id'],
+                $row['id_product'],
                 $row['name_product'],
                 $row['desc_product'],
                 $row['image_product'],
                 $row['price_product'],
                 $row['status'],
                 $row['quantity'],
-                $row['id_category'],
+                $row['id_cat'],
                 $row['id_discount']
             );
 
@@ -67,21 +67,21 @@ class ProductDAO
     {
         $sql = "SELECT p.*, c.name_category, c.desc_category
         FROM products p
-        JOIN category c ON c.id_category = p.id_category 
-        WHERE c.name_category = :categoryName 
+        JOIN category c ON c.id_category = p.id_cat 
+        WHERE c.name_category = '$categoryName'
         ORDER BY c.desc_category ASC, p.status
-        LIMIT 2";
+        LIMIT 2;";
 
         //Nếu k hiểu đọc cái dưới
         // $sql = "SELECT products.*, category.name_category AS name_category, category.desc_category AS desc_category
         // FROM products
-        // JOIN category ON category.id_category = products.id_category
+        // JOIN category ON category.id_cat = products.id_cat
         // WHERE category.name_category = ''
         // ORDER BY category.desc_category
         // ASC, products.status";
 
         $stmt = $this->PDO->prepare($sql);
-        $stmt->execute([':categoryName' => $categoryName]);
+        $stmt->execute();
 
         $products = array();
         $category = null;
@@ -89,7 +89,7 @@ class ProductDAO
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             if ($category === null) {
                 $category = new Category(
-                    $row['id_category'],
+                    $row['id_cat'],
                     $row['name_category'],
                     $row['desc_category'],
                     $row['status']
@@ -97,14 +97,14 @@ class ProductDAO
             }
 
             $product = new Product(
-                $row['id'],
+                $row['id_product'],
                 $row['name_product'],
                 $row['desc_product'],
                 $row['image_product'],
                 $row['price_product'],
                 $row['status'],
                 $row['quantity'],
-                $row['id_category'],
+                $row['id_cat'],
                 $row['id_discount']
             );
             $products[] = $product;
@@ -149,17 +149,17 @@ class ProductDAO
 
 
 
-            $id = $row['id'];
+            $id = $row['id_product'];
             $name_product = $row['name_product'];
             $image_product = $row['image_product'];
             $price_product = $row['price_product'];
             $desc_product = $row['desc_product'];
             $status = $row['status'];
             $quantity = $row['quantity'];
-            $id_category = $row['id_category'];
+            $id_cat = $row['id_cat'];
             $id_discount = $row['id_discount'];
 
-            $product = new Product($id, $name_product, $image_product, $price_product, $desc_product, $status, $quantity, $id_category, $id_discount);
+            $product = new Product($id, $name_product, $image_product, $price_product, $desc_product, $status, $quantity, $id_cat, $id_discount);
             $products[] = $product;
         }
 
@@ -167,7 +167,7 @@ class ProductDAO
     }
 
     // thêm
-    public function addPRO($name_product, $desc_product, $image_product, $price_product, $status, $quantity, $id_category, $id_discount)
+    public function addPRO($name_product, $desc_product, $image_product, $price_product, $status, $quantity, $id_cat, $id_discount)
     {
         // Lưu file
         $fileName = $image_product['name'];
@@ -176,7 +176,7 @@ class ProductDAO
         move_uploaded_file($tmp, $mov);
 
         // Thêm vào cơ sở dữ liệu
-        $sql = "INSERT INTO `products`(`name_product`, `desc_product`, `image_product`, `price_product`, `status`, `quantity`, `id_category`, `id_discount`) VALUES ('$name_product', '$desc_product', '$fileName', '$price_product', '$status', '$quantity', '$id_category', '$id_discount')";
+        $sql = "INSERT INTO `products`(`name_product`, `desc_product`, `image_product`, `price_product`, `status`, `quantity`, `id_cat`, `id_discount`) VALUES ('$name_product', '$desc_product', '$fileName', '$price_product', '$status', '$quantity', '$id_cat', '$id_discount')";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
@@ -197,7 +197,7 @@ class ProductDAO
         $stmt->execute();
     }
     // sửa tất
-    public function updateProduct($id, $name_product, $desc_product, $image_product, $price_product, $status, $quantity, $id_category, $id_discount)
+    public function updateProduct($id, $name_product, $desc_product, $image_product, $price_product, $status, $quantity, $id_cat, $id_discount)
     {
         $fileName = '';
         if ($image_product['name'] !== '') {
@@ -205,14 +205,14 @@ class ProductDAO
             move_uploaded_file($image_product['tmp_name'], 'assets/imgs/item/' . $fileName);
         }
 
-        $sql = "UPDATE `products` SET `name_product` = ?, `price_product` = ?, `desc_product` = ?, `status` = ?, `quantity` = ?, `id_category` = ?, `id_discount` = ?, `image_product` = ? WHERE `id` = ?";
+        $sql = "UPDATE `products` SET `name_product` = ?, `price_product` = ?, `desc_product` = ?, `status` = ?, `quantity` = ?, `id_cat` = ?, `id_discount` = ?, `image_product` = ? WHERE `id` = ?";
         $stmt = $this->PDO->prepare($sql);
-        $stmt->execute([$name_product, $price_product, $desc_product, $status, $quantity, $id_category, $id_discount, $fileName, $id]);
+        $stmt->execute([$name_product, $price_product, $desc_product, $status, $quantity, $id_cat, $id_discount, $fileName, $id]);
     }
     // Select item with id product
     public function selectOneItem($id)
     {
-        $sql = "SELECT * FROM `products` WHERE id = :id";
+        $sql = "SELECT * FROM `products` WHERE  id_product = :id";
         $stmt = $this->PDO->prepare($sql);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -221,14 +221,14 @@ class ProductDAO
 
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $product = new Product(
-                $row['id'],
+                $row['id_product'],
                 $row['name_product'],
                 $row['desc_product'],
                 $row['image_product'],
                 $row['price_product'],
                 $row['status'],
                 $row['quantity'],
-                $row['id_category'],
+                $row['id_cat'],
                 $row['id_discount']
             );
         }
@@ -239,7 +239,7 @@ class ProductDAO
     public function lq($categories)
     {
         $sql = "SELECT products.* FROM `products`
-                JOIN category ON category.id_d = products.id_category
+                JOIN category ON category.id_d = products.id_cat
                 WHERE category.id_d = :categories";
         $stmt = $this->PDO->prepare($sql);
         $stmt->bindValue(':categories', $categories, PDO::PARAM_INT);
@@ -250,14 +250,14 @@ class ProductDAO
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
             $product = new Product(
-                $row['id'],
+                $row['id_product'],
                 $row['name_product'],
                 $row['desc_product'],
                 $row['image_product'],
                 $row['price_product'],
                 $row['status'],
                 $row['quantity'],
-                $row['id_category'],
+                $row['id_cat'],
                 $row['id_discount']
             );
             $products[] = $product;
@@ -268,10 +268,10 @@ class ProductDAO
     // dem sp
     public function statistics()
     {
-        $sql = "SELECT category.name_category, COUNT(products.id_category) AS so_luong
+        $sql = "SELECT category.name_category, COUNT(products.id_cat) AS so_luong
             FROM products
-            JOIN category ON category.id = products.id_category
-            GROUP BY products.id_category";
+            JOIN category ON category.id = products.id_cat
+            GROUP BY products.id_cat";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         // Lấy kết quả dưới dạng mảng kết hợp
@@ -288,7 +288,7 @@ class ProductDAO
         $products = array();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $product = new Product($row['id'], $row['name_product'], $row['desc_product'], $row['image_product'], $row['price_product'], $row['status'], $row['quantity'], $row['id_category'], $row['id_discount']);
+            $product = new Product($row['id_product'], $row['name_product'], $row['desc_product'], $row['image_product'], $row['price_product'], $row['status'], $row['quantity'], $row['id_cat'], $row['id_discount']);
             $products[] = $product;
         }
 
@@ -303,7 +303,7 @@ class ProductDAO
         $products = array();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $product = new Product($row['id'], $row['name_product'], $row['desc_product'], $row['image_product'], $row['price_product'], $row['status'], $row['quantity'], $row['id_category'], $row['id_discount']);
+            $product = new Product($row['id_product'], $row['name_product'], $row['desc_product'], $row['image_product'], $row['price_product'], $row['status'], $row['quantity'], $row['id_cat'], $row['id_discount']);
             $products[] = $product;
         }
 

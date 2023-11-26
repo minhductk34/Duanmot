@@ -16,36 +16,30 @@ class CartController
     }
     public function show()
     {
-        //echo 'listCart';
-        // if (isset($_SESSION["permissions"])) {
-        //     //code
-
-        $this->CartDAO->showCart();
+        // var_dump($_SESSION['username']);
+        $user=$_SESSION['username'];
+        $id_user = $user['id_user'];
+        
+        $this->CartDAO->showCart($id_user);
         require_once('view/cart/user/list.php');
-        // } else {
-        //     require_once('404.php');
-        // }
     }
     public function add()
     {
-        // if (isset($_SESSION["permissions"])) {
-        //     //code
         if (isset($_GET['id']) && $_GET['id'] != '') {
-
-            $userId = 1;
-            $quantity = 1;
+            $user=$_SESSION['username'];
+            $id_user = $user['id_user'];
+            $userId = $id_user;
+            $quantity = '';
             $typePayment = '';
 
             $this->CartDAO->addToCart($userId, $_GET['id'], $quantity);
             header('Location: index.php?controller=addCart');
-            exit(); // Đảm bảo dừng việc thực thi các đoạn mã tiếp theo
+            exit(); 
         } else {
             header('Location: index.php?controller=listCart');
-            exit(); // Đảm bảo dừng việc thực thi các đoạn mã tiếp theo
+            exit();
         }
-        // } else {
-        //     require_once('404.php');
-        // }
+       
     }
     public function edit()
     {
@@ -75,11 +69,13 @@ class CartController
         if (isset($_GET['id'])) {
             // echo 'deleteCart';
             $id = $_GET['id'];
+            $user=$_SESSION['username'];
+            $id_user = $user['id_user'];
             $this->CartDAO->deleteFromCart($id);
-            $this->CartDAO->showCart();
+            $this->CartDAO->showCart($id_user);
             header('Location: index.php?controller=listCart');
         } else {
-            echo 'lol';
+            // echo 'lol';
         }
         // header('Location: test.php');;
 
