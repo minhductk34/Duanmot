@@ -19,7 +19,7 @@ require_once('view/home/user/page/header.php');
 
                         $items = new BillDAO();
                         $item =  $items->showBill($id_user);
-                        var_dump($item);
+                        // var_dump($item);
                         ?>
                         <h2 class="h4">Billing Details</h2>
                         <div class="row gx-2">
@@ -52,7 +52,7 @@ require_once('view/home/user/page/header.php');
             require_once('DAO/BillDAO.php');
             $cart = new CartDAO();
             $cart_ =  $cart->showCart($id_user);
-            var_dump($cart_);
+            // var_dump($cart_);
             ?>
             <form class="woocommerce-cart-form" id="checkout-form">
                 <table class="cart_table mb-20">

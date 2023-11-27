@@ -125,12 +125,9 @@ switch ($controller) {
     case 'listCart':
         $CartController = new CartController();
         $CartController->show();
-        // die($_SESSION['username']);
+      
         break;
-        // case 'updateCart':
-        //     $CartController = new CartController();
-        //     $CartController->edit();
-        //     break;
+      
     case 'deleteCart':
         $CartController = new CartController();
         $CartController->delete();
@@ -138,7 +135,7 @@ switch ($controller) {
     case 'addCart':
         $CartController = new CartController();
         $CartController->add();
-        // $CartController->show();
+      
         break;
     case 'wishlistCart':
         $CartController = new CartController();

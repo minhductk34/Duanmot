@@ -144,12 +144,35 @@ class BillDAO
 
     public function showBill_details($id_bill)
     {
-        $query =  "SELECT bd.id_bill, bd.id_product, bd.name_product, bd.quantity AS bill_detail_quantity,
+        $query =  "SELECT
+        bd.id_bill,
+        bd.id_product,
+        bd.name_product,
+        bd.quantity AS bill_detail_quantity,
         bd.price_product AS bill_detail_price,
-        b.number_phone, b.address, b.email, b.full_name, b.type_payment, b.create_at, b.bill_quantity 
-        FROM bill_details bd 
-        JOIN bill b ON bd.id_bill = b.id_bill 
-        WHERE bd.id_bill =$id_bill";
+        MAX(b.number_phone) AS number_phone,
+        MAX(b.address) AS address,
+        MAX(b.email) AS email,
+        MAX(b.full_name) AS full_name,
+        b.type_payment,
+        b.create_at,
+        b.bill_quantity
+    FROM
+        bill_details bd
+    JOIN
+        bill b ON bd.id_bill = b.id_bill
+    WHERE
+        bd.id_bill = $id_bill
+    GROUP BY
+        bd.id_bill,
+        bd.id_product,
+        bd.name_product,
+        bd.quantity,
+        bd.price_product,
+        b.type_payment,
+        b.create_at,
+        b.bill_quantity;
+    ";
         $stmt = $this->PDO->prepare($query);
         // die($query);
         $stmt->execute();

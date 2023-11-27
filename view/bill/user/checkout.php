@@ -15,14 +15,12 @@ require_once('view/home/user/page/header.php');
                     <div class="col-lg-6">
                         <?php
                         require_once('DAO/BillDAO.php');
-                     
                         $billDAO = new BillDAO();
                         $user = $_SESSION['username'];
                         $id_user = $user['id_user'];
                         $id_bill_ =  $billDAO->selectId($id_user);
-
                         $data = $billDAO->showBill_details($id_bill_);
-                      var_dump($data);
+                    //   var_dump($data);
 
 
                         ?>

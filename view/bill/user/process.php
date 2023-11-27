@@ -7,12 +7,12 @@
 
  <?php
     $data = $_SESSION["username"];
-?>
+    ?>
 
  <div class="vs-checkout-wrapper space-top space-md-bottom">
      <div class="container">
          <div class="woocommerce-form-login-toggle">
-             <div class="woocommerce-info">Returning customer? <a href="#" class="showlogin">Click here to login</a>
+             <div class="woocommerce-info">Your information
              </div>
          </div>
          <div class="row">
@@ -34,11 +34,11 @@
                  </form>
              </div>
          </div>
-         <div class="woocommerce-form-coupon-toggle">
+         <!-- <div class="woocommerce-form-coupon-toggle">
              <div class="woocommerce-info">Have a coupon? <a href="#" class="showcoupon">Click here to enter your
                      code</a> </div>
-         </div>
-         <div class="row">
+         </div> -->
+         <!-- <div class="row">
              <div class="col-lg-4">
                  <form action="index.php?controller=addToBill" class="woocommerce-form-coupon">
                      <div class="form-group">
@@ -50,7 +50,7 @@
                      </div>
                  </form>
              </div>
-         </div>
+         </div> -->
 
 
          <form action="index.php?controller=addToBill" method="post" id="myForm">
@@ -69,18 +69,14 @@
                                      <option>Korea</option>
                                  </select>
                              </div>
-                             <div class="col-md-6 form-group">
+                             <div class="col-12 form-group">
                                  <label>First Name *</label>
                                  <input type="text" class="form-control" name="first_name" placeholder="First Name">
                              </div>
-                             <div class="col-md-6 form-group">
+                             <div class="col-12 form-group">
                                  <label>Last Name *</label>
                                  <input type="text" class="form-control" name="last_name" placeholder="Last Name">
                              </div>
-                             <!-- <div class="col-12 form-group">
-                                 <label>Company Name</label>
-                                 <input type="text" class="form-control" name="company_name" placeholder="Your Company Name">
-                             </div> -->
                              <div class="col-12 form-group">
                                  <label>Address *</label>
                                  <input type="text" class="form-control" name="street_address" placeholder="Street Address">
@@ -89,14 +85,6 @@
                              <div class="col-12 form-group">
                                  <label>Town / City *</label>
                                  <input type="text" class="form-control" name="city" placeholder="Town / City">
-                             </div>
-                             <div class="col-md-6 form-group">
-                                 <label>Country *</label>
-                                 <input type="text" class="form-control" name="country" placeholder="Country">
-                             </div>
-                             <div class="col-md-6 form-group">
-                                 <label>Postcode / Zip *</label>
-                                 <input type="text" class="form-control" name="postcode" placeholder="Postcode / Zip">
                              </div>
                              <div class="col-12 form-group">
                                  <label>Contact Info *</label>
@@ -115,7 +103,7 @@
                 $items = new CartDAO();
                 $id_user = $data['id_user'];
                 $item = $items->showCart($id_user);
-                
+
                 ?>
              <form class="woocommerce-cart-form" id="checkout-form">
                  <table class="cart_table mb-20">
@@ -185,8 +173,8 @@
              <div class="pt-10 pt-lg-5 mb-30">
                  <div class="woocommerce-checkout-payment">
                      <div class="form-row place-order">
-                     <button type="button" class="vs-btn" name="placeOrder" onclick="submitForm()">Place order</button>
-                     <!-- <input type="submit" name="place_Order"onclick="submitForm()" > -->
+                         <button type="button" class="vs-btn" name="placeOrder" onclick="submitForm()">Place order</button>
+                         <!-- <input type="submit" name="place_Order"onclick="submitForm()" > -->
                      </div>
                  </div>
              </div>

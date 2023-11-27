@@ -85,8 +85,6 @@ class BillController
 
     public function process()
     {
-        //code hereư
-        // var_dump($_SESSION['username']);
 
         if (isset($_SESSION["username"])) {
 

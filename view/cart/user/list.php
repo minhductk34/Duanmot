@@ -23,7 +23,7 @@ require_once('view/home/user/page/header.php');
 require_once('DAO/CartDAO.php');
 $items = new CartDAO();
 $item = $items->showCart($id_user);
-var_dump($item);
+
 // print_r($item);
 ?>
 <div class="vs-cart-wrapper  space-top space-md-bottom">
@@ -44,29 +44,29 @@ var_dump($item);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($item as $key => $vl) { ?>
+                    <?php foreach ($item as $key => $value) { ?>
                         <tr class="cart_item">
                             <td data-title="Product">
                                 <a class="cart-productimage" href="shop-details.html"><img width="91" height="91" src="./src/assets/img/shop/product-3-3.png" alt="Image"></a>
                             </td>
                             <td data-title="Name">
-                                <a class="cart-productname" href="shop-details.html"><?php echo $vl->getNameProduct(); ?></a>
+                                <a class="cart-productname" href="shop-details.html"><?php echo $value->getNameProduct(); ?></a>
                             </td>
                             <td data-title="Price">
-                                <span class="amount"><bdi><span>$</span><?php echo $vl->getPrice(); ?></bdi></span>
+                                <span class="amount"><bdi><span>$</span><?php echo $value->getPrice(); ?></bdi></span>
                             </td>
                             <td data-title="Quantity">
                                 <div class="quantity">
                                     <button class="quantity-minus qut-btn"><i class="far fa-minus"></i></button>
-                                    <input type="number" class="qty-input" value="<?php echo $vl->getQuantity()  ?>" min="1" max="99">
+                                    <input type="number" class="qty-input" value="<?php echo $value->getQuantity()  ?>" min="1" max="99">
                                     <button class="quantity-plus qut-btn"><i class="far fa-plus"></i></button>
                                 </div>
                             </td>
                             <td data-title="Total">
-                                <span class="amount"><bdi><span>$</span><?php echo $vl->getPrice() * $vl->getQuantity()  ?></bdi></span>
+                                <span class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity()  ?></bdi></span>
                             </td>
                             <td data-title="Remove">
-                                <a href="index.php?controller=deleteCart&id=<?php echo $vl->getProductId() ?>" class="remove"><i class="fal fa-trash-alt"></i></a>
+                                <a href="index.php?controller=deleteCart&id=<?php echo $value->getProductId() ?>" class="remove"><i class="fal fa-trash-alt"></i></a>
                             </td>
                         </tr>
 
@@ -92,7 +92,7 @@ var_dump($item);
                         <tr>
                             <td>Cart Subtotal</td>
                             <td data-title="Cart Subtotal">
-                                <span class="amount"><bdi><span>$</span><?php echo $vl->getPrice() * $vl->getQuantity()  ?></bdi></span>
+                                <span class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity()  ?></bdi></span>
                             </td>
                         </tr>
                         <tr class="shipping">
@@ -149,7 +149,7 @@ var_dump($item);
                         <tr class="order-total">
                             <td>Order Total</td>
                             <td data-title="Total">
-                                <strong><span class="amount"><bdi><span>$</span><?php echo $vl->getPrice() * $vl->getQuantity()  ?></bdi></span></strong>
+                                <strong><span class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity()  ?></bdi></span></strong>
                             </td>
                         </tr>
                     </tfoot>

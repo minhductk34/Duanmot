@@ -16,7 +16,7 @@ class CartController
     }
     public function show()
     {
-        // var_dump($_SESSION['username']);
+        
         $user=$_SESSION['username'];
         $id_user = $user['id_user'];
         
@@ -41,26 +41,26 @@ class CartController
         }
        
     }
-    public function edit()
-    {
-        // //echo 'edittCart';
-        // if (isset($_SESSION["permissions"])) {
-        //     //code
-        if (isset($_POST['updateCart']) && $_POST['updateCart'] != '') {
-            $userId = $_POST['userId'];
-            $productId = $_POST['productId'];
-            $quantity = $_POST['quantity'];
-            $total = $_POST['total'];
+    // public function edit()
+    // {
+    //     // //echo 'edittCart';
+    //     // if (isset($_SESSION["permissions"])) {
+    //     //     //code
+    //     if (isset($_POST['updateCart']) && $_POST['updateCart'] != '') {
+    //         $userId = $_POST['userId'];
+    //         $productId = $_POST['productId'];
+    //         $quantity = $_POST['quantity'];
+    //         $total = $_POST['total'];
 
-            $this->CartDAO->updateCart($productId, $quantity, $total);
-            require_once('view/cart/user/update.php');
-        }
+    //         $this->CartDAO->updateCart($productId, $quantity, $total);
+    //         require_once('view/cart/user/update.php');
+    //     }
 
-        require_once('view/cart/user/update.php');
-        // } else {
-        //     require_once('404.php');
-        // }
-    }
+    //     require_once('view/cart/user/update.php');
+    //     // } else {
+    //     //     require_once('404.php');
+    //     // }
+    // }
     public function delete()
     {
         //echo 'deleteCart';
