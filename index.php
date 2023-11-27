@@ -162,13 +162,17 @@ switch ($controller) {
         $BillController = new BillController();
         $BillController->status();
         break;
-    case 'editBill':
+    case 'showBill_details':
         $BillController = new BillController();
-        $BillController->edit();
+        $BillController->showBill_detail();
+        break;
+    case 'process':
+        $BillController = new BillController();
+        $BillController->process();
         break;
     case 'checkOut':
         $BillController = new BillController();
-        $BillController->checkout();
+        $BillController->checkOut();
         break;
     case 'contact':
         $homeController = new HomeController();

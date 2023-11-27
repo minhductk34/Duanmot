@@ -20,7 +20,6 @@ class BillController
         $user = $_SESSION['username'];
         $id_user = $user['id_user'];
         // echo $id_user;
-
         $this->BillDAO->showBill($id_user);
         require_once('view/bill/user/billConfirm.php');
     }
@@ -46,12 +45,9 @@ class BillController
             $email = $_POST["email"];
 
             $type_payment = null;
-            // $quantity = null;
-            // $total = null;
-            // $id_product = null;
+
             $this->BillDAO->createBill($id_user, $phone, $address, $email, $full_name,  $type_payment);
             header('Location:index.php?controller=billConfirm');
-
         } else {
             header('Location:index.php?controller=login');
         }
@@ -87,21 +83,52 @@ class BillController
         }
     }
 
-    public function checkout()
+    public function process()
     {
         //code hereư
         // var_dump($_SESSION['username']);
 
         if (isset($_SESSION["username"])) {
 
-
             if (isset($_POST['checkOut'])) {
 
-                header('Location:index.php?controller=checkout');
+                header('Location:index.php?controller=process');
             }
         } else {
             header('Location:index.php?controller=login');
         }
+        require_once('view/bill/user/process.php');
+    }
+
+    public function checkOut()
+    {
+        $user = $_SESSION['username'];
+        $id_user = $user['id_user'];
+        // id gân nhất 
+        $id_bill = $this->BillDAO->selectId($id_user);
+
+ 
+
+        $cart = new CartDAO();
+        $cart_ =  $cart->showCart($id_user);
+
+        foreach ($cart_ as $cart) {
+            $this->BillDAO->addBill_details( $id_bill, $cart->getProductId(),$cart->getNameProduct(), $cart->getQuantity(), $cart->getPrice());
+        }
+        $this->CartDAO->deleteFromCart($id_user);
+
+        header('Location:index.php?controller=showBill_details');
+        // require_once('view/bill/user/checkout.php');
+    }
+
+    public function showBill_detail(){
+
+        $user = $_SESSION['username'];
+        $id_user = $user['id_user'];
+        $id_bill=  $this->BillDAO->selectId($id_user);
+        $this->BillDAO->showBill_details($id_bill);
+       
+
         require_once('view/bill/user/checkout.php');
     }
 }

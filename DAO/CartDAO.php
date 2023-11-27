@@ -10,14 +10,7 @@ class CartDAO
         $this->PDO = $pdo;
     }
 
-    // public function addToCart($userId, $productId, $imgProduct, $nameProduct, $priceProduct, $quantity, $total, $billId)
-    // {
-    //     $query = "INSERT INTO cart (id_user, id_product, img_product, name_product, price_product, quantity, total, id_bill) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    //     $stmt = $this->PDO->prepare($query);
-    //     $stmt->execute([1, $productId, $imgProduct, $nameProduct, $priceProduct, $quantity, $total, $billId]);
-    //     die($query);
-    //     // print_r($query);
-    // }
+
     public function addToCart($userId, $productId, $quantity)
     {
         // Lấy thông tin sản phẩm từ bảng "product" dựa trên $productId
@@ -27,17 +20,27 @@ class CartDAO
         $query = " SELECT quantity FROM cart WHERE id_user = $userId AND id_product= $productId";
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
-
+        // die($query);
         $quantity = $stmt->fetchColumn();
+
+        $query= "SELECT `id_user` FROM `cart` WHERE 1";
+        $stmt = $this->PDO->prepare($query);
+        $stmt->execute();
+        $id_user_ = $stmt->fetchColumn();
+
         if ($quantity > 0) {
-            $query = "UPDATE cart SET quantity = $quantity+1 WHERE id_user =1 AND id_product= $productId";
+            $query = "UPDATE cart SET quantity = $quantity+1 WHERE id_user = $userId AND id_product= $productId";
             $stmt = $this->PDO->prepare($query);
             $stmt->execute();
-        } else {
+            // die($query);
+        }
+        
+        else {
 
             $query = "INSERT INTO cart (id_user, id_product, quantity) VALUES ($userId, $productId, 1)";
             $stmt = $this->PDO->prepare($query);
             $stmt->execute();
+            // die($query);
         }
     }
 
@@ -48,9 +51,9 @@ class CartDAO
         $stmt->execute([$quantity, $total, $productId]);
     }
 
-    public function deleteFromCart($id)
+    public function deleteFromCart($userId)
     {
-        $query = "DELETE FROM cart WHERE id_product = $id";
+        $query = "DELETE FROM cart WHERE id_user = $userId";
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
     }
@@ -65,16 +68,14 @@ class CartDAO
     }
     public function showCart($id_user)
     {
-
         $query = "SELECT cart.id_cart, cart.id_user, cart.id_product, products.name_product,
-        products.image_product, products.price_product, cart.quantity
-        FROM cart JOIN products 
-        ON products.id_product = cart.id_product 
-        WHERE cart.id_user = $id_user";
-        // die($query);
-        
+            products.image_product, products.price_product, cart.quantity
+            FROM cart JOIN products 
+            ON products.id_product = cart.id_product 
+            WHERE cart.id_user = $id_user";
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
+
 
         $lists = []; // Khởi tạo danh sách rỗng
 
@@ -86,5 +87,26 @@ class CartDAO
         }
 
         return $lists;
+    }
+
+    public function total_cart($id_user)
+    {
+
+        $query = "SELECT total_cart FROM cart WHERE id_user = $id_user";
+        $stmt = $this->PDO->prepare($query);
+        $stmt->execute();
+        $cart_total = $stmt->fetchColumn();
+
+
+        $query = "SELECT id_user FROM `cart` WHERE 1";
+        $stmt = $this->PDO->prepare($query);
+        $stmt->execute();
+        $id_user_ = $stmt->fetchColumn();
+
+        if ($cart_total = 0 && $id_user_ == $id_user) {
+            $query = "UPDATE cart SET total_cart = $cart_total+1 WHERE id_user =$id_user";
+            $stmt = $this->PDO->prepare($query);
+            $stmt->execute();
+        }
     }
 }

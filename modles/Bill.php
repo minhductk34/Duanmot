@@ -10,12 +10,9 @@ class BillModel
     private $email;
     private $fullName;
     private $paymentType;
-    private $quantity;
-    private $total;
-    private $status;
     private $createdAt;
 
-    public function __construct($id, $userId, $productId, $phoneNumber, $address, $email, $fullName, $paymentType, $quantity, $total, $status, $createdAt)
+    public function __construct($id, $userId, $productId, $phoneNumber, $address, $email, $fullName, $paymentType, $createdAt)
     {
         $this->id = $id;
         $this->userId = $userId;
@@ -25,9 +22,6 @@ class BillModel
         $this->email = $email;
         $this->fullName = $fullName;
         $this->paymentType = $paymentType;
-        $this->quantity = $quantity;
-        $this->total = $total;
-        $this->status = $status;
         $this->createdAt = $createdAt;
     }
 
@@ -70,21 +64,6 @@ class BillModel
     public function getPaymentType()
     {
         return $this->paymentType;
-    }
-
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
-
-    public function getTotal()
-    {
-        return $this->total;
-    }
-
-    public function getStatus()
-    {
-        return $this->status;
     }
 
     public function getCreatedAt()
