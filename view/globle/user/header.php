@@ -341,3 +341,19 @@
             </div>
         </div>
     </header>
+
+    <!-- Add this script block to your HTML or PHP file -->
+<script>
+    // Assuming you have a variable mesess from your PHP code
+    var mesess = "<?php echo $mesess ?? ''; ?>";
+
+    // Check if mesess is not an empty string, then display the message
+    if (mesess !== '') {
+        // Create a new element to display the message
+        var messageElement = document.createElement('div');
+        messageElement.textContent = mesess;
+
+        // Append the new element to the message container
+        document.getElementById('message-container').appendChild(messageElement);
+    }
+</script>

@@ -52,24 +52,9 @@ switch ($controller) {
         $ProductController = new ProductController();
         $ProductController->productDetails();
         break;
-        // case 'product_favorite':
-        //     $ProductController = new ProductController();
-        //     $ProductController->productFav();
-        //     break;
-
-    case 'product_add':
+    case 'get_product_by_category':
         $ProductController = new ProductController();
-        $ProductController->addProduct();
-        break;
-
-    case 'product_delete':
-        $ProductController = new ProductController();
-        $ProductController->deleteProduct();
-        break;
-
-    case 'product_update':
-        $ProductController = new ProductController();
-        $ProductController->updateProduct();
+        $ProductController->get_product_by_category();
         break;
     case 'product_search':
         $ProductController = new ProductController();
@@ -125,9 +110,9 @@ switch ($controller) {
     case 'listCart':
         $CartController = new CartController();
         $CartController->show();
-      
+
         break;
-      
+
     case 'deleteCart':
         $CartController = new CartController();
         $CartController->delete();
@@ -135,7 +120,7 @@ switch ($controller) {
     case 'addCart':
         $CartController = new CartController();
         $CartController->add();
-      
+
         break;
     case 'wishlistCart':
         $CartController = new CartController();

@@ -13,7 +13,7 @@ class CategoryDAO
 
     public function showCategory()
     {
-        $sql = "SELECT * FROM category";
+        $sql = "SELECT * FROM category WHERE status = 0";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         
@@ -58,4 +58,28 @@ class CategoryDAO
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
     }
+
+    // public function getStatus()
+    // {
+    //     $sql = "SELECT `status` FROM `category` WHERE 1";
+
+    //     try {
+    //         $stmt = $this->PDO->prepare($sql);
+    //         $stmt->execute();
+
+        
+    //         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //         if ($result !== false && isset($result['status'])) {
+    //             return $result['status'];
+    //         } else {
+             
+    //             return null;
+    //         }
+    //     } catch (PDOException $e) {
+           
+    //         echo "Error: " . $e->getMessage();
+    //         return null;
+    //     }
+    // }
 }

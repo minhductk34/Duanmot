@@ -30,9 +30,9 @@ require_once('view/home/user/page/header.php');
             <div class="col-md-6 col-xl-5 mb-30 mb-md-0">
                 <div class="product-big-img vs-carousel" data-slide-show="1" data-lg-slide-show="1" data-md-slide-show="1" data-sm-slide-show="1" data-fade="true" data-dots="true" data-asnavfor="#thumbproductimg" id="bigproductimg">
                     <div class="product-img">
-                        <img src="./src/assets/img/shop/shop-details-1.jpg" alt="Shop Image" class="w-100">
+                        <img src="admin_/uploads/products/<?php echo $item->getImage()?>" alt="Shop Image" class="w-100">
                     </div>
-                    <div class="product-img">
+                    <!-- <div class="product-img">
                         <img src="./src/assets/img/shop/shop-details-2.jpg" alt="Shop Image" class="w-100">
                     </div>
                     <div class="product-img">
@@ -43,9 +43,9 @@ require_once('view/home/user/page/header.php');
                     </div>
                     <div class="product-img">
                         <img src="./src/assets/img/shop/shop-details-5.jpg" alt="Shop Image" class="w-100">
-                    </div>
+                    </div> -->
                 </div>
-                <div class="row gx-2 product-thumb-img pt-10 vs-carousel" data-slide-show="4" data-md-slide-show="3" data-sm-slide-show="3" data-xs-slide-show="2" data-arrows="true" data-next-arrow="far fa-long-arrow-right" data-prev-arrow="far fa-long-arrow-left" id="thumbproductimg" data-asnavfor="#bigproductimg">
+                <!-- <div class="row gx-2 product-thumb-img pt-10 vs-carousel" data-slide-show="4" data-md-slide-show="3" data-sm-slide-show="3" data-xs-slide-show="2" data-arrows="true" data-next-arrow="far fa-long-arrow-right" data-prev-arrow="far fa-long-arrow-left" id="thumbproductimg" data-asnavfor="#bigproductimg">
                     <div class="col-auto">
                         <div class="thumb">
                             <img src="./src/assets/img/shop/shop-thumb-1.jpg" alt="Thumb Image" class="w-100">
@@ -71,7 +71,7 @@ require_once('view/home/user/page/header.php');
                             <img src="./src/assets/img/shop/shop-thumb-5.jpg" alt="Thumb Image" class="w-100">
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="product-content">

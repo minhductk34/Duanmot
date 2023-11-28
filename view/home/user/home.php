@@ -1131,14 +1131,13 @@ require_once('DAO/ProductDAO.php');
 
               <div class="vs-product-box3">
                 <div class="product-img">
-                  <!-- <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a>
-                 -->
-                  <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="./src/assets/img/shop/product-3-3.png" alt="Product Image" class="w-100" /></a>
+              
+                  <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="admin_/uploads/products/<?php echo $product->getImage() ?>" alt="Product Image" class="w-100" /></a>
                 </div>
                 <div class="actions-btn">
                   <a href="<?php echo $linkpro . $product->getId(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a>
                   <a href="index.php?controller=wishlistCart&id=<?php echo $product->getId(); ?>" class="icon-btn"><i class="fal fa-heart"></i></a>
-                  <a href="index.php?controller=addCart&id=<?php echo $product->getId(); ?>" class="vs-btn style4 cart-btn" name= "addToCart"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+                  <a href="index.php?controller=addCart&id=<?php echo $product->getId(); ?>" class="vs-btn style4 cart-btn" name="addToCart"><i class="fal fa-cart-plus"></i>Add To Cart</a>
                 </div>
 
                 <div class="product-content">
@@ -1172,7 +1171,7 @@ require_once('DAO/ProductDAO.php');
 require_once 'DAO/ProductDAO.php';
 
 $productDao = new ProductDao();
-$product = $productDao->selectOneItem($id = 20);
+$product = $productDao->selectOneItem($id = 41);
 ?>
 <section class="mb-60 mb-xl-0">
   <div class="container">
@@ -1204,17 +1203,15 @@ $product = $productDao->selectOneItem($id = 20);
             </div>
           </div>
           <div>
-            <a href="index.php?controller=addCart&id=<?php echo $product->getId(); ?>"name="addToCart" class="vs-btn style4"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+            <a href="index.php?controller=addCart&id=<?php echo $product->getId(); ?>" name="addToCart" class="vs-btn style4"><i class="fal fa-cart-plus"></i>Add To Cart</a>
           </div>
         </div>
       </div>
       <div class="col-lg order-1 order-lg-2">
         <div class="img-box3">
-          <img src="./src/assets/img/about/ab-7-1.png" alt="About Image" />
+          <img src="admin_/uploads/products/<?php echo $product->getImage() ?>" alt="About Image" />
         </div>
-        <!-- <div class="img-box3">
-                    <img src=" echo $product->getImage(); ?>" alt="About Image" />
-                </div> -->
+       
       </div>
 
 
@@ -1300,7 +1297,7 @@ $product = $productDao->selectOneItem($id = 20);
 
           $productDao = new ProductDao();
           $products = $productDao->select(); // Lấy danh sách sản phẩm
-          // var_dump($products);
+          // print_r($products);
 
           $linkpro = "index.php?controller=product_details&idpro="; // Xây dựng đường dẫn sản phẩm
 
@@ -1312,9 +1309,8 @@ $product = $productDao->selectOneItem($id = 20);
 
               <div class="vs-product-box3">
                 <div class="product-img">
-                  <!-- <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a>
-       -->
-                  <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="./src/assets/img/shop/product-3-3.png" alt="Product Image" class="w-100" /></a>
+            
+                  <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="admin_/uploads/products/<?php echo $product->getImage() ?>" alt="Product Image" class="w-100" /></a>
                 </div>
                 <div class="actions-btn">
                   <a href="<?php echo $linkpro . $product->getId(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a>
@@ -1375,9 +1371,12 @@ $product = $productDao->selectOneItem($id = 20);
       require_once('DAO/ProductDAO.php');
       $productDao = new ProductDao();
       $linkpro = "index.php?controller=product_details&idpro=" . $id;
-      $result = $productDao->getProductsByCategory("Bánh");
+      $result = $productDao->getProductsByCategory("Apple");
+      // print_r($result);
       $products = $result['products'];
+      // die($products);
       $category = $result['category'];
+      // die( $category);
       ?>
       <div class="col-xl-6">
         <div class="content-style2">
@@ -1390,16 +1389,19 @@ $product = $productDao->selectOneItem($id = 20);
             <?php foreach ($result['products'] as $product) { ?>
               <div class="col-md-6">
                 <div class="vs-product-box3 style2">
+                 
                   <div class="product-img">
-                    <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="./src/assets/img/shop/product-3-32.png" alt="Product Image" class="w-100" /></a>
-                    <!-- <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a> -->
+                    <!-- ../../../admin_/uploads/products/Mini_Apple.png
+                  \admin_\uploads\products\Mini_Apple.png -->
+                    <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="admin_/uploads/products/<?php echo $product->getImage() ?>" alt="Product Image" class="w-100" /></a>
+                   
                     <span class="product-tag1">Hot</span>
                   </div>
                   <div class="actions-btn">
                     <a href="<?php echo $linkpro . $product->getId(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a>
                     <!-- <a href="<?php echo $product->getImage(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a> -->
                     <a href="index.php?controller=wishlistCart&id=<?php echo $product->getId(); ?>" class="icon-btn"><i class="fal fa-heart"></i></a>
-                    <a href="index.php?controller=addCart&id=<?php echo $product->getId(); ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"name="addToCart"></i>Add To Cart</a>
+                    <a href="index.php?controller=addCart&id=<?php echo $product->getId(); ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus" name="addToCart"></i>Add To Cart</a>
                   </div>
                   <div class="product-content">
                     <div class="product-rating-box">

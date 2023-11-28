@@ -293,7 +293,7 @@ require_once('DAO/CartDAO.php');
                 </div>
             </div>
         </div>
-        
+
     </div>
     <!--==============================
         Header Area
@@ -411,7 +411,7 @@ require_once('DAO/CartDAO.php');
                         <form action="index.php?controller=product_search" method="post" class="header-search">
 
                             <input type="text" placeholder="Search your product" class="form-control" name="search">
-                            
+
                             <button type="submit" class="vs-btn">Search</button>
                         </form>
 
@@ -420,3 +420,18 @@ require_once('DAO/CartDAO.php');
             </div>
         </div>
     </header>
+    <!-- Add this script block to your HTML or PHP file -->
+    <script>
+        // Assuming you have a variable mesess from your PHP code
+        var mesess = "<?php echo $mesess ?? ''; ?>";
+
+        // Check if mesess is not an empty string, then display the message
+        if (mesess !== '') {
+            // Create a new element to display the message
+            var messageElement = document.createElement('div');
+            messageElement.textContent = mesess;
+
+            // Append the new element to the message container
+            document.getElementById('message-container').appendChild(messageElement);
+        }
+    </script>

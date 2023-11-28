@@ -30,28 +30,7 @@ require_once('view/home/user/page/header.php');
                     <div class="col d-none d-md-block">
                         <div class="border-top"></div>
                     </div>
-                    <!-- <div class="col-sm-9 col-md-7 col-lg-8 col-xl-6">
-                        <div class="row justify-content-center justify-content-sm-between">
-                            <div class="col-auto d-flex align-items-center mb-3 mb-sm-0">
-                                <label class="text-body2" for="sortBy">Sort by</label>
-                                <select name="sortBy" id="sortBy" class="form-select">
-                                    <option value="productName">Sorted Product Name</option>
-                                    <option value="productName">Sorted Product New</option>
-                                    <option value="productName">Sorted Product Popular</option>
-                                </select>
-                            </div>
-                            <div class="col-auto d-flex align-items-center">
-                                <label class="text-body2" for="showTotal">Show</label>
-                                <select name="showTotal" id="showTotal" class="form-select">
-                                    <option value="productName">01</option>
-                                    <option value="productName">02</option>
-                                    <option value="productName">03</option>
-                                    <option value="productName">04</option>
-                                    <option value="productName">05</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div> -->
+                  
                 </div>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="tab-grid" permissions="tabpanel" aria-labelledby="tab-shop-grid">
@@ -72,10 +51,8 @@ require_once('view/home/user/page/header.php');
                                     <div class="vs-product-box1 thumb_swap">
                                         <div class="product-tag1">sale</div>
                                         <div class="product-img">
-                                            <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-1-1.png" alt="Product Image" class="w-100"></a>
-                                            <!-- <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-1-8.png" alt="Product Image" class="w-100 img_swap"></a>
-                                     -->
-                                            <!-- <a href=<?php echo $linkpro . $product->getId(); ?>><img src="<?php echo $product->getImage(); ?>" alt="Product Image" class="w-100" /></a>-->
+                                            <a href=<?php echo $linkpro . $product->getId(); ?>><img src="admin_/uploads/products/<?php echo $product->getImage() ?>" alt="Product Image" class="w-100"></a>
+                                          
                                         </div>
                                         <div class="product-content">
                                             <div class="actions-btn">
@@ -318,8 +295,8 @@ require_once('view/home/user/page/header.php');
                         <ul>
                             <?php foreach ($categories as $category) : ?>
                                 <li>
-                                    <input type="checkbox">
-                                    <label><?php echo $category->getName(); ?></label>
+                                    <!-- <input type="checkbox"> -->
+                                    <a href="index.php?controller=get_product_by_category"><?php echo $category->getName(); ?></a>
 
                                 </li>
                             <?php endforeach; ?>
