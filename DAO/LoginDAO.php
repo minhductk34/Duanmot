@@ -20,33 +20,7 @@ class LoginDAO
 
         return $user; // Return the user data if found, or null if not found
     }
-    function show()
-    {
-        $sql = "SELECT *  FROM products ";
-        $stmt = $this->PDO->prepare($sql);
-        $stmt->execute();
-
-        $logins = array();
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // Create a Login object and add it to the array
-            $login = new Login(
-                $row['id_userser'],
-                $row['username'],
-                $row['password'],
-                $row['email'],
-                $row['number_phone'],
-                $row['address'],
-                $row['status'],
-                $row['permissions'],
-                $row['full_name']
-            );
-
-            $logins[] = $login;
-        }
-
-        return $logins; // Return an array of Login objects
-    }
+    
     function delete($id)
     {
         $sql = "DELETE FROM `user` WHERE id_userser = '$id'";

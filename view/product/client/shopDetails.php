@@ -25,12 +25,16 @@ require_once('view/home/user/page/header.php');
         $items = new ProductDAO();
         $id = $_GET['idpro'];
         $item = $items->selectOneItem($id);
+        // $user = $_SESSION['username'];
+        // $user_id = $user['id_user'];
+        // var_dump($user_id);
+        // print_r($item);
         ?>
         <div class="row mb-5">
             <div class="col-md-6 col-xl-5 mb-30 mb-md-0">
                 <div class="product-big-img vs-carousel" data-slide-show="1" data-lg-slide-show="1" data-md-slide-show="1" data-sm-slide-show="1" data-fade="true" data-dots="true" data-asnavfor="#thumbproductimg" id="bigproductimg">
                     <div class="product-img">
-                        <img src="admin_/uploads/products/<?php echo $item->getImage()?>" alt="Shop Image" class="w-100">
+                        <img src="admin_/uploads/products/<?php echo $item->getImage() ?>" alt="Shop Image" class="w-100">
                     </div>
                     <!-- <div class="product-img">
                         <img src="./src/assets/img/shop/shop-details-2.jpg" alt="Shop Image" class="w-100">
@@ -75,7 +79,7 @@ require_once('view/home/user/page/header.php');
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="product-content">
-                <h3 class="product-title mb-1"><?php echo $item->getName(); ?></h3>
+                    <h3 class="product-title mb-1"><?php echo $item->getName(); ?></h3>
                     <span class="price font-theme"><strong><?php echo $item->getPrice(); ?></strong></span>
                     <div class="mt-2">
                         <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
@@ -183,27 +187,12 @@ require_once('view/home/user/page/header.php');
             <div class="tab-pane fade show active" id="reviews" permissions="tabpanel" aria-labelledby="reviews-tab">
                 <div class="vs-comment-area list-style-none vs-comments-layout1 pt-3 ">
                     <ul class="comment-list">
-                        <li class="review vs-comment">
-                            <div class="vs-post-comment">
-                                <div class="author-img">
-                                    <img src="./src/assets/img/blog/comment-author-1.jpg" alt="Comment Author">
-                                </div>
-                                <div class="comment-content">
-                                    <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                                        <span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5
-                                            based on <span class="rating">1</span> customer rating</span>
-                                    </div>
-                                    <h4 class="name h5">Mark Jack</h4>
-                                    <span class="commented-on">22 April, 2022</span>
-                                    <p class="text">Progressively procrastinate mission-critical action items before
-                                        team building ROI.
-                                        Interactively provide access to cross functional quality vectors for
-                                        client-centric catalysts for change.
-                                    </p>
-                                </div>
-                            </div>
+
+                        <li class="review vs-comment" id="showCmtFull">
+
+
                         </li>
-                        <li class="review vs-comment">
+                        <!-- <li class="review vs-comment">
                             <div class="vs-post-comment">
                                 <div class="author-img">
                                     <img src="./src/assets/img/blog/comment-author-2.jpg" alt="Comment Author">
@@ -238,7 +227,7 @@ require_once('view/home/user/page/header.php');
                                         whereas 2.0 users. Enthusiastically seize team.</p>
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </div> <!-- Comment Form -->
                 <div class="vs-comment-form pt-3">
@@ -258,9 +247,8 @@ require_once('view/home/user/page/header.php');
                                 </span>
                             </p>
                         </div>
-
                         <div class="col-12 form-group mb-0">
-                            <textarea placeholder="Write a Message" class="form-control"></textarea>
+                            <textarea placeholder="Write a Message" class="form-control" id="comment"></textarea>
                         </div>
                         <div class="col-md-6 form-group mb-0">
                             <input type="text" placeholder="Your Name" class="form-control">
@@ -274,8 +262,52 @@ require_once('view/home/user/page/header.php');
                                 time I comment.<span class="checkmark"></span></label>
                         </div>
                         <div class="col-12 form-group mb-0">
-                            <button class="vs-btn rounded-1">Post Review</button>
+                            <button class="vs-btn rounded-1" onclick="addCmt(<?php echo $id ?>)">Post Review</button>
                         </div>
+                        <script>
+                            function addCmt(id) {
+                                var productInfo = {
+                                    id: id,
+                                    text: document.getElementById("comment").value
+
+                                    // Thêm thông tin khác nếu cần thiết
+                                };
+                                var xml = new XMLHttpRequest();
+                                xml.open("POST", "api/comment/addComment.php", true);
+                                xml.setRequestHeader("Content-Type", "application/json");
+                                xml.onreadystatechange = function() {
+                                    if (xml.readyState === 4) {
+                                        if (xml.status === 200) {
+                                            // Xử lý kết quả từ máy chủ nếu cần
+                                            var show = document.getElementById("showCmtFull");
+                                            xml.open("POST", "api/comment/showComment.php", true);
+                                            xml.setRequestHeader("Content-Type", "application/json");
+                                            xml.onreadystatechange = function() {
+                                                if (xml.readyState === 4) {
+                                                    if (xml.status === 200) {
+                                                        // Xử lý kết quả từ máy chủ nếu cần
+
+                                                        show.innerHTML = xml.responseText;
+                                                        // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
+                                                    } else {
+                                                        // Xử lý lỗi nếu có
+                                                        alert("Có lỗi xảy ra khi thêm vào giỏ hàng");
+                                                    }
+                                                }
+                                            };
+                                            xml.send(JSON.stringify(productInfo));
+                                            document.getElementById("comment").value = "";
+                                            // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
+                                        } else {
+                                            // Xử lý lỗi nếu có
+                                            alert("Có lỗi xảy ra khi thêm vào giỏ hàng");
+                                        }
+                                    }
+                                };
+                                xml.send(JSON.stringify(productInfo));
+                            }
+                        </script>
+
                     </div>
                 </div>
             </div>

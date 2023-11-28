@@ -93,10 +93,10 @@ switch ($controller) {
 
 
         //comment
-    case 'comment':
-        $CommentController = new CommentController();
-        $CommentController->index();
-        break;
+    // case 'comment':
+    //     $CommentController = new CommentController();
+    //     $CommentController->index();
+    //     break;
     case 'commentStatus':
         $CommentController = new CommentController();
         $CommentController->status();
