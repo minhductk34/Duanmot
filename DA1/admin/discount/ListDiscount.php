@@ -37,7 +37,8 @@
                             <td>' . $percent_discount . '</td>
                             <td>' . $status . '</td>
                             <td>' . $create_at . '</td>
-                            <td><a href = "' . $editDis . '" style="margin-right: 10px"><input type="button" value="Edit"></a> <a href = "' . $deleteDis . '"><input type="button" value="Delete"></a></td>
+                            <td><a href = "' . $editDis . '" style="margin-right: 10px"><input type="button" class="btn btn-primary" value="Edit"></a> 
+                            <a href = "' . $deleteDis . '"><input type="button" class="btn btn-danger" value="Change Status"></a></td>
                             </tr>';
                     }
                     ?>

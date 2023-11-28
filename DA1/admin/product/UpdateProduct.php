@@ -52,7 +52,7 @@ if (is_file($imgPath)) {
     <div class=" form-row">
         <span>Status</span>
         <?php
-        if ($quantity > 0 ) {
+        if ($status == 0 ) {
             $check0 = "checked";    
             $check1 = "";
         } else {
@@ -61,13 +61,13 @@ if (is_file($imgPath)) {
         }
         ?>
         <div class="form-check" style="margin: 20px;">
-            <input class="form-check-input" type="radio" name="status" id="status1" <?= $check0 ?>>
+            <input class="form-check-input" type="radio" name="status" id="status1" value="0" <?= $check0 ?>>
             <label class="form-check-label" for="status1">
                 Còn Hàng
             </label>
         </div>
         <div class="form-check" style="margin: 20px;">
-            <input class="form-check-input" type="radio" name="status" id="status2" <?= $check1 ?>>
+            <input class="form-check-input" type="radio" name="status" id="status2"  value="1" <?= $check1 ?>>
             <label class="form-check-label" for="status2">
                 Hết Hàng
             </label>
@@ -75,7 +75,7 @@ if (is_file($imgPath)) {
     </div>
     <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc_product"><?= $desc_product ?></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc_product" required><?= $desc_product ?></textarea>
     </div>
     <div class="form-row">
         <div class="input-data textarea">

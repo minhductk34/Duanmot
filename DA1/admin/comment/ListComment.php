@@ -48,7 +48,7 @@
                                 <td>' . $create_at . '</td>
                                 <td>' . $rate . '</td>
                                 <td>' . $check . '</td>
-                                <td> <a href="' . $changeSts . '"><input type="button" value="ChangeStatus" name="change"></a></td>
+                                <td> <a href="' . $changeSts . '"><input type="button" class="btn btn-danger" value="ChangeStatus" name="change"></a></td>
                              </tr>';
                     }
                     ?>

@@ -22,9 +22,7 @@ if (is_array($product)) {
             }
             ?>
         </select>
-        <?=$errSize?>
-    </div>
-
+    </div>  
     <div class="mb-3">
         <label style="margin-right: 20px; margin-top: 30px">Type Box</label>
         <select class="form-select" name="id_box" style="min-height: 40px;min-width: 200px">
@@ -35,7 +33,6 @@ if (is_array($product)) {
             }
             ?>
         </select>
-        <?=$errBox?>
     </div>
     <div class="form-row">
         <div class="input-data textarea">

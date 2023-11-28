@@ -60,8 +60,8 @@
                                     <td>' . $create_at . '</td>
                                     <td>' . $check . '</td>
                                     <td>' . $pay . '</td>
-                                    <td><a href = "' . $showDetail . '"><input type="button" value="Show Detail"></a>
-                                        <a href = "' . $editBill . '"><input type="button" value="Update Status"></a>
+                                    <td><a href = "' . $showDetail . '"><input type="button" class="btn btn-info" value="Show Detail"></a>
+                                        <a href = "' . $editBill . '"><input type="button" class="btn btn-primary" value="Update Status"></a>
                                     </td>
                                     </tr>';
                             }

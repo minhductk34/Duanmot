@@ -68,7 +68,8 @@
                             <td>' . $address . '</td>
                             <td>' . $prn . '</td>
                             <td>' . $check . '</td>
-                            <td><a href = "' . $editUser . '"><input type="button" value="Sửa" style="margin-bottom: 10px"></a> <a href = "' . $deleteUser . '"><input type="button" value="Xóa"></a></td>
+                            <td><a href = "' . $editUser . '"><input type="button" class="btn btn-primary" value="Edit" style="margin-bottom: 10px"></a> 
+                            <a href = "' . $deleteUser . '"><input type="button" class="btn btn-danger" value="Change Status"></a></td>
                             </tr>';
                     }
                     ?>

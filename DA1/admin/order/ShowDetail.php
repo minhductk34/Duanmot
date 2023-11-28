@@ -9,7 +9,6 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th></th>
                             <th>ID Product</th>
                             <th>Image</th>
                             <th>Name Product</th>
@@ -23,7 +22,6 @@
                     foreach ($details as $detail) {
                         extract($detail);
                         echo '<tr>
-                                    <td><input type="checkbox" name="" id=""></td>
                                     <td>' . $id_product . '</td>
                                     <td>' . $img_product . '</td>
                                     <td>' . $name_product . '</td>
@@ -39,6 +37,6 @@
         </div>
     </div>
     <div class="form-row" style="margin-left: 10px">
-        <a href="index.php?act=list_order"><input type="button" value="Back"></a>
+        <a href="index.php?act=list_order"><input type="button" class="btn btn-primary" value="Back"></a>
     </div>
 </div>

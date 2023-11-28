@@ -84,8 +84,8 @@
                     </div>
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Variant Product:</h6>
-                        <a class="collapse-item" href="index.php?act=">List</a>
-                        <a class="collapse-item" href="index.php?act=">Add</a>
+                        <a class="collapse-item" href="index.php?act=listVariant">List</a>
+                        <!-- <a class="collapse-item" href="index.php?act=">Add</a> -->
                     </div>
                 </div>
             </li>

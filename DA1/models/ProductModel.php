@@ -62,4 +62,12 @@
         $size =  pdo_query_value($sql);
         return $size;
     }
+    function loadall_variant($kyw, $id_box, $id_size){
+        $sql = "SELECT size.type AS Size, type_box.type_box AS Box, name_variant AS variant_product, products.name_product AS NameProduct FROM variant_product";
+        $sql.=" INNER JOIN size ON size.id_size = variant_product.id_size";
+        $sql.=" INNER JOIN type_box ON type_box.id_box = variant_product.id_box";
+        $sql.=" INNER JOIN products ON products.id_product = variant_product.id_product";
+        $variants = pdo_query($sql);
+        return $variants;
+    }
 ?>

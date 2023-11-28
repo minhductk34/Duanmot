@@ -14,7 +14,7 @@ if (isset($_GET['act'])) {
 
             // Categoty Controller
         case "add_category":
-            if (isset($_POST['add_category']) && $_POST['add_category']) {
+            if (isset($_POST['add']) && $_POST['add']) {
                 $name_category = $_POST['name_category'];
                 $desc_category = $_POST['desc_category'];
                 insert_category($name_category, $desc_category);
@@ -55,8 +55,9 @@ if (isset($_GET['act'])) {
 
             // Product Controller
         case "add_product":
-            if (isset($_POST['add_product']) && $_POST['add_product']) {
-                $id_category = $_POST['id_category'];
+            if (isset($_POST['add']) && $_POST['add']) {
+                var_dump($_POST);
+                $id_cat = $_POST['id_category'];
                 $name_product = $_POST['name_product'];
                 $price_product = $_POST['price_product'];
                 $quantity = $_POST['quantity'];
@@ -65,7 +66,7 @@ if (isset($_GET['act'])) {
                 $target_dir = "uploads/products/";
                 $target_file = $target_dir . basename($image_product);
                 move_uploaded_file($_FILES["image_product"]["tmp_name"], $target_file);
-                insert_product($name_product, $desc_product, $image_product, $price_product, $quantity, $id_category);
+                insert_product($name_product, $desc_product, $image_product, $price_product, $quantity, $id_cat);
                 $noti = "Success";
             }
             $Categories = loadall_category();
@@ -121,8 +122,7 @@ if (isset($_GET['act'])) {
 
             // Variant Porduct  
         case "addVariant":
-            $errBox = "";
-            $errSize = "";
+
             if (isset($_GET['id_product']) && ($_GET['id_product'] > 0)) {
                 $product = loadone_product($_GET['id_product']);
                 $boxs = loadall_box();
@@ -130,17 +130,32 @@ if (isset($_GET['act'])) {
                 include "admin/product/variant/AddVariant.php";
             }
             if (isset($_POST['add'])) {
-                    $id_product = $_POST['id_product'];
-                    $name_product = loadone_name_product($id_product);
-                    $id_box = $_POST['id_box'];
-                    $box = load_box($id_box);
-                    $id_size = $_POST['id_size'];
-                    $size = load_size($id_size);
-                    $name_variant = $name_product . ' size ' .  $size . ' đựng trong ' . $box;
-                    insert_variant($id_product, $id_size, $id_box, $name_variant);
-                    $products = loadall_product('', 0);
-                    include './admin/product/ListProduct.php';
+                $id_product = $_POST['id_product'];
+                $name_product = loadone_name_product($id_product);
+                $id_box = $_POST['id_box'];
+                $box = load_box($id_box);
+                $id_size = $_POST['id_size'];
+                $size = load_size($id_size);
+                $name_variant = $name_product . ' size ' .  $size . ' đựng trong ' . $box;
+                insert_variant($id_product, $id_size, $id_box, $name_variant);
+                $products = loadall_product('', 0);
+                include './admin/product/ListProduct.php';
             }
+            break;
+        case "listVariant":
+            if (isset($_POST['ok']) && ($_POST['ok'])) {
+                $kyw = $_POST['kyw'];
+                $id_box = $_POST['id_box'];
+                $id_size = $_POST['id_size'];
+            } else {
+                $kyw = '';
+                $id_box = 0;
+                $id_size = 0;
+            }
+            $boxs = loadall_box();
+            $sizes = loadall_size();
+            $variants = loadall_variant($kyw, $id_box, $id_size);
+            include "admin/product/variant/ListVariant.php";
             break;
 
             // Account Controller

@@ -44,7 +44,7 @@
                 <div class="form-row submit-btn">
                     <div class="input-data">
                         <div class="inner"></div>
-                        <input type="submit" value="Add" name="add_product">
+                        <input type="submit" value="Add" name="add">
                     </div>
                 </div>
             </div>
