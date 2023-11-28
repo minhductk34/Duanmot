@@ -1,6 +1,6 @@
 <div class="row">
     <div class="row formtile mb10">
-        <h1>DANH SÁCH TÀI KHOẢN</h1>
+        <h1>LIST ACCOUNT</h1>
     </div>
     <div class="row frmcontent">
         <div class="row mb10 fordslh">
