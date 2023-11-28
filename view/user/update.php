@@ -22,7 +22,7 @@
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css" />
 
-    <title>Register</title>
+    <title>Update <strong>Colorlib</strong> </title>
   </head>
   <body>
     <div class="d-lg-flex half">
@@ -34,41 +34,44 @@
         <div class="container">
           <div class="row align-items-center justify-content-center">
             <div class="col-md-7">
-              <h3>Register to <strong> User </strong></h3>
+              <h3> Update <strong> User </strong></h3>
               <p class="mb-4">
                 Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
                 consectetur adipisicing.
               </p>
+              <?php
+                    if (isset($_SESSION['username'])&&(is_array($_SESSION['username']))){
+                        extract($_SESSION['username']);
+                    }
+                ?>
               <form
-                action="index.php?act=register"
+                action="index.php?act=update"
                 method="POST"
                 class="needs-validation"
                 novalidate=""
                 autocomplete="on"
               >
-                <div class="form-group first">
-                  <label class="mb-2 text-muted" for="username"> <strong>Username</strong> </label>
+              <div class="form-group first">
+                  <label for="email"> <strong>Email</strong></label>
                   <input
-                    id="username"
                     type="text"
                     class="form-control"
-					placeholder="your-abc"
-                    name="username"
-                    value=""
-                    required
-                    autofocus
+                    placeholder="your-email@gmail.com"
+                    value="<?=$email?>"
+                    name="email"
+                    id="email"
                   />
-                  <div class="invalid-feedback">Username is required</div>
                 </div>
                 <div class="form-group first">
-                  <label for="email"> <strong>Email</strong> </label>
+                  <label for="username"> <strong>Username</strong> </label>
                   <input
                     type="text"
-                    class="form-control" 
-                    placeholder="your-email@gmail.com"
-                    name="email"
-
-                    id="email" />
+                    class="form-control"
+                    placeholder="your-abc"
+                    name="username"
+                    value="<?=$username?>"
+                    id="username"
+                  />
                 </div>
                 <div class="form-group first">
                   <label class="mb-2 text-muted" for="full_name"> <strong>Full name</strong> </label>
@@ -78,11 +81,21 @@
                     class="form-control"
 					placeholder="your-abc"
                     name="full_name"
-                    value=" "
+                    value="<?=$full_name?>"
                     required
                     autofocus
                   />
                   <div class="invalid-feedback">Full name is required</div>
+                </div>
+                <div class="form-group last mb-3">
+                  <label for="password"> <strong>Password</strong> </label>
+                  <input 
+                    type="password"
+                    class="form-control"
+                    placeholder="Your Password"
+                    name="password"
+                    value="<?=$password?>"
+                    id="password" />
                 </div>
                 <div class="form-group first">
                   <label for="address"> <strong>Address</strong> </label>
@@ -91,53 +104,41 @@
                     class="form-control"
                     placeholder="your-location"
                     name="address"
-                    value=" "
-                    id="address"
-                  />
+                    value="<?=$address?>"
+                    id="address" />
                 </div>
                 <div class="form-group first">
-                  <label for="phone"> <strong>Phone</strong> </label>
+                  <label for="number_phone"> <strong>Phone</strong> </label>
                   <input
                     type="text"
                     class="form-control"
                     placeholder="your-phone"
-                    name="phone"
-                    value=""
-                    id="phone"
-                  />
+                    name="number_phone"
+                    value="<?=$number_phone?>"
+                    id="phone" />
                 </div>
                 
-                <div class="form-group last mb-3">
-                  <label for="password"> <strong>Passwords</strong> </label>
-                  <input
-                    type="password"
-                    class="form-control" 
-                    placeholder="Your Password"
-                    name="password"
-                    id="password"
-                  />
-                </div>
                 <div class="invalid-feedback">Password is required</div>
 
-                <div class="d-flex mb-5 align-items-center">
-                  <label class="control control--checkbox mb-0"
-                    ><span class="caption">Remember me</span>
-                    <input type="checkbox" checked="checked" />
-                    <div class="control__indicator"></div>
-                  </label>
-                </div>
-
-                <input type="submit" class="btn btn-block btn-primary" name="register" value="Sign in">
+                <div class="form-group first">
+                <input type="hidden" name="id_user" value="<?=$id_user?>">
+                <input type="submit" class="btn btn-block btn-primary" name="update" value="Send">
+                    </div>
+                    <div class="btn btn-block btn-primary">
+                        <input type="reset" value="Reset">
+                    </div>
+                </form>
+                <h2 class="thongbao">
+                <?php 
+                    
+                    if(isset($thongbao) && $thongbao!=""){
+                        echo $thongbao;
+                    }
+                    
+                ?>
+                </h2>
+            </div>              
+        </div>               
+    </div>                   
               </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-  </body>
-</html>
+            

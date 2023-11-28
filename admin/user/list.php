@@ -43,12 +43,12 @@
             </table>
 
         </div>
-        <div class="row mb10">
+        <!-- <div class="row mb10">
             <input class="mr" type="button" value="chọn tât cả">
             <input class="mr" type="button" value="bỏ chọn tất cả">
             <input class="mr" type="button" value="xóa mục đã chọn">
             <a href="index.php?act=adddm"><input type="button" value="nhập thêm"></a>
-        </div>
+        </div> -->
     </div>
 
 </div>

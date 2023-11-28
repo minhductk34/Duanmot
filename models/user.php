@@ -1,6 +1,6 @@
 <?php 
-    function insert_user($email,$username,$password,$phone){
-        $sql="insert into user(email,username,password,phone) value('$email','$username','$password','$phone')";
+    function insert_user($email,$username,$password){
+        $sql="insert into user(email,username,password) value('$email','$username','$password')";
         pdo_execute($sql);
     }
     function checkuser($username,$password){
@@ -11,8 +11,10 @@
     
     
     }
-    function update_user($id_user, $username, $password, $email, $address, $phone) {    
-        $sql = "update user set username='" . $username . "', password='" . $password . "', email='" . $email . "',  address='" . $address . "', phone='" . $phone . "' where id_user=" . $id_user;
+    function update_user($id_user, $username, $password, $email, $address, $number_phone, $full_name) {    
+        $sql = "UPDATE user SET username='" . $username . "',password='" . $password . "',
+        email='" . $email . "',number_phone='" . $number_phone . "',address ='" . $address . "',full_name='" .$full_name. "' where id_user=" . $id_user;
+        // var_dump($sql);
         pdo_execute($sql);
     }
     function check_email($email){
