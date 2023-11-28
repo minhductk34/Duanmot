@@ -51,11 +51,12 @@ class CartDAO
         $stmt->execute([$quantity, $total, $productId]);
     }
 
-    public function deleteFromCart($userId)
+    public function deleteFromCart($id)
     {
-        $query = "DELETE FROM cart WHERE id_user = $userId";
+        $query = "DELETE FROM cart WHERE id_product = $id";
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
+        // die($query);
     }
 
     public function getCartHistory($userId)

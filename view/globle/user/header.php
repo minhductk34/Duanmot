@@ -315,7 +315,7 @@
                             <button type="button" class="searchBoxTggler">
                                 <i class="far fa-search"></i>
                             </button>
-                            <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
+                            <a href="index.php?controller=login"><img src="assets/imgs/logo/login.png" alt="" width="25px" height="35px"></a>
                             <button class="sideMenuToggler" type="button" onclick="redirectToCart()">
                                 <i class="fal fa-shopping-cart" data-href="index.php?controller=listCart"></i>
                                 <span class="badge">0</span>

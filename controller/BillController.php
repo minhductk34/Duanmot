@@ -38,15 +38,16 @@ class BillController
             $street_address = $_POST["street_address"];
             $apartment = $_POST["apartment"];
             $city = $_POST["city"];
-            $country = $_POST["country"];
-            $address = $street_address . " " . $apartment . " " . $city . " " . $country;
+           
+            $address = $street_address . " " . $apartment . " " . $city . " ";
 
             $phone = $_POST["phone"];
             $email = $_POST["email"];
+            $create_at = date("Y-m-d H:i:s", strtotime("now"));
 
             $type_payment = null;
 
-            $this->BillDAO->createBill($id_user, $phone, $address, $email, $full_name,  $type_payment);
+            $this->BillDAO->createBill($id_user, $phone, $address, $email, $full_name,  $type_payment,$create_at);
             header('Location:index.php?controller=billConfirm');
         } else {
             header('Location:index.php?controller=login');

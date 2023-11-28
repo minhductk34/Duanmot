@@ -20,15 +20,15 @@
                  <form action="#" class="woocommerce-form-login">
                      <div class="form-group">
                          <label>Your Username *</label>
-                         <input type="text" class="form-control" value="<?= isset($data['username']) ? $data['username'] : 'null' ?>">
+                         <input type="text" class="form-control" value="<?= isset($data['username']) ? $data['username'] : 'null' ?>" readonly>
                      </div>
                      <div class="form-group">
                          <label>Your Address</label>
-                         <input type="text" class="form-control" value="<?= isset($data['address']) ? $data['address'] : 'null' ?>">
+                         <input type="text" class="form-control" value="<?= isset($data['address']) ? $data['address'] : 'null' ?>" readonly>
                      </div>
                      <div class="form-group">
                          <label>Your Phone *</label>
-                         <input type="text" class="form-control" value="<?= isset($data['phone']) ? $data['phone'] : 'null' ?>">
+                         <input type="text" class="form-control" value="<?= isset($data['phone']) ? $data['phone'] : 'null' ?>" readonly>
                      </div>
 
                  </form>

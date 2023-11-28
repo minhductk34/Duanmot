@@ -13,31 +13,18 @@ class BillDAO
     }
 
 
-    public function createBill($userId, $number_phone, $address, $email, $full_name,  $type_payment)
+    public function createBill($userId, $number_phone, $address, $email, $full_name,  $type_payment, $create_at)
     {
-        $query = "SELECT bill_quantity FROM bill WHERE id_user =$userId";
-        $stmt = $this->PDO->prepare($query);
-        $stmt->execute();
-        $bill_quantity = $stmt->fetchColumn();
-
-        $query = "SELECT id_user FROM bill WHERE id_user =$userId";
-        $stmt = $this->PDO->prepare($query);
-        $stmt->execute();
-        $id_user = $stmt->fetchColumn();
-        // die($query);
 
 
 
-        if ($bill_quantity > 0 && $id_user == $userId) {
-            $query = "UPDATE bill SET bill_quantity =  $bill_quantity + 1 WHERE id_user = $userId ";
-            $stmt = $this->PDO->prepare($query);
-            $stmt->execute();
-        } else {
-            $query = "INSERT INTO `bill`( `id_user`, `number_phone`, `address`, `email`, `full_name`, `type_payment`) 
-            VALUES ('$userId','$number_phone','$address','$email','$full_name',' $type_payment')";
-            // var_dump($query);
-            // die($query);
-        }
+
+
+
+        $query = "INSERT INTO `bill`( `id_user`, `number_phone`, `address`, `email`, `full_name`, `type_payment`,`create_at`) 
+            VALUES ('$userId','$number_phone','$address','$email','$full_name',' $type_payment','$create_at')";
+    //    die($query);
+
 
 
 

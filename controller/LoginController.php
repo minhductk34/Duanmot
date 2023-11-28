@@ -4,16 +4,6 @@ class LoginController
 {
 
     private $user;
-    public function index()
-    {
-
-
-        if (isset($_COOKIE["rank"])) {
-            require_once('view/home/home.php');
-        } else {
-            require_once('view/login/login.php');
-        }
-    }
     public function login()
     {
         if (isset($_POST['login']) && ($_POST['login'])) {

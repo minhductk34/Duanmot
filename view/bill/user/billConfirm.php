@@ -21,7 +21,8 @@ require_once('view/home/user/page/header.php');
                         $item =  $items->showBill($id_user);
                         // var_dump($item);
                         ?>
-                        <h2 class="h4">Billing Details</h2>
+                         <h2 class="h4" font_size="40px">Confirm Your Bills And CheckOut</h2>
+                        <!-- <h2 class="h4">Billing Details</h2> -->
                         <div class="row gx-2">
                             <?php foreach ($item as $key => $vl) { ?>
                                 <div class="col-12 form-group">

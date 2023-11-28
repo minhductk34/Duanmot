@@ -20,30 +20,44 @@ require_once('view/home/user/page/header.php');
                         $id_user = $user['id_user'];
                         $id_bill_ =  $billDAO->selectId($id_user);
                         $data = $billDAO->showBill_details($id_bill_);
-                    //   var_dump($data);
+                        //   var_dump($data);
 
 
                         ?>
-                        <h2 class="h4">Billing Details</h2>
+                        <h2 class="h4">Check Out Successfully</h2>
+                        <h2 class="h4">This is your order: </h2>
                         <div class="row gx-2">
-                            <?php foreach ($data as $key => $value) { ?>
-                                <div class="col-12 form-group">
-                                    <label>Name *</label>
-                                    <input type="text" class="form-control" name="name" value="<?php echo $value->get_full_name(); ?>">
-                                    <a href=""><?php echo $value->get_full_name(); ?></a>
-                                </div>
+                            <?php
+                            $lastFullName = "";
+                            $lastAddress = "";
+                            $lastEmail = "";
+                            $lastPhoneNumber = "";
 
-                                <div class="col-12 form-group">
-                                    <label>Address *</label>
-                                    <input type="text" class="form-control" name="saddress" value="<?php echo $value->get_address(); ?>">
-                                </div>
+                            foreach ($data as $key => $value) {
+                                $lastFullName = $value->get_full_name();
+                                $lastAddress = $value->get_address();
+                                $lastEmail = $value->get_email();
+                                $lastPhoneNumber = $value->get_number_phone();
+                            }
 
-                                <div class="col-12 form-group">
-                                    <label>Contact Info *</label>
-                                    <input type="text" class="form-control" value="<?php echo $value->get_email(); ?>">
-                                    <input type="text" class="form-control" value="<?php echo $value->get_number_phone(); ?>">
-                                </div>
+                            ?>
 
+                            <div class="col-12 form-group">
+                                <label>Name *</label>
+                                <input type="text" class="form-control" name="name" value="<?php echo $lastFullName; ?>">
+                                <a href=""><?php echo $lastFullName; ?></a>
+                            </div>
+
+                            <div class="col-12 form-group">
+                                <label>Address *</label>
+                                <input type="text" class="form-control" name="saddress" value="<?php echo $lastAddress; ?>">
+                            </div>
+
+                            <div class="col-12 form-group">
+                                <label>Contact Info *</label>
+                                <input type="text" class="form-control" value="<?php echo $lastEmail; ?>">
+                                <input type="text" class="form-control" value="<?php echo $lastPhoneNumber; ?>">
+                            </div>
 
                         </div>
                     </div>
@@ -63,25 +77,25 @@ require_once('view/home/user/page/header.php');
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr class="cart_item">
-                            <td data-title="Image">
-                                <a class="cart-productimage" href="#"><img width="91" height="91" src="assets/img/cart/cat-img-1.png" alt="Image"></a>
-                            </td>
-                            <td data-title="Name">
-                                <a class="cart-productname" href="#"><?php echo $value->get_name_product(); ?></a>
-                            </td>
-                            <td data-title="Price">
-                                <span class="amount"><bdi><span>$</span></bdi><?php echo $value->get_bill_detail_price(); ?></span>
-                            </td>
-                            <td data-title="Quantity">
-                                <strong class="product-quantity"><?php echo $value->get_bill_detail_quantity(); ?></strong>
-                            </td>
-                            <td data-title="Total">
-                                <span class="amount"><bdi><span>$</span></bdi><?php echo $value->get_bill_detail_price() * $value->get_bill_detail_quantity(); ?></span>
-                            </td>
-                        </tr>
-                    <?php } ?>
+                        <?php foreach ($data as $key => $value) { ?>
+                            <tr class="cart_item">
+                                <td data-title="Image">
+                                    <a class="cart-productimage" href="#"><img width="91" height="91" src="assets/img/cart/cat-img-1.png" alt="Image"></a>
+                                </td>
+                                <td data-title="Name">
+                                    <a class="cart-productname" href="#"><?php echo $value->get_name_product(); ?></a>
+                                </td>
+                                <td data-title="Price">
+                                    <span class="amount"><bdi><span>$</span></bdi><?php echo $value->get_bill_detail_price(); ?></span>
+                                </td>
+                                <td data-title="Quantity">
+                                    <strong class="product-quantity"><?php echo $value->get_bill_detail_quantity(); ?></strong>
+                                </td>
+                                <td data-title="Total">
+                                    <span class="amount"><bdi><span>$</span></bdi><?php echo $value->get_bill_detail_price() * $value->get_bill_detail_quantity(); ?></span>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </form>
