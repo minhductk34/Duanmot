@@ -30,11 +30,13 @@ class CartController
     public function add()
     {
         if (isset($_SESSION['username']) && $_SESSION['username']) {
+
+            
             if (isset($_GET['id']) && $_GET['id'] != '') {
                 $user = $_SESSION['username'];
                 $id_user = $user['id_user'];
                 $userId = $id_user;
-                $quantity = '';
+                $quantity = $_GET['quantity'];
                 $typePayment = '';
 
                 $this->CartDAO->addToCart($userId, $_GET['id'], $quantity);

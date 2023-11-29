@@ -36,46 +36,9 @@ require_once('view/home/user/page/header.php');
                     <div class="product-img">
                         <img src="admin_/uploads/products/<?php echo $item->getImage() ?>" alt="Shop Image" class="w-100">
                     </div>
-                    <!-- <div class="product-img">
-                        <img src="./src/assets/img/shop/shop-details-2.jpg" alt="Shop Image" class="w-100">
-                    </div>
-                    <div class="product-img">
-                        <img src="./src/assets/img/shop/shop-details-3.jpg" alt="Shop Image" class="w-100">
-                    </div>
-                    <div class="product-img">
-                        <img src="./src/assets/img/shop/shop-details-4.jpg" alt="Shop Image" class="w-100">
-                    </div>
-                    <div class="product-img">
-                        <img src="./src/assets/img/shop/shop-details-5.jpg" alt="Shop Image" class="w-100">
-                    </div> -->
+
                 </div>
-                <!-- <div class="row gx-2 product-thumb-img pt-10 vs-carousel" data-slide-show="4" data-md-slide-show="3" data-sm-slide-show="3" data-xs-slide-show="2" data-arrows="true" data-next-arrow="far fa-long-arrow-right" data-prev-arrow="far fa-long-arrow-left" id="thumbproductimg" data-asnavfor="#bigproductimg">
-                    <div class="col-auto">
-                        <div class="thumb">
-                            <img src="./src/assets/img/shop/shop-thumb-1.jpg" alt="Thumb Image" class="w-100">
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="thumb">
-                            <img src="./src/assets/img/shop/shop-thumb-2.jpg" alt="Thumb Image" class="w-100">
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="thumb">
-                            <img src="./src/assets/img/shop/shop-thumb-3.jpg" alt="Thumb Image" class="w-100">
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="thumb">
-                            <img src="./src/assets/img/shop/shop-thumb-4.jpg" alt="Thumb Image" class="w-100">
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="thumb">
-                            <img src="./src/assets/img/shop/shop-thumb-5.jpg" alt="Thumb Image" class="w-100">
-                        </div>
-                    </div>
-                </div> -->
+
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="product-content">
@@ -93,7 +56,7 @@ require_once('view/home/user/page/header.php');
                     </div>
                     <div class="actions mb-4 pb-2">
                         <div class="quantity style2 me-4">
-                            <input type="number" class="qty-input" value="1" min="1" max="99">
+                            <input type="number" class="qty-input" value="1" min="1" max="99" name="quantity">
                             <button class="quantity-minus qut-btn"><i class="far fa-chevron-down"></i></button>
                             <button class="quantity-plus qut-btn"><i class="far fa-chevron-up"></i></button>
                         </div>
@@ -192,42 +155,7 @@ require_once('view/home/user/page/header.php');
 
 
                         </li>
-                        <!-- <li class="review vs-comment">
-                            <div class="vs-post-comment">
-                                <div class="author-img">
-                                    <img src="./src/assets/img/blog/comment-author-2.jpg" alt="Comment Author">
-                                </div>
-                                <div class="comment-content">
-                                    <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                                        <span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5
-                                            based on <span class="rating">1</span> customer rating</span>
-                                    </div>
-                                    <h4 class="name h5">John Deo</h4>
-                                    <span class="commented-on">26 April, 2022</span>
-                                    <p class="text">Competently provide access to fully researched methods of
-                                        empowerment without sticky models. Credibly morph front-end niche markets
-                                        whereas 2.0 users. Enthusiastically seize team.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="review vs-comment">
-                            <div class="vs-post-comment">
-                                <div class="author-img">
-                                    <img src="./src/assets/img/blog/comment-author-1.jpg" alt="Comment Author">
-                                </div>
-                                <div class="comment-content">
-                                    <div class="star-rating" permissions="img" aria-label="Rated 5.00 out of 5">
-                                        <span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5
-                                            based on <span class="rating">1</span> customer rating</span>
-                                    </div>
-                                    <h4 class="name h5">Tara sing</h4>
-                                    <span class="commented-on">26 April, 2022</span>
-                                    <p class="text">Competently provide access to fully researched methods of
-                                        empowerment without sticky models. Credibly morph front-end niche markets
-                                        whereas 2.0 users. Enthusiastically seize team.</p>
-                                </div>
-                            </div>
-                        </li> -->
+
                     </ul>
                 </div> <!-- Comment Form -->
                 <div class="vs-comment-form pt-3">
@@ -235,83 +163,69 @@ require_once('view/home/user/page/header.php');
                         <h3 class="h4 mb-lg-4 pb-lg-1">Add a review</h3>
                     </div>
                     <div class="row g-2">
-                        <div class="form-group rating-select d-flex align-items-center">
-                            <label>Your Rating</label>
-                            <p class="stars">
-                                <span>
-                                    <a class="star-1" href="#">1</a>
-                                    <a class="star-2" href="#">2</a>
-                                    <a class="star-3" href="#">3</a>
-                                    <a class="star-4" href="#">4</a>
-                                    <a class="star-5" href="#">5</a>
-                                </span>
-                            </p>
+                        <div class="form-group rating-select d-flex align">
+
                         </div>
+
                         <div class="col-12 form-group mb-0">
                             <textarea placeholder="Write a Message" class="form-control" id="comment"></textarea>
                         </div>
-                        <div class="col-md-6 form-group mb-0">
-                            <input type="text" placeholder="Your Name" class="form-control">
-                        </div>
-                        <div class="col-md-6 form-group mb-0">
-                            <input type="text" placeholder="Your Email" class="form-control">
-                        </div>
-                        <div class="col-12 form-group mt-3 mb-1">
-                            <input id="reviewcheck" name="reviewcheck" type="checkbox">
-                            <label for="reviewcheck">Save my name, email, and website in this browser for the next
-                                time I comment.<span class="checkmark"></span></label>
-                        </div>
-                        <div class="col-12 form-group mb-0">
-                            <button class="vs-btn rounded-1" onclick="addCmt(<?php echo $id ?>)">Post Review</button>
-                        </div>
-                        <script>
-                            function addCmt(id) {
-                                var productInfo = {
-                                    id: id,
-                                    text: document.getElementById("comment").value
-
-                                    // Thêm thông tin khác nếu cần thiết
-                                };
-                                var xml = new XMLHttpRequest();
-                                xml.open("POST", "api/comment/addComment.php", true);
-                                xml.setRequestHeader("Content-Type", "application/json");
-                                xml.onreadystatechange = function() {
-                                    if (xml.readyState === 4) {
-                                        if (xml.status === 200) {
-                                            // Xử lý kết quả từ máy chủ nếu cần
-                                            var show = document.getElementById("showCmtFull");
-                                            xml.open("POST", "api/comment/showComment.php", true);
-                                            xml.setRequestHeader("Content-Type", "application/json");
-                                            xml.onreadystatechange = function() {
-                                                if (xml.readyState === 4) {
-                                                    if (xml.status === 200) {
-                                                        // Xử lý kết quả từ máy chủ nếu cần
-
-                                                        show.innerHTML = xml.responseText;
-                                                        // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
-                                                    } else {
-                                                        // Xử lý lỗi nếu có
-                                                        alert("Có lỗi xảy ra khi thêm vào giỏ hàng");
-                                                    }
-                                                }
-                                            };
-                                            xml.send(JSON.stringify(productInfo));
-                                            document.getElementById("comment").value = "";
-                                            // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
-                                        } else {
-                                            // Xử lý lỗi nếu có
-                                            alert("Có lỗi xảy ra khi thêm vào giỏ hàng");
-                                        }
-                                    }
-                                };
-                                xml.send(JSON.stringify(productInfo));
-                            }
-                        </script>
-
                     </div>
+                    <div class="col-12 form-group mb-0">
+                        <button class="vs-btn rounded-1" onclick="addCmt(<?php echo $id ?>)">Post Review</button>
+                    </div>
+                    <script>
+                        function addCmt(id) {
+                            // Lấy giá trị đánh giá từ sao được chọn
+                            var selectedStar = document.querySelector('.star:checked');
+                            var rate = selectedStar ? selectedStar.value : null;
+
+                            var productInfo = {
+                                id: id,
+                                text: document.getElementById("comment").value,
+                                rate: rate
+                                // Thêm thông tin khác nếu cần thiết
+                            };
+
+                            var xml = new XMLHttpRequest();
+                            xml.open("POST", "api/comment/addComment.php", true);
+                            xml.setRequestHeader("Content-Type", "application/json");
+                            xml.onreadystatechange = function() {
+                                if (xml.readyState === 4) {
+                                    if (xml.status === 200) {
+                                        // Xử lý kết quả từ máy chủ nếu cần
+                                        var show = document.getElementById("showCmtFull");
+                                        xml.open("POST", "api/comment/showComment.php", true);
+                                        xml.setRequestHeader("Content-Type", "application/json");
+                                        xml.onreadystatechange = function() {
+                                            if (xml.readyState === 4) {
+                                                if (xml.status === 200) {
+                                                    // Xử lý kết quả từ máy chủ nếu cần
+                                                    show.innerHTML = xml.responseText;
+                                                } else {
+                                                    // Xử lý lỗi nếu có
+                                                    alert("Login");
+                                                }
+                                            }
+                                        };
+                                        xml.send(JSON.stringify(productInfo));
+                                        document.getElementById("comment").value = "";
+                                        // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
+                                    } else {
+                                        // header("Location:index.php");
+                                        alert("You need to log in before commenting");
+                                        window.location.href = "index.php?controller=login";
+                                    }
+                                }
+                            };
+                            xml.send(JSON.stringify(productInfo));
+                        }
+                    </script>
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 <!--==============================

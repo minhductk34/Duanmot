@@ -2,46 +2,42 @@
 session_start();
 
 require_once('../../config/pdo.php');
-$user = $_SESSION['username'];
-$user_id = $user['id_user'];
-$data = json_decode(file_get_contents("php://input"));
-$create_at = "2023/11/30";
-$rate ='';
 
-$sql = "SELECT `id_comment`,  `content`, `create_at`, `rate`, `status` FROM `comment` WHERE id_user = $user_id and  id_product = $data->id";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$output = "";
-if ($stmt->rowCount() > 0) {
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $output .= "
-        <div class='vs-post-comment'>
-                                <div class='author-img'>
-                                    <img src='./src/assets/img/blog/comment-author-1.jpg' alt='Comment Author'>
-                                </div>
-                                <div class='comment-content'>
-                                    <div class='star-rating' permissions='img' aria-label='Rated 5.00 out of 5'>
-                                        <span style='width:100%'>Rated <strong class='rating'>5.00</strong> out of 5
-                                            based on <span class='rating'>1</span> customer rating</span>
-                                    </div>
+if (isset($_SESSION['username'])) {
 
+    $user = $_SESSION['username'];
+    $user_id = $user['id_user'];
+    $data = json_decode(file_get_contents("php://input"));
 
+    $sql = "SELECT c.`id_comment`, c.`content`, c.`create_at`, c.`rate`, c.`status`, u.`username` FROM `comment` c INNER JOIN `user` u ON c.`id_user` = u.`id_user` 
+    WHERE c.`id_user` = :user_id AND c.`id_product` = :id_product";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->bindParam(':id_product', $data->id, PDO::PARAM_INT);
+    $stmt->execute();
 
-
-                                    <span class='commented-on'>22 April, 2022</span>
-                                    <!-- <textarea name='comment' id='' cols='60' rows='5'></textarea>
-                                    <input type='submit'> -->
-
-                                     <p class='text'>".$row['content']."
-                                    </p>
-                                </div>
-                            </div>
-        ";
+    $output = "";
+    if ($stmt->rowCount() > 0) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $output .= "
+                <div class='vs-post-comment'>
+                    <div class='author-img'>
+                        <img src='./src/assets/img/blog/comment-author-1.jpg' alt='Comment Author'>
+                    </div>
+                    <div class='comment-content'>
+                     <span class='commented-on'>" . $row['create_at'] . "</span><br>
+                        <span class='commented-on'>" . $row['username'] . "</span><br>
+                       
+                         <p class='text'>" . $row['content'] . "</p>
+                    </div>
+                </div>
+            ";
+        }
+    } else {
+        $output .= "";
     }
+
+    echo $output;
 } else {
-    $output .= "";
+    header("Location:index.php");
 }
-
-
-echo $output;
-?>

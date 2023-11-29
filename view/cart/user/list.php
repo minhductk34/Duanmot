@@ -24,7 +24,7 @@ require_once('DAO/CartDAO.php');
 $items = new CartDAO();
 $item = $items->showCart($id_user);
 
-// print_r($item);
+// var_dump($item);
 ?>
 <div class="vs-cart-wrapper  space-top space-md-bottom">
     <div class="container">
@@ -53,17 +53,72 @@ $item = $items->showCart($id_user);
                                 <a class="cart-productname" href="shop-details.html"><?php echo $value->getNameProduct(); ?></a>
                             </td>
                             <td data-title="Price">
-                                <span class="amount"><bdi><span>$</span><?php echo $value->getPrice(); ?></bdi></span>
+                                <span class="amount"><bdi><span>$</span><span id="price_one"><?php echo $value->getPrice(); ?></span></bdi></span>
                             </td>
                             <td data-title="Quantity">
                                 <div class="quantity">
-                                    <button class="quantity-minus qut-btn"><i class="far fa-minus"></i></button>
-                                    <input type="number" class="qty-input" value="<?php echo $value->getQuantity()  ?>" min="1" max="99">
-                                    <button class="quantity-plus qut-btn"><i class="far fa-plus"></i></button>
+                                    <button class="quantity-minus qut-btn" onclick="down(<?php echo $value->getIdCart() ?>);"><i class="far fa-minus"></i></button>
+                                    <input type="number" class="qty-input" id="showNumber<?php echo $value->getIdCart() ?>" value="<?php echo $value->getQuantity() ?>" min="1" max="99">
+                                    <button class="quantity-plus qut-btn" onclick="up(<?php echo $value->getIdCart() ?>);"><i class="far fa-plus"></i></button>
                                 </div>
+
+                                <script>
+                                    function up(id_cart) {
+                                        var cartInfo = {
+                                            id: id_cart,
+                                            quantity: document.getElementById("showNumber" + id_cart).value
+                                            // Thêm thông tin khác nếu cần thiết
+                                        };
+
+                                        var xml = new XMLHttpRequest();
+                                        xml.open("POST", "api/cart/upCart.php", true);
+                                        xml.setRequestHeader("Content-Type", "application/json");
+                                        xml.onreadystatechange = function() {
+                                            if (xml.readyState === 4) {
+                                                if (xml.status === 200) {
+                                                    document.getElementById("showNumber" + id_cart).value = xml.responseText;
+                                                    // Đảm bảo có một phần tử HTML với id="Total" để thay đổi giá trị
+                                                    document.getElementById("Total").innerHTML = document.getElementById("price_one").innerHTML * xml.responseText;
+                                                } else {
+                                                    // header("Location:index.php");
+                                                    alert("You need to log in");
+                                                    window.location.href = "index.php?controller=login";
+                                                }
+                                            }
+                                        };
+                                        xml.send(JSON.stringify(cartInfo));
+                                    }
+
+                                    function down(id_cart) {
+                                        var cartInfo = {
+                                            id: id_cart,
+                                            quantity: document.getElementById("showNumber" + id_cart).value
+                                            // Thêm thông tin khác nếu cần thiết
+                                        };
+
+                                        var xml = new XMLHttpRequest();
+                                        xml.open("POST", "api/cart/downCart.php", true);
+                                        xml.setRequestHeader("Content-Type", "application/json");
+                                        xml.onreadystatechange = function() {
+                                            if (xml.readyState === 4) {
+                                                if (xml.status === 200) {
+                                                    document.getElementById("showNumber" + id_cart).value = xml.responseText;
+                                                    // Đảm bảo có một phần tử HTML với id="Total" để thay đổi giá trị
+                                                    document.getElementById("Total").innerHTML = document.getElementById("price_one").innerHTML * xml.responseText;
+                                                } else {
+                                                    // header("Location:index.php");
+                                                    alert("You need to log in ");
+                                                    window.location.href = "index.php?controller=login";
+                                                }
+                                            }
+                                        };
+                                        xml.send(JSON.stringify(cartInfo));
+                                    }
+                                </script>
                             </td>
+
                             <td data-title="Total">
-                                <span class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity()  ?></bdi></span>
+                                <span id="Total" class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity()  ?></bdi></span>
                             </td>
                             <td data-title="Remove">
                                 <a href="index.php?controller=deleteCart&id=<?php echo $value->getProductId() ?>" class="remove"><i class="fal fa-trash-alt"></i></a>
