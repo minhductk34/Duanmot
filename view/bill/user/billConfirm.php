@@ -70,7 +70,7 @@ require_once('view/home/user/page/header.php');
                         <?php foreach ($cart_ as $key => $value) { ?>
                             <tr class="cart_item">
                                 <td data-title="Image">
-                                    <a class="cart-productimage" href="#"><img width="91" height="91" src="assets/img/cart/cat-img-1.png" alt="Image"><?php echo $value->getImage(); ?></a>
+                                    <a class="cart-productimage" href="#"><img width="91" height="91" src="admin_/uploads/products/<?php echo $value->getImage() ?>" alt="Image"><?php echo $value->getImage(); ?></a>
                                 </td>
                                 <td data-title="Name">
                                     <a class="cart-productname" href="#"><?php echo $value->getNameProduct(); ?></a>

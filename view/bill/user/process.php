@@ -117,22 +117,22 @@
                          </tr>
                      </thead>
                      <tbody>
-                         <?php foreach ($item as $key => $vl) { ?>
+                         <?php foreach ($item as $key => $value) { ?>
                              <tr class="cart_item">
                                  <td data-title="Image">
-                                     <a class="cart-productimage" href="#"><img width="91" height="91" src="assets/img/cart/cat-img-1.png" alt="Image"></a>
+                                     <a class="cart-productimage" href="#"><img width="91" height="91" src="admin_/uploads/products/<?php echo $value->getImage() ?>"></a>
                                  </td>
                                  <td data-title="Name">
-                                     <a class="cart-productname" href="#"><?php echo $vl->getNameProduct(); ?></a>
+                                     <a class="cart-productname" href="#"><?php echo $value->getNameProduct(); ?></a>
                                  </td>
                                  <td data-title="Price">
-                                     <span class="amount"><bdi><span>$</span><?php echo $vl->getPrice(); ?></bdi></span>
+                                     <span class="amount"><bdi><span>$</span><?php echo $value->getPrice(); ?></bdi></span>
                                  </td>
                                  <td data-title="Quantity">
-                                     <strong class="product-quantity"><?php echo $vl->getQuantity(); ?></strong>
+                                     <strong class="product-quantity"><?php echo $value->getQuantity(); ?></strong>
                                  </td>
                                  <td data-title="Total">
-                                     <span class="amount"><bdi><span>$</span><?php echo $vl->getPrice() * $vl->getQuantity(); ?></bdi></span>
+                                     <span class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity(); ?></bdi></span>
                                  </td>
                              </tr>
                          <?php } ?>
@@ -147,7 +147,7 @@
                                  <tr class="cart-subtotal">
                                      <th>Cart Subtotal</th>
                                      <td>
-                                         <span class="amount"><bdi><span>$</span><?php echo $vl->getPrice() * $vl->getQuantity() ?></bdi></span>
+                                         <span class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity() ?></bdi></span>
                                      </td>
                                  </tr>
                                  <tr class="woocommerce-shipping-totals shipping">
@@ -163,7 +163,7 @@
                                  </tr>
                                  <tr class="order-total">
                                      <th>Order Total</th>
-                                     <td><strong><span class="amount"><bdi><span>$</span><?php echo $vl->getPrice() * $vl->getQuantity() ?></bdi></span></strong></td>
+                                     <td><strong><span class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity() ?></bdi></span></strong></td>
                                  </tr>
                              </tbody>
                          </table>

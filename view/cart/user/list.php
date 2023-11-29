@@ -44,10 +44,15 @@ $item = $items->showCart($id_user);
                     </tr>
                 </thead>
                 <tbody>
+
+                <?php
+                // print_r($item);
+                // echo $value->getImage();
+                ?>
                     <?php foreach ($item as $key => $value) { ?>
                         <tr class="cart_item">
                             <td data-title="Product">
-                                <a class="cart-productimage" href="shop-details.html"><img width="91" height="91" src="./src/assets/img/shop/product-3-3.png" alt="Image"></a>
+                                <a class="cart-productimage" href="shop-details.html"><img width="91" height="91" src="admin_/uploads/products/<?php echo $value->getImage() ?>" alt="Image"></a>
                             </td>
                             <td data-title="Name">
                                 <a class="cart-productname" href="shop-details.html"><?php echo $value->getNameProduct(); ?></a>

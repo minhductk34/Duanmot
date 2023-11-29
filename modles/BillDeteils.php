@@ -12,10 +12,22 @@ class Bill_Details {
     private $full_name;
     private $type_payment;
     private $create_at;
+    private $image; // Thêm trường ảnh vào class
 
-
-    public function __construct($id_bill, $id_product, $name_product, $bill_detail_quantity, $bill_detail_price,
-                                $number_phone, $address, $email, $full_name, $type_payment, $create_at) {
+    public function __construct(
+        $id_bill,
+        $id_product,
+        $name_product,
+        $bill_detail_quantity,
+        $bill_detail_price,
+        $number_phone,
+        $address,
+        $email,
+        $full_name,
+        $type_payment,
+        $create_at,
+        $image // Thêm tham số cho ảnh
+    ) {
         $this->id_bill = $id_bill;
         $this->id_product = $id_product;
         $this->name_product = $name_product;
@@ -27,8 +39,15 @@ class Bill_Details {
         $this->full_name = $full_name;
         $this->type_payment = $type_payment;
         $this->create_at = $create_at;
-
+        $this->image = $image; // Gán giá trị cho trường ảnh
     }
+
+    // Thêm getter và setter cho trường ảnh
+    public function getImage()
+    {
+        return $this->image;
+    }
+
 
     // Getter methods
     public function get_id_bill() {

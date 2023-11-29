@@ -229,9 +229,17 @@
             <button type="submit"><i class="fal fa-search"></i></button>
         </form>
     </div>
+
+
+
     <!--==============================
         Header Area
     ==============================-->
+    <?php
+    if (isset($_SESSION['user'])) {
+        $user = ($_SESSION['user']);
+    } ?>
+
     <header class="header-wrapper header-layout5">
         <div class="header-top">
             <div class="container">
@@ -315,7 +323,12 @@
                             <button type="button" class="searchBoxTggler">
                                 <i class="far fa-search"></i>
                             </button>
-                            <a href="index.php?controller=login"><img src="assets/imgs/logo/login.png" alt="" width="25px" height="35px"></a>
+                            <a href="index.php?controller=login"><?php if (!empty($user['image'])) : ?>
+                                    <img src="./assets/imgs/logo/<?php echo $user['image']; ?>" alt="" width="30px" height="35px">
+                                <?php else : ?>
+                                    <img src="assets/imgs/logo/login.png" alt="" width="25px" height="35px">
+                                <?php endif; ?>
+                            </a>
                             <button class="sideMenuToggler" type="button" onclick="redirectToCart()">
                                 <i class="fal fa-shopping-cart" data-href="index.php?controller=listCart"></i>
                                 <span class="badge">0</span>
@@ -343,17 +356,17 @@
     </header>
 
     <!-- Add this script block to your HTML or PHP file -->
-<script>
-    // Assuming you have a variable mesess from your PHP code
-    var mesess = "<?php echo $mesess ?? ''; ?>";
+    <script>
+        // Assuming you have a variable mesess from your PHP code
+        var mesess = "<?php echo $mesess ?? ''; ?>";
 
-    // Check if mesess is not an empty string, then display the message
-    if (mesess !== '') {
-        // Create a new element to display the message
-        var messageElement = document.createElement('div');
-        messageElement.textContent = mesess;
+        // Check if mesess is not an empty string, then display the message
+        if (mesess !== '') {
+            // Create a new element to display the message
+            var messageElement = document.createElement('div');
+            messageElement.textContent = mesess;
 
-        // Append the new element to the message container
-        document.getElementById('message-container').appendChild(messageElement);
-    }
-</script>
+            // Append the new element to the message container
+            document.getElementById('message-container').appendChild(messageElement);
+        }
+    </script>

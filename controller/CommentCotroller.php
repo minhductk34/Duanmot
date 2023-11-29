@@ -44,7 +44,7 @@ class CommentController
     // }
     public function add()
     {
-        $id_user = $_SESSION['username'];
+        $id_user = $_SESSION['user'];
         $id_product=$_GET['id_product'];
         $content=$_POST['content'];
         $create_at = date("Y-m-d H:i:s", strtotime("now"));

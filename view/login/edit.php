@@ -12,9 +12,9 @@
                 <?php
 
 
-                if (isset($_SESSION['username']) && (is_array($_SESSION['username']))) {
-                    extract($_SESSION['username']);
-                    var_dump($_SESSION['username']);
+                if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
+                    extract($_SESSION['user']);
+                    var_dump($_SESSION['user']);
                 }
                 ?>
 

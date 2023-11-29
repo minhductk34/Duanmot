@@ -16,24 +16,33 @@ class CartController
     }
     public function show()
     {
-        if (isset($_SESSION['username']) && $_SESSION['username']) {
-
-            $user = $_SESSION['username'];
+        if (isset($_SESSION['user']) && $_SESSION['user']) {
+            $user = $_SESSION['user'];
             $id_user = $user['id_user'];
 
-            $this->CartDAO->showCart($id_user);
+            $cartItems = $this->CartDAO->showCart($id_user);
+
+            // Kiểm tra xem giỏ hàng có trống không
+            if (empty($cartItems)) {
+                // Giỏ hàng trống, hiển thị một cảnh báo JavaScript
+                echo '<script>alert("Giỏ hàng của bạn đang trống.");</script>';
+                // Chuyển hướng người dùng về trang chủ
+                header('Location: index.php');
+                exit(); // Đảm bảo rằng kịch bản dừng thực thi sau khi chuyển hướng
+            }
+
             require_once('view/cart/user/list.php');
         } else {
+            // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
             header('Location: index.php?controller=login');
         }
     }
+
     public function add()
     {
-        if (isset($_SESSION['username']) && $_SESSION['username']) {
-
-            
+        if (isset($_SESSION['user']) && $_SESSION['user']) {
             if (isset($_GET['id']) && $_GET['id'] != '') {
-                $user = $_SESSION['username'];
+                $user = $_SESSION['user'];
                 $id_user = $user['id_user'];
                 $userId = $id_user;
                 $quantity = $_GET['quantity'];
@@ -47,9 +56,13 @@ class CartController
                 exit();
             }
         } else {
+            // Không đăng nhập, hiển thị thông báo bằng JavaScript
+            echo "<script>alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng.')</script>";
             header('Location: index.php?controller=login');
+            exit();
         }
     }
+
     public function delete()
     {
 
@@ -57,7 +70,7 @@ class CartController
             // die($_GET['id']);
             // echo 'deleteCart';
             $id = $_GET['id'];
-            $user = $_SESSION['username'];
+            $user = $_SESSION['user'];
             $id_user = $user['id_user'];
             $this->CartDAO->deleteFromCart($_GET['id']);
 
@@ -70,14 +83,7 @@ class CartController
     public function history()
     {
         //echo 'historyCart';
-        if (isset($_SESSION["permissions"])) {
-            //code
-            $userId = $_POST['userId'];
-            $this->CartDAO->getCartHistory($userId);
-            require_once('view/cart/user/history.php');
-        } else {
-            require_once('404.php');
-        }
+      
     }
 
     public function wishlist()

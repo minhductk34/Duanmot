@@ -56,4 +56,17 @@ class LoginDAO
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
+
+    public function check_user_exists($username)
+    {
+        $sql = "SELECT COUNT(*) as count FROM `user` WHERE `username` = :username";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Nếu count > 0, tài khoản tồn tại
+        return $result['count'] > 0;
+    }
 }

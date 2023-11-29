@@ -30,7 +30,7 @@ require_once('view/home/user/page/header.php');
                     <div class="col d-none d-md-block">
                         <div class="border-top"></div>
                     </div>
-                  
+
                 </div>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="tab-grid" permissions="tabpanel" aria-labelledby="tab-shop-grid">
@@ -52,7 +52,7 @@ require_once('view/home/user/page/header.php');
                                         <div class="product-tag1">sale</div>
                                         <div class="product-img">
                                             <a href=<?php echo $linkpro . $product->getId(); ?>><img src="admin_/uploads/products/<?php echo $product->getImage() ?>" alt="Product Image" class="w-100"></a>
-                                          
+
                                         </div>
                                         <div class="product-content">
                                             <div class="actions-btn">
@@ -278,6 +278,22 @@ require_once('view/home/user/page/header.php');
                             </div>
                         </div>
                     </div>
+                    <!-- Check sản phẩm -->
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            // Lấy thông điệp từ session (nếu có)
+                            var notfoundMessage = "<?php echo isset($_SESSION['notfound_message']) ? $_SESSION['notfound_message'] : '' ?>";
+
+                            // Kiểm tra nếu có thông điệp không tìm thấy sản phẩm
+                            if (notfoundMessage !== '') {
+                                // Hiển thị thông báo sử dụng một thư viện thông báo hoặc hàm tùy chỉnh
+                                alert(notfoundMessage);
+
+                                // Xóa thông điệp từ session sau khi đã hiển thị
+                                <?php unset($_SESSION['notfound_message']); ?>
+                            }
+                        });
+                    </script>
 
 
 

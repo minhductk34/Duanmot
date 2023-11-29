@@ -1,1 +1,4 @@
-deny form all
+<DirectoryMatch "htdocs/Duanmot/Duanmot/admin_">
+    Order Deny,Allow
+    Deny from all
+</DirectoryMatch>

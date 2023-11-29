@@ -6,43 +6,103 @@ class LoginController
     private $user;
     public function login()
     {
-        if (isset($_POST['login']) && ($_POST['login'])) {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $this->user = new LoginDAO();
-            $checkuser =  $this->user->checkuser($username, $password);
-            $_SESSION['username'] = $checkuser;
-            $permisions = $checkuser['permissions'];
-            if ($permisions == 0) {
-                $_SESSION['permisions'] = $permisions;
-                // $thongbao = "Bạn đã đăng nhập thành công!";
-                header('Location: index.php');
-            } elseif ($permisions == 1) {
-                header('Location: admins/index.php');
+        if ($this->isUserLoggedIn()) {
+            // Người dùng đã đăng nhập, thực hiện đăng xuất
+            unset($_SESSION['user']);
+        } else {
+            // Người dùng chưa đăng nhập
+            if ($this->isLoginFormSubmitted()) {
+                // Form đăng nhập đã được gửi
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $this->user = new LoginDAO();
+                $checkUser = $this->user->checkUser($username, $password);
+
+                if ($checkUser) {
+                    // Người dùng đăng nhập thành công
+                    $this->handleSuccessfulLogin($checkUser);
+                } else {
+                    // Thông tin đăng nhập không đúng
+                    include 'view/login/login.php';
+                }
+            } else {
+                // Hiển thị trang đăng nhập
+                include 'view/login/login.php';
             }
         }
-        include 'view/login/login.php';
     }
+
+    private function isUserLoggedIn()
+    {
+        return isset($_SESSION['user']);
+    }
+
+    private function isLoginFormSubmitted()
+    {
+        return isset($_POST['login']) && ($_POST['login']);
+    }
+
+    public function logout()
+    {
+
+        // Điều hướng hoặc thông báo đăng xuất thành công
+        header("Location: index.php?controller=home");
+    }
+
+    private function handleSuccessfulLogin($user)
+    {
+        $_SESSION['user'] = $user;
+        $permissions = $user['permissions'];
+
+        if ($permissions == 0) {
+            header('Location: index.php');
+        } elseif ($permissions == 1) {
+            header('Location: admin_/index.php');
+        }
+    }
+
     public function signup()
     {
         if (isset($_POST['register']) && ($_POST['register'])) {
+            // Lấy dữ liệu từ form
             $email = isset($_POST['email']) ? $_POST['email'] : null;
             $username = isset($_POST['username']) ? $_POST['username'] : null;
             $password = isset($_POST['password']) ? $_POST['password'] : null;
             $phone = isset($_POST['phone']) ? $_POST['phone'] : null;
             $full_name = isset($_POST['full_name']) ? $_POST['full_name'] : null;
 
-            $this->user = new LoginDAO();
-            $this->user->insert_user($email, $username, $password);
-            header('Location:index.php?controller=login');
+            // Kiểm tra tính hợp lệ của dữ liệu
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                echo "<script>alert('Invalid email address.');</script>";
+            } elseif (empty($username)) {
+                echo "<script>alert('Please enter a username.');</script>";
+            } elseif (empty($password)) {
+                echo "<script>alert('Please enter a password.');</script>";
+            // } elseif (!preg_match('/^[0-9]{10}$/', $phone)) {
+            //     echo "<script>alert('Số điện thoại không hợp lệ.');</script>";
+            // } elseif (empty($full_name)) {
+            //     echo "<script>alert('Vui lòng nhập tên đầy đủ.');</script>";
+            } else {
+                // Kiểm tra xem tài khoản đã tồn tại hay chưa
+                $user = new LoginDAO();
+                if ($user->check_user_exists($username)) {
+                    // Tài khoản đã tồn tại, hiển thị thông báo hoặc thực hiện các hành động khác
+                    echo "<script>alert('Account already exists. Please choose a different username.');</script>";
+                } else {
+                    // Tài khoản chưa tồn tại, thêm vào cơ sở dữ liệu
+                    $user->insert_user($email, $username, $password);
+                    header('Location:index.php?controller=login');
+                }
+            }
         }
         include 'view/login/sigin.php';
     }
-    public function logout()
+
+    function is_valid_email($email)
     {
-        session_unset();
-        header("Location: index.php?controller=home");
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
+
 
     public function forgot()
     {
@@ -72,7 +132,7 @@ class LoginController
             $id_user = $_POST['id_user'];
             $this->user = new LoginDAO();
             $this->user->update_user($id_user, $username, $password, $email, $address, $phone);
-            $_SESSION['username'] = $this->user->checkuser($username, $password);
+            $_SESSION['user'] = $this->user->checkuser($username, $password);
             header('location: index.php?controller=edit_user');
         }
         include "./view/login/edit.php";

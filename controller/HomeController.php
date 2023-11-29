@@ -18,34 +18,14 @@ class HomeController
 
     public function index()
     {
-        if (isset($_SESSION["permissions"])) {
-            if ($_SESSION['permissions'] == 1) {
-                $count = $this->products->statistics();
-                require_once('view/home/admin/home.php');
-            } elseif ($_SESSION['permissions'] == 2) {
-                $categorys = $this->categorys->showCategory();
-                require_once('view/home/staff/home.php');
-            } else {
-                if (isset($_POST['search']) && $_POST['search'] != "") {
-                    $products = $this->products->Search($_POST['search']);
-                    $categorys = $this->categorys->showCategory();
-                    require_once('view/home/user/home.php');
-                } else {
-                    $products = $this->products->Select();
-                    $categorys = $this->categorys->showCategory();
-                    require_once('view/home/user/home.php');
-                }
-            }
+        if (isset($_POST['search']) && $_POST['search'] != "") {
+            $products = $this->products->Search($_POST['search']);
+            $categorys = $this->categorys->showCategory();
+            require_once('view/home/user/home.php');
         } else {
-            if (isset($_POST['search']) && $_POST['search'] != "") {
-                $products = $this->products->Search($_POST['search']);
-                $categorys = $this->categorys->showCategory();
-                require_once('view/home/user/home.php');
-            } else {
-                $products = $this->products->Select();
-                $categorys = $this->categorys->showCategory();
-                require_once('view/home/user/home.php');
-            }
+            $products = $this->products->Select();
+            $categorys = $this->categorys->showCategory();
+            require_once('view/home/user/home.php');
         }
     }
     public function contact()

@@ -1,8 +1,7 @@
 <?php
 session_start();
 
-// var_dump( $_SESSION['username']);
-
+// var_dump( $_SESSION['user']);
 
 // require_once các tệp và khởi tạo các controller
 require_once 'controller/HomeController.php';
@@ -21,26 +20,6 @@ switch ($controller) {
         $homeController->index();
         break;
 
-        //CRUD category ----------------------------------------------------------------
-    case 'category_show':
-        $CategoryController = new CategoryController();
-        $CategoryController->showCategory();
-        break;
-
-    case 'category_add':
-        $CategoryController = new CategoryController();
-        $CategoryController->addCategory();
-        break;
-
-    case 'category_delete':
-        $CategoryController = new CategoryController();
-        $CategoryController->deleteCategory();
-        break;
-
-    case 'category_update':
-        $CategoryController = new CategoryController();
-        $CategoryController->updateCategory();
-        break;
 
         //CRDU product ------------------------------------------------------------------
     case 'product_show':
@@ -62,10 +41,6 @@ switch ($controller) {
         break;
 
         //User controller -------------------------------------------------------------------
-    case 'user':
-        $UserController = new UserController();
-        $UserController->index();
-        break;
 
     case 'login':
         $LoginController = new LoginController();
@@ -90,13 +65,6 @@ switch ($controller) {
         break;
 
 
-
-
-        //comment
-    // case 'comment':
-    //     $CommentController = new CommentController();
-    //     $CommentController->index();
-    //     break;
     case 'commentStatus':
         $CommentController = new CommentController();
         $CommentController->status();
@@ -126,10 +94,7 @@ switch ($controller) {
         $CartController = new CartController();
         $CartController->wishlist();
         break;
-    case 'historyCart':
-        $CartController = new CartController();
-        $CartController->history();
-        break;
+
 
         //Billing Controller ------------------------------------------------------------------
     case 'addToBill':
@@ -156,6 +121,11 @@ switch ($controller) {
         $BillController = new BillController();
         $BillController->checkOut();
         break;
+
+    case 'historyBill':
+        $BillController = new BillController();
+        $BillController->history();
+        break;
     case 'contact':
         $homeController = new HomeController();
         $homeController->contact();
@@ -164,10 +134,7 @@ switch ($controller) {
         $homeController = new HomeController();
         $homeController->chatBox();
         break;
-    case 'test':
-        header('Location: test.php');
 
-        break;
 
     default:
         // Xử lý controller không hợp lệ

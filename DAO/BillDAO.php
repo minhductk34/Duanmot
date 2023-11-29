@@ -17,16 +17,9 @@ class BillDAO
     {
 
 
-
-
-
-
         $query = "INSERT INTO `bill`( `id_user`, `number_phone`, `address`, `email`, `full_name`, `type_payment`,`create_at`) 
             VALUES ('$userId','$number_phone','$address','$email','$full_name',' $type_payment','$create_at')";
-    //    die($query);
-
-
-
+        //    die($query);
 
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
@@ -137,17 +130,19 @@ class BillDAO
         bd.name_product,
         bd.quantity AS bill_detail_quantity,
         bd.price_product AS bill_detail_price,
+        p.image_product AS product_image, -- Thêm trường ảnh từ bảng product (đặt tên cụ thể tùy thuộc vào cấu trúc bảng product)
         MAX(b.number_phone) AS number_phone,
         MAX(b.address) AS address,
         MAX(b.email) AS email,
         MAX(b.full_name) AS full_name,
         b.type_payment,
-        b.create_at,
-        b.bill_quantity
+        b.create_at
     FROM
         bill_details bd
     JOIN
         bill b ON bd.id_bill = b.id_bill
+    JOIN
+        products p ON bd.id_product = p.id_product -- Thêm JOIN với bảng product
     WHERE
         bd.id_bill = $id_bill
     GROUP BY
@@ -156,9 +151,9 @@ class BillDAO
         bd.name_product,
         bd.quantity,
         bd.price_product,
+        p.id_product, -- Thêm trường ảnh từ bảng product
         b.type_payment,
-        b.create_at,
-        b.bill_quantity;
+        b.create_at;
     ";
         $stmt = $this->PDO->prepare($query);
         // die($query);
@@ -177,12 +172,32 @@ class BillDAO
                 $row['email'],
                 $row['full_name'],
                 $row['type_payment'],
-                $row['create_at']
+                $row['create_at'],
+                $row['product_image'] // Thay đổi tên trường này thành 'product_image'
             );
+
+
 
 
             $lists[] = $data;
         }
         return $lists;
+    }
+
+    public function history($id_user)
+    {
+        $query =  "SELECT `id_bill` FROM `bill` WHERE `id_user` = $id_user ORDER BY `bill`.`id_bill` ASC";
+        $stmt = $this->PDO->prepare($query);
+        $stmt->execute();
+        $id_bill = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        $allDetails = []; // Mảng chứa tất cả thông tin chi tiết hóa đơn
+
+        foreach ($id_bill as $bill_id) {
+            $details = $this->showBill_details($bill_id);
+            $allDetails[] = $details;
+        }
+
+        return $allDetails;
     }
 }

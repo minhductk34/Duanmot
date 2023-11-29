@@ -25,7 +25,7 @@ require_once('view/home/user/page/header.php');
         $items = new ProductDAO();
         $id = $_GET['idpro'];
         $item = $items->selectOneItem($id);
-        // $user = $_SESSION['username'];
+        // $user = $_SESSION['user'];
         // $user_id = $user['id_user'];
         // var_dump($user_id);
         // print_r($item);

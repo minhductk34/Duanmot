@@ -16,10 +16,11 @@ require_once('view/home/user/page/header.php');
                         <?php
                         require_once('DAO/BillDAO.php');
                         $billDAO = new BillDAO();
-                        $user = $_SESSION['username'];
+                        $user = $_SESSION['user'];
                         $id_user = $user['id_user'];
                         $id_bill_ =  $billDAO->selectId($id_user);
                         $data = $billDAO->showBill_details($id_bill_);
+                        // print_r($data);
                         //   var_dump($data);
 
 
@@ -32,6 +33,7 @@ require_once('view/home/user/page/header.php');
                             $lastAddress = "";
                             $lastEmail = "";
                             $lastPhoneNumber = "";
+                            // var_dump($data);
 
                             foreach ($data as $key => $value) {
                                 $lastFullName = $value->get_full_name();
@@ -39,6 +41,7 @@ require_once('view/home/user/page/header.php');
                                 $lastEmail = $value->get_email();
                                 $lastPhoneNumber = $value->get_number_phone();
                             }
+                            // var_dump($lastFullName);
 
                             ?>
 
@@ -80,7 +83,7 @@ require_once('view/home/user/page/header.php');
                         <?php foreach ($data as $key => $value) { ?>
                             <tr class="cart_item">
                                 <td data-title="Image">
-                                    <a class="cart-productimage" href="#"><img width="91" height="91" src="assets/img/cart/cat-img-1.png" alt="Image"></a>
+                                    <a class="cart-productimage" href="#"><img width="91" height="91" src="admin_/uploads/products/<?php echo $value->getImage() ?>" alt="Image"></a>
                                 </td>
                                 <td data-title="Name">
                                     <a class="cart-productname" href="#"><?php echo $value->get_name_product(); ?></a>

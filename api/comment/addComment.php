@@ -2,8 +2,8 @@
 session_start();
 
 require_once('../../config/pdo.php');
-if (isset($_SESSION['username'])) {
-    $user = $_SESSION['username'];
+if (isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
     $user_id = $user['id_user'];
     $data = json_decode(file_get_contents("php://input"));
     $create_at =date('Y-m-d');

@@ -38,7 +38,7 @@ class ProductDAO
     public function search($text)
     {
         $keyword = '%' . $text . '%';
-        $sql = "SELECT * FROM `products` WHERE `name_product` AND status = 0 LIKE :keyword OR `desc_product` LIKE :keyword";
+        $sql = "SELECT * FROM `products` WHERE `name_product`  LIKE :keyword OR `desc_product` LIKE :keyword OR `price_product` LIKE :keyword AND status = 0";
         $stmt = $this->PDO->prepare($sql);
         $stmt->bindValue(':keyword', $keyword, PDO::PARAM_STR);
         $stmt->execute();
