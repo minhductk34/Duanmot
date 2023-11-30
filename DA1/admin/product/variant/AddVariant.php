@@ -34,6 +34,10 @@ if (is_array($product)) {
             ?>
         </select>
     </div>
+    <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Quantity</label>
+            <input type="number" name="quantity"  class="form-control" id="exampleFormControlInput1" required min="0" step="1" >
+        </div>
     <div class="form-row">
         <div class="input-data textarea">
             <div class="form-row submit-btn">

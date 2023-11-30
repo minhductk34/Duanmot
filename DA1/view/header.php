@@ -119,7 +119,7 @@
                 </div>
             </li>
             <!-- Nav Discount -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4" aria-expanded="true" aria-controls="collapseTwo4">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Discounts</span>
@@ -131,7 +131,7 @@
                         <a class="collapse-item" href="index.php?act=add_discount">Add</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
             <!-- Nav Order-->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo5" aria-expanded="true" aria-controls="collapseTwo5">
@@ -146,7 +146,7 @@
                 </div>
             </li>
             <!-- Nav Posts -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6" aria-expanded="true" aria-controls="collapseTwo6">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Posts</span>
@@ -157,7 +157,7 @@
                         <a class="collapse-item" href="index.php?">List</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
             <!-- Nav Synthetic & Statistical -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo8" aria-expanded="true" aria-controls="collapseTwo8">

@@ -26,14 +26,15 @@ if (isset($_GET['act'])) {
             $Categories = loadall_category();
             include "admin/category/ListCategory.php";
             break;
-            // Xóa hẳn ( nên thì cách khác )
-            // case "deleteCat":
-            //     if ( isset($_GET['id_category']) && ($_GET['id_category'] > 0)){
-            //         delete_category($_GET['id_category']);
-            //     }
-            //     $Categories = loadall_category();
-            //     include "admin/category/ListCategory.php";
-            //     break;
+        case "changeStsCat":
+            if (isset($_GET['id_category']) && ($_GET['id_category'] != "")) {
+                $id_category = $_GET['id_category'];
+                $status =  load_status_category($id_category);
+                change_status_category($status, $id_category);
+            }
+            $Categories = loadall_category();
+            include "admin/category/ListCategory.php";
+            break;
         case "editCat":
             if (isset($_GET['id_category']) && ($_GET['id_category'] > 0)) {
                 $category = loadone_category($_GET['id_category']);
@@ -111,14 +112,16 @@ if (isset($_GET['act'])) {
             $Categories = loadall_category();
             include "admin/product/ListProduct.php";
             break;
-            // // Xóa hẳn ( nên thì cách khác )
-            // case "deletePro":
-            //     if ( isset($_GET['id_product']) && ($_GET['id_product'] > 0)){
-            //         delete_product($_GET['id_product']);
-            //     }
-            //     $products = loadall_product('',0);
-            //     include "admin/product/ListProduct.php";
-            //     break;
+        case "changeStsPro":
+            if (isset($_GET['id_product']) && ($_GET['id_product'] != "")) {
+                $id_product = $_GET['id_product'];
+                $status =  load_status_product($id_product);
+                change_status_product($status, $id_product);
+            }
+            $products = loadall_product('', 0);
+            $Categories = loadall_category();
+            include "admin/product/ListProduct.php";
+            break;
 
             // Variant Porduct  
         case "addVariant":
@@ -143,18 +146,18 @@ if (isset($_GET['act'])) {
             }
             break;
         case "listVariant":
-            if (isset($_POST['ok']) && ($_POST['ok'])) {
-                $kyw = $_POST['kyw'];
-                $id_box = $_POST['id_box'];
-                $id_size = $_POST['id_size'];
-            } else {
-                $kyw = '';
-                $id_box = 0;
-                $id_size = 0;
-            }
             $boxs = loadall_box();
             $sizes = loadall_size();
-            $variants = loadall_variant($kyw, $id_box, $id_size);
+            $variants = loadall_variant();
+            include "admin/product/variant/ListVariant.php";
+            break;
+        case "changeStsVar":
+            if (isset($_GET['id_variant']) && ($_GET['id_variant'] != "")) {
+                $id_variant = $_GET['id_variant'];
+                $status =  load_status_variant($id_variant);
+                change_status_variant($status, $id_variant);
+            }
+            $variants = loadall_variant();
             include "admin/product/variant/ListVariant.php";
             break;
 
@@ -181,7 +184,7 @@ if (isset($_GET['act'])) {
                 $role = $_POST['role'];
             } else {
                 $kyw = '';
-                $role = 0;
+                $role = '';
             }
             $users = loadall_account($kyw, $role);
             include "admin/account/ListAccount.php";
@@ -204,16 +207,18 @@ if (isset($_GET['act'])) {
                 update_account($id_user, $full_name, $email, $number_phone, $address, $status, $permission);
                 $noti = "Success";
             }
-            $users = loadall_account('', 0);
+            $users = loadall_account('', '');
             include "admin/account/ListAccount.php";
             break;
-            // case "deleteUser":
-            //     if ( isset($_GET['id_user']) && ($_GET['id_user'] > 0)){
-            //         delete_account($_GET['id_user']);
-            //     }
-            //     $users = loadall_account('', 0);
-            //     include "admin/account/ListAccount.php";
-            //     break;
+        case "changeStsAcc":
+            if (isset($_GET['id_user']) && ($_GET['id_user'] != "")) {
+                $id_user = $_GET['id_user'];
+                $status =  load_status_account($id_user);
+                change_status_account($status, $id_user);
+            }
+            $users = loadall_account('', '');
+            include "admin/account/ListAccount.php";
+            break;
 
             // Comment Controller
         case "list_comment":
@@ -302,10 +307,9 @@ if (isset($_GET['act'])) {
             break;
         case "update_order":
             if (isset($_POST['update']) && $_POST['update']) {
-                $type_payment = $_POST['type_payment'];
                 $status = $_POST['status'];
                 $id_bill = $_POST['id_bill'];
-                update_bill($id_bill, $type_payment, $status);
+                update_bill($id_bill, $status);
                 $thongbao = "Success";
             }
             $bills = loadall_bill("", 0);

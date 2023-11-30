@@ -21,9 +21,17 @@
                     <?php
                     foreach ($details as $detail) {
                         extract($detail);
+                        $total = $price_product * $quantity;
+                        $image = load_status_img($id_product);
+                        $imgPath = "./uploads/products/" . $image;
+                        if (is_file($imgPath)) {
+                            $image_product = "<img src='" . $imgPath . "' height='100px'>";
+                        } else {    
+                            $image_product = "No Photo";
+                        }
                         echo '<tr>
                                     <td>' . $id_product . '</td>
-                                    <td>' . $img_product . '</td>
+                                    <td>' . $image_product . '</td>
                                     <td>' . $name_product . '</td>
                                     <td>' . $price_product . '</td>
                                     <td>' . $quantity . '</td>

@@ -15,11 +15,8 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th></th>
                             <th>ID Order</th>
                             <th>User</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
                             <th>Date Order</th>
                             <th>Status</th>
                             <th>Type Payment</th>
@@ -36,27 +33,27 @@
                                 $showDetail = "index.php?act=showDetail&id_bill=" . $id_bill;
                                 $editBill = "index.php?act=editBill&id_bill=" . $id_bill;
                                 if ($status == 0) {
-                                    $check = "Đơn hàng mới";
+                                    $check = "New Orders";
                                 } elseif ($status == 1) {
-                                    $check = "Đơn hàng đã chuẩn bị";
+                                    $check = "Order has been prepared";
                                 } elseif ($status == 2) {
-                                    $check = "Đang giao hàng";
-                                } else {
-                                    $check = "Đã giao thành công";
+                                    $check = "Order is being delivered";
+                                } elseif ($status == 3) {
+                                    $check = "Successful delivery";
+                                }
+                                 else {
+                                    $check = "Order canceled";
                                 }
                                 if ($type_payment == 1) {
-                                    $pay = "Trả tiền khi nhận hàng";
+                                    $pay = "Pay upon receipt";
                                 } elseif ($type_payment == 2) {
-                                    $pay = "Chuyển khoản ngân hàng";
+                                    $pay = "Bank transfer";
                                 } else {
-                                    $pay = "Thanh toán Online";
+                                    $pay = "Online Payment";
                                 }
                                 echo '<tr>
-                                    <td><input type="checkbox" name="" id=""></td>
                                     <td>' . $id_bill . '</td>
                                     <td>' . $user . '</td>
-                                    <td>' . $quantity . '</td>
-                                    <td>' . $total . '  VNĐ</td>
                                     <td>' . $create_at . '</td>
                                     <td>' . $check . '</td>
                                     <td>' . $pay . '</td>

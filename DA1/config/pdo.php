@@ -3,7 +3,7 @@
 
 function pdo_get_connection(){
     $dbHost = 'localhost';
-    $dbName = 'duanmot';
+    $dbName = 'duanmot_';
     $dbUser = 'root';
     $dbPass = '';
     try {
