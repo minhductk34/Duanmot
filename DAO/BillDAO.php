@@ -83,6 +83,7 @@ class BillDAO
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
 
+
         $lists = []; // Khởi tạo danh sách rỗng
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

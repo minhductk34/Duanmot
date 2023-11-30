@@ -45,10 +45,10 @@ $item = $items->showCart($id_user);
                 </thead>
                 <tbody>
 
-                <?php
-                // print_r($item);
-                // echo $value->getImage();
-                ?>
+                    <?php
+                    // print_r($item);
+                    // echo $value->getImage();
+                    ?>
                     <?php foreach ($item as $key => $value) { ?>
                         <tr class="cart_item">
                             <td data-title="Product">
@@ -81,9 +81,10 @@ $item = $items->showCart($id_user);
                                         xml.onreadystatechange = function() {
                                             if (xml.readyState === 4) {
                                                 if (xml.status === 200) {
+                                                    id = "Total" + id_cart;
                                                     document.getElementById("showNumber" + id_cart).value = xml.responseText;
                                                     // Đảm bảo có một phần tử HTML với id="Total" để thay đổi giá trị
-                                                    document.getElementById("Total").innerHTML = document.getElementById("price_one").innerHTML * xml.responseText;
+                                                    document.getElementById( id     ).innerHTML = document.getElementById("price_one").innerHTML * xml.responseText;
                                                 } else {
                                                     // header("Location:index.php");
                                                     alert("You need to log in");
@@ -107,9 +108,10 @@ $item = $items->showCart($id_user);
                                         xml.onreadystatechange = function() {
                                             if (xml.readyState === 4) {
                                                 if (xml.status === 200) {
+                                                    id = "Total" + id_cart;
                                                     document.getElementById("showNumber" + id_cart).value = xml.responseText;
                                                     // Đảm bảo có một phần tử HTML với id="Total" để thay đổi giá trị
-                                                    document.getElementById("Total").innerHTML = document.getElementById("price_one").innerHTML * xml.responseText;
+                                                    document.getElementById(id).innerHTML = document.getElementById("price_one").innerHTML * xml.responseText;
                                                 } else {
                                                     // header("Location:index.php");
                                                     alert("You need to log in ");
@@ -123,7 +125,7 @@ $item = $items->showCart($id_user);
                             </td>
 
                             <td data-title="Total">
-                                <span id="Total" class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity()  ?></bdi></span>
+                                <span id="Total<?php echo $value->getIdCart() ?>" class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity()  ?></bdi></span>
                             </td>
                             <td data-title="Remove">
                                 <a href="index.php?controller=deleteCart&id=<?php echo $value->getProductId() ?>" class="remove"><i class="fal fa-trash-alt"></i></a>

@@ -16,7 +16,6 @@ require_once('view/home/user/page/header.php');
                         <?php
                         require_once('DAO/BillDAO.php');
                      
-
                         $items = new BillDAO();
                         $item =  $items->showBill($id_user);
                         // var_dump($item);

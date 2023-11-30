@@ -28,8 +28,8 @@ class BillController
     {
 
         // var_dump($_REQUEST);
-        if (isset($_SESSION["username"])) {
-            $userData = $_SESSION["username"];
+        if (isset($_SESSION["user"])) {
+            $userData = $_SESSION["user"];
 
             // Gán giá trị cho các biến tương ứng
             $id_user =  $userData['id_user'];
@@ -106,16 +106,23 @@ class BillController
         $id_user = $user['id_user'];
         // id gân nhất 
         $id_bill = $this->BillDAO->selectId($id_user);
+        // var_dump( $user);
 
-
-
+        
         $cart = new CartDAO();
         $cart_ =  $cart->showCart($id_user);
-
+        
         foreach ($cart_ as $cart) {
-            $this->BillDAO->addBill_details($id_bill, $cart->getProductId(), $cart->getNameProduct(), $cart->getQuantity(), $cart->getPrice());
+            var_dump($cart->getQuantity());
+            // Lặp qua từng giá trị của $cart->getQuantity(
+                $this->BillDAO->addBill_details($id_bill, $cart->getProductId(), $cart->getNameProduct(), $cart->getQuantity(), $cart->getPrice());
+                $this->ProductDAO->Check_quantity_pro($cart->getProductId(), $cart->getQuantity());
+            
         }
+
+        // Sau khi lặp qua tất cả giá trị của $cart->getQuantity(), xóa sản phẩm từ giỏ hàng
         $this->CartDAO->deleteFromCart($id_user);
+
 
         header('Location:index.php?controller=showBill_details');
         // require_once('view/bill/user/checkout.php');

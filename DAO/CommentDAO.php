@@ -30,13 +30,16 @@ class CommentDAO
             c.content,
             c.create_at,
             c.rate,
-            u.username
+            u.username,
+            u.image
         FROM 
             comment c
         INNER JOIN 
             user u ON c.id_user = u.id_user
         INNER JOIN 
-            products p ON c.id_product = p.id_product;";
+            products p ON c.id_product = p.id_product
+            where p.id_product = '$id_pro'";
+        // die($sql);
 
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
@@ -44,7 +47,7 @@ class CommentDAO
         $comments = [];
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $comment = new CommentShow($row['username'], $row['content'], $row['create_at']);
+            $comment = new CommentShow($row['username'], $row['content'], $row['create_at'],$row['image']);
             $comments[] = $comment;
         }
 
@@ -59,6 +62,8 @@ class CommentDAO
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
+
+   
 
 
 

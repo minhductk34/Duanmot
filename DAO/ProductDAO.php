@@ -232,4 +232,23 @@ class ProductDAO
     //         return null;
     //     }
     // }
+    public function Check_quantity_pro($productId, $quantity)
+    {
+        // Lấy giá trị hiện tại của quantity từ bảng products
+        $query = "SELECT quantity FROM products WHERE id_product = $productId";
+        $stmt = $this->PDO->prepare($query);
+        $stmt->execute();
+        $current_quantity_pro = $stmt->fetchColumn();
+
+        // Tính toán giá trị mới cho quantity
+        $new_quantity_pro = $current_quantity_pro - $quantity;
+        if ($new_quantity_pro < 0) {
+            $new_quantity_pro = 0; // Đảm bảo số lượng không âm
+        }
+
+        // Cập nhật số lượng trong bảng products
+        $updateQuery = "UPDATE products SET quantity = $new_quantity_pro WHERE id_product = $productId";
+        $updateStmt = $this->PDO->prepare($updateQuery);
+        $updateStmt->execute();
+    }
 }

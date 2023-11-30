@@ -53,7 +53,7 @@ class CartDAO
 
     public function deleteFromCart($id)
     {
-        $query = "DELETE FROM cart WHERE id_product = $id";
+        $query = "DELETE FROM cart WHERE id_user = $id";
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
         // die($query);
@@ -74,6 +74,7 @@ class CartDAO
             FROM cart JOIN products 
             ON products.id_product = cart.id_product 
             WHERE cart.id_user = $id_user";
+            // die($query);
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
 

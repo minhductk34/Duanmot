@@ -6,8 +6,9 @@
     ==============================-->
 
  <?php
-    $data = $_SESSION["username"];
-    ?>
+    $data = $_SESSION["user"];
+
+?>
 
  <div class="vs-checkout-wrapper space-top space-md-bottom">
      <div class="container">
@@ -104,7 +105,17 @@
                 $id_user = $data['id_user'];
                 $item = $items->showCart($id_user);
 
+                // Kiểm tra nếu $item rỗng
+                if (empty($item)) {
+                    // Chuyển hướng về trang trước đó (nếu có thể)
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+                    exit; // Đảm bảo dừng việc thực thi mã nguồn
+                }
+
+                // Tiếp tục hiển thị nội dung trang nếu có dữ liệu
                 ?>
+
              <form class="woocommerce-cart-form" id="checkout-form">
                  <table class="cart_table mb-20">
                      <thead>

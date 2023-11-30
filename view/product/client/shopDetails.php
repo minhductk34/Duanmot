@@ -25,7 +25,7 @@ require_once('view/home/user/page/header.php');
         $items = new ProductDAO();
         $id = $_GET['idpro'];
         $item = $items->selectOneItem($id);
-        // $user = $_SESSION['user'];
+        // $user = $_SESSION['username'];
         // $user_id = $user['id_user'];
         // var_dump($user_id);
         // print_r($item);
@@ -116,49 +116,45 @@ require_once('view/home/user/page/header.php');
             </li>
         </ul>
         <div class="tab-content mb-30" id="productTabContent">
-            <div class="tab-pane fade" id="description" permissions="tabpanel" aria-labelledby="description-tab">
-                <p class="fs-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                    cupidatat non proident, </p>
-                <div class="row mt-30">
-                    <div class="col-md-6 mb-30">
-                        <img src="./src/assets/img/shop/shop-desc-1.jpg" class="w-100" alt="Shop Image">
-                    </div>
-                    <div class="col-md-6 mb-30">
-                        <img src="./src/assets/img/shop/shop-desc-2.jpg" class="w-100" alt="Shop Image">
-                    </div>
-                </div>
-                <div class="product-inner-list mb-4">
-                    <ul>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                        <li>Fusce vitae orci id leo pulvinar euismod et placerat diam.</li>
-                        <li>Etiam pharetra mauris at fringilla laoreet.</li>
-                        <li>Vivamus eu tellus pretium, fringilla justo nec, volutpat sapien.</li>
-                    </ul>
-                </div>
-                <div class="product-inner-list ">
-                    <ul>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                        <li>Fusce vitae orci id leo pulvinar euismod et placerat diam.</li>
-                        <li>Etiam pharetra mauris at fringilla laoreet.</li>
-                        <li>Vivamus eu tellus pretium, fringilla justo nec, volutpat sapien.</li>
-                    </ul>
-                </div>
-            </div>
+            <?php
+            //    var_dump($_GET["idpro"]);
+            require_once('DAO/CommentDAO.php');
+            $comment = new CommentDAO();
+            $comments = $comment->show(($_GET["idpro"]));
+            // print_r($comments);
+            ?>
             <div class="tab-pane fade show active" id="reviews" permissions="tabpanel" aria-labelledby="reviews-tab">
                 <div class="vs-comment-area list-style-none vs-comments-layout1 pt-3 ">
                     <ul class="comment-list">
+                        <?php foreach ($comments as $value) { ?>
 
-                        <li class="review vs-comment" id="showCmtFull">
+                            <li class="review vs-comment" id="showCmtFull">
+                                <div class='vs-post-comment'>
+                                    <div class='author-img'>
 
+                                        <?php
+                                        $imagePath = !empty($value->getImage()) ? 'assets/imgs/user/' . $value->getImage() : 'assets/imgs/logo/login.png';
+                                        ?>
+
+                                        <img src='<?php echo $imagePath; ?>' alt='Comment Author'>
+
+                                    </div>
+                                    <div class='comment-content'>
+                                        <span class='commented-on'><?php echo $value->getCreatedAt(); ?></span><br>
+                                        <span class='commented-on'><?php echo $value->getNameUser(); ?></span><br>
+                                        <p class='text'><?php echo $value->getContent(); ?></p>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php } ?>
 
                         </li>
 
                     </ul>
                 </div> <!-- Comment Form -->
                 <div class="vs-comment-form pt-3">
+
+
                     <div class="form-title">
                         <h3 class="h4 mb-lg-4 pb-lg-1">Add a review</h3>
                     </div>

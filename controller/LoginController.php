@@ -9,6 +9,7 @@ class LoginController
         if ($this->isUserLoggedIn()) {
             // Người dùng đã đăng nhập, thực hiện đăng xuất
             unset($_SESSION['user']);
+            header('Location: index.php?controller=login');
         } else {
             // Người dùng chưa đăng nhập
             if ($this->isLoginFormSubmitted()) {
@@ -21,8 +22,12 @@ class LoginController
                 if ($checkUser) {
                     // Người dùng đăng nhập thành công
                     $this->handleSuccessfulLogin($checkUser);
+
+                    // Chuyển hướng đến trang khác sau khi đăng nhập thành công (nếu cần)
+                    header('Location: index.php?controller=home');
                 } else {
-                    // Thông tin đăng nhập không đúng
+                    // Thông tin đăng nhập không đúng, hiển thị thông báo lỗi
+                    $loginError = "Thông tin đăng nhập không đúng. Vui lòng thử lại.";
                     include 'view/login/login.php';
                 }
             } else {
@@ -31,6 +36,7 @@ class LoginController
             }
         }
     }
+
 
     private function isUserLoggedIn()
     {
@@ -78,10 +84,10 @@ class LoginController
                 echo "<script>alert('Please enter a username.');</script>";
             } elseif (empty($password)) {
                 echo "<script>alert('Please enter a password.');</script>";
-            // } elseif (!preg_match('/^[0-9]{10}$/', $phone)) {
-            //     echo "<script>alert('Số điện thoại không hợp lệ.');</script>";
-            // } elseif (empty($full_name)) {
-            //     echo "<script>alert('Vui lòng nhập tên đầy đủ.');</script>";
+                // } elseif (!preg_match('/^[0-9]{10}$/', $phone)) {
+                //     echo "<script>alert('Số điện thoại không hợp lệ.');</script>";
+                // } elseif (empty($full_name)) {
+                //     echo "<script>alert('Vui lòng nhập tên đầy đủ.');</script>";
             } else {
                 // Kiểm tra xem tài khoản đã tồn tại hay chưa
                 $user = new LoginDAO();
