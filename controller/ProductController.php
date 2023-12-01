@@ -42,7 +42,6 @@ class ProductController
             if (empty($products)) {
                 // Chuyển hướng với thông điệp
                 header('Location: index.php?controller=product_show&message=notfound');
-               
             }
 
             require_once('view/product/client/shopFav.php');
@@ -58,11 +57,17 @@ class ProductController
     public function get_product_by_category()
     {
 
-        // die($_REQUEST);
-        $categories =  $this->CategoryDAO->showCategory();
-        foreach ($categories as $cate_name) {
-            $cate_name->getName();
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            $categories =  $this->CategoryDAO->showOneCategory($id);
+
+            $categories = $this->CategoryDAO->showOneCategory($id);
+            if (empty($categories)) {
+                header('Location: index.php?controller=product_show');
+            }
+            require_once('view/product/client/showCate.php');
         }
-        $this->ProductDAO->getProductsByCategory($cate_name);
+        header('Location: index.php?controller=product_show');
     }
 }

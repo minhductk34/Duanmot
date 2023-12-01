@@ -16,20 +16,32 @@ class CategoryDAO
         $sql = "SELECT * FROM category WHERE status = 0";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
-        
+
         $categories = []; // Initialize an empty array
-        
+
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             if (isset($row['name_category'], $row['desc_category'], $row['status'])) {
-                $category = new Category($row['id_category'],$row['name_category'], $row['desc_category'], $row['status']);
+                $category = new Category($row['id_category'], $row['name_category'], $row['desc_category'], $row['status']);
                 $categories[] = $category;
             } else {
                 // Xử lý khi thiếu thông tin cần thiết cho Category
             }
         }
-        
+
         return $categories;
     }
+    public function showOneCategory($id)
+    {
+        $sql = "SELECT * FROM category WHERE id_category = $id AND status = 0";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+
+        // Lấy dữ liệu từ kết quả truy vấn
+        $category = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $category;
+    }
+
 
     //ADD category
     public function addCategory($name, $description, $status)
@@ -67,17 +79,17 @@ class CategoryDAO
     //         $stmt = $this->PDO->prepare($sql);
     //         $stmt->execute();
 
-        
+
     //         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     //         if ($result !== false && isset($result['status'])) {
     //             return $result['status'];
     //         } else {
-             
+
     //             return null;
     //         }
     //     } catch (PDOException $e) {
-           
+
     //         echo "Error: " . $e->getMessage();
     //         return null;
     //     }

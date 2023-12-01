@@ -38,41 +38,48 @@ require_once('view/home/user/page/header.php');
 
                             <?php
                             require_once 'DAO/ProductDAO.php';
+                            if (isset($_GET['id'])) {
 
-                            $productDao = new ProductDao();
-                            $products = $productDao->select(); // Lấy danh sách sản phẩm
+                                $productDao = new ProductDao();
+                                $products = $productDao->getProductsByIdCategory($_GET['id']); // Lấy danh sách sản phẩm
+                                // print_r($products);
+                                $linkpro = "index.php?controller=product_details&idpro="; // Xây dựng đường dẫn sản phẩm
+                            }
 
-                            $linkpro = "index.php?controller=product_details&idpro="; // Xây dựng đường dẫn sản phẩm
                             ?>
 
-                            <?php foreach ($products as $product) : ?>
+                            <?php foreach ($products as $key => $product) : ?>
+                                <?php foreach ($product as $key => $value) : ?>
 
-                                <div class="col-sm-6 col-xl-4">
-                                    <div class="vs-product-box1 thumb_swap">
-                                        <div class="product-tag1">sale</div>
-                                        <div class="product-img">
-                                            <a href=<?php echo $linkpro . $product->getId(); ?>><img src="admin_/uploads/products/<?php echo $product->getImage() ?>" alt="Product Image" class="w-100"></a>
+                                    <div class="col-sm-6 col-xl-4">
+                                        <div class="vs-product-box1 thumb_swap">
+                                            <div class="product-tag1">sale</div>
+                                            <div class="product-img">
+                                                <a href="<?php echo $linkpro . $value->getId(); ?>"><img src="admin_/uploads/products/<?php echo $value->getImage(); ?>" alt="Product Image" class="w-100"></a>
 
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="actions-btn">
-                                                <a href="<?php echo $linkpro . $product->getId(); ?>"><i class="fal fa-cart-plus"></i></a>
-                                                <a href="./src/assets/img/shop/product-1-1.png" class="popup-image"><i class="far fa-search"></i></a>
-                                                <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
                                             </div>
-                                            <h4 class="product-title h5 mb-0"><a href=<?php echo $linkpro . $product->getId(); ?>><?php echo $product->getName(); ?></a></h4>
-                                            <span class="price font-theme"><strong><?php echo $product->getPrice(); ?></strong></span>
-                                            <p class="m-0 rating fs-xs text-theme lh-base">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </p>
+                                            <div class="product-content">
+                                                <div class="actions-btn">
+                                                    <a href="<?php echo $linkpro . $value->getId(); ?>"><i class="fal fa-cart-plus"></i></a>
+                                                    <a href="./src/assets/img/shop/product-1-1.png" class="popup-image"><i class="far fa-search"></i></a>
+                                                    <a href="index.php?controller=wishlistCart"><i class="fal fa-heart"></i></a>
+                                                </div>
+                                                <h4 class="product-title h5 mb-0"><a href=<?php echo $linkpro . $value->getId(); ?>><?php echo $value->getName(); ?></a></h4>
+                                                <span class="price font-theme"><strong></strong></span>
+                                                <p class="m-0 rating fs-xs text-theme lh-base">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                <?php endforeach; ?>
                             <?php endforeach; ?>
+
+                           
                         </div>
                     </div>
                     <div class="tab-pane fade" id="tab-list" permissions="tabpanel" aria-labelledby="tab-shop-list">
@@ -80,12 +87,12 @@ require_once('view/home/user/page/header.php');
                             <div class="col-sm-6 col-lg-6 col-xl-6">
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-img">
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-1.png" alt="Product Image" class="w-100"></a>
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-8.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-1.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-8.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Apple
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $value->getId(); ?>>Apple
                                                     juice</a></h4>
                                             <span class="price font-theme"><strong>$40.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
@@ -103,12 +110,12 @@ require_once('view/home/user/page/header.php');
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-tag1">sale</div>
                                     <div class="product-img">
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-2.png" alt="Product Image" class="w-100"></a>
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-7.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-2.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-7.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Black
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $value->getId(); ?>>Black
                                                     Beans</a></h4>
                                             <span class="price font-theme"><strong>$22 .00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
@@ -125,12 +132,12 @@ require_once('view/home/user/page/header.php');
                             <div class="col-sm-6 col-lg-6 col-xl-6">
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-img">
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-3.png" alt="Product Image" class="w-100"></a>
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-6.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-3.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-6.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Plum
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $value->getId(); ?>>Plum
                                                     Silho</a></h4>
                                             <span class="price font-theme"><strong>$83.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
@@ -147,12 +154,12 @@ require_once('view/home/user/page/header.php');
                             <div class="col-sm-6 col-lg-6 col-xl-6">
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-img">
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-4.png" alt="Product Image" class="w-100"></a>
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-5.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-4.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-5.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Carne
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $value->getId(); ?>>Carne
                                                     Asada</a></h4>
                                             <span class="price font-theme"><strong>$78.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
@@ -169,12 +176,12 @@ require_once('view/home/user/page/header.php');
                             <div class="col-sm-6 col-lg-6 col-xl-6">
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-img">
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-5.png" alt="Product Image" class="w-100"></a>
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-4.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-5.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-4.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Quesadilla</a></h4>
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $value->getId(); ?>>Quesadilla</a></h4>
                                             <span class="price font-theme"><strong>$48.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
                                                 <i class="fas fa-star"></i>
@@ -191,12 +198,12 @@ require_once('view/home/user/page/header.php');
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-tag1">sale</div>
                                     <div class="product-img">
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-6.png" alt="Product Image" class="w-100"></a>
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-3.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-6.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-3.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Pepperoni</a></h4>
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $value->getId(); ?>>Pepperoni</a></h4>
                                             <span class="price font-theme"><strong>$45.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
                                                 <i class="fas fa-star"></i>
@@ -212,12 +219,12 @@ require_once('view/home/user/page/header.php');
                             <div class="col-sm-6 col-lg-6 col-xl-6">
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-img">
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-7.png" alt="Product Image" class="w-100"></a>
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-2.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-7.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-2.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>Meatballs</a></h4>
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $value->getId(); ?>>Meatballs</a></h4>
                                             <span class="price font-theme"><strong>$52.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
                                                 <i class="fas fa-star"></i>
@@ -233,12 +240,12 @@ require_once('view/home/user/page/header.php');
                             <div class="col-sm-6 col-lg-6 col-xl-6">
                                 <div class="vs-product-box2 d-xl-flex has-border thumb_swap">
                                     <div class="product-img">
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-8.png" alt="Product Image" class="w-100"></a>
-                                        <a href=<?php echo $linkpro . $product->getId(); ?>><img src="./src/assets/img/shop/product-2-1.png" alt="Product Image" class="w-100 img_swap"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-8.png" alt="Product Image" class="w-100"></a>
+                                        <a href=<?php echo $linkpro . $value->getId(); ?>><img src="./src/assets/img/shop/product-2-1.png" alt="Product Image" class="w-100 img_swap"></a>
                                     </div>
                                     <div class="product-content d-xl-flex align-items-center">
                                         <div>
-                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $product->getId(); ?>>kidney
+                                            <h4 class="product-title h5 mb-1"><a href=<?php echo $linkpro . $value->getId(); ?>>kidney
                                                     beans</a></h4>
                                             <span class="price font-theme"><strong>$23.00</strong></span>
                                             <p class="m-0 rating fs-xs text-theme lh-base">
@@ -299,7 +306,7 @@ require_once('view/home/user/page/header.php');
 
                     <?php
                     // Nạp file chứa hàm showCategory()
-                    require_once('DAO/CategoryDAO.php');
+                    require_once('DAO/ProductDAO.php');
                     $categoryDao = new CategoryDAO();
 
                     // Gọi hàm showCategory() để lấy danh sách danh mục
@@ -312,7 +319,7 @@ require_once('view/home/user/page/header.php');
                             <?php foreach ($categories as $category) : ?>
                                 <li>
                                     <!-- <input type="checkbox"> -->
-                                    <a href="index.php?controller=get_product_by_category&id=<?php echo $category->getId()?>"><?php echo $category->getName(); ?></a>
+                                    <a href="index.php?controller=get_product_by_category&id=<?php echo $category->getId() ?>"><?php echo $category->getName(); ?></a>
 
                                 </li>
                             <?php endforeach; ?>

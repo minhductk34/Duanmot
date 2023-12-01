@@ -119,6 +119,56 @@ class ProductDAO
         );
     }
 
+    public function getProductsByIdCategory($id)
+    {
+        $sql = "SELECT p.*
+        FROM products p
+        JOIN category c ON c.id_category = p.id_cat
+        WHERE c.id_category = $id AND p.status = 0
+        ORDER BY c.desc_category ASC, p.status
+        ;
+        ";
+        // die( $sql );
+
+        //Nếu k hiểu đọc cái dưới
+        // $sql = "SELECT products.*, category.name_category AS name_category, category.desc_category AS desc_category
+        // FROM products
+        // JOIN category ON category.id_cat = products.id_cat
+        // WHERE category.name_category = ''
+        // ORDER BY category.desc_category
+        // ASC, products.status";
+        // die($sql);
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+
+        $products = array();
+        $category = null;
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+       
+            $product = new Product(
+                $row['id_product'],
+                $row['name_product'],
+                $row['desc_product'],
+                $row['image_product'],
+                $row['price_product'],
+                $row['status'],
+                $row['quantity'],
+                $row['id_cat'],
+                $row['id_discount']
+            );
+            $products[] = $product;
+        }
+
+        return array(
+            'products' => $products
+            
+        );
+    }
+
+
+
+
 
 
     // Select item with id product

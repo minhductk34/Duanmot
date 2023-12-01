@@ -65,19 +65,16 @@ class CartController
 
     public function delete()
     {
-
+       
         if (isset($_GET['id'])) {
-            // die($_GET['id']);
-            // echo 'deleteCart';
             $id = $_GET['id'];
             $user = $_SESSION['user'];
             $id_user = $user['id_user'];
             $this->CartDAO->deleteFromCart($_GET['id']);
-
             $this->CartDAO->showCart($id_user);
             header('Location: index.php?controller=listCart');
         } else {
-            // echo 'lol';
+        
         }
     }
     public function history()

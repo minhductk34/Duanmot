@@ -28,13 +28,12 @@ require_once('view/home/user/page/header.php');
 
 
 
-                        <h2 class="h4">This is your order: </h2>
+                        <h2 class="h4">This is your order information: </h2>
                         <div class="row gx-2">
                             <?php
                             foreach ($data as $key => $value) {
                                 foreach ($value as $key_ => $value_) {
                                     $found = false;
-
 
                                     foreach ($list as &$vl2) {
                                         if ($vl2['id'] == $value_->get_id_bill()) {
