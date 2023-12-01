@@ -65,7 +65,6 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Category:</h6>
                         <a class="collapse-item" href="index.php?act=list_category">List</a>
-                        <a class="collapse-item" href="index.php?act=add_category">Add</a>
                     </div>
                 </div>
             </li>
@@ -80,7 +79,6 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Product:</h6>
                         <a class="collapse-item" href="index.php?act=list_product">List</a>
-                        <a class="collapse-item" href="index.php?act=add_product">Add</a>
                     </div>
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Variant Product:</h6>
@@ -100,7 +98,6 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Account:</h6>
                         <a class="collapse-item" href="index.php?act=list_account">List</a>
-                        <a class="collapse-item" href="index.php?act=add_account">Add</a>
                     </div>
                 </div>
             </li>
@@ -159,7 +156,7 @@
                 </div>
             </li> -->
             <!-- Nav Synthetic & Statistical -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo8" aria-expanded="true" aria-controls="collapseTwo8">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Synthetic & Statistical</span>
@@ -171,7 +168,7 @@
                         <a class="collapse-item" href="index.php?act=showchart">Show Chart</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
         </ul>
         <!-- End of Sidebar -->
 

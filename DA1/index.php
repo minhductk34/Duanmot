@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+// if (!isset($_SESSION['user']) || $_SESSION['user']['permissions'] != 1 ) {
+//     header('Location: ../index.php');
+//     exit();
+// }
 include "config/pdo.php";
 include "models/CategoryModel.php";
 include "models/ProductModel.php";
@@ -8,7 +14,12 @@ include "models/DiscountModel.php";
 include "models/OrderModel.php";
 include "models/Syn&StaModel.php";
 include "models/Validate.php";
-include "view/header.php";
+// if ( $_SESSION['user']['permissions'] == 1 ){
+//     include "view/headerAdmin.php";
+// } else if ( $_SESSION["user"]["permissions"] == 2){
+//     include "view/headerAdmin.php";
+// }
+include "view/Admin/headerAdmin.php";
 
 $nameErr = $emailErr = $descErr = $priceErr = $imgErr = $quanErr = $emailErr = $passErr = $userErr =  "";
 if (isset($_GET['act'])) {
@@ -104,7 +115,7 @@ if (isset($_GET['act'])) {
                 } else if (strlen($SL) > 9) {
                     $quanErr = "Quantity is too much. Check again";
                     $noti = "Failed";
-                } else if ($_FILES['image_product']['size'] > (1024*1024*15)) {
+                } else if ($_FILES['image_product']['size'] > (1024 * 1024 * 15)) {
                     $imgErr = "Image size must not exceed 15 MB";
                     $noti = "Failed";
                 } else {
@@ -163,11 +174,11 @@ if (isset($_GET['act'])) {
                 } else if (strlen($SL) > 9) {
                     $quanErr = "Quantity is too much. Check again";
                     $noti = "Failed";
-                } else if ($_FILES['image_product']['size'] > (1024*1024*15)) {
+                } else if ($_FILES['image_product']['size'] > (1024 * 1024 * 15)) {
                     $imgErr = "Image size must not exceed 15 MB";
                     $noti = "Failed";
                 } else {
-                   update_product($id_product, $id_category, $name_product, $price_product, $desc_product, $image_product, $quantity, $status);
+                    update_product($id_product, $id_category, $name_product, $price_product, $desc_product, $image_product, $quantity, $status);
                     $noti = "Success";
                 }
                 $noti = "Success";
@@ -258,11 +269,11 @@ if (isset($_GET['act'])) {
                 } else if (!preg_match("/^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$/", $mail)) {
                     $descErr = "Invalid email format";
                     $noti = "Failed";
-                } else if ($_FILES['image']['size'] > (1024*1024*15)) {
+                } else if ($_FILES['image']['size'] > (1024 * 1024 * 15)) {
                     $imgErr = "Image size must not exceed 15 MB";
                     $noti = "Failed";
                 } else {
-                insert_account($username, $password, $email, $permission, $full_name, $image);
+                    insert_account($username, $password, $email, $permission, $full_name, $image);
                     $noti = "Success";
                 }
             }
@@ -416,15 +427,53 @@ if (isset($_GET['act'])) {
             //     break;
 
             //Synthetic & Statistical
-        case 'synStat':
+        case 'StatCat':
             $list = loadall();
-            include "admin/syn&stat/List.php";
+            include "admin/syn&stat/ListCat.php";
             break;
         case 'showchart':
             $list = loadall();
             include "admin/syn&stat/Chart.php";
             break;
-
+        case 'StatPro':
+            $totalPro = TotalPro();
+            $inStock = inStock();
+            $outOfStock = outOfStock();
+            $mostComOfPro = mostComOfPro();
+            $nameProCom = loadone_name_product($mostComOfPro[0][0]);
+            $mostComOfOrder = mostComOfOrder();
+            $nameProOrder = loadone_name_product($mostComOfPro[0][0]);
+            include "admin/syn&stat/StatPro.php";
+            break;
+        case 'StatAcc':
+            $TotalAcc = TotalAcc();
+            $quantity_admin = quantity_admin();
+            $quantity_staff = quantity_staff();
+            $quantity_client = quantity_client();
+            $is_Active = is_Active();
+            $is_Disable = is_Disable();
+            include "admin/syn&stat/StatAcc.php";
+            break;
+        case 'StatCom':
+            $TotalCom = TotalCom();
+            $comment_show = comment_show();
+            $comment_hidden = comment_hidden();
+            include "admin/syn&stat/StatCom.php";
+            break;
+            // $int = (int)$num;
+            // $float = (float)$num;
+        case 'StatOrder':
+            $TotalOrder = TotalOrder();
+            $toltalQuantity = (int)toltalQuantity();
+            $toltalPrice = (int)toltalPrice();
+            $total = $toltalQuantity* $toltalPrice;
+            $orderNew = orderNew();
+            $orderPrepare = orderPrepare();
+            $orderDelivered = orderDelivered();
+            $orderSuccess = orderSuccess();
+            $OrderCanceled = OrderCanceled();
+            include "admin/syn&stat/StatOrder.php";
+            break;
         default:
             include("view/home.php");
             break;
