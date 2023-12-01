@@ -37,6 +37,7 @@ if (is_array($product)) {
     <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Quantity</label>
             <input type="number" name="quantity"  class="form-control" id="exampleFormControlInput1" required min="0" step="1" >
+            <span style="color: red; margin: 10px 0px;"><?=$quanErr?></span>
         </div>
     <div class="form-row">
         <div class="input-data textarea">
@@ -50,8 +51,11 @@ if (is_array($product)) {
         </div>
     </div>
 </form>
-<?php
-if (isset($noti) && ($noti != "")) echo $noti
-?>
+<script>
+        var noti = "<?php  echo $noti ?>";
+        if ( noti != ""){
+            window.alert("Add New VariantProduct " + noti);
+        }
+</script>
 </div>
 <!-- End of Main Content -->

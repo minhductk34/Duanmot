@@ -16,15 +16,17 @@ if (is_array($category)) {
         </div>
     </div> -->
     <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label"  style="color:#3498db;">Name Category</label>
+        <label for="exampleFormControlInput1" class="form-label" style="color:#3498db;">Name Category</label>
         <input type="text" name="name_category" class="form-control" id="exampleFormControlInput1" required value="<?= $name_category ?>">
+        <span style="color: red; margin: 10px 20px"><?=$nameErr?></span>
     </div>
     <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label" style="color:#3498db;">Description</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc_category"><?= $desc_category ?></textarea>
+        <span style="color: red; margin: 10px 20px"><?=$descErr?></span>
     </div>
     <div class=" form-row">
-    <span>Status</span>
+        <span>Status</span>
         <?php
         if ($status == 0) {
             $check0 = "checked";

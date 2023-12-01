@@ -7,7 +7,10 @@ include "models/CommentModel.php";
 include "models/DiscountModel.php";
 include "models/OrderModel.php";
 include "models/Syn&StaModel.php";
+include "models/Validate.php";
 include "view/header.php";
+
+$nameErr = $emailErr = $descErr = $priceErr = $imgErr = $quanErr = $emailErr = $passErr = $userErr =  "";
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
@@ -17,8 +20,19 @@ if (isset($_GET['act'])) {
             if (isset($_POST['add']) && $_POST['add']) {
                 $name_category = $_POST['name_category'];
                 $desc_category = $_POST['desc_category'];
-                insert_category($name_category, $desc_category);
-                $noti = "Success";
+                $nameCategory = test_input($name_category);
+                $descCategory = test_input($desc_category);
+                // Validate
+                if (!preg_match("/^[a-zA-Z ]*$/", $nameCategory)) {
+                    $nameErr = "Only letters and white space allowed";
+                    $noti = "Failed";
+                } else if (strlen($descCategory) > 200) {
+                    $descErr = "Description is too long. Only 200 characters";
+                    $noti = "Failed";
+                } else {
+                    insert_category($name_category, $desc_category);
+                    $noti = "Success";
+                }
             }
             include "admin/category/AddCategory.php";
             break;
@@ -47,8 +61,16 @@ if (isset($_GET['act'])) {
                 $desc_category = $_POST['desc_category'];
                 $status = $_POST['status'];
                 $id_category = $_POST['id_category'];
-                update_category($id_category, $name_category, $desc_category, $status);
-                $thongbao = "Success";
+                // Validate
+                $nameCategory = test_input($name_category);
+                $descCategory = test_input($desc_category);
+                if (!preg_match("/^[a-zA-Z ]*$/", $nameCategory)) {
+                    $nameErr = "Only letters and white space allowed";
+                } else if (strlen($descCategory) > 200) {
+                    $descErr = "Description is too long. Only 200 characters";
+                } else {
+                    update_category($id_category, $name_category, $desc_category, $status);
+                }
             }
             $Categories = loadall_category();
             include "admin/category/ListCategory.php";
@@ -57,18 +79,38 @@ if (isset($_GET['act'])) {
             // Product Controller
         case "add_product":
             if (isset($_POST['add']) && $_POST['add']) {
-                var_dump($_POST);
                 $id_cat = $_POST['id_category'];
                 $name_product = $_POST['name_product'];
+                $namePro = test_input($name_product);
                 $price_product = $_POST['price_product'];
+                $price = test_input($price_product);
                 $quantity = $_POST['quantity'];
+                $SL = test_input($price);
                 $desc_product = $_POST['desc_product'];
+                $descripton = test_input($desc_product);
                 $image_product = $_FILES['image_product']['name'];
                 $target_dir = "uploads/products/";
                 $target_file = $target_dir . basename($image_product);
                 move_uploaded_file($_FILES["image_product"]["tmp_name"], $target_file);
-                insert_product($name_product, $desc_product, $image_product, $price_product, $quantity, $id_cat);
-                $noti = "Success";
+                if (!preg_match("/^[a-zA-Z ]*$/", $namePro)) {
+                    $nameErr = "Only letters and white space allowed";
+                    $noti = "Failed";
+                } else if (strlen($price) > 10) {
+                    $priceErr = "Unreasonable price. Only 9 numeric characters";
+                    $noti = "Failed";
+                } else if (strlen($descripton) > 500) {
+                    $descErr = "Description is too long. Only 200 characters";
+                    $noti = "Failed";
+                } else if (strlen($SL) > 9) {
+                    $quanErr = "Quantity is too much. Check again";
+                    $noti = "Failed";
+                } else if ($_FILES['image_product']['size'] > (1024*1024*15)) {
+                    $imgErr = "Image size must not exceed 15 MB";
+                    $noti = "Failed";
+                } else {
+                    insert_product($name_product, $desc_product, $image_product, $price_product, $quantity, $id_cat);
+                    $noti = "Success";
+                }
             }
             $Categories = loadall_category();
             include "admin/product/AddProduct.php";
@@ -97,15 +139,37 @@ if (isset($_GET['act'])) {
                 $id_product = $_POST['id_product'];
                 $id_category = $_POST['id_category'];
                 $name_product = $_POST['name_product'];
+                $namePro = test_input($name_product);
                 $price_product = $_POST['price_product'];
+                $price = test_input($price_product);
                 $desc_product = $_POST['desc_product'];
+                $descripton = test_input($desc_product);
                 $quantity = $_POST['quantity'];
+                $SL = test_input($quantity);
                 $status = $_POST['status'];
                 $image_product = $_FILES['image_product']['name'];
                 $target_dir = "uploads/products/";
                 $target_file = $target_dir . basename($image_product);
                 move_uploaded_file($_FILES["image_product"]["tmp_name"], $target_file);
-                update_product($id_product, $id_category, $name_product, $price_product, $desc_product, $image_product, $quantity, $status);
+                if (!preg_match("/^[a-zA-Z ]*$/", $namePro)) {
+                    $nameErr = "Only letters and white space allowed";
+                    $noti = "Failed";
+                } else if (strlen($price) > 10) {
+                    $priceErr = "Unreasonable price. Only 9 numeric characters";
+                    $noti = "Failed";
+                } else if (strlen($descripton) > 500) {
+                    $descErr = "Description is too long. Only 200 characters";
+                    $noti = "Failed";
+                } else if (strlen($SL) > 9) {
+                    $quanErr = "Quantity is too much. Check again";
+                    $noti = "Failed";
+                } else if ($_FILES['image_product']['size'] > (1024*1024*15)) {
+                    $imgErr = "Image size must not exceed 15 MB";
+                    $noti = "Failed";
+                } else {
+                   update_product($id_product, $id_category, $name_product, $price_product, $desc_product, $image_product, $quantity, $status);
+                    $noti = "Success";
+                }
                 $noti = "Success";
             }
             $products = loadall_product('', 0);
@@ -139,8 +203,16 @@ if (isset($_GET['act'])) {
                 $box = load_box($id_box);
                 $id_size = $_POST['id_size'];
                 $size = load_size($id_size);
-                $name_variant = $name_product . ' size ' .  $size . ' đựng trong ' . $box;
-                insert_variant($id_product, $id_size, $id_box, $name_variant);
+                $quantity = $_POST['quantity'];
+                $SL = test_input($quantity);
+                $name_variant = $name_product . ' size ' .  $size . ' in ' . $box;
+                if (strlen($SL) > 9) {
+                    $quanErr = "Quantity is too much. Check again";
+                    $noti = "Failed";
+                } else {
+                    insert_variant($id_product, $id_size, $id_box, $name_variant, $quantity);
+                    $noti = "Success";
+                }
                 $products = loadall_product('', 0);
                 include './admin/product/ListProduct.php';
             }
@@ -165,16 +237,34 @@ if (isset($_GET['act'])) {
         case "add_account":
             if (isset($_POST['add_account']) && $_POST['add_account']) {
                 $username = $_POST['username'];
+                $user = test_input($username);
                 $password = $_POST['password'];
+                $pass = test_input($password);
                 $email = $_POST['email'];
+                $mail = test_input($email);
                 $permission = $_POST['permission'];
+                $per = test_input($permission);
                 $full_name = $_POST['username'];
                 $image = $_FILES['image']['name'];
                 $target_dir = "uploads/accounts/";
                 $target_file = $target_dir . basename($image);
                 move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                if (!preg_match('/^[a-zA-Z0-9\s]+$/', $user)) {
+                    $nameErr = "Only letters and numbers without special characters or spaces";
+                    $noti = "Failed";
+                } else if (isValidPassword($password) == false) {
+                    $passErr = "Password must be at least 8 characters, contain at least one upper and lower case letter, one number and one special character";
+                    $noti = "Failed";
+                } else if (!preg_match("/^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$/", $mail)) {
+                    $descErr = "Invalid email format";
+                    $noti = "Failed";
+                } else if ($_FILES['image']['size'] > (1024*1024*15)) {
+                    $imgErr = "Image size must not exceed 15 MB";
+                    $noti = "Failed";
+                } else {
                 insert_account($username, $password, $email, $permission, $full_name, $image);
-                $noti = "Success";
+                    $noti = "Success";
+                }
             }
             include "admin/account/AddAccount.php";
             break;

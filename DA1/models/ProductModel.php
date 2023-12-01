@@ -48,8 +48,8 @@
         $boxs = pdo_query($sql);
         return $boxs;
     }
-    function insert_variant($id_product, $id_size, $id_box, $name_variant){
-        $sql = "insert into variant_product (id_product, id_size, id_box, name_variant) values('$id_product','$id_size','$id_box', '$name_variant')";
+    function insert_variant($id_product, $id_size, $id_box, $name_variant , $quantity){
+        $sql = "insert into variant_product (id_product, id_size, id_box, name_variant, quantity) values('$id_product','$id_size','$id_box', '$name_variant', '$quantity')";
         pdo_execute($sql);
     }
     function load_box($id_box){
