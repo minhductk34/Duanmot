@@ -20,9 +20,6 @@ require_once('view/home/user/page/header.php');
                         $id_user = $user['id_user'];
                         $id_bill_ =  $billDAO->selectId($id_user);
                         $data = $billDAO->showBill_details($id_bill_);
-                        // print_r($data);
-                        //   var_dump($data);
-
 
                         ?>
                         <h2 class="h4">Check Out Successfully</h2>
@@ -80,7 +77,11 @@ require_once('view/home/user/page/header.php');
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($data as $key => $value) { ?>
+                        <?php
+                        $total = 0;
+                        foreach ($data as $key => $value) {
+                            $total +=  $value->get_bill_detail_price() * $value->get_bill_detail_quantity()
+                        ?>
                             <tr class="cart_item">
                                 <td data-title="Image">
                                     <a class="cart-productimage" href="#"><img width="91" height="91" src="admin_/uploads/products/<?php echo $value->getImage() ?>" alt="Image"></a>
@@ -98,7 +99,14 @@ require_once('view/home/user/page/header.php');
                                     <span class="amount"><bdi><span>$</span></bdi><?php echo $value->get_bill_detail_price() * $value->get_bill_detail_quantity(); ?></span>
                                 </td>
                             </tr>
+
                         <?php } ?>
+                        <tr class="order-total">
+                            
+                            <th>Order Total</th>
+                            <th></th><th></th><th></th>
+                            <td><strong><span class="amount"><bdi><span>$</span><?php echo $total ?></bdi></span></strong></td>
+                        </tr>
                     </tbody>
                 </table>
             </form>

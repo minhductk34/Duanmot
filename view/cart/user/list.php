@@ -46,8 +46,7 @@ $item = $items->showCart($id_user);
                 <tbody>
 
                     <?php
-                    // print_r($item);
-                    // echo $value->getImage();
+                    $total = 0;
                     ?>
                     <?php foreach ($item as $key => $value) { ?>
                         <tr class="cart_item">
@@ -84,7 +83,7 @@ $item = $items->showCart($id_user);
                                                     id = "Total" + id_cart;
                                                     document.getElementById("showNumber" + id_cart).value = xml.responseText;
                                                     // Đảm bảo có một phần tử HTML với id="Total" để thay đổi giá trị
-                                                    document.getElementById( id     ).innerHTML = document.getElementById("price_one").innerHTML * xml.responseText;
+                                                    document.getElementById(id).innerHTML = document.getElementById("price_one").innerHTML * xml.responseText;
                                                 } else {
                                                     // header("Location:index.php");
                                                     alert("You need to log in");
@@ -125,21 +124,39 @@ $item = $items->showCart($id_user);
                             </td>
 
                             <td data-title="Total">
-                                <span id="Total<?php echo $value->getIdCart() ?>" class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity()  ?></bdi></span>
+                                <span class="amount"><bdi><span>$</span><span id="Total<?php echo $value->getIdCart() ?>" class="error_"> <?php echo $value->getPrice() * $value->getQuantity()  ?></span></bdi></span>
                             </td>
                             <td data-title="Remove">
                                 <a href="index.php?controller=deleteCart&id=<?php echo $value->getProductId() ?>" class="remove"><i class="fal fa-trash-alt"></i></a>
                             </td>
                         </tr>
 
-                    <?php } ?>
+                    <?php
+
+                        $total +=   $value->getPrice() * $value->getQuantity();
+                    } ?>
                     <tr>
                         <td colspan="6" class="actions">
                             <div class="vs-cart-coupon">
                                 <input type="text" class="form-control" placeholder="Coupon Code...">
                                 <button type="submit" class="vs-btn rounded-1 shadow-none">Apply Coupon</button>
                             </div>
-                            <button type="submit" class="vs-btn style2 rounded-1 shadow-none" href="index.php?controller=updateCart" name="updateCart">Update cart</button>
+                            <button class="vs-btn style2 rounded-1 shadow-none" onclick="updateTotal(event)">Update cart</button>
+
+                            <script>
+                                function updateTotal(event) {
+                                    event.preventDefault();
+                                    total = 0;
+                                    item = document.querySelectorAll('.error_')
+                                    item.forEach(element => {
+                                        total = total - -element.innerHTML
+                                    });
+                                    document.getElementById('total_').innerHTML = total;
+                                    document.getElementById('order_total_').innerHTML = total;
+
+                                    
+                                }
+                            </script>
                             <a href="index.php?controller=product_show" class="vs-btn rounded-1 shadow-none">Continue Shopping</a>
                         </td>
                     </tr>
@@ -154,8 +171,10 @@ $item = $items->showCart($id_user);
                         <tr>
                             <td>Cart Subtotal</td>
                             <td data-title="Cart Subtotal">
-                                <span class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity()  ?></bdi></span>
+                                <span class="amount"><bdi><span>$</span><span id="total_"><?php echo $total  ?></span></bdi></span>
                             </td>
+
+
                         </tr>
                         <tr class="shipping">
                             <th>Shipping and Handling</th>
@@ -170,40 +189,7 @@ $item = $items->showCart($id_user);
                                         <label for="flat_rate">Flat rate</label>
                                     </li>
                                 </ul>
-                                <p class="woocommerce-shipping-destination">
-                                    Shipping options will be updated during checkout.
-                                </p>
-                                <form action="#" method="post">
-                                    <a href="shop-details.html" class="shipping-calculator-button">Change
-                                        address</a>
-                                    <div class="shipping-calculator-form">
-                                        <p class="form-row">
-                                            <select class="form-select">
-                                                <option value="AR">Argentina</option>
-                                                <option value="AM">Armenia</option>
-                                                <option value="BD" selected="selected">Hà Nội</option>
-                                            </select>
-                                        </p>
-                                        <p>
-                                            <select class="form-select">
-                                                <option value="">Select an option…</option>
-                                                <option value="BD-05">Sài Gòn</option>
-                                                <option value="BD-01">Đà Nẵng</option>
-                                                <option value="BD-02">Hải Phòng</option>
-                                                <option value="BD-06">Hải Dương</option>
-                                            </select>
-                                        </p>
-                                        <p class="form-row">
-                                            <input type="text" class="form-control" placeholder="Town / City">
-                                        </p>
-                                        <p class="form-row">
-                                            <input type="text" class="form-control" placeholder="Postcode / ZIP">
-                                        </p>
-                                        <p>
-                                            <button class="vs-btn shadow-none rounded-1">Update</button>
-                                        </p>
-                                    </div>
-                                </form>
+
                             </td>
                         </tr>
                     </tbody>
@@ -211,7 +197,7 @@ $item = $items->showCart($id_user);
                         <tr class="order-total">
                             <td>Order Total</td>
                             <td data-title="Total">
-                                <strong><span class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity()  ?></bdi></span></strong>
+                                <strong><span class="amount"><bdi><span>$</span><span id="order_total_"><?php echo $total ?></span></bdi></span></strong>
                             </td>
                         </tr>
                     </tfoot>

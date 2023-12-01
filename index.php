@@ -135,7 +135,6 @@ switch ($controller) {
         $homeController->chatBox();
         break;
 
-
     default:
         // Xử lý controller không hợp lệ
         break;

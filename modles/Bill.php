@@ -70,4 +70,5 @@ class BillModel
     {
         return $this->createdAt;
     }
+    
 }

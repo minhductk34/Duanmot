@@ -15,12 +15,12 @@ require_once('view/home/user/page/header.php');
                     <div class="col-lg-6">
                         <?php
                         require_once('DAO/BillDAO.php');
-                     
+
                         $items = new BillDAO();
                         $item =  $items->showBill($id_user);
                         // var_dump($item);
                         ?>
-                         <h2 class="h4" font_size="40px">Confirm Your Bills And CheckOut</h2>
+                        <h2 class="h4" font_size="40px">Confirm Your Bills And CheckOut</h2>
                         <!-- <h2 class="h4">Billing Details</h2> -->
                         <div class="row gx-2">
                             <?php foreach ($item as $key => $vl) { ?>
@@ -66,7 +66,11 @@ require_once('view/home/user/page/header.php');
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($cart_ as $key => $value) { ?>
+                        <?php
+                        $total = 0;
+                        foreach ($cart_ as $key => $value) {
+                            $total +=  $value->getPrice() * $value->getQuantity()
+                        ?>
                             <tr class="cart_item">
                                 <td data-title="Image">
                                     <a class="cart-productimage" href="#"><img width="91" height="91" src="admin_/uploads/products/<?php echo $value->getImage() ?>" alt="Image"><?php echo $value->getImage(); ?></a>
@@ -83,6 +87,12 @@ require_once('view/home/user/page/header.php');
                                 <td data-title="Total">
                                     <span class="amount"><bdi><span>$</span></bdi><?php echo $value->getPrice() * $value->getQuantity(); ?></span>
                                 </td>
+
+                            </tr>
+                            <tr class="order-total">
+                                <th>Order Total</th>
+                                <th></th><th></th><th></th>
+                                <td><strong><span class="amount"><bdi><span>$</span><?php echo $total ?></bdi></span></strong></td>
                             </tr>
                         <?php } ?>
                     </tbody>

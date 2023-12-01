@@ -8,7 +8,7 @@
  <?php
     $data = $_SESSION["user"];
 
-?>
+    ?>
 
  <div class="vs-checkout-wrapper space-top space-md-bottom">
      <div class="container">
@@ -128,7 +128,12 @@
                          </tr>
                      </thead>
                      <tbody>
-                         <?php foreach ($item as $key => $value) { ?>
+
+                         <?php
+                            $total = 0;
+                            foreach ($item as $key => $value) {
+                                $total +=  $value->getPrice() * $value->getQuantity()
+                            ?>
                              <tr class="cart_item">
                                  <td data-title="Image">
                                      <a class="cart-productimage" href="#"><img width="91" height="91" src="admin_/uploads/products/<?php echo $value->getImage() ?>"></a>
@@ -155,10 +160,10 @@
                      <div class="col-md-8 col-lg-6 col-xl-4">
                          <table class="checkout-ordertable mb-0">
                              <tbody>
-                                 <tr class="cart-subtotal">
+                                 <!-- <tr class="cart-subtotal">
                                      <th>Cart Subtotal</th>
                                      <td>
-                                         <span class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity() ?></bdi></span>
+                                         <span class="amount"><bdi><span>$</span><?php echo $total ?></bdi></span>
                                      </td>
                                  </tr>
                                  <tr class="woocommerce-shipping-totals shipping">
@@ -171,10 +176,11 @@
                                              </li>
                                          </ul>
                                      </td>
-                                 </tr>
+                                 </tr> -->
                                  <tr class="order-total">
                                      <th>Order Total</th>
-                                     <td><strong><span class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity() ?></bdi></span></strong></td>
+                                     <th></th><th></th><th></th>
+                                     <td><strong><span class="amount"><bdi><span>$</span><?php echo $total ?></bdi></span></strong></td>
                                  </tr>
                              </tbody>
                          </table>

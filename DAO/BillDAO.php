@@ -191,14 +191,14 @@ class BillDAO
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
         $id_bill = $stmt->fetchAll(PDO::FETCH_COLUMN);
-
+        // die($query);
         $allDetails = []; // Mảng chứa tất cả thông tin chi tiết hóa đơn
 
         foreach ($id_bill as $bill_id) {
             $details = $this->showBill_details($bill_id);
             $allDetails[] = $details;
         }
-
+        
         return $allDetails;
     }
 }

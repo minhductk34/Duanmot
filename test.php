@@ -1,15 +1,16 @@
 <?php
 require_once('DAO/BillDAO.php');
 
-$userData = $_SESSION["username"];
+$userData = $_SESSION["user"];
+print_r($userData);
 // Gán giá trị cho các biến tương ứng
 $id_user =  $userData['id_user'];
-
+print_r($id_user);
 $items = new BillDAO();
 $item =  $items->history($id_user);
 
 // var_dump($item);
-print_r($item);
+// print_r($item);
 ?>
 
 <!DOCTYPE html>

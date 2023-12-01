@@ -82,6 +82,8 @@ class LoginController
                 echo "<script>alert('Invalid email address.');</script>";
             } elseif (empty($username)) {
                 echo "<script>alert('Please enter a username.');</script>";
+            } elseif ($username = htmlspecialchars($username, ENT_QUOTES)) {
+                echo "<script>alert('error.');</script>";
             } elseif (empty($password)) {
                 echo "<script>alert('Please enter a password.');</script>";
                 // } elseif (!preg_match('/^[0-9]{10}$/', $phone)) {
@@ -107,6 +109,10 @@ class LoginController
     function is_valid_email($email)
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
+    function is_valid_username($username)
+    {
+        return $username = htmlspecialchars($username, ENT_QUOTES);
     }
 
 

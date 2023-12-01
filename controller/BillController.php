@@ -88,7 +88,7 @@ class BillController
     public function process()
     {
 
-        if (isset($_SESSION["username"])) {
+        if (isset($_SESSION["user"])) {
 
             if (isset($_POST['checkOut'])) {
 
@@ -142,10 +142,10 @@ class BillController
 
     public function history()
     {
-        $userData = $_SESSION["username"];
+        $userData = $_SESSION["user"];
         // Gán giá trị cho các biến tương ứng
         $id_user =  $userData['id_user'];
         $this->BillDAO->history($id_user);
-        require_once('test.php');
+        require_once('view/bill/user/historyBill.php');
     }
 }
