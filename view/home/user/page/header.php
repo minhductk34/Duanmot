@@ -311,11 +311,11 @@ require_once('DAO/CartDAO.php');
                     <div class="head-top-links text-body2 d-none d-lg-block">
                         <a href="index.php?controller=wishlistCart" class="icon-btn has-badge bg3 me-3"><i class="fal fa-heart"></i><span class="badge">0</span></a>
                         <a href="index.php?controller=listCart" class="icon-btn has-badge bg2 me-4 "><i class="fal fa-shopping-cart"></i><span class="badge">0</span></a>
-                        <span class="icon-btn bg4"><i class="fal fa-user"></i></span>
-                        <ul>
-                            <li><a href="index.php?controller=login">Login</a></li>
-                            <li><a href="index.php?controller=login">Register</a></li>
-                        </ul>
+                        <a href="index.php?controller=home_user" class="icon-btn bg4">
+                            <i class="fal fa-user"></i>
+                        </a>
+
+
                     </div>
                 </div>
             </div>

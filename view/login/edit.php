@@ -1,70 +1,83 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
 
-// session_start();
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet" />
 
-?>
-<div class="row mb ">
-    <div class="boxtrai mr mb10">
-        <div class="row mb">
+  <link rel="stylesheet" href="fonts/icomoon/style.css" />
 
-            <div class="boxtitle">CẬP NHẬT TÀI KHOẢN</div>
-            <div class="boxconter row formtaikhoan">
-                <?php
+  <link rel="stylesheet" href="./view/login/css/owl.carousel.min.css" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./view/login/css/bootstrap.min.css" />
+
+  <!-- Style -->
+  <link rel="stylesheet" href="./view/login/css/style.css" />
+
+  <title>Update <strong>Colorlib</strong> </title>
+</head>
+
+<body>
+  <div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image: url('images/bg_4.jpg')"></div>
+    <div class="contents order-2 order-md-1">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7">
+            <h3> Update <strong> User </strong></h3>
+            <p class="mb-4">
+              Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
+              consectetur adipisicing.
+            </p>
+            <?php
 
 
-                if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
-                    extract($_SESSION['user']);
-                    var_dump($_SESSION['user']);
-                }
-                ?>
+            if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
+              extract($_SESSION['user']);
+              var_dump($_SESSION['user']);
+            }
+            ?>
+            <form action="index.php?act=update" method="POST" class="needs-validation" novalidate="" autocomplete="on">
+              <div class="form-group first">
+                <label for="email"> <strong>Email</strong></label>
+                <input type="text" class="form-control" placeholder="your-email@gmail.com" value="<?= isset($email) ? $email : 'null' ?>" name="email" id="email" />
+              </div>
+              <div class="form-group first">
+                <label for="username"> <strong>Username</strong> </label>
+                <input type="text" class="form-control" placeholder="your-abc" name="username" value="<?= isset($username) ? $username : 'null' ?>" id="username" />
+              </div>
+              <div class="form-group first">
+                <label class="mb-2 text-muted" for="full_name"> <strong>Full name</strong> </label>
+                <input id="full_name" type="text" class="form-control" placeholder="your-abc" name="full_name" value="<?= isset($full_name) ? $full_name : 'null' ?>" required autofocus />
+                <div class="invalid-feedback">Full name is required</div>
+              </div>
+              <div class="form-group last mb-3">
+                <label for="password"> <strong>Password</strong> </label>
+                <input type="password" class="form-control" placeholder="Your Password" name="password" value="<?= isset($password) ? $password : 'null' ?>" id="password" />
+              </div>
+              <div class="form-group first">
+                <label for="address"> <strong>Address</strong> </label>
+                <input type="text" class="form-control" placeholder="your-location" name="address" value="<?= isset($address) ? $address : 'null' ?>" id="address" />
+              </div>
+              <div class="form-group first">
+                <label for="number_phone"> <strong>Phone</strong> </label>
+                <input type="text" class="form-control" placeholder="your-phone" name="number_phone" value="<?= isset($number_phone) ? $number_phone : 'null' ?>" id="phone" />
+              </div>
 
-                <form action="index.php?controller=edit_user" method="post">
-                    <div class="row mb10">
-                        Email<br>
-                        <input type="email" name="email" value="<?= isset($email) ? $email : 'null' ?>">
-                    </div>
-                    <div class="row mb10">
-                        Tên đăng nhập
-                        <input type="text" name="username" value="<?= isset($username) ? $username : 'null' ?>">
-                    </div>
-                    <div class="row mb10">
-                        Mật khẩu
-                        <input type="password" name="password" value="<?= isset($password) ? $password : 'null' ?>">
-                    </div>
-                    <div class="row mb10">
-                        Địa chỉ
-                        <input type="text" name="address" value="<?= isset($address) ? $address : 'null' ?>">
-                    </div>
-                    <div class="row mb10">
-                        Điện thoại
-                        <input type="text" name="phone" value="<?= isset($phone) ? $phone : 'null' ?>">
-                    </div>
-                    <div class="row mb10">
-                        Full Name
-                        <input type="text" name="full_name" value="<?= isset($full_name) ? $full_name : 'null' ?>">
-                    </div>
-                    <div class="row mb10">
-                        <input type="hidden" name="id_user" value="<?= isset($id_user) ? $id_user : 'null' ?>">
-                        <input type="submit" value="Cập nhật" name="update">
-                    </div>
-                    <div class="row mb10">
-                        <input type="reset" value="Nhập lại">
-                    </div>
-                </form>
-                <h2 class="thongbao">
-                    <?php
+              <div class="invalid-feedback">Password is required</div>
 
-                    if (isset($thongbao) && $thongbao != "") {
-                        echo $thongbao;
-                    }
-
-                    ?>
-                </h2>
-            </div>
+              <div class="form-group first">
+               
+                <input type="submit" class="btn btn-block btn-primary" name="update" value="Send">
+              </div>
+              <div class="btn btn-block btn-primary">
+                <input type="reset" value="Reset">
+              </div>
+            </form>
+          </div>
         </div>
-
-    </div>
-    <div class="boxphai">
-        <!-- <?php include "view/user.php" ?> -->
-    </div>
-</div>
+      </div>
+      </form>

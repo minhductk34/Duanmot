@@ -7,7 +7,6 @@ session_start();
 require_once 'controller/HomeController.php';
 require_once 'controller/ProductController.php';
 require_once 'controller/LoginController.php';
-require_once 'controller/UserController.php';
 require_once 'controller/CategoryController.php';
 require_once 'controller/CartController.php';
 require_once 'controller/BillController.php';
@@ -41,7 +40,10 @@ switch ($controller) {
         break;
 
         //User controller -------------------------------------------------------------------
-
+    case 'home_user':
+        $LoginController = new LoginController();
+        $LoginController->home_user();
+        break;
     case 'login':
         $LoginController = new LoginController();
         $LoginController->login();
@@ -63,6 +65,7 @@ switch ($controller) {
         $LoginController = new LoginController();
         $LoginController->edit();
         break;
+
 
 
     case 'commentStatus':

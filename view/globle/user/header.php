@@ -323,7 +323,7 @@
                             <button type="button" class="searchBoxTggler">
                                 <i class="far fa-search"></i>
                             </button>
-                            <a href="index.php?controller=login"><?php if (!empty($user['image'])) : ?>
+                            <a href="index.php?controller=home_user"><?php if (!empty($user['image'])) : ?>
                                     <img src="./assets/imgs/logo/<?php echo $user['image']; ?>" alt="" width="30px" height="35px">
                                 <?php else : ?>
                                     <img src="assets/imgs/logo/login.png" alt="" width="25px" height="35px">

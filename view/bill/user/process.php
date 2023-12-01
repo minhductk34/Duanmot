@@ -21,15 +21,15 @@
                  <form action="#" class="woocommerce-form-login">
                      <div class="form-group">
                          <label>Your Username *</label>
-                         <input type="text" class="form-control" value="<?= isset($data['username']) ? $data['username'] : 'null' ?>" readonly>
+                         <input type="text" class="form-control" value="<?= isset($data['username']) ? $data['username'] : '' ?>" readonly>
                      </div>
                      <div class="form-group">
                          <label>Your Address</label>
-                         <input type="text" class="form-control" value="<?= isset($data['address']) ? $data['address'] : 'null' ?>" readonly>
+                         <input type="text" class="form-control" value="<?= isset($data['address']) ? $data['address'] : '' ?>" readonly>
                      </div>
                      <div class="form-group">
                          <label>Your Phone *</label>
-                         <input type="text" class="form-control" value="<?= isset($data['phone']) ? $data['phone'] : 'null' ?>" readonly>
+                         <input type="text" class="form-control" value="<?= isset($data['phone']) ? $data['phone'] : '' ?>" readonly>
                      </div>
 
                  </form>
@@ -70,28 +70,31 @@
                                      <option>Korea</option>
                                  </select>
                              </div>
-                             <div class="col-12 form-group">
-                                 <label>First Name *</label>
-                                 <input type="text" class="form-control" name="first_name" placeholder="First Name">
-                             </div>
-                             <div class="col-12 form-group">
-                                 <label>Last Name *</label>
-                                 <input type="text" class="form-control" name="last_name" placeholder="Last Name">
-                             </div>
-                             <div class="col-12 form-group">
-                                 <label>Address *</label>
-                                 <input type="text" class="form-control" name="street_address" placeholder="Street Address">
-                                 <input type="text" class="form-control" name="apartment" placeholder="Apartment, suite, unit etc. (optional)">
-                             </div>
-                             <div class="col-12 form-group">
-                                 <label>Town / City *</label>
-                                 <input type="text" class="form-control" name="city" placeholder="Town / City">
-                             </div>
-                             <div class="col-12 form-group">
-                                 <label>Contact Info *</label>
-                                 <input type="text" class="form-control" placeholder="Email Address" name="email">
-                                 <input type="text" class="form-control" placeholder="Phone number" name="phone">
-                             </div>
+                             <form>
+                                 <div class="col-12 form-group">
+                                     <label>First Name *</label>
+                                     <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+                                 </div>
+                                 <div class="col-12 form-group">
+                                     <label>Last Name *</label>
+                                     <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
+                                 </div>
+                                 <div class="col-12 form-group">
+                                     <label>Address *</label>
+                                     <input type="text" class="form-control" name="street_address" placeholder="Street Address" required>
+                                     <input type="text" class="form-control" name="apartment" placeholder="Apartment, suite, unit etc. (optional)">
+                                 </div>
+                                 <div class="col-12 form-group">
+                                     <label>Town / City *</label>
+                                     <input type="text" class="form-control" name="city" placeholder="Town / City" required>
+                                 </div>
+                                 <div class="col-12 form-group">
+                                     <label>Contact Info *</label>
+                                     <input type="email" class="form-control" placeholder="Email Address" name="email" required>
+                                     <input type="tel" class="form-control" placeholder="Phone number" name="phone" required>
+                                 </div>
+                      
+                             </form>
 
                          </div>
                      </div>
@@ -179,7 +182,9 @@
                                  </tr> -->
                                  <tr class="order-total">
                                      <th>Order Total</th>
-                                     <th></th><th></th><th></th>
+                                     <th></th>
+                                     <th></th>
+                                     <th></th>
                                      <td><strong><span class="amount"><bdi><span>$</span><?php echo $total ?></bdi></span></strong></td>
                                  </tr>
                              </tbody>

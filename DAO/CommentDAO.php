@@ -38,7 +38,7 @@ class CommentDAO
             user u ON c.id_user = u.id_user
         INNER JOIN 
             products p ON c.id_product = p.id_product
-            where p.id_product = '$id_pro'";
+            where p.id_product = '$id_pro'AND c.status = 0" ;
         // die($sql);
 
         $stmt = $this->PDO->prepare($sql);

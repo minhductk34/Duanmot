@@ -1,273 +1,195 @@
-* {
-  box-sizing: border-box;
-  font-size: 0.7vw;
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #fff;
 }
 
-.boxcenter {
-  width: 70%;
-  margin: 0 auto;
-}
-.row {
-  float: left;
-  width: 100%;
-}
-.mb {
-  margin-bottom: 20px;
-}
-.mb10 {
-  margin-bottom: 10px;
-}
-.mr {
-  margin-right: 2%;
-}
-.demo {
-  background-color: aqua;
-  min-height: 100px;
-}
-.header {
-  background-color: #ffffff;
-  border: 2px solid #ffc0b9;
-  color: #ffc0b9;
-  border-radius: 20px;
-}
-.header h1 {
-  font-size: 4vw;
+p {
+  color: #b3b3b3;
+  font-weight: 300;
 }
 
-.footer {
-  background-color: #ffffff;
-  border: 2px solid #ffc0b9;
-  color: #ffc0b9;
-  border-radius: 20px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: "Roboto", sans-serif;
 }
-.footer h1 {
-  font-size: 2vw;
-  text-align: center;
-  padding-left: 16%;
+
+a {
+  -webkit-transition: 0.3s all ease;
+  -o-transition: 0.3s all ease;
+  transition: 0.3s all ease;
 }
-/* .header h1{
-    margin:10px 20px;
-    font-size: 1.2vw;
-} */
-.menu {
-  background-color: #ffc0b9;
-  border-radius: 5px;
+a:hover {
+  text-decoration: none !important;
 }
-.menu ul {
-  padding: 0 15px;
+
+.content {
+  padding: 7rem 0;
 }
-.menu ul li {
-  list-style: none;
-  display: inline;
-  padding: 0 15px;
+
+h2 {
+  font-size: 20px;
 }
-.menu ul li a {
-  color: #000000;
-  text-decoration: none;
-  font-weight: bold;
+
+.half,
+.half .container > .row {
+  height: 100vh;
+  min-height: 700px;
 }
-.menu ul li a:hover {
-  color: rgb(255, 0, 0);
-  font-size: 0.8vw;
+
+@media (max-width: 991.98px) {
+  .half .bg {
+    height: 200px;
+  }
 }
-.boxphai {
-  float: left;
-  width: 24%;
+
+.half .contents {
+  background: #f6f7fc;
 }
-.boxtrai {
-  float: left;
-  width: 74%;
+
+.half .contents,
+.half .bg {
+  width: 50%;
 }
-.boxtitle {
-  color: #000000;
-  font-weight: bold;
-  padding: 10px;
-  background-color: #ffc0b9;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border: 1px #ccc solid;
-}
-.boxconter {
-  border-left: 1px #ccc solid;
-  border-right: 1px #ccc solid;
-  border-bottom: 1px #ccc solid;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  min-height: 200px;
-  padding: 20px;
-}
-.boxconter2 {
-  border-left: 1px #ccc solid;
-  border-right: 1px #ccc solid;
-  min-height: 200px;
-  background-color: #eee;
-}
-.boxfooter {
-  padding: 10px;
-  background-color: #eee;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border: 1px #ccc solid;
-}
-/* .banner{
-    min-height: 300px;
+@media (max-width: 1199.98px) {
+  .half .contents,
+  .half .bg {
     width: 100%;
-    text-align: center;
-} */
-/* .banner img{
-    height: 300px;
-} */
-.boxsp {
-  float: left;
-  width: 32%;
-  min-height: 250px;
-  max-height: 300px;
-  border: 1px #333333 solid;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  }
 }
-.boxsp .img {
-  min-height: 190px;
-  text-align: center;
+.half .contents .form-control,
+.half .bg .form-control {
+  border: none;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  height: 54px;
+  background: #fff;
 }
-.img a img {
-  max-height: 180px;
-  width: 90%;
+.half .contents .form-control:active,
+.half .contents .form-control:focus,
+.half .bg .form-control:active,
+.half .bg .form-control:focus {
+  outline: none;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
-.formtaikhoan {
-  line-height: 150%;
+
+.half .bg {
+  background-size: cover;
+  background-position: center;
 }
-.formtaikhoan input[type="text"] {
-  width: 100%;
-  border: 1px #ccc solid;
-  padding: 10px;
-  border-radius: 5px;
-}
-.formtaikhoan input[type="password"],
-.formtaikhoan input[type="email"],
-.frmcontent input[type="text"] {
-  width: 100%;
-  border: 1px #ccc solid;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-.formtaikhoan input[type="checkbox"] {
-  border-radius: 5px;
-}
-.formtaikhoan input[type="submit"],
-.frmcontent input[type="submit"],
-.formtaikhoan input[type="reset"],
-.frmcontent input[type="reset"],
-.frmcontent input[type="button"] {
-  border-radius: 5px;
-  padding: 5px 10px;
-  background-color: #ffc0b9;
-  border: 1px solid #9000ff;
-}
-.formtaikhoan input[type="submit"]:hover,
-.frmcontent input[type="submit"]:hover,
-.frmcontent input[type="reset"]:hover,
-.frmcontent input[type="button"]:hover {
-  background-color: rgba(255, 72, 0, 0.872);
-  border: 1px solid #cfc9d4;
-}
-.formtaikhoan li a {
-  color: #00ffd0;
-  text-decoration: underline;
-}
-.menudoc ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-.menudoc ul li {
-  padding: 10px 20px;
-  background-color: #ffffff;
-  border-bottom: 1px #ccc solid;
-}
-.menudoc ul li a {
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-  font-weight: bold;
-}
-.menudoc ul li:hover {
-  background-color: #ffc0b9;
-}
-.searedbox input[type="text"] {
-  width: 100%;
-  padding: 5px 10px;
-  border: 1px solid #eee;
-  border-radius: 5px;
-}
-.top10 img {
-  width: 10%;
-  height: 50px;
-  float: left;
-  margin-right: 10px;
-}
-.top10 a {
-  color: #666;
-  text-decoration: none;
-  font-weight: bold;
-}
-.top10 a:hover {
-  color: #ffc0b9;
+
+.half a {
+  color: #888;
   text-decoration: underline;
 }
 
-/* 
-
-
-.headeramin{
-    background-color: rgb(153, 158, 156);
-    border: 2px solid red;
-    color: rgb(0, 0, 0);
-    border-radius: 5px;
-    padding: 10px 20px;
-
-}
-.headeramin h1{
-    font-size: 2vw;
-
-} */
-.formtile {
-  background-color: rgb(87, 92, 90);
-  border: 2px solid red;
-  color: rgb(255, 0, 0);
-  border-radius: 5px;
-  padding: 10px 20px;
+.half .btn {
+  height: 54px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
-.fordslh table {
-  width: 100%;
-  border-collapse: collapse;
-  border: 1px seagreen solid;
+.half .forgot-pass {
+  position: relative;
+  top: 2px;
+  font-size: 14px;
 }
-.fordslh table th {
-  padding: 20px;
-  background-color: #a5a5a5;
-}
-/* .fordslh table th:nth-child(2){
-    width: 30%;background-color: #a5a5a5;
 
+.control {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-size: 14px;
 }
-.fordslh table th:nth-child(3){
-    width: 40%;background-color: #a5a5a5;
-
+.control .caption {
+  position: relative;
+  top: 0.2rem;
+  color: #888;
 }
-.fordslh table th:nth-child(4){
-    width: 20%;background-color: #a5a5a5;
 
-} */
-.fordslh table td {
-  padding: 10px 20px;
-  border: 1px rgb(55, 0, 255) solid;
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
 }
-/* banner chạy*/
-/* .spct{
-    text-align: center;
-} */
 
-.thongbao {
-  color: red;
+.control__indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #e6e6e6;
+  border-radius: 4px;
+}
+
+.control--radio .control__indicator {
+  border-radius: 50%;
+}
+
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+  background: #ccc;
+}
+
+.control input:checked ~ .control__indicator {
+  background: #fb771a;
+}
+
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+  background: #fb8633;
+}
+
+.control input:disabled ~ .control__indicator {
+  background: #e6e6e6;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.control__indicator:after {
+  font-family: "icomoon";
+  content: "\e5ca";
+  position: absolute;
+  display: none;
+  font-size: 16px;
+  -webkit-transition: 0.3s all ease;
+  -o-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.control input:checked ~ .control__indicator:after {
+  display: block;
+  color: #fff;
+}
+
+.control--checkbox .control__indicator:after {
+  top: 50%;
+  left: 50%;
+  margin-top: -1px;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.control--checkbox input:disabled ~ .control__indicator:after {
+  border-color: #7b7b7b;
+}
+
+.control--checkbox input:disabled:checked ~ .control__indicator {
+  background-color: #7e0cf5;
+  opacity: 0.2;
 }

@@ -50,7 +50,7 @@ class LoginController
 
     public function logout()
     {
-
+        unset($_SESSION['user']);
         // Điều hướng hoặc thông báo đăng xuất thành công
         header("Location: index.php?controller=home");
     }
@@ -82,8 +82,8 @@ class LoginController
                 echo "<script>alert('Invalid email address.');</script>";
             } elseif (empty($username)) {
                 echo "<script>alert('Please enter a username.');</script>";
-            } elseif ($username = htmlspecialchars($username, ENT_QUOTES)) {
-                echo "<script>alert('error.');</script>";
+            // } elseif ($username = htmlspecialchars($username, ENT_QUOTES)) {
+            //     echo "<script>alert('error.');</script>";
             } elseif (empty($password)) {
                 echo "<script>alert('Please enter a password.');</script>";
                 // } elseif (!preg_match('/^[0-9]{10}$/', $phone)) {
@@ -114,7 +114,14 @@ class LoginController
     {
         return $username = htmlspecialchars($username, ENT_QUOTES);
     }
-
+    public function home_user(){
+        if(isset($_SESSION['user'])){
+               require_once('view/home/user/page/home_user.php');
+        }else{
+            header('Location:index.php?controller=login');
+        }
+     
+    }
 
     public function forgot()
     {
@@ -124,9 +131,9 @@ class LoginController
             $checkemail = $this->user->check_email($email);
 
             if (is_array($checkemail)) {
-                $thongbao = '<div>Pass là: ' . $checkemail['password'] . '</div>';
+                $mess = '<div>Your Password is: ' . $checkemail['password'] . '</div>';
             } else {
-                $thongbao = '<div>email không tồn tại</div>';
+                $mess = '<div>Incorect Email, Please enter corect email!</div>';
             }
         }
 

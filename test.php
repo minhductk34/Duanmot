@@ -1,42 +1,63 @@
-<?php
-require_once('DAO/BillDAO.php');
+<section class="space-top space-md-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="page-10" class="post-10 page type-page status-publish hentry page--item">
+                    <div class="woocommerce--content">
+                        <div class="woocommerce">
+                            <div class="woocommerce-notices-wrapper"></div>
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6">
+                                    <div class="login-register-wrapper">
+                                        <div class="tab-btn mb-20">
+                                            <ul class="nav nav-tabs login-tab" permissions="tablist">
+                                                <li class="nav-item" data-tab-select="login"><button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" permissions="tab" aria-controls="login" aria-selected="true">Your Infomation</button></li>
+                                            </ul>
 
-$userData = $_SESSION["user"];
-print_r($userData);
-// Gán giá trị cho các biến tương ứng
-$id_user =  $userData['id_user'];
-print_r($id_user);
-$items = new BillDAO();
-$item =  $items->history($id_user);
-
-// var_dump($item);
-// print_r($item);
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bill Details</title>
-</head>
-<body>
-
-<?php
-// Sử dụng vòng lặp foreach để hiển thị thông tin từ mảng đối tượng
-foreach ($item as $billDetail) {
-    // Trích xuất thông tin từ đối tượng
-
-
-    // Hiển thị thông tin trong HTML
-    echo "<div>";
-    echo "<p>Product Name: $productName</p>";
-    echo "<p>Quantity: $quantity</p>";
-    echo "<p>Price: $price</p>";
-    echo "<img src='path_to_your_images_directory/$image' alt='Product Image' width='100px' height='100px'>";
-    echo "</div>";
-}
-?>
-
-</body>
-</html>
+                                        </div>
+        
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade active show" data-tab="login" id="login" aria-labelledby="login-tab">
+                                                <form method="post" class="woocommerce-form login">
+                                                    <p class="form-group"><input name="username" class="form-control border" type="text" placeholder="User Name"></p>
+                                                    <p class="form-group"><input class="form-control border" name="password" type="password" placeholder="Password">
+                                                    </p>
+                                                    <p class="custom-checkbox notice"><input id="remember" value="forever" name="rememberme" type="checkbox"><label for="remember">Remember me<span class="checkmark"></span></label></p>
+                                                    <p class="form-group"><button type="submit" class="vs-btn">Login</button></p>
+                                                    <p><a href="#" class="btn-inline">Forgot Your Password?</a></p>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane fade" data-tab="register" id="register" aria-labelledby="register-tab">
+                                                <form method="post" class="woocommerce-form register">
+                                                    <p class="form-group"><input name="email" class="form-control" type="email" placeholder="Email"></p>
+                                                    <p class="form-group"><input name="password" class="form-control" type="password" placeholder="Password"></p>
+                                                    <div class="user-permissions mt-40">
+                                                        <div class="custom-checkbox">
+                                                            <input id="customer" type="radio" name="permissions" value="customer" checked="checked">
+                                                            <label for="customer" class="radio">I am a customer
+                                                                <span class="checkmark"></span></label>
+                                                        </div>
+                                                        <div class="custom-checkbox">
+                                                            <input id="seller" type="radio" name="permissions" value="seller">
+                                                            <label for="seller" class="radio">I am a vendor <span class="checkmark"></span></label>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <p>Your personal data will be used to support your
+                                                            experience throughout this website, to manage access to
+                                                            your account, and for other purposes described in our <a href="#">privacy policy</a>.</p>
+                                                    </div>
+                                                    <p class="form-group mt-40"><button type="submit" class="vs-btn">Register</button></p>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
