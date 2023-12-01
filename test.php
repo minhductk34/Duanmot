@@ -1,63 +1,79 @@
-<section class="space-top space-md-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div id="page-10" class="post-10 page type-page status-publish hentry page--item">
-                    <div class="woocommerce--content">
-                        <div class="woocommerce">
-                            <div class="woocommerce-notices-wrapper"></div>
-                            <div class="row justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="login-register-wrapper">
-                                        <div class="tab-btn mb-20">
-                                            <ul class="nav nav-tabs login-tab" permissions="tablist">
-                                                <li class="nav-item" data-tab-select="login"><button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" permissions="tab" aria-controls="login" aria-selected="true">Your Infomation</button></li>
-                                            </ul>
+<?php 
 
-                                        </div>
-        
-                                        <div class="tab-content">
-                                            <div class="tab-pane fade active show" data-tab="login" id="login" aria-labelledby="login-tab">
-                                                <form method="post" class="woocommerce-form login">
-                                                    <p class="form-group"><input name="username" class="form-control border" type="text" placeholder="User Name"></p>
-                                                    <p class="form-group"><input class="form-control border" name="password" type="password" placeholder="Password">
-                                                    </p>
-                                                    <p class="custom-checkbox notice"><input id="remember" value="forever" name="rememberme" type="checkbox"><label for="remember">Remember me<span class="checkmark"></span></label></p>
-                                                    <p class="form-group"><button type="submit" class="vs-btn">Login</button></p>
-                                                    <p><a href="#" class="btn-inline">Forgot Your Password?</a></p>
-                                                </form>
-                                            </div>
-                                            <div class="tab-pane fade" data-tab="register" id="register" aria-labelledby="register-tab">
-                                                <form method="post" class="woocommerce-form register">
-                                                    <p class="form-group"><input name="email" class="form-control" type="email" placeholder="Email"></p>
-                                                    <p class="form-group"><input name="password" class="form-control" type="password" placeholder="Password"></p>
-                                                    <div class="user-permissions mt-40">
-                                                        <div class="custom-checkbox">
-                                                            <input id="customer" type="radio" name="permissions" value="customer" checked="checked">
-                                                            <label for="customer" class="radio">I am a customer
-                                                                <span class="checkmark"></span></label>
-                                                        </div>
-                                                        <div class="custom-checkbox">
-                                                            <input id="seller" type="radio" name="permissions" value="seller">
-                                                            <label for="seller" class="radio">I am a vendor <span class="checkmark"></span></label>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <p>Your personal data will be used to support your
-                                                            experience throughout this website, to manage access to
-                                                            your account, and for other purposes described in our <a href="#">privacy policy</a>.</p>
-                                                    </div>
-                                                    <p class="form-group mt-40"><button type="submit" class="vs-btn">Register</button></p>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+class OrderManagement {
+    private $pdo;
+
+    public function __construct($pdo) {
+        $this->pdo = $pdo;
+    }
+
+    // Hàm xử lý việc trả hàng cho một đơn hàng với nhiều sản phẩm
+    public function processReturn($order_id, $returnedItems) {
+        // Kiểm tra xem đơn hàng có tồn tại không
+        if ($this->isOrderValid($order_id)) {
+            foreach ($returnedItems as $item) {
+                // Kiểm tra xem sản phẩm có trong đơn hàng không
+                if ($this->isProductInOrder($order_id, $item['product_id'])) {
+                    // Cập nhật số lượng hàng trong kho hoặc bảng sản phẩm
+                    $this->updateProductQuantity($item['product_id'], $item['quantity']);
+
+                    // Đánh dấu sản phẩm trả về trong đơn hàng
+                    $this->markProductReturned($order_id, $item['product_id'], $item['quantity']);
+                } else {
+                    // Xử lý nếu sản phẩm không tồn tại trong đơn hàng
+                    // Có thể log hoặc thông báo lỗi
+                }
+            }
+
+            // Thực hiện các thao tác khác, chẳng hạn như cập nhật trạng thái đơn hàng
+
+            return true; // Trả về true nếu quy trình trả hàng thành công
+        }
+
+        return false; // Trả về false nếu có lỗi
+    }
+
+    // Kiểm tra xem đơn hàng có tồn tại không
+    private function isOrderValid($order_id) {
+        $query = "SELECT * FROM orders WHERE order_id = :order_id AND status = 'completed'";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':order_id', $order_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $order = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $order ? true : false;
+    }
+
+    // Kiểm tra xem sản phẩm có trong đơn hàng không
+    private function isProductInOrder($order_id, $product_id) {
+        $query = "SELECT * FROM order_items WHERE order_id = :order_id AND product_id = :product_id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':order_id', $order_id, PDO::PARAM_INT);
+        $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $orderItem = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $orderItem ? true : false;
+    }
+
+    // Cập nhật số lượng hàng trong kho hoặc bảng sản phẩm
+    private function updateProductQuantity($product_id, $quantity) {
+        // Thực hiện truy vấn để cập nhật số lượng hàng
+        // Điều này phụ thuộc vào cách bạn tổ chức dữ liệu của mình
+        // Có thể cập nhật trực tiếp trong bảng sản phẩm hoặc bảng kho hàng
+    }
+
+    // Đánh dấu sản phẩm trả về trong đơn hàng
+    private function markProductReturned($order_id, $product_id, $quantity) {
+        // Thực hiện truy vấn để đánh dấu sản phẩm trả về trong đơn hàng
+        $query = "UPDATE order_items SET returned_quantity = :quantity WHERE order_id = :order_id AND product_id = :product_id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':quantity', $quantity, PDO::PARAM_INT);
+        $stmt->bindParam(':order_id', $order_id, PDO::PARAM_INT);
+        $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+}
+
+
+?>

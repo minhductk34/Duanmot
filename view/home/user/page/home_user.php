@@ -447,6 +447,8 @@ require_once('DAO/CartDAO.php');
                               <p><a href="index.php?controller=update" class="btn-inline">Update password</a></p>
                               <p><a href="index.php?controller=login" class="btn-inline">Forgot Your Password?</a></p>
                               <p><a href="index.php?controller=historyBill" class="btn-inline">Your Bill</a></p>
+                              <p><a href="index.php?controller=processReturn" class="btn-inline">Put Back Your Order</a></p>
+                              
                             </form>
                           </div>
                         </div>

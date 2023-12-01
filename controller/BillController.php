@@ -104,20 +104,18 @@ class BillController
     {
         $user = $_SESSION['user'];
         $id_user = $user['id_user'];
-        // id gân nhất 
         $id_bill = $this->BillDAO->selectId($id_user);
-        // var_dump( $user);
+    
 
-        
+
         $cart = new CartDAO();
         $cart_ =  $cart->showCart($id_user);
-        
+
         foreach ($cart_ as $cart) {
             var_dump($cart->getQuantity());
             // Lặp qua từng giá trị của $cart->getQuantity(
-                $this->BillDAO->addBill_details($id_bill, $cart->getProductId(), $cart->getNameProduct(), $cart->getQuantity(), $cart->getPrice());
-                $this->ProductDAO->Check_quantity_pro($cart->getProductId(), $cart->getQuantity());
-            
+            $this->BillDAO->addBill_details($id_bill, $cart->getProductId(), $cart->getNameProduct(), $cart->getQuantity(), $cart->getPrice());
+            $this->ProductDAO->Check_quantity_pro($cart->getProductId(), $cart->getQuantity());
         }
 
         // Sau khi lặp qua tất cả giá trị của $cart->getQuantity(), xóa sản phẩm từ giỏ hàng
@@ -148,4 +146,35 @@ class BillController
         $this->BillDAO->history($id_user);
         require_once('view/bill/user/historyBill.php');
     }
+
+    public function processReturn()
+    {
+        $user = $_SESSION['user'];
+        $id_user = $user['id_user'];
+        $id_bill =  $this->BillDAO->checkIdBill($id_user);
+        // Kiểm tra xem đơn hàng có tồn tại không
+        if ($this->BillDAO->isOrderValid($id_bill)) {
+            // Lấy thông tin chi tiết đơn hàng
+            $orderDetails = $this->BillDAO->getOrderDetails($id_bill);
+
+            foreach ($orderDetails as $orderDetail) {
+                // Kiểm tra xem chi tiết hóa đơn có trả hàng không
+                if (!$orderDetail['returned']) {
+                    // Cập nhật số lượng hàng trong kho hoặc bảng sản phẩm
+                    $this->BillDAO->updateProductQuantity($orderDetail['id_product'], $orderDetail['quantity']);
+
+                    // Đánh dấu chi tiết hóa đơn là đã trả về
+                    // $this->BillDAO->markOrderDetailReturned($orderDetail['id_bill_detail']);
+                }
+            }
+
+            // Thực hiện các thao tác khác, chẳng hạn như cập nhật trạng thái đơn hàng
+
+            // return true; // Trả về true nếu quy trình trả hàng thành công
+        }
+
+        // return false; // Trả về false nếu có lỗi
+        require_once('view/home/user/return.php');
+    }
+    
 }

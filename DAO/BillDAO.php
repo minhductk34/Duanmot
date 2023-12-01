@@ -198,7 +198,98 @@ class BillDAO
             $details = $this->showBill_details($bill_id);
             $allDetails[] = $details;
         }
-        
+
         return $allDetails;
+    }
+
+    public function getIdBill($id_bill_detail)
+    {
+        $query = "SELECT id_bill FROM bill_details WHERE id_bill_detail = :id_bill_detail";
+        $stmt = $this->PDO->prepare($query);
+        $stmt->bindParam(':id_bill_detail', $id_bill_detail, PDO::PARAM_INT);
+        $stmt->execute();
+
+        // Sử dụng fetchAll để lấy tất cả các giá trị cột id_bill
+        $id_bills = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        // Tạo một mảng để lưu trữ các ID sản phẩm
+        $productIds = array();
+
+        // Lặp qua từng giá trị id_bill để thực hiện các thao tác khác
+        foreach ($id_bills as $id_bill) {
+            // Thực hiện truy vấn để lấy ID sản phẩm từ bảng bill_details
+            $query = "SELECT id_product FROM bill_details WHERE id_bill = :id_bill";
+            $stmt = $this->PDO->prepare($query);
+            $stmt->bindParam(':id_bill', $id_bill, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Lấy tất cả các ID sản phẩm của ID_bill đó
+            $productIds[] = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        }
+
+        // $productIds là mảng chứa các ID sản phẩm cần thiết để thực hiện các thao tác nghiệp vụ khác
+        // Bạn có thể thực hiện các thao tác nghiệp vụ khác, chẳng hạn như cập nhật số lượng hàng trong bảng sản phẩm.
+
+        // Trả về một phản hồi cho biết thành công hoặc thông tin liên quan khác
+        return $productIds;
+    }
+
+
+
+
+    // Kiểm tra xem sản phẩm có trong đơn hàng không
+    public function isOrderValid($id_bill)
+    {
+        $query = "SELECT * FROM bill WHERE id_bill = :id_bill";
+        $stmt = $this->PDO->prepare($query);
+        $stmt->bindParam(':id_bill', $id_bill, PDO::PARAM_INT);
+        $stmt->execute();
+        $order = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $order ? true : false;
+    }
+
+    // Lấy thông tin chi tiết đơn hàng
+    public function getOrderDetails($id_bill)
+    {
+        $query = "SELECT * FROM bill_details WHERE id_bill = :id_bill";
+        $stmt = $this->PDO->prepare($query);
+        $stmt->bindParam(':id_bill', $id_bill, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Cập nhật số lượng hàng trong kho hoặc bảng sản phẩm
+    public function updateProductQuantity($id_product, $quantity)
+    {
+        // Thực hiện truy vấn để cập nhật số lượng hàng
+        $query = "UPDATE products SET quantity = quantity + :quantity WHERE id_product = :id_product";
+        $stmt = $this->PDO->prepare($query);
+        $stmt->bindParam(':quantity', $quantity, PDO::PARAM_INT);
+        $stmt->bindParam(':id_product', $id_product, PDO::PARAM_INT);
+        $stmt->execute();
+
+        // Thực hiện truy vấn để đánh dấu chi tiết hóa đơn là đã trả về
+        $updateQuery = "UPDATE bill_details SET returned = 1 WHERE id_product = :id_product";
+        $updateStmt = $this->PDO->prepare($updateQuery);
+        $updateStmt->bindParam(':id_product', $id_product, PDO::PARAM_INT);
+        $updateStmt->execute();
+    }
+
+
+    public function checkIdBill($id_user)
+    {
+        $query = "SELECT `id_bill` FROM `bill` WHERE `id_user` = :id_user ORDER BY `create_at` DESC LIMIT 1";
+        $stmt = $this->PDO->prepare($query);
+        $stmt->bindParam(':id_user', $id_user, PDO::PARAM_STR); // Nếu id_user là chuỗi
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Kiểm tra xem có kết quả hay không trước khi sử dụng giá trị
+        $lastBillId = $result ? $result['id_bill'] : null;
+
+        return $lastBillId;
     }
 }

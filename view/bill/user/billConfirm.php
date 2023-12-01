@@ -88,13 +88,15 @@ require_once('view/home/user/page/header.php');
                                     <span class="amount"><bdi><span>$</span></bdi><?php echo $value->getPrice() * $value->getQuantity(); ?></span>
                                 </td>
 
-                            </tr>
-                            <tr class="order-total">
-                                <th>Order Total</th>
-                                <th></th><th></th><th></th>
-                                <td><strong><span class="amount"><bdi><span>$</span><?php echo $total ?></bdi></span></strong></td>
-                            </tr>
-                        <?php } ?>
+                            </tr> <?php } ?>
+                        <tr class="order-total">
+                            <th>Order Total</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <td><strong><span class="amount"><bdi><span>$</span><?php echo $total ?></bdi></span></strong></td>
+                        </tr>
+
                     </tbody>
                 </table>
             </form>

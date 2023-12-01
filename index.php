@@ -129,6 +129,10 @@ switch ($controller) {
         $BillController = new BillController();
         $BillController->history();
         break;
+    case 'processReturn':
+        $BillController = new BillController();
+        $BillController->processReturn();
+        break;
     case 'contact':
         $homeController = new HomeController();
         $homeController->contact();
