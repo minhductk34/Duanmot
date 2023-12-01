@@ -26,8 +26,8 @@
                             <td>' . $id_user . '</td>
                             <td>' . $content . '</td>
                             <td>' . $create_at . '</td>
-                            <td> <a href="' . $suabl . '"><input type="button" value="sửa"></a>
-                                 <a href="' . $xoabl . '"><input type="button" value="xóa"></a></td>
+                            <td> <a href="' . $editcomment . '"><input type="button" value="Edit"></a>
+                                 <a href="' . $deletecomment . '"><input type="button" value="Delete"></a></td>
                         </tr>';
                 }
                 ?>

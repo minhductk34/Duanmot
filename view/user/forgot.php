@@ -28,7 +28,7 @@
     <div class="d-lg-flex half">
       <div
         class="bg order-1 order-md-2"
-        style="background-image: url('images/bg_4.jpg')"
+        style="background-image: url('images/bg_5.jpg')"
       ></div>
       <div class="contents order-2 order-md-1">
         <div class="container">
