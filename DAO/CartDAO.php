@@ -53,6 +53,13 @@ class CartDAO
 
     public function deleteFromCart($id)
     {
+        $query = "DELETE FROM cart WHERE id_product = $id";
+        $stmt = $this->PDO->prepare($query);
+        $stmt->execute();
+        
+    }
+    public function delete($id)
+    {
         $query = "DELETE FROM cart WHERE id_user = $id";
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();

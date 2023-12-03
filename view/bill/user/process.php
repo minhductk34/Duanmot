@@ -16,7 +16,7 @@
              <div class="woocommerce-info">Your information
              </div>
          </div>
-         <div class="row">
+         <!-- <div class="row">
              <div class="col-lg-4">
                  <form action="#" class="woocommerce-form-login">
                      <div class="form-group">
@@ -34,24 +34,8 @@
 
                  </form>
              </div>
-         </div>
-         <!-- <div class="woocommerce-form-coupon-toggle">
-             <div class="woocommerce-info">Have a coupon? <a href="#" class="showcoupon">Click here to enter your
-                     code</a> </div>
          </div> -->
-         <!-- <div class="row">
-             <div class="col-lg-4">
-                 <form action="index.php?controller=addToBill" class="woocommerce-form-coupon">
-                     <div class="form-group">
-                         <label>Coupon code</label>
-                         <input type="text" class="form-control" placeholder="Write your coupon code">
-                     </div>
-                     <div class="form-group">
-                         <button type="submit" class="vs-btn shadow-none">Apply coupon</button>
-                     </div>
-                 </form>
-             </div>
-         </div> -->
+       
 
 
          <form action="index.php?controller=addToBill" method="post" id="myForm">

@@ -51,7 +51,7 @@ $item = $items->showCart($id_user);
                     <?php foreach ($item as $key => $value) { ?>
                         <tr class="cart_item">
                             <td data-title="Product">
-                                <a class="cart-productimage" href="shop-details.html"><img width="91" height="91" src="admin_/uploads/products/<?php echo $value->getImage() ?>" alt="Image"></a>
+                                <a class="cart-productimage" href="shop-details.html"><img width="91" height="91" src="admin_/uploads/products/<?php echo $value->getImage() ?>" alt="Image"></a >
                             </td>
                             <td data-title="Name">
                                 <a class="cart-productname" href="shop-details.html"><?php echo $value->getNameProduct(); ?></a>
@@ -62,7 +62,7 @@ $item = $items->showCart($id_user);
                             <td data-title="Quantity">
                                 <div class="quantity">
                                     <button class="quantity-minus qut-btn" onclick="down(<?php echo $value->getIdCart() ?>);"><i class="far fa-minus"></i></button>
-                                    <input type="number" class="qty-input" id="showNumber<?php echo $value->getIdCart() ?>" value="<?php echo $value->getQuantity() ?>" min="1" max="99">
+                                    <input type="number" class="qty-input" id="showNumber<?php echo $value->getIdCart() ?>" value="<?php echo $value->getQuantity() ?>" min="1" max="99" readonly>
                                     <button class="quantity-plus qut-btn" onclick="up(<?php echo $value->getIdCart() ?>);"><i class="far fa-plus"></i></button>
                                 </div>
 
@@ -95,6 +95,9 @@ $item = $items->showCart($id_user);
                                     }
 
                                     function down(id_cart) {
+                                        if(document.getElementById("showNumber" + id_cart).value<=1){
+                                            document.getElementById("showNumber" + id_cart).value=2
+                                        }
                                         var cartInfo = {
                                             id: id_cart,
                                             quantity: document.getElementById("showNumber" + id_cart).value

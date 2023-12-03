@@ -105,7 +105,7 @@ class BillController
         $user = $_SESSION['user'];
         $id_user = $user['id_user'];
         $id_bill = $this->BillDAO->selectId($id_user);
-    
+
 
 
         $cart = new CartDAO();
@@ -114,12 +114,12 @@ class BillController
         foreach ($cart_ as $cart) {
             var_dump($cart->getQuantity());
             // Lặp qua từng giá trị của $cart->getQuantity(
-            $this->BillDAO->addBill_details($id_bill, $cart->getProductId(), $cart->getNameProduct(), $cart->getQuantity(), $cart->getPrice());
+            $this->BillDAO->addBill_details($id_bill, $cart->getProductId(), $cart->getNameProduct(), $cart->getQuantity(), $cart->getPrice(), $cart->getId());
             $this->ProductDAO->Check_quantity_pro($cart->getProductId(), $cart->getQuantity());
         }
 
         // Sau khi lặp qua tất cả giá trị của $cart->getQuantity(), xóa sản phẩm từ giỏ hàng
-        $this->CartDAO->deleteFromCart($id_user);
+        $this->CartDAO->delete($id_user);
 
 
         header('Location:index.php?controller=showBill_details');
@@ -141,40 +141,46 @@ class BillController
     public function history()
     {
         $userData = $_SESSION["user"];
-        // Gán giá trị cho các biến tương ứng
         $id_user =  $userData['id_user'];
-        $this->BillDAO->history($id_user);
+        $this->BillDAO->showBillDetails($id_user);
+        require_once('view/bill/user/history.php');
+    }
+
+    public function details_history()
+    {
+        $id_bill = $_GET['id_bill'];
+        $this->BillDAO->showBill_details($id_bill);
         require_once('view/bill/user/historyBill.php');
     }
 
+
+
     public function processReturn()
     {
-        $user = $_SESSION['user'];
-        $id_user = $user['id_user'];
-        $id_bill =  $this->BillDAO->checkIdBill($id_user);
-        // Kiểm tra xem đơn hàng có tồn tại không
-        if ($this->BillDAO->isOrderValid($id_bill)) {
-            // Lấy thông tin chi tiết đơn hàng
-            $orderDetails = $this->BillDAO->getOrderDetails($id_bill);
+        if (isset($_GET['id_bill'])) {
+            $id_bill = $_GET['id_bill'];
+            // Kiểm tra xem đơn hàng có tồn tại không
+            if ($this->BillDAO->isOrderValid($id_bill)) {
+                // Lấy thông tin chi tiết đơn hàng
+                $orderDetails = $this->BillDAO->getOrderDetails($id_bill);
 
-            foreach ($orderDetails as $orderDetail) {
-                // Kiểm tra xem chi tiết hóa đơn có trả hàng không
-                if (!$orderDetail['returned']) {
-                    // Cập nhật số lượng hàng trong kho hoặc bảng sản phẩm
-                    $this->BillDAO->updateProductQuantity($orderDetail['id_product'], $orderDetail['quantity']);
-
-                    // Đánh dấu chi tiết hóa đơn là đã trả về
-                    // $this->BillDAO->markOrderDetailReturned($orderDetail['id_bill_detail']);
+                foreach ($orderDetails as $orderDetail) {
+                    // Kiểm tra xem chi tiết hóa đơn có trả hàng không
+                    if (!$orderDetail['returned']) {
+                        // Cập nhật số lượng hàng trong kho hoặc bảng sản phẩm
+                        $this->BillDAO->updateProductQuantity($orderDetail['id_product'], $orderDetail['quantity'], $id_bill);
+                    }
                 }
+
+                $success = true; // Hoặc false tùy thuộc vào kết quả xử lý
+
+                // Nhúng mã JavaScript trực tiếp vào mã PHP để hiển thị thông báo
+                
             }
 
-            // Thực hiện các thao tác khác, chẳng hạn như cập nhật trạng thái đơn hàng
-
-            // return true; // Trả về true nếu quy trình trả hàng thành công
+            // Chuyển hướng về trang processReturn
+            header('Location: index.php?controller=historyBill');
+            exit(); // Ensure that no further code is executed after the redirection
         }
-
-        // return false; // Trả về false nếu có lỗi
-        require_once('view/home/user/return.php');
     }
-    
 }

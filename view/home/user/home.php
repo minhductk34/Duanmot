@@ -1131,7 +1131,7 @@ require_once('DAO/ProductDAO.php');
 
               <div class="vs-product-box3">
                 <div class="product-img">
-              
+
                   <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="admin_/uploads/products/<?php echo $product->getImage() ?>" alt="Product Image" class="w-100" /></a>
                 </div>
                 <div class="actions-btn">
@@ -1151,7 +1151,7 @@ require_once('DAO/ProductDAO.php');
                   <h4 class="product-title">
                     <a href="<?php echo $linkpro . $product->getId(); ?>"><?php echo $product->getName(); ?></a>
                   </h4>
-                  <span class="price"><strong><?php echo $product->getPrice(); ?></strong><del><?php echo $product->getPrice(); ?></del></span>
+                  <span class="price"><strong><?php echo $product->getPrice(); ?></strong><del></del></span>
                 </div>
               </div>
 
@@ -1211,7 +1211,7 @@ $product = $productDao->selectOneItem($id = 41);
         <div class="img-box3">
           <img src="admin_/uploads/products/<?php echo $product->getImage() ?>" alt="About Image" />
         </div>
-       
+
       </div>
 
 
@@ -1284,8 +1284,9 @@ $product = $productDao->selectOneItem($id = 41);
       <div class="sec-icon">
         <img src="./src/assets/img/icons/sec-icon-2.png" alt="icon" />
       </div>
-      <span class="sub-title4">Dưới đây là</span>
-      <h2 class="sec-title3">Những ản phẩm yêu thích nhất</h2>
+      <span class="sub-title4">Here is</span>
+      <h2 class="sec-title3">The Most Favorite Products</h2>
+
     </div>
 
     <div class="vs-carousel" data-slide-show="1" data-lg-slide-show="1" data-md-slide-show="1" data-sm-slide-show="1" data-fade="true" id="shopSlide8440">
@@ -1309,7 +1310,7 @@ $product = $productDao->selectOneItem($id = 41);
 
               <div class="vs-product-box3">
                 <div class="product-img">
-            
+
                   <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="admin_/uploads/products/<?php echo $product->getImage() ?>" alt="Product Image" class="w-100" /></a>
                 </div>
                 <div class="actions-btn">
@@ -1329,7 +1330,7 @@ $product = $productDao->selectOneItem($id = 41);
                   <h4 class="product-title">
                     <a href="<?php echo $linkpro . $product->getId(); ?>"><?php echo $product->getName(); ?></a>
                   </h4>
-                  <span class="price"><strong><?php echo $product->getPrice(); ?></strong><del><?php echo $product->getPrice(); ?></del></span>
+                  <span class="price"><strong><?php echo $product->getPrice(); ?></strong><del></del></span>
                 </div>
               </div>
 
@@ -1389,12 +1390,12 @@ $product = $productDao->selectOneItem($id = 41);
             <?php foreach ($result['products'] as $product) { ?>
               <div class="col-md-6">
                 <div class="vs-product-box3 style2">
-                 
+
                   <div class="product-img">
                     <!-- ../../../admin_/uploads/products/Mini_Apple.png
                   \admin_\uploads\products\Mini_Apple.png -->
                     <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="admin_/uploads/products/<?php echo $product->getImage() ?>" alt="Product Image" class="w-100" /></a>
-                   
+
                     <span class="product-tag1">Hot</span>
                   </div>
                   <div class="actions-btn">

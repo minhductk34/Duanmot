@@ -68,6 +68,8 @@ require_once('DAO/CartDAO.php');
     <link rel="stylesheet" href="./src/assets/css/animate.min.css">
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="./src/assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 
 </head>
 

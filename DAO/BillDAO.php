@@ -114,10 +114,10 @@ class BillDAO
     //      VALUES ('[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')";
     // }
 
-    public function addBill_details($id_bill, $id_product, $name_product, $quantity, $price)
+    public function addBill_details($id_bill, $id_product, $name_product, $quantity, $price, $id_user)
     {
-        $query = "INSERT INTO `bill_details`(`id_bill`, `id_product`, `name_product`, `quantity`, `price_product`)
-             VALUES ('$id_bill','$id_product','$name_product',' $quantity','$price')";
+        $query = "INSERT INTO `bill_details`(`id_bill`,`id_product` ,`name_product`, `quantity`, `price_product`, `id_user`)
+             VALUES ('$id_bill','$id_product','$name_product',' $quantity','$price','$id_user')";
         $stmt = $this->PDO->prepare($query);
         // die($query);
         $stmt->execute();
@@ -131,7 +131,7 @@ class BillDAO
         bd.name_product,
         bd.quantity AS bill_detail_quantity,
         bd.price_product AS bill_detail_price,
-        p.image_product AS product_image, -- Thêm trường ảnh từ bảng product (đặt tên cụ thể tùy thuộc vào cấu trúc bảng product)
+        p.image_product AS product_image, 
         MAX(b.number_phone) AS number_phone,
         MAX(b.address) AS address,
         MAX(b.email) AS email,
@@ -202,6 +202,25 @@ class BillDAO
         return $allDetails;
     }
 
+    public function showBillDetails($id_user)
+    {
+        $query = "SELECT id_bill, quantity, name_product, price_product, id_product, status, returned FROM bill_details WHERE id_user = $id_user";
+        $stmt = $this->PDO->prepare($query);
+        // die($query);
+
+        $stmt->execute();
+
+        // Fetch all rows grouped by id_bill
+        $result = $stmt->fetchAll(PDO::FETCH_GROUP | PDO::FETCH_ASSOC);
+
+        // Optionally, you can iterate through the grouped result
+        // and perform any additional processing
+        // print_r($result);
+        return $result;
+    }
+
+
+
     public function getIdBill($id_bill_detail)
     {
         $query = "SELECT id_bill FROM bill_details WHERE id_bill_detail = :id_bill_detail";
@@ -261,19 +280,24 @@ class BillDAO
     }
 
     // Cập nhật số lượng hàng trong kho hoặc bảng sản phẩm
-    public function updateProductQuantity($id_product, $quantity)
+    public function updateProductQuantity($id_product, $quantity, $id_bill)
     {
         // Thực hiện truy vấn để cập nhật số lượng hàng
-        $query = "UPDATE products SET quantity = quantity + :quantity WHERE id_product = :id_product";
+        $query = "UPDATE products 
+                  SET quantity = quantity + :quantity 
+                  WHERE id_product = :id_product AND id_product IN 
+                      (SELECT id_product FROM bill_details WHERE id_bill = :id_bill)";
         $stmt = $this->PDO->prepare($query);
         $stmt->bindParam(':quantity', $quantity, PDO::PARAM_INT);
         $stmt->bindParam(':id_product', $id_product, PDO::PARAM_INT);
+        $stmt->bindParam(':id_bill', $id_bill, PDO::PARAM_INT);
         $stmt->execute();
 
         // Thực hiện truy vấn để đánh dấu chi tiết hóa đơn là đã trả về
-        $updateQuery = "UPDATE bill_details SET returned = 1 WHERE id_product = :id_product";
+        $updateQuery = "UPDATE bill_details SET returned = 1 WHERE id_product = :id_product AND id_bill = :id_bill";
         $updateStmt = $this->PDO->prepare($updateQuery);
         $updateStmt->bindParam(':id_product', $id_product, PDO::PARAM_INT);
+        $updateStmt->bindParam(':id_bill', $id_bill, PDO::PARAM_INT);
         $updateStmt->execute();
     }
 
