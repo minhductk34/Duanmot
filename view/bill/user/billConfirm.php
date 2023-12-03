@@ -101,15 +101,22 @@ require_once('view/home/user/page/header.php');
                 </table>
             </form>
 
-            <div class="pt-10 pt-lg-5 mb-30">
-                <div class="woocommerce-checkout-payment">
-                    <div class="form-row place-order">
-                        <button type="button" class="vs-btn" name="checkOut" onclick="submitForm()">Checkout</button>
-                        <!-- <input type="submit" name="place_Order"onclick="submitForm()" > -->
+            <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="init_payment.php">
+
+                <div class="pt-10 pt-lg-5 mb-30">
+                    <div class="woocommerce-checkout-payment">
+                        <div class="form-row place-order">
+                            <button type="button" class="vs-btn" name="checkOut" onclick="submitForm()">Checkout With COD</button>
+                        </div>
+                        <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="view\bill\user\init_payment.php">
+                            <input type="hidden" name="total" value="<?php echo $total; ?>">
+                            <div style="margin-top: 1em;">
+                                <button type="submit" class="vs-btn">MoMo Payment</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
     </div>
 </div>
 <script>

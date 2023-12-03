@@ -145,6 +145,12 @@ switch ($controller) {
         $homeController = new HomeController();
         $homeController->chatBox();
         break;
+    case 'payment':
+        $homeController = new HomeController();
+        $homeController->chatBox();
+        break;
+
+
 
     default:
         // Xử lý controller không hợp lệ

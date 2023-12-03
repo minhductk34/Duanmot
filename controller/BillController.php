@@ -112,7 +112,7 @@ class BillController
         $cart_ =  $cart->showCart($id_user);
 
         foreach ($cart_ as $cart) {
-            var_dump($cart->getQuantity());
+            // var_dump($cart->getQuantity());
             // Lặp qua từng giá trị của $cart->getQuantity(
             $this->BillDAO->addBill_details($id_bill, $cart->getProductId(), $cart->getNameProduct(), $cart->getQuantity(), $cart->getPrice(), $cart->getId());
             $this->ProductDAO->Check_quantity_pro($cart->getProductId(), $cart->getQuantity());

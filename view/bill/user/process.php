@@ -135,7 +135,7 @@
                                      <strong class="product-quantity"><?php echo $value->getQuantity(); ?></strong>
                                  </td>
                                  <td data-title="Total">
-                                     <span class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity(); ?></bdi></span>
+                                     <span class="amount" ><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity(); ?></bdi></span>
                                  </td>
                              </tr>
                          <?php } ?>
@@ -169,7 +169,7 @@
                                      <th></th>
                                      <th></th>
                                      <th></th>
-                                     <td><strong><span class="amount"><bdi><span>$</span><?php echo $total ?></bdi></span></strong></td>
+                                     <td><strong><span class="amount" ><bdi><span>$</span><?php echo $total ?></bdi></span></strong></td>
                                  </tr>
                              </tbody>
                          </table>

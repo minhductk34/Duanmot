@@ -108,12 +108,6 @@ require_once('DAO/CartDAO.php');
   </style>
 
 
-  <!--[if lte IE 9]>
-    	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
-
-
-
   <!--********************************
    		Code Start From Here 
 	******************************** -->
@@ -223,79 +217,7 @@ require_once('DAO/CartDAO.php');
   <!--==============================
     Sidemenu
 ============================== -->
-  <div class="sidemenu-wrapper d-none d-lg-block  ">
-    <div class="sidemenu-content">
-      <button class="closeButton border-theme text-theme bg-theme-hover sideMenuCls"><i class="far fa-times"></i></button>
-      <div class="widget widget_shopping_cart">
-        <h3 class="widget_title">Shopping cart</h3>
-        <div class="widget_shopping_cart_content">
-          <ul class="cart_list ">
-            <li class="mini_cart_item">
-              <a href="index.php?controller=product_show" class="remove"><i class="fal fa-trash-alt"></i></a>
-              <a href="index.php?controller=product_show"><img src="./src/assets/img/cart/cart-img-1-1.jpg" alt="Cart Image">Hot
-                Burger</a>
-              <span class="quantity">1 ×
-                <span class="amount">
-                  <span>$</span>40.00
-                </span>
-              </span>
-            </li>
-            <li class="mini_cart_item">
-              <a href="index.php?controller=product_show" class="remove"><i class="fal fa-trash-alt"></i></a>
-              <a href="index.php?controller=product_show"><img src="./src/assets/img/cart/cart-img-1-2.jpg" alt="Cart Image">Vegetable</a>
-              <span class="quantity">1 ×
-                <span class="amount">
-                  <span>$</span>99.00
-                </span>
-              </span>
-            </li>
-
-            <li class="mini_cart_item">
-              <a href="index.php?controller=product_show" class="remove"><i class="fal fa-trash-alt"></i></a>
-              <a href="index.php?controller=product_show"><img src="./src/assets/img/cart/cart-img-1-3.jpg" alt="Cart Image">Pop
-                Pizza</a>
-              <span class="quantity">1 ×
-                <span class="amount">
-                  <span>$</span>56.00
-                </span>
-              </span>
-            </li>
-            <li class="mini_cart_item">
-              <a href="index.php?controller=product_show" class="remove"><i class="fal fa-trash-alt"></i></a>
-              <a href="index.php?controller=product_show"><img src="./src/assets/img/cart/cart-img-1-4.jpg" alt="Cart Image">Onion &
-                Tomato</a>
-              <span class="quantity">1 ×
-                <span class="amount">
-                  <span>$</span>23.00
-                </span>
-              </span>
-            </li>
-            <li class="mini_cart_item">
-              <a href="index.php?controller=product_show" class="remove"><i class="fal fa-trash-alt"></i></a>
-              <a href="index.php?controller=product_show"><img src="./src/assets/img/cart/cart-img-1-5.jpg" alt="Cart Image">Cool
-                Drinks</a>
-              <span class="quantity">1 ×
-                <span class="amount">
-                  <span>$</span>100.00
-                </span>
-              </span>
-            </li>
-          </ul>
-          <p class="total">
-            <strong>Subtotal:</strong>
-            <span class="amount">
-              <span>$</span>318.00
-            </span>
-          </p>
-          <p class="buttons">
-            <a href="index.php?controller=listCart" class="vs-btn">View cart</a>
-            <a href="index.php?controller=checkOut" class="vs-btn">Checkout</a>
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </div>
+ 
   <!--==============================
         Header Area
     ==============================-->
@@ -315,8 +237,6 @@ require_once('DAO/CartDAO.php');
             <a href="index.php?controller=home_user" class="icon-btn bg4">
               <i class="fal fa-user"></i>
             </a>
-
-
           </div>
         </div>
       </div>
@@ -447,7 +367,7 @@ require_once('DAO/CartDAO.php');
                               <p><a href="index.php?controller=update" class="btn-inline">Update password</a></p>
                               <p><a href="index.php?controller=login" class="btn-inline">Forgot Your Password?</a></p>
                               <p><a href="index.php?controller=historyBill" class="btn-inline">Your Bill</a></p>
-                              <p><a href="index.php?controller=processReturn" class="btn-inline">Put Back Your Order</a></p>
+                             
                               
                             </form>
                           </div>
