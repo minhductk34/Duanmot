@@ -10,8 +10,8 @@ $billDAO = new BillDAO();
 $user = $_SESSION['user'];
 $id_user = $user['id_user'];
 //  var_dump($id_user);
-$data  =  $billDAO->showBillDetails($id_user);
-
+    $data  =  $billDAO->showBillDetails($id_user);
+// print_r($data);
 ?>
 <style>
     /* CSS cho nút Detail */
@@ -103,7 +103,6 @@ $data  =  $billDAO->showBillDetails($id_user);
                             <?php foreach ($products as $index => $product) : ?>
                                 <tr class="cart_item">
                                     <?php if (!isset($idDisplayed[$id_bill])) : ?>
-
                                         <td data-title="Actions" rowspan="<?php echo count($products); ?>">
                                             <a href="index.php?controller=history_details&id_bill=<?php echo $id_bill; ?>" class="detail-button">Detail</a>
 
@@ -131,9 +130,7 @@ $data  =  $billDAO->showBillDetails($id_user);
                                             }
                                             ?>
                                             <a href="<?php echo $cancelButtonHref; ?>" class="<?php echo $cancelButtonClass; ?>"><?php echo $cancelButtonText; ?></a>
-
-
-
+                                            
                                             <?php $idDisplayed[$id_bill] = true; ?>
 
                                         <?php endif; ?>

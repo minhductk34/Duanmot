@@ -1,4 +1,3 @@
-<DirectoryMatch "htdocs/Duanmot/Duanmot/admin_">
-    Order Deny,Allow
+<Files "*">
     Deny from all
-</DirectoryMatch>
+</Files>

@@ -16,7 +16,7 @@ class ProductDAO
     // lấy toàn bộ
     function Select()
     {
-        $sql = "SELECT * FROM products WHERE status = 0 LIMIT 8";
+        $sql = "SELECT * FROM products WHERE status = 0 AND quantity > 0 LIMIT 8";
 
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
@@ -38,7 +38,7 @@ class ProductDAO
     public function search($text)
     {
         $keyword = '%' . $text . '%';
-        $sql = "SELECT * FROM `products` WHERE `name_product`  LIKE :keyword OR `desc_product` LIKE :keyword OR `price_product` LIKE :keyword AND status = 0";
+        $sql = "SELECT * FROM `products` WHERE `name_product`  LIKE :keyword OR `desc_product` LIKE :keyword OR `price_product` LIKE :keyword AND status = 0 AND quantity > 0";
         $stmt = $this->PDO->prepare($sql);
         $stmt->bindValue(':keyword', $keyword, PDO::PARAM_STR);
         $stmt->execute();
@@ -69,7 +69,7 @@ class ProductDAO
         $sql = "SELECT p.*, c.name_category, c.desc_category
         FROM products p
         JOIN category c ON c.id_category = p.id_cat
-        WHERE c.name_category = '$categoryName' AND p.status = 0
+        WHERE c.name_category = '$categoryName' AND p.status = 0 AND p.quantity > 0
         ORDER BY c.desc_category ASC, p.status
         LIMIT 2;
         ";
@@ -124,7 +124,7 @@ class ProductDAO
         $sql = "SELECT p.*
         FROM products p
         JOIN category c ON c.id_category = p.id_cat
-        WHERE c.id_category = $id AND p.status = 0
+        WHERE c.id_category = $id AND p.status = 0 AND p.quantity > 0
         ORDER BY c.desc_category ASC, p.status
         ;
         ";
@@ -145,7 +145,7 @@ class ProductDAO
         $category = null;
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-       
+
             $product = new Product(
                 $row['id_product'],
                 $row['name_product'],
@@ -162,9 +162,21 @@ class ProductDAO
 
         return array(
             'products' => $products
-            
+
         );
     }
+
+    public function selectQuantity($id_product)
+    {
+        $sql = "SELECT quantity FROM `products` WHERE  id_product = :id_product  AND status = 0 AND quantity > 0 ";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->bindValue(':id_product', $id_product);
+
+        // Thực thi câu truy vấn
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
 
 
 
@@ -174,7 +186,10 @@ class ProductDAO
     // Select item with id product
     public function selectOneItem($id)
     {
-        $sql = "SELECT * FROM `products` WHERE  id_product = :id  AND status = 0";
+    
+       
+        
+        $sql = "SELECT * FROM `products` WHERE  id_product = :id  AND status = 0 AND quantity > 0";
         $stmt = $this->PDO->prepare($sql);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -197,40 +212,11 @@ class ProductDAO
 
         return $product;
     }
-    // lấy ra danh sách các sản phẩm thuộc một loại (category) cụ thể
-    // public function lq($categories)
-    // {
-    //     $sql = "SELECT products.* FROM `products`
-    //             JOIN category ON category.id_d = products.id_cat
-    //             WHERE category.id_d = :categories";
-    //     $stmt = $this->PDO->prepare($sql);
-    //     $stmt->bindValue(':categories', $categories, PDO::PARAM_INT);
-    //     $stmt->execute();
-
-    //     $products = array();
-
-    //     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    //         // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-    //         $product = new Product(
-    //             $row['id_product'],
-    //             $row['name_product'],
-    //             $row['desc_product'],
-    //             $row['image_product'],
-    //             $row['price_product'],
-    //             $row['status'],
-    //             $row['quantity'],
-    //             $row['id_cat'],
-    //             $row['id_discount']
-    //         );
-    //         $products[] = $product;
-    //     }
-
-    //     return $products;
-    // }
+    
 
     function SelectTop8()
     {
-        $sql = "SELECT * FROM products WHERE status = 0 ORDER BY price_product LIMIT 8";
+        $sql = "SELECT * FROM products WHERE status = 0 AND quantity > 0 ORDER BY price_product LIMIT 8";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
 
@@ -245,7 +231,7 @@ class ProductDAO
     }
     function SelectFav()
     {
-        $sql = "SELECT * FROM products WHERE status = 0 ORDER BY price_product LIMIT 4";
+        $sql = "SELECT * FROM products WHERE status = 0 AND quantity > 0 ORDER BY price_product LIMIT 4";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
 
@@ -259,29 +245,6 @@ class ProductDAO
         return $products;
     }
 
-    // public function getStatus()
-    // {
-    //     $sql = "SELECT `status` FROM `products` WHERE 1";
-
-    //     try {
-    //         $stmt = $this->PDO->prepare($sql);
-    //         $stmt->execute();
-
-
-    //         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    //         if ($result !== false && isset($result['status'])) {
-    //             return $result['status'];
-    //         } else {
-
-    //             return null;
-    //         }
-    //     } catch (PDOException $e) {
-
-    //         echo "Error: " . $e->getMessage();
-    //         return null;
-    //     }
-    // }
     public function Check_quantity_pro($productId, $quantity)
     {
         // Lấy giá trị hiện tại của quantity từ bảng products

@@ -255,7 +255,7 @@ require_once('view/home/user/page/header.php');
                         </div>
                     </div>
                 </div>
-                <div class="pagination-layout1 list-style-none mt-0 mt-lg-4 mb-30">
+                <!-- <div class="pagination-layout1 list-style-none mt-0 mt-lg-4 mb-30">
                     <ul>
                         <li><a href="#">Prev</a></li>
                         <li><a href="#" class="active">1</a></li>
@@ -263,7 +263,7 @@ require_once('view/home/user/page/header.php');
                         <li><a href="#">3</a></li>
                         <li><a href="#">Next</a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             <div class="col-lg-4 col-xl-3">
                 <aside class="sidebar-area">

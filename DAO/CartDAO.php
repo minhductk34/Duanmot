@@ -11,38 +11,48 @@ class CartDAO
     }
 
 
-    public function addToCart($userId, $productId, $quantity)
-    {
-        // Lấy thông tin sản phẩm từ bảng "product" dựa trên $productId
 
+
+    public function addToCart($userId, $productId, $quantity = 1)
+    {
         $productDAO = new ProductDAO();
         $product = $productDAO->selectOneItem($productId);
-        $query = " SELECT quantity FROM cart WHERE id_user = $userId AND id_product= $productId";
+
+        // Kiểm tra xem sản phẩm có tồn tại không và có đủ số lượng không
+        if (!$product || $quantity <= 0 || $product->getQuantity() <= 0) {
+            // Xử lý trường hợp sản phẩm không tồn tại, hoặc số lượng không hợp lệ, hoặc sản phẩm đã hết hàng
+            return false;
+        }
+
+        // Kiểm tra số lượng sản phẩm trong giỏ hàng của người dùng
+        $query = "SELECT quantity FROM cart WHERE id_user = $userId AND id_product = $productId";
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
-        // die($query);
-        $quantity = $stmt->fetchColumn();
+        $quantityInCart = $stmt->fetchColumn();
 
-        $query= "SELECT `id_user` FROM `cart` WHERE 1";
+        // Nếu số lượng yêu cầu vượt quá số lượng có sẵn, xử lý tình huống
+        if ($quantityInCart + $quantity > $product->getQuantity()) {
+            // Xử lý trường hợp số lượng yêu cầu vượt quá số lượng có sẵn
+            return false;
+        }
+
+        // Nếu sản phẩm đã có trong giỏ hàng của người dùng, cập nhật số lượng
+        if ($quantityInCart > 0) {
+            $query = "UPDATE cart SET quantity = quantity + $quantity WHERE id_user = $userId AND id_product = $productId";
+        } else {
+            // Nếu sản phẩm chưa có trong giỏ hàng, thêm mới vào
+            $query = "INSERT INTO cart (id_user, id_product, quantity) VALUES ($userId, $productId, $quantity)";
+        }
+
+        // Thực hiện truy vấn
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
-        $id_user_ = $stmt->fetchColumn();
 
-        if ($quantity > 0) {
-            $query = "UPDATE cart SET quantity = $quantity+1 WHERE id_user = $userId AND id_product= $productId";
-            $stmt = $this->PDO->prepare($query);
-            $stmt->execute();
-            // die($query);
-        }
-        
-        else {
-
-            $query = "INSERT INTO cart (id_user, id_product, quantity) VALUES ($userId, $productId, 1)";
-            $stmt = $this->PDO->prepare($query);
-            $stmt->execute();
-            // die($query);
-        }
+        return true;
     }
+
+
+
 
     public function updateCart($productId, $quantity, $total)
     {
@@ -56,14 +66,12 @@ class CartDAO
         $query = "DELETE FROM cart WHERE id_product = $id";
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
-        
     }
     public function delete($id)
     {
         $query = "DELETE FROM cart WHERE id_user = $id";
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
-        
     }
 
     public function getCartHistory($userId)
@@ -81,7 +89,7 @@ class CartDAO
             FROM cart JOIN products 
             ON products.id_product = cart.id_product 
             WHERE cart.id_user = $id_user";
-            // die($query);
+        // die($query);
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
 

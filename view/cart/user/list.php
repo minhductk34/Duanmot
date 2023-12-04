@@ -23,6 +23,9 @@ require_once('view/home/user/page/header.php');
 require_once('DAO/CartDAO.php');
 $items = new CartDAO();
 $item = $items->showCart($id_user);
+require_once('DAO/ProductDAO.php');
+$quantity = new ProductDAO();
+
 
 // var_dump($item);
 ?>
@@ -49,9 +52,11 @@ $item = $items->showCart($id_user);
                     $total = 0;
                     ?>
                     <?php foreach ($item as $key => $value) { ?>
+
                         <tr class="cart_item">
+
                             <td data-title="Product">
-                                <a class="cart-productimage" href="shop-details.html"><img width="91" height="91" src="admin_/uploads/products/<?php echo $value->getImage() ?>" alt="Image"></a >
+                                <a class="cart-productimage" href="shop-details.html"><img width="91" height="91" src="admin_/uploads/products/<?php echo $value->getImage() ?>" alt="Image"></a>
                             </td>
                             <td data-title="Name">
                                 <a class="cart-productname" href="shop-details.html"><?php echo $value->getNameProduct(); ?></a>
@@ -62,10 +67,9 @@ $item = $items->showCart($id_user);
                             <td data-title="Quantity">
                                 <div class="quantity">
                                     <button class="quantity-minus qut-btn" onclick="down(<?php echo $value->getIdCart() ?>);"><i class="far fa-minus"></i></button>
-                                    <input type="number" class="qty-input" id="showNumber<?php echo $value->getIdCart() ?>" value="<?php echo $value->getQuantity() ?>" min="1" max="99" readonly>
+                                    <span> <input type="number" class="qty-input" price="<?php echo $quantity->selectQuantity($value->getProductId()) ?>" id="showNumber<?php echo $value->getIdCart() ?>" value="<?php echo $value->getQuantity() ?>" \ min="1" max="<?php echo $quantity->selectQuantity($value->getProductId()) ?>" readonly></span>
                                     <button class="quantity-plus qut-btn" onclick="up(<?php echo $value->getIdCart() ?>);"><i class="far fa-plus"></i></button>
                                 </div>
-
                                 <script>
                                     function up(id_cart) {
                                         var cartInfo = {
@@ -73,30 +77,38 @@ $item = $items->showCart($id_user);
                                             quantity: document.getElementById("showNumber" + id_cart).value
                                             // Thêm thông tin khác nếu cần thiết
                                         };
+                                        var price = document.getElementById("showNumber" + id_cart).getAttribute("price");
+                                        var quantity = document.getElementById("showNumber" + id_cart).value;
+                                        console.log(price, quantity)
+                                        if (quantity >= price) {
+                                            alert("eror!");
 
-                                        var xml = new XMLHttpRequest();
-                                        xml.open("POST", "api/cart/upCart.php", true);
-                                        xml.setRequestHeader("Content-Type", "application/json");
-                                        xml.onreadystatechange = function() {
-                                            if (xml.readyState === 4) {
-                                                if (xml.status === 200) {
-                                                    id = "Total" + id_cart;
-                                                    document.getElementById("showNumber" + id_cart).value = xml.responseText;
-                                                    // Đảm bảo có một phần tử HTML với id="Total" để thay đổi giá trị
-                                                    document.getElementById(id).innerHTML = document.getElementById("price_one").innerHTML * xml.responseText;
-                                                } else {
-                                                    // header("Location:index.php");
-                                                    alert("You need to log in");
-                                                    window.location.href = "index.php?controller=login";
+                                        } else {
+                                            var xml = new XMLHttpRequest();
+                                            xml.open("POST", "api/cart/upCart.php", true);
+                                            xml.setRequestHeader("Content-Type", "application/json");
+                                            xml.onreadystatechange = function() {
+                                                if (xml.readyState === 4) {
+                                                    if (xml.status === 200) {
+                                                        id = "Total" + id_cart;
+                                                        document.getElementById("showNumber" + id_cart).value = xml.responseText;
+                                                        // Đảm bảo có một phần tử HTML với id="Total" để thay đổi giá trị
+                                                        document.getElementById(id).innerHTML = document.getElementById("price_one").innerHTML * xml.responseText;
+                                                    } else {
+                                                        // header("Location:index.php");
+                                                        alert("You need to log in");
+                                                        window.location.href = "index.php?controller=login";
+                                                    }
                                                 }
-                                            }
-                                        };
-                                        xml.send(JSON.stringify(cartInfo));
+                                            };
+                                            xml.send(JSON.stringify(cartInfo));
+                                        }
+
                                     }
 
                                     function down(id_cart) {
-                                        if(document.getElementById("showNumber" + id_cart).value<=1){
-                                            document.getElementById("showNumber" + id_cart).value=2
+                                        if (document.getElementById("showNumber" + id_cart).value <= 1) {
+                                            document.getElementById("showNumber" + id_cart).value = 2
                                         }
                                         var cartInfo = {
                                             id: id_cart,
@@ -157,7 +169,7 @@ $item = $items->showCart($id_user);
                                     document.getElementById('total_').innerHTML = total;
                                     document.getElementById('order_total_').innerHTML = total;
 
-                                    
+
                                 }
                             </script>
                             <a href="index.php?controller=product_show" class="vs-btn rounded-1 shadow-none">Continue Shopping</a>

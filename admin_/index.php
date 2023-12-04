@@ -2,10 +2,10 @@
 
 session_start();
 
-// if (!isset($_SESSION['user']) || $_SESSION['user']['permissions'] != 1) {
-//     header('Location: ../index.php');
-//     exit();
-// }
+if (!isset($_SESSION['user']) || $_SESSION['user']['permissions'] != 1) {
+    header('Location: ../index.php');
+    exit();
+}
 include "config/pdo.php";
 include "models/CategoryModel.php";
 include "models/ProductModel.php";

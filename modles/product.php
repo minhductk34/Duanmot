@@ -44,4 +44,8 @@ class Product
     {
         return $this->desc_product;
     }
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
 }

@@ -116,7 +116,8 @@ class BillDAO
 
     public function addBill_details($id_bill, $id_product, $name_product, $quantity, $price, $id_user)
     {
-        $query = "INSERT INTO `bill_details`(`id_bill`,`id_product` ,`name_product`, `quantity`, `price_product`, `id_user`)
+       
+       $query = "INSERT INTO `bill_details`(`id_bill`,`id_product` ,`name_product`, `quantity`, `price_product`, `id_user`)
              VALUES ('$id_bill','$id_product','$name_product',' $quantity','$price','$id_user')";
         $stmt = $this->PDO->prepare($query);
         // die($query);

@@ -104,20 +104,19 @@
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="index.php?controller=product_show">Shop</a>
-                                <!-- <a href="index.php?controller=product_show">Shop</a> -->
+                       
                                 <ul class="sub-menu">
                                     <li><a href="index.php?controller=product_show">Shop</a></li>
-                                    <!-- <li><a href="#">Shop List</a></li>
-                                    <li><a href="index.php?controller=product_details">Shop Details</a></li> -->
+                                
                                     <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
-                                    <li><a href="checkout.html">Check Out</a></li>
-                                    <li><a href="index.php?controller=wishlistCart">Wishlist</a></li>
+                                    <!-- <li><a href="index.php?controller=checkOut">Check Out</a></li> -->
+                                    <!-- <li><a href="index.php?controller=wishlistCart">Wishlist</a></li> -->
                                     <li><a href="index.php?controller=login">Login & Register</a></li>
                                 </ul>
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="blog.html">Blog</a>
-                                <ul class="sub-menu">
+                                <a href="#">Blog</a>
+                                <!-- <ul class="sub-menu">
                                     <li><a href="blog.html">Blog</a></li>
                                     <li><a href="blog-list.html">Blog List</a></li>
                                     <li><a href="blog-grid.html">Blog Grid</a></li>
@@ -126,7 +125,7 @@
                                     </li>
                                     <li><a href="blog-masonry.html">Blog Masonry</a></li>
                                     <li><a href="blog-details.html">Blog Details</a></li>
-                                </ul>
+                                </ul> -->
                             </li>
                             <li class="mega-menu-wrap menu-item">
                                 <a href="index.php?controller=contact">Contact Us</a>
@@ -283,37 +282,20 @@
                                     <a href="index.php?controller=product_show">Shop</a>
                                     <ul class="sub-menu">
                                         <li><a href="index.php?controller=product_show">Shop</a></li>
-                                        <!-- <li><a href="index.php?controller=home">Shop List</a></li>
-                                        <li><a href="index.php?controller=product_details">Shop Details</a></li> -->
                                         <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
-                                        <li><a href="checkout.html">Check Out</a></li>
-                                        <li><a href="index.php?controller=wishlistCart">Wishlist</a></li>
+                                        <!-- <li><a href="index.php?controller=checkOut">Check Out</a></li> -->
+                                        <!-- <li><a href="index.php?controller=wishlistCart">Wishlist</a></li> -->
                                         <li>
                                             <a href="index.php?controller=login">Login & Register</a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children">
-                                    <a href="blog.html">Blog</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-list.html">Blog List</a></li>
-                                        <li><a href="blog-grid.html">Blog Grid</a></li>
-                                        <li>
-                                            <a href="blog-grid-sidebar.html">Blog Grid Sidebar</a>
-                                        </li>
-                                        <li><a href="blog-masonry.html">Blog Masonry</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                    </ul>
+                                <li class="menu-item">
+                                    <a href="#">Blog</a>
+                                   
                                 </li>
-                                <!-- <li class="mega-menu-wrap menu-item-has-children">
-                                    <a href="#">Pages</a>
-                                    <ul class="mega-menu">
-                                        <li><a href="index.php?controller=product_show">Pagelist 1</a></li>
-                                    </ul>
-                                </li> -->
                                 <li>
-                                    <a href="index.php?controller=contact">Contact Us</a>
+                                    <a href="#">Contact Us</a>
                                 </li>
                             </ul>
                         </nav>

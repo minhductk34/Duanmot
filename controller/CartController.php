@@ -38,17 +38,22 @@ class CartController
         }
     }
 
+
+
+
+
     public function add()
     {
         if (isset($_SESSION['user']) && $_SESSION['user']) {
+            // print_r($_REQUEST);
             if (isset($_GET['id']) && $_GET['id'] != '') {
                 $user = $_SESSION['user'];
                 $id_user = $user['id_user'];
                 $userId = $id_user;
-                $quantity = $_GET['quantity'];
+
                 $typePayment = '';
 
-                $this->CartDAO->addToCart($userId, $_GET['id'], $quantity);
+                $this->CartDAO->addToCart($userId, $_GET['id']);
                 header('Location: index.php?controller=addCart');
                 exit();
             } else {
@@ -65,7 +70,7 @@ class CartController
 
     public function delete()
     {
-       
+
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $user = $_SESSION['user'];
@@ -74,13 +79,12 @@ class CartController
             $this->CartDAO->showCart($id_user);
             header('Location: index.php?controller=listCart');
         } else {
-        
         }
     }
     public function history()
     {
         //echo 'historyCart';
-      
+
     }
 
     public function wishlist()

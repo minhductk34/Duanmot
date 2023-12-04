@@ -107,40 +107,7 @@ require_once('DAO/CartDAO.php');
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-sm-6 col-md-4 col-lg-4 d-none d-sm-block">
-                    <!-- <div class="head-top-links text-body2">
-                        <span class="icon-btn"><i class="fal fa-pennantt"></i></span>
-                        <ul>
-                            <li>
-                            
-                                <a class="dropdown-toggle" href="#" permissions="button" id="dropdownMenuLink1"
-                                    data-bs-toggle="dropdownn" aria-expanded="false">
-                                    
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                    <li><a href="#">German</a></li>
-                                    <li><a href="#">French</a></li>
-                                    <li><a href="#">Italian</a></li>
-                                    <li><a href="#">Latvian</a></li>
-                                    <li><a href="#">Spanish</a></li>
-                                    <li><a href="#">Greek</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                         
-                                <a class="dropdown-toggle" href="#" permissions="button" id="dropdownMenuLink2"
-                                    data-bs-toggle="dropdownn" aria-expanded="false">
-                                    
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
-                                    <li><a href="#">Canadian Dollar</a></li>
-                                    <li><a href="#">Swiss Franc</a></li>
-                                    <li><a href="#">Chinese Yuan</a></li>
-                                    <li><a href="#">Australian Dollar</a></li>
-                                    <li><a href="#">Swedish Krona</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div> -->
+                    
                 </div>
                 <div class="col col-md-5 col-lg-4 text-center">
                     <p class="text-body2 mb-0 fs-xs fw-semibold font-theme d-none d-md-inline-block"><span class="text-theme">Free exress</span> international delevery + Easy returens</p>
@@ -178,24 +145,15 @@ require_once('DAO/CartDAO.php');
                                 <a href="index.php?controller=product_show">Shop</a>
                                 <ul class="sub-menu">
                                     <li><a href="index.php?controller=product_show">Shop</a></li>
-                                    <!-- <li><a href="index.php?controller=product_favorite">Shop List</a></li>
-                                    <li><a href="index.php?controller=product_details">Shop Details</a></li> -->
                                     <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
-                                    <li><a href="index.php?controller=checkOut">Check Out</a></li>
-                                    <li><a href="index.php?controller=wishlistCart">Wishlist</a></li>
+                                    <!-- <li><a href="index.php?controller=checkOut">Check Out</a></li>
+                                    <li><a href="index.php?controller=wishlistCart">Wishlist</a></li> -->
                                     <li><a href="index.php?controller=login">Login & Register</a></li>
                                 </ul>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="blog.html">Blog</a>
-                                <ul class="sub-menu">
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blog-list.html">Blog List</a></li>
-                                    <li><a href="blog-grid.html">Blog Grid</a></li>
-                                    <li><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
-                                    <li><a href="blog-masonry.html">Blog Masonry</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                </ul>
+                            <li class="menu-item">
+                                <a href="#">Blog</a>
+                              
                             </li>
 
 
@@ -224,79 +182,7 @@ require_once('DAO/CartDAO.php');
     <!--==============================
     Sidemenu
 ============================== -->
-    <div class="sidemenu-wrapper d-none d-lg-block  ">
-        <div class="sidemenu-content">
-            <button class="closeButton border-theme text-theme bg-theme-hover sideMenuCls"><i class="far fa-times"></i></button>
-            <div class="widget widget_shopping_cart">
-                <h3 class="widget_title">Shopping cart</h3>
-                <div class="widget_shopping_cart_content">
-                    <ul class="cart_list ">
-                        <li class="mini_cart_item">
-                            <a href="index.php?controller=product_show" class="remove"><i class="fal fa-trash-alt"></i></a>
-                            <a href="index.php?controller=product_show"><img src="./src/assets/img/cart/cart-img-1-1.jpg" alt="Cart Image">Hot
-                                Burger</a>
-                            <span class="quantity">1 ×
-                                <span class="amount">
-                                    <span>$</span>40.00
-                                </span>
-                            </span>
-                        </li>
-                        <li class="mini_cart_item">
-                            <a href="index.php?controller=product_show" class="remove"><i class="fal fa-trash-alt"></i></a>
-                            <a href="index.php?controller=product_show"><img src="./src/assets/img/cart/cart-img-1-2.jpg" alt="Cart Image">Vegetable</a>
-                            <span class="quantity">1 ×
-                                <span class="amount">
-                                    <span>$</span>99.00
-                                </span>
-                            </span>
-                        </li>
-
-                        <li class="mini_cart_item">
-                            <a href="index.php?controller=product_show" class="remove"><i class="fal fa-trash-alt"></i></a>
-                            <a href="index.php?controller=product_show"><img src="./src/assets/img/cart/cart-img-1-3.jpg" alt="Cart Image">Pop
-                                Pizza</a>
-                            <span class="quantity">1 ×
-                                <span class="amount">
-                                    <span>$</span>56.00
-                                </span>
-                            </span>
-                        </li>
-                        <li class="mini_cart_item">
-                            <a href="index.php?controller=product_show" class="remove"><i class="fal fa-trash-alt"></i></a>
-                            <a href="index.php?controller=product_show"><img src="./src/assets/img/cart/cart-img-1-4.jpg" alt="Cart Image">Onion &
-                                Tomato</a>
-                            <span class="quantity">1 ×
-                                <span class="amount">
-                                    <span>$</span>23.00
-                                </span>
-                            </span>
-                        </li>
-                        <li class="mini_cart_item">
-                            <a href="index.php?controller=product_show" class="remove"><i class="fal fa-trash-alt"></i></a>
-                            <a href="index.php?controller=product_show"><img src="./src/assets/img/cart/cart-img-1-5.jpg" alt="Cart Image">Cool
-                                Drinks</a>
-                            <span class="quantity">1 ×
-                                <span class="amount">
-                                    <span>$</span>100.00
-                                </span>
-                            </span>
-                        </li>
-                    </ul>
-                    <p class="total">
-                        <strong>Subtotal:</strong>
-                        <span class="amount">
-                            <span>$</span>318.00
-                        </span>
-                    </p>
-                    <p class="buttons">
-                        <a href="index.php?controller=listCart" class="vs-btn">View cart</a>
-                        <a href="index.php?controller=checkOut" class="vs-btn">Checkout</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-    </div>
+    
     <!--==============================
         Header Area
     ==============================-->
@@ -336,11 +222,10 @@ require_once('DAO/CartDAO.php');
                                     <a href="index.php?controller=product_show">Shop</a>
                                     <ul class="sub-menu">
                                         <li><a href="index.php?controller=product_show">Shop</a></li>
-                                        <!-- <li><a href="index.php?controller=product_favorite">Shop List</a></li>
-                                        <li><a href="index.php?controller=product_details">Shop Details</a></li> -->
+                                
                                         <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
-                                        <li><a href="index.php?controller=checkOut">Check Out</a></li>
-                                        <li><a href="index.php?controller=wishlistCart">Wishlist</a></li>
+                                        <!-- <li><a href="index.php?controller=checkOut">Check Out</a></li>
+                                        <li><a href="index.php?controller=wishlistCart">Wishlist</a></li> -->
                                         <li><a href="index.php?controller=login">Login & Register</a></li>
                                     </ul>
                                 </li>
@@ -355,56 +240,9 @@ require_once('DAO/CartDAO.php');
                                         <li><a href="blog-details.html">Blog Details</a></li>
                                     </ul>
                                 </li>
-                                <!-- <li class="mega-menu-wrap menu-item-has-children">
-                                    <a href="#">Pages</a>
-                                    <ul class="mega-menu">
-                                        <li><a href="index.php?controller=product_show">Pagelist 1</a>
-                                            <ul>
-                                                <li><a href="index.php?controller=home">Home Style 1</a></li>
-                                                <li><a href="index-2.html">Home Style 2</a></li>
-                                                <li><a href="index-3.html">Home Style 3</a></li>
-                                                <li><a href="index-4.html">Home Style 4</a></li>
-                                                <li><a href="index-5.html">Home Style 5</a></li>
-                                                <li><a href="index-6.html">Home Style 6</a></li>
-                                                <li><a href="index-7.html">Home Style 7</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Pagelist 2</a>
-                                            <ul>
-                                                <li><a href="index-8.html">Home Style 8</a></li>
-                                                <li><a href="about.html">About</a></li>
-                                                <li><a href="service.html">Services</a></li>
-                                                <li><a href="team.html">Team</a></li>
-                                                <li><a href="faq.html">FAQ Page</a></li>
-                                                <li><a href="index.php?controller=contact">Contact Us</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Pagelist 3</a>
-                                            <ul>
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="blog-list.html">Blog List</a></li>
-                                                <li><a href="blog-grid.html">Blog Grid</a></li>
-                                                <li><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
-                                                <li><a href="blog-masonry.html">Blog Masonry</a></li>
-                                                <li><a href="blog-details.html">Blog Details</a></li>
-                                                <li><a href="error.html">Error Page</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Pagelist 4</a>
-                                            <ul>
-                                                <li><a href="index.php?controller=product_show">Shop</a></li>
-                                                <li><a href="index.php?controller=product_favorite">Shop List</a></li>
-                                                <li><a href="index.php?controller=product_details">Shop Details</a></li>
-                                                <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
-                                                <li><a href="index.php?controller=checkOut">Check Out</a></li>
-                                                <li><a href="index.php?controller=wishlistCart">Wishlist</a></li>
-                                                <li><a href="index.php?controller=login">Login / Register</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li> -->
+                               
                                 <li>
-                                    <a href="index.php?controller=contact">Contact Us</a>
+                                    <a href="#">Contact Us</a>
                                 </li>
                             </ul>
                         </nav>
