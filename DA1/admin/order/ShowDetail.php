@@ -15,21 +15,49 @@
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Total</th>
+                            <th>Status</th>
                             <th></th>
                         </tr>
                     </thead>
                     <?php
                     foreach ($details as $detail) {
                         extract($detail);
+                        $total = $price_product * $quantity;
+                        $image = load_status_img($id_product);
+                        $imgPath = "./uploads/products/" . $image;
+                        $changeStsBill = "index.php?act=changeStsBill&id_bill=" . $id_bill;
+                        $refundConfirm = "index.php?act=refundConfirm&id_bill=" . $id_bill;
+                        if (is_file($imgPath)) {
+                            $image_product = "<img src='" . $imgPath . "' height='100px'>";
+                        } else {
+                            $image_product = "No Photo";
+                        }
+                        if ($status == 0) {
+                            $check = "Processing";
+                        } elseif ($status == 1) {
+                            $check = "Shipped";
+                        } elseif ($status == 2) {
+                            $check = "Completed";
+                        } elseif ($status == 3) {
+                            $check = "Cancelled";
+                        } else {
+                            $check = "Refunded";
+                        }
                         echo '<tr>
                                     <td>' . $id_product . '</td>
-                                    <td>' . $img_product . '</td>
+                                    <td>' . $image_product . '</td>
                                     <td>' . $name_product . '</td>
                                     <td>' . $price_product . '</td>
                                     <td>' . $quantity . '</td>
                                     <td>' . $total . '  VNĐ</td>
-                                    <td></td>
-                                    </tr>';
+                                    <td>' . $check . '</td>';
+                                    if ( $status == 0 || $status == 1 ){
+                                        echo ' <td><a href = "' . $changeStsBill . '"><input type="button" class="btn btn-info" value="Change Status"></a></td>
+                                        </tr>';
+                                    } else if ($status == 3){
+                                        echo '<td><a href = "' . $refundConfirm . '"><input type="button" class="btn btn-danger" value="Refund Confirm"></a></td>
+                                        </tr>';
+                                    }
                     }
                     ?>
                 </table>

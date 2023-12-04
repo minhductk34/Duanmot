@@ -48,8 +48,8 @@
         $boxs = pdo_query($sql);
         return $boxs;
     }
-    function insert_variant($id_product, $id_size, $id_box, $name_variant, $quantity){
-        $sql = "insert into variant_product (id_product, id_size, id_box, name_variant, quanity) values('$id_product','$id_size','$id_box', '$name_variant', '$quantity')";
+    function insert_variant($id_product, $id_size, $id_box, $name_variant , $quantity){
+        $sql = "insert into variant_product (id_product, id_size, id_box, name_variant, quantity) values('$id_product','$id_size','$id_box', '$name_variant', '$quantity')";
         pdo_execute($sql);
     }
     function load_box($id_box){
@@ -62,12 +62,47 @@
         $size =  pdo_query_value($sql);
         return $size;
     }
-    function loadall_variant($kyw, $id_box, $id_size){
-        $sql = "SELECT size.type AS Size, type_box.type_box AS Box, name_variant AS variant_product, products.name_product AS NameProduct FROM variant_product";
+    function loadall_variant(){
+        $sql = "SELECT size.type AS Size, type_box.type_box AS Box, name_variant AS variant_product, variant_product.quantity AS Quantity, variant_product.status AS Sts,  id_variant, products.name_product AS NameProduct FROM variant_product";
         $sql.=" INNER JOIN size ON size.id_size = variant_product.id_size";
         $sql.=" INNER JOIN type_box ON type_box.id_box = variant_product.id_box";
         $sql.=" INNER JOIN products ON products.id_product = variant_product.id_product";
         $variants = pdo_query($sql);
         return $variants;
     }
-?>
+    function load_status_product($id_product){
+        $sql = "select status from products where id_product=".$id_product;
+        $status =  pdo_query_value($sql);
+        return $status;
+    }
+    function change_status_product($status, $id_product){
+        if ( $status == 0){
+            $sql = "update products set status = '1'";
+        } else {
+            $sql = "update products set status = '0'";
+        }
+        $sql.= " where id_product=".$id_product;
+        // die($sql);
+        pdo_execute($sql);
+    }
+    function load_status_variant($id_variant){
+        $sql = "select status from variant_product where id_variant=".$id_variant;
+        $status =  pdo_query_value($sql);
+        return $status;
+    }
+    function change_status_variant($status, $id_variant){
+        if ( $status == 0){
+            $sql = "update variant_product set status = '1'";
+        } else {
+            $sql = "update variant_product set status = '0'";
+        }
+        $sql.= " where id_variant=".$id_variant;
+        // die($sql);
+        pdo_execute($sql);
+    }
+
+    function load_status_img($id_product){
+        $sql = "select image_product from products where id_product=".$id_product;
+        $image_product =  pdo_query_value($sql);
+        return $image_product;
+    }

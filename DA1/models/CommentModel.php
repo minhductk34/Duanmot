@@ -1,6 +1,6 @@
 <?php
      function loadall_comment($date){
-        $sql = "select * from comment where 1";
+        $sql = "select *, comment.status AS STS from comment INNER JOIN user ON user.id_user = comment.id_user INNER JOIN products ON products.id_product = comment.id_product where 1";
         if($date == "latest"){
             $sql.= " order by create_at desc";
         } 
