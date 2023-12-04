@@ -221,11 +221,8 @@ require_once('DAO/CartDAO.php');
                                 <li class="menu-item-has-children">
                                     <a href="index.php?controller=product_show">Shop</a>
                                     <ul class="sub-menu">
-                                        <li><a href="index.php?controller=product_show">Shop</a></li>
-                                
+                                        <li><a href="index.php?controller=product_show">Shop</a></li>       
                                         <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
-                                        <!-- <li><a href="index.php?controller=checkOut">Check Out</a></li>
-                                        <li><a href="index.php?controller=wishlistCart">Wishlist</a></li> -->
                                         <li><a href="index.php?controller=login">Login & Register</a></li>
                                     </ul>
                                 </li>

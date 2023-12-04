@@ -178,9 +178,6 @@ class BillDAO
                 $row['product_image'] // Thay đổi tên trường này thành 'product_image'
             );
 
-
-
-
             $lists[] = $data;
         }
         return $lists;
