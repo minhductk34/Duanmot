@@ -21,11 +21,11 @@
                     foreach ($Categories as $category) {
                         extract($category);
                         $editCat = "index.php?act=editCat&id_category=" . $id_category;
-                        $changeStsCat = "index.php?act=changeStsCat&id_category=" . $id_category;
+                        $deleteCat = "index.php?act=deleteCat&id_category=" . $id_category;
                         if ($category['status'] == 0) {
-                            $status = "<p style='color: blue;'>In Stock</p>";
+                            $status = "<p style='color:blue;'>Còn hàng</p>";
                         } else {
-                            $status = "<p style='color: red;'>Out of Stock</p>";
+                            $status = "<p style='color:red;'>Hết hàng</p>";
                         }
                         echo '<tbody>
                             <tr>
@@ -34,13 +34,12 @@
                             <td style="width: 500px;">' . $desc_category . '</td>
                             <td>' . $status . '</td>
                             <td><a href = "' . $editCat . '" style="margin-right: 10px"><input type="button"  class="btn btn-primary" value="Edit"></a> 
-                            <a href = "' . $changeStsCat . '"><input type="button" class="btn btn-danger" value="Change Status"></a></td>
+                            <a href = "' . $deleteCat . '"><input type="button" class="btn btn-danger" value="Change Status"></a></td>
                             </tr>
                             </tbody>';
                     }
                     ?>
                 </table>
-                
             </div>
         </div>
     </div>

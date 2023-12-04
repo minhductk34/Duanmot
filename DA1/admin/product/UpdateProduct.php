@@ -63,13 +63,13 @@ if (is_file($imgPath)) {
         <div class="form-check" style="margin: 20px;">
             <input class="form-check-input" type="radio" name="status" id="status1" value="0" <?= $check0 ?>>
             <label class="form-check-label" for="status1">
-                In Stock
+                Còn Hàng
             </label>
         </div>
         <div class="form-check" style="margin: 20px;">
             <input class="form-check-input" type="radio" name="status" id="status2"  value="1" <?= $check1 ?>>
             <label class="form-check-label" for="status2">
-                Out of Stock
+                Hết Hàng
             </label>
         </div>
     </div>

@@ -17,8 +17,8 @@
         $deatails = pdo_query($sql);
         return $deatails;
     }
-    function update_bill($id_bill, $status){
-        $sql = "update bill set status = '".$status."' where id_bill = '".$id_bill."'";
+    function update_bill($id_bill, $type_payment, $status){
+        $sql = "update bill set type_payment = '".$type_payment."', status = '".$status."' where id_bill = '".$id_bill."'";
         pdo_execute($sql);
     }
 

@@ -47,20 +47,14 @@
                     <?php
                     foreach ($variants as $variant) {
                         extract($variant);
-                        $changeStsVar = "index.php?act=changeStsVar&id_variant=" . $id_variant;
-                        if ($Sts == 0) {
-                            $check = "<p style='color:blue;'>In Stock</p>";
-                        } else {
-                            $check = "<p style='color:red;'>Out of Stock</p>";
-                        }
+                        // $editPro = "index.php?act=editPro&id_product=" . $id_product;
                         echo '<tr>
                                     <td>' . $variant_product . '</td>
                                     <td>' . $NameProduct . '</td>
                                     <td>' . $Size . '</td>
                                     <td>' . $Box . '</td>
-                                    <td>' . $Quantity . '</td>
-                                    <td>' . $check . '</td>
-                                    <td><a href = "' . $changeStsVar . '"><input type="button" class="btn btn-danger" value="Change Status"></a></td></td>
+                                    <td>' . $Box . '</td>
+                                    <td><a href = "#"><input type="button" class="btn btn-danger" value="Change Status"></a></td></td>
                                     </tr>';
                     }
                     ?>

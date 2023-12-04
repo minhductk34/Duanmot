@@ -9,7 +9,7 @@ if (is_array($bill)) {
     Update Order
 </div>
 <form action="index.php?act=update_order" method="post" style="min-height: 500px;">
-    <!-- <div class=" form-row">
+    <div class=" form-row">
         <label style="margin-left: 20px">Type Payment</label>
         <?php
         if ($type_payment == 1) {
@@ -44,7 +44,7 @@ if (is_array($bill)) {
                Thanh toán online
             </label>
         </div>
-    </div> -->
+    </div>
     <div class=" form-row">
         <label style="margin-left: 20px">Status</label>
         <?php
@@ -53,66 +53,49 @@ if (is_array($bill)) {
             $check1 = "";
             $check2 = "";
             $check3 = "";
-            $check4 = "";
         } else if ($status == 1) {
             $check1 = "checked";
             $check2 = "";
             $check3 = "";
             $check0 = "";
-            $check4 = "";
         } else if ($status == 2) {
             $check2 = "checked";
             $check3 = "";
             $check1 = "";
             $check0 = "";
-            $check4 = "";
-        } else if ($status == 3) {
+        } else {
             $check2 = "";
             $check3 = "checked";
             $check1 = "";
             $check0 = "";
-            $check4 = "";
-        } else {
-            $check2 = "";
-            $check4 = "checked";
-            $check1 = "";
-            $check0 = "";
-            $check3 = "";
-            $check4 = "";
         }
-        ?>
+        ?> 
         <div class="form-check" style="margin: 20px;">
             <input class="form-check-input" type="radio" name="status" id="status1" value="0" <?= $check0 ?>>
             <label class="form-check-label" for="status1">
-                New Orders
+                Đơn hàng mới
             </label>
         </div>
         <div class="form-check" style="margin: 20px;">
             <input class="form-check-input" type="radio" name="status" id="status2" value="1" <?= $check1 ?>>
             <label class="form-check-label" for="status2">
-                Order has been prepared
+                Đơn hàng đã chuẩn bị
             </label>
         </div>
         <div class="form-check" style="margin: 20px;">
             <input class="form-check-input" type="radio" name="status" id="status3" value="2" <?= $check2 ?>>
-            <label class="form-check-label" for="status3">
-                Order is being delivered
+            <label class="form-check-label" for="status3    ">
+                Đơn hàng đang giao
             </label>
         </div>
         <div class="form-check" style="margin: 20px;">
-            <input class="form-check-input" type="radio" name="status" id="status4" value="3" <?= $check3 ?>>
-            <label class="form-check-label" for="status3">
-                Successful delivery
-            </label>
-        </div>
-        <div class="form-check" style="margin: 20px;">
-            <input class="form-check-input" type="radio" name="status" id="status4" value="4" <?= $check4 ?>>
-            <label class="form-check-label" for="status4">
-                Order canceled
-            </label>
+        <input class="form-check-input" type="radio" name="status" id="status4" value="3" <?= $check3 ?>>
+        <label class="form-check-label" for="status3">
+                Giao hàng thành công
+        </label>
         </div>
     </div>
-    <div class="form-row">
+    <div class="form-row" >
         <div class="input-data textarea">
             <div class="form-row submit-btn">
                 <div class="input-data">

@@ -17,7 +17,7 @@ if (is_file($imgPath)) {
 <form action="index.php?act=update_account" method="post" style="min-height: 500px;" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Fullname</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" name="full_name" value="<?= $full_name ?>" >
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="full_name" value="<?= $full_name ?>" required>
     </div>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Email</label>
@@ -28,7 +28,7 @@ if (is_file($imgPath)) {
         <input type="number" name="number_phone" class="form-control" id="exampleFormControlInput1" value="<?= $number_phone ?>" required>
     </div>
     <div class="form-group">
-        <label f for="exampleFormControlInput1">Address</label>
+        <label f for="exampleFormControlInput1">Địa chỉ</label>
         <input type="text" name="address" class="form-control" id="exampleFormControlInput1" value="<?= $address ?>" required>
     </div>
     <!-- <div class="form-group">
@@ -51,13 +51,13 @@ if (is_file($imgPath)) {
         <div class="form-check" style="margin: 20px;">
             <input class="form-check-input" type="radio" name="status" id="status1" value="0" <?= $check0 ?>>
             <label class="form-check-label" for="status1">
-                Active
+                Đang hoạt động
             </label>
         </div>
         <div class="form-check" style="margin: 20px;">
             <input class="form-check-input" type="radio" name="status" id="status2" value="1" <?= $check1 ?>>
             <label class="form-check-label" for="status2">
-                Disable
+                Vô hiệu
             </label>
         </div>
     </div>
@@ -80,21 +80,21 @@ if (is_file($imgPath)) {
         }
         ?>
         <div class="form-check" style="margin: 20px;">
-            <input class="form-check-input" type="radio" name="permission" id="status1"  value = "0" <?= $check3 ?>>
+            <input class="form-check-input" type="radio" name="permission" id="status1"  value = "3" <?= $check3 ?>>
             <label class="form-check-label" for="status1">
-               Client
+               Khách hàng
             </label>
         </div>
         <div class="form-check" style="margin: 20px;">
             <input class="form-check-input" type="radio" name="permission" id="status2" value = "1" <?= $check1 ?>>
             <label class="form-check-label" for="status2">
-                Administration
+                Quản trị viên
             </label>
         </div>
         <div class="form-check" style="margin: 20px;">
             <input class="form-check-input" type="radio" name="permission" id="status3" value = "2" <?= $check2 ?>>
             <label class="form-check-label" for="status2">
-                Staff
+                Nhân viên
             </label>
         </div>
     </div>

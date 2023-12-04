@@ -21,8 +21,8 @@
                         <tr>
                             <th></th>
                             <th>ID Commnet</th>
-                            <th>Fullname</th>
-                            <th>Product</th>
+                            <th>ID User</th>
+                            <th>ID Product</th>
                             <th>Content</th>
                             <th>Date Comment</th>
                             <th>Rate</th>
@@ -34,17 +34,17 @@
                     foreach ($comments as $comment) {
                         extract($comment);
                         $changeSts = "index.php?act=change&id_comment=" . $id_comment;
-                        if ($STS == 0) {
-                            $check = "<p style='color:blue;'>Show Up</p>";
+                        if ($status == 0) {
+                            $check = "Hiển thị";
                         } else {
-                            $check = "<p style='color:red;'>Hidden</p>";
+                            $check = "Ản";
                         }
                         echo '<tr>
                                 <td></td>
                                 <td>' . $id_comment . '</td>
-                                <td>' . $full_name . '</td>
-                                <td>' . $name_product . '</td>
-                                <td style="width: 450px">' . $content . '</td>
+                                <td>' . $id_user . '</td>
+                                <td>' . $id_product . '</td>
+                                <td>' . $content . '</td>
                                 <td>' . $create_at . '</td>
                                 <td>' . $rate . '</td>
                                 <td>' . $check . '</td>
@@ -52,7 +52,7 @@
                              </tr>';
                     }
                     ?>
-                </table >
+                </table>
             </div>
         </div>
     </div>

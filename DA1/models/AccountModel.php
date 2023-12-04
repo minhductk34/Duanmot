@@ -8,7 +8,7 @@
         if($kyw != ""){
             $sql.= " and username like '%".$kyw."%'";
         } 
-        if($role != ""){
+        if($role > 0){
             $sql.= " and permissions = '".$role."'";
         }
         $sql.= " order by id_user desc";
@@ -26,22 +26,6 @@
     }
     function delete_account($id_user){
         $sql = "delete from user where id_user =".$id_user;
-        pdo_execute($sql);
-    }
-
-    function load_status_account($id_user){
-        $sql = "select status from user where id_user=".$id_user;
-        $status =  pdo_query_value($sql);
-        return $status;
-    }
-    function change_status_account($status, $id_user){
-        if ( $status == 0){
-            $sql = "update user set status = '1'";
-        } else {
-            $sql = "update user set status = '0'";
-        }
-        $sql.= " where id_user=".$id_user;
-        // die($sql);
         pdo_execute($sql);
     }
 ?>

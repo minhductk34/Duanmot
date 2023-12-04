@@ -38,7 +38,7 @@
                     foreach ($products as $product) {
                         extract($product);
                         $editPro = "index.php?act=editPro&id_product=" . $id_product;
-                        $changeStsPro = "index.php?act=changeStsPro&id_product=" . $id_product;
+                        $deletePro = "index.php?act=deletePro&id_product=" . $id_product;
                         $addVariant = "index.php?act=addVariant&id_product=" . $id_product;
                         $imgPath = "uploads/products/" . $image_product;
                         if (is_file($imgPath)) {
@@ -47,9 +47,9 @@
                             $image_product = "No Photo";
                         }
                         if ($status == 0) {
-                            $check = "<p style='color:blue;'>In Stock</p>";
+                            $check = "<p style='color:blue;'>Còn hàng</p>";
                         } else {
-                            $check = "<p style='color:red;'>Out of Stock</p>";
+                            $check = "<p style='color:red;'>Hết hàng</p>";
                         }
                         echo '<tr>
                                     <td>' . $id_product . '</td>
@@ -58,9 +58,9 @@
                                     <td>' . $price_product . '</td>
                                     <td>' . $quantity . '</td>
                                     <td>'.$check.'</td>
-                                    <td style="width: 450px">' . $desc_product . '</td>
+                                    <td style="width: 480px">' . $desc_product . '</td>
                                     <td><a href = "' . $editPro . '"><input type="button" value="Edit" class="btn btn-primary" style="margin: 0px 10px"></a> 
-                                    <a href = "' . $changeStsPro . '"><input type="button" class="btn btn-danger" value="Change Status"></a>
+                                    <a href = "' . $deletePro . '"><input type="button" class="btn btn-danger" value="Change Status"></a>
                                     <a href = "' . $addVariant . '"><input type="button" class="btn btn-success" style="margin: 15px 10px" value="Add Variant"></a></td>
                                     </tr>';
                     }

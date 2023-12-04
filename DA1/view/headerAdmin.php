@@ -35,7 +35,7 @@
                     <i class="fas fa-laugh-wink"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin <br>
-                    <h6 style="font-size: 10px;">Ngon - Rẻ </h6>
+                    <h6 style="font-size: 10px;"></h6>
                 </div>
             </a>
 
@@ -65,6 +65,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Category:</h6>
                         <a class="collapse-item" href="index.php?act=list_category">List</a>
+                        <a class="collapse-item" href="index.php?act=add_category">Add</a>
                     </div>
                 </div>
             </li>
@@ -79,6 +80,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Product:</h6>
                         <a class="collapse-item" href="index.php?act=list_product">List</a>
+                        <a class="collapse-item" href="index.php?act=add_product">Add</a>
                     </div>
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Variant Product:</h6>
@@ -98,6 +100,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Account:</h6>
                         <a class="collapse-item" href="index.php?act=list_account">List</a>
+                        <a class="collapse-item" href="index.php?act=add_account">Add</a>
                     </div>
                 </div>
             </li>
@@ -156,19 +159,30 @@
                 </div>
             </li> -->
             <!-- Nav Synthetic & Statistical -->
-            <!-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo8" aria-expanded="true" aria-controls="collapseTwo8">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Synthetic & Statistical</span>
                 </a>
                 <div id="collapseTwo8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Synthetic & Statistical:</h6>
-                        <a class="collapse-item" href="index.php?act=synStat">List</a>
+                        <h6 class="collapse-header">Category</h6>
+                        <a class="collapse-item" href="index.php?act=StatCat">Statistics</a>
                         <a class="collapse-item" href="index.php?act=showchart">Show Chart</a>
+                        <h6 class="collapse-header">Product</h6>
+                        <a class="collapse-item" href="index.php?act=StatPro">Statistics</a>
+                        <!-- <a class="collapse-item" href="index.php?act=showchart">Show Chart</a> -->
+                        <h6 class="collapse-header">Account</h6>
+                        <a class="collapse-item" href="index.php?act=StatAcc">Statistics</a>
+                        <!-- <a class="collapse-item" href="index.php?act=showchart">Show Chart</a> -->
+                        <h6 class="collapse-header">Comment</h6>
+                        <a class="collapse-item" href="index.php?act=StatCom">Statistics</a>
+                        <h6 class="collapse-header">Order</h6>
+                        <a class="collapse-item" href="index.php?act=StatOrder">Statistics</a>
+                        <!-- <a class="collapse-item" href="index.php?act=showchart">Show Chart</a> -->
                     </div>
                 </div>
-            </li> -->
+            </li>
         </ul>
         <!-- End of Sidebar -->
 
@@ -276,7 +290,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$_SESSION['user']['username']?></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -296,9 +310,9 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="../index.php" ">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    Exit
                                 </a>
                             </div>
                         </li>

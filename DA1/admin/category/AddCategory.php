@@ -9,12 +9,10 @@
             <div class="underline"></div>
             <label for="">Name Category</label>
         </div>
-        <span style="color: red; margin: 10px 20px"><?=$nameErr?></span>
     </div>
     <div class="mb-3" style="margin-left: 20px">
         <label for="exampleFormControlTextarea1" class="form-label" style="color:#3498db;">Description</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc_category" required></textarea>
-        <span style="color: red; margin: 10px 0px"><?=$descErr?></span>
     </div>
     <div class="form-row">
         <div class="input-data textarea">
@@ -26,11 +24,8 @@
             </div>
         </div>
 </form>
-<script>
-        var noti = "<?php  echo $noti ?>";
-        if ( noti != ""){
-            window.alert("Add New Product " + noti);
-        }
-</script>
+<?php
+if (isset($noti) && ($noti != "")) echo $noti
+?>
 </div>
 <!-- End of Main Content -->

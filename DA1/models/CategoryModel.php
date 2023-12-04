@@ -21,20 +21,4 @@
         $sql = "delete from category where id_category =".$id_category;
         pdo_execute($sql);
     }
-    function load_status_category($id_category){
-        $sql = "select status from category where id_category=".$id_category;
-        $status =  pdo_query_value($sql);
-        return $status;
-    }
-    function change_status_category($status, $id_category){
-        if ( $status == 0){
-            $sql = "update category set status = '1'";
-        } else {
-            $sql = "update category set status = '0'";
-        }
-        $sql.= " where id_category=".$id_category;
-        // die($sql);
-        pdo_execute($sql);
-    }
-    
 ?>
