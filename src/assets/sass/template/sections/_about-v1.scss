@@ -27,7 +27,7 @@
     width: 100%;
     max-width: 40vw;
 
-    @include hd {
+    @require_once hd {
       max-width: 22vw;
     }
   }
@@ -69,7 +69,7 @@
     z-index: 4;
   }
 
-  @include hd {
+  @require_once hd {
     max-width: 550px;
   }
   
@@ -494,7 +494,7 @@
 }
 
 
-@include hd {
+@require_once hd {
   .about-wrap1 {
     .row {
       justify-content: center;
@@ -517,7 +517,7 @@
 }
 
 
-@include xl {
+@require_once xl {
   .vs-about-wrapper {
     .shape1 {
       right: 2%;
@@ -583,7 +583,7 @@
 }
 
 
-@include ml {
+@require_once ml {
   .vs-about-wrapper {
     .container {
       &.pt-70 {
@@ -615,7 +615,7 @@
 
 
 
-@include lg {
+@require_once lg {
   .about-content {
     &.pt-75 {
       padding-top: 0;
@@ -707,7 +707,7 @@
 }
 
 
-@include md {
+@require_once md {
   .img-box1 {
     max-width: 600px;
     margin-bottom: 60px;
@@ -775,7 +775,7 @@
 
 
 
-@include sm {
+@require_once sm {
   .block-schedule .text {
     font-size: 16px;
     line-height: 26px;
@@ -864,7 +864,7 @@
   }
 }
 
-@include xs {
+@require_once xs {
   .block-social {
     a {
       width: 135px;

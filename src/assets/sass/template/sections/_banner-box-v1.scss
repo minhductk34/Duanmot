@@ -43,7 +43,7 @@
 }
 
 
-@include lg {
+@require_once lg {
   .vs-banner-box {
     padding: 50px 60px;
   }
@@ -55,7 +55,7 @@
 
 
 
-@include xs {
+@require_once xs {
   
   .vs-banner-box {
     padding: 20px 30px;

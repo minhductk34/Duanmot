@@ -13,7 +13,7 @@
   .member-img {
     display: inline-block;
     margin-bottom: 35px;
-    @include equal-size(260px);
+    @require_once equal-size(260px);
     max-width: 100%;
     margin-right: 10px;
     position: relative;
@@ -29,7 +29,7 @@
       position: absolute;
       left: 0;
       top: 0;
-      @include equal-size(100%);
+      @require_once equal-size(100%);
       border-radius: inherit;
     }
 
@@ -66,12 +66,12 @@
     height: 100%;
     z-index: 2;
     border-radius: 50%;
-    @include on-circle(5, 260px, 40px, 67, 110);
+    @require_once on-circle(5, 260px, 40px, 67, 110);
     transition: all ease 0.7s;
     
     a {      
       display: inline-block;
-      @include equal-size(40px);
+      @require_once equal-size(40px);
       line-height: 40px;
       font-size: 14px;
       color: $body-color2;
@@ -111,7 +111,7 @@
 
 
 
-@include sm {
+@require_once sm {
   .vs-member-box{
      .member-img {
        width: 200px;
@@ -119,7 +119,7 @@
      }
 
     .member-links {
-      @include on-circle(5, 200px, 40px, 60, 140);
+      @require_once on-circle(5, 200px, 40px, 60, 140);
     }
   }
 }

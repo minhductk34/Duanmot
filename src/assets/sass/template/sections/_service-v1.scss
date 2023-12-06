@@ -73,7 +73,7 @@
 
   .icon-btn {
     background-color: $body-color;
-    @include equal-size(50px);
+    @require_once equal-size(50px);
     line-height: 50px;
     font-size: 18px;
     color: $white-color;
@@ -184,7 +184,7 @@
 
 
 
-@include lg {
+@require_once lg {
   .service-box1 {
     padding-bottom: 50px;
 
@@ -229,7 +229,7 @@
   }
 }
 
-@include md {
+@require_once md {
   .vs-service-wrapper {
     &.pt-175 {
       padding-top: 60px;

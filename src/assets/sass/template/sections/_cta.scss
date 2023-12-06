@@ -23,7 +23,7 @@
     display: inline-block;
     text-align: center;
     position: relative;
-    @include equal-size(100px);
+    @require_once equal-size(100px);
     background-color: $white-color;
     line-height: 100px;
     font-size: 38px;
@@ -60,7 +60,7 @@
 }
 
 
-@include xl {
+@require_once xl {
   .cta-box-style2 {
     padding: 80px 80px 60px 80px;
   }
@@ -69,14 +69,14 @@
 }
 
 
-@include ml {
+@require_once ml {
   .cta-box-style2 {
     padding: 60px 60px 40px 60px;
   }
 
   .cta-feature {
     .media-icon {
-      @include equal-size(80px);
+      @require_once equal-size(80px);
       line-height: 80px;
       font-size: 26px;
 
@@ -93,13 +93,13 @@
 }
 
 
-@include md {
+@require_once md {
   .cta-box-style2 {
     padding: 60px 0 40px 0;
   }
 }
 
-@include lg {
+@require_once lg {
   .cta-feature{
     &.d-lg-flex {
       .media-icon {

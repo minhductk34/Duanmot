@@ -887,7 +887,7 @@ table.woocommerce-grouped-product-list.group_table {
 
 
 
-@include md {
+@require_once md {
   .cart_table  {
 
     .actions {
@@ -906,7 +906,7 @@ table.woocommerce-grouped-product-list.group_table {
 }
 
 
-@include sm {
+@require_once sm {
   .cart_table {
     text-align: left;
     min-width: auto;
@@ -1037,7 +1037,7 @@ table.woocommerce-grouped-product-list.group_table {
 
 
 
-@include xs {
+@require_once xs {
   .cart_table {
     .vs-cart-coupon {
       display: block;

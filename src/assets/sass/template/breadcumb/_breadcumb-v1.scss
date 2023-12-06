@@ -63,7 +63,7 @@
 
 
 
-@include ml {
+@require_once ml {
   .breadcumb-layout1 {
     &.pt-200.pb-200 {
       padding-top: 150px;
@@ -78,13 +78,13 @@
 }
 
 
-@include lg {
+@require_once lg {
   .breadcumb-title {
     font-size: 68px;
   }
 }
 
-@include md {
+@require_once md {
   .breadcumb-layout1 {
     &.pt-200.pb-200 {
       padding-top: 100px;
@@ -105,7 +105,7 @@
   }
 }
 
-@include sm {
+@require_once sm {
   .breadcumb-layout1 {
     &.pt-200.pb-200 {
       padding-top: 80px;
@@ -126,7 +126,7 @@
   }
 }
 
-@include xs {
+@require_once xs {
   .breadcumb-layout1 {
     &.pt-200.pb-200 {
       padding-top: 60px;

@@ -1,112 +1,148 @@
 <?php
-    session_start();
-    include "models/pdo.php";
-    include "models/user.php";
-    // include "view/user.php";
-    include "global.php";
+session_start();
+
+// var_dump( $_SESSION['user']);
+
+// require_once các tệp và khởi tạo các controller
+require_once 'controller/HomeController.php';
+require_once 'controller/ProductController.php';
+require_once 'controller/LoginController.php';
+require_once 'controller/CategoryController.php';
+require_once 'controller/CartController.php';
+require_once 'controller/BillController.php';
+$controller = $_GET['controller'] ?? 'home';
+
+switch ($controller) {
+        //home controller----------------------------------------------------------------
+    case 'home':
+        $homeController = new HomeController();
+        $homeController->index();
+        break;
+
+
+        //CRDU product ------------------------------------------------------------------
+    case 'product_show':
+        $ProductController = new ProductController();
+        $ProductController->showProduct();
+        break;
+
+    case 'product_details':
+        $ProductController = new ProductController();
+        $ProductController->productDetails();
+        break;
+    case 'get_product_by_category':
+        $ProductController = new ProductController();
+        $ProductController->get_product_by_category();
+        break;
+    case 'product_search':
+        $ProductController = new ProductController();
+        $ProductController->product_Search();
+        break;
+
+        //User controller -------------------------------------------------------------------
+    case 'home_user':
+        $LoginController = new LoginController();
+        $LoginController->home_user();
+        break;
+    case 'login':
+        $LoginController = new LoginController();
+        $LoginController->login();
+        break;
+    case 'register':
+        $LoginController = new LoginController();
+        $LoginController->signup();
+        break;
+    case 'logout':
+        $LoginController = new LoginController();
+        $LoginController->logout();
+        break;
+    case 'forgot_password':
+        $LoginController = new LoginController();
+        $LoginController->forgot();
+        break;
+
+    case 'edit_user':
+        $LoginController = new LoginController();
+        $LoginController->edit();
+        break;
 
 
 
-    if(isset($_GET['act'])){
-        $act=$_GET['act'];
-        switch($act){
-                
-            //     break;
-            case 'register':
-                if (isset($_POST['register'])&&($_POST['register'])) {
-                    $email=$_POST['email'];
-                    $username=$_POST['username'];
-                    $password=$_POST['password'];
-                    // $number_phone=$_POST['number_phone'];
-                    // $full_name=$_POST['full_name'];
-                    insert_user($email,$username,$password);
-                    $thongbao="Đã đăng ký thành công. Vui lòng đăng nhập để thực hiện chức năng";    
-                    header('location: index.php?act=login');    
-                }
-                include 'view/user/register.php';
-                break;
-            case 'login':
+    case 'commentStatus':
+        $CommentController = new CommentController();
+        $CommentController->status();
+        break;
+    case 'addComment':
+        $CommentController = new CommentController();
+        $CommentController->add();
+        break;
 
-                if (isset($_POST['login'])&&($_POST['login'])) {
-                    $username=$_POST['username'];
-                    $password=$_POST['password']; 
-                    $checkuser=checkuser($username,$password);
-               
-                    if(is_array($checkuser)){
-                        $_SESSION['username']=$checkuser;
-                        // var_dump(  $_SESSION['username']);
-                        extract($_SESSION['username']);
-                        $permission = $permissions;
-                        // var_dump( $permission);
-                            if(isset($permission)&&$permission==1){
-                               
-                                    // header('Location:login1/view/user/register.php');
-                                    echo"admin";
-                            }elseif (isset($permission)&&$permission==2) {
-                                echo"staff";
-                            }else{
-                                echo"user";
-                            }
-                        // $thongbao="Bạn đã đăng nhập thành công!"; 
-                        // header('Location:index.php?act=home');       
-                }else{
-                    $thongbao="Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
-                }
-            }
-                    include 'view/user/login.php';
-                    break;
+        //Cart Controller ----------------------------------------------------------------
+    case 'listCart':
+        $CartController = new CartController();
+        $CartController->show();
 
-            case 'update':
-                if (isset($_POST['update']) && ($_POST['update'])) {
-                    $email = $_POST['email'];
-                    $username = $_POST['username'];
-                    $password = $_POST['password'];
-                    $address = $_POST['address'];
-                    $number_phone = $_POST['number_phone'];
-                    $id_user = $_POST['id_user'];
-                    $full_name = $_POST['full_name'];
-                
-                    update_user($id_user, $username, $password, $email, $address, $number_phone, $full_name);
-                    $_SESSION['user'] = checkuser($username, $password);
-                   
-                    header('location: index.php?act=home');
-            }
-                include "view/user/update.php";
-                break;
-            
-                case 'logout':
-                    session_unset();
-                    header('location: index.php');
-                    break;
-                case 'forgot':
-                    if (isset($_POST['guiemail'])&&($_POST['guiemail'])) {
-                        $email=$_POST['email']; 
-    
-                        $checkemail=check_email($email);
-    
-                        if(is_array($checkemail)){
-                            $thongbao='<div>Pass là: ' . $checkemail['password'] . '</div>';
-                        }else {
-                            $thongbao='<div>email không tồn tại</div>';
-                        
-                        }
-                    }
-                    
-                    include 'view/user/forgot.php';
-                    break;
-                    case 'home':
-                        include "view/home.php";
-                        break;
-            default :
-                include "view/home.php";
-                break;
-            }
-           }else{
-            include "view/home.php";
-        }
-    
-    // include "view/footer.php";
+        break;
 
-    
+    case 'deleteCart':
+        $CartController = new CartController();
+        $CartController->delete();
+        break;
+    case 'addCart':
+        $CartController = new CartController();
+        $CartController->add();
 
-?>
+        break;
+    case 'wishlistCart':
+        $CartController = new CartController();
+        $CartController->wishlist();
+        break;
+
+
+        //Billing Controller ------------------------------------------------------------------
+    case 'addToBill':
+        $BillController = new BillController();
+        $BillController->add();
+        break;
+    case 'billConfirm':
+        $BillController = new BillController();
+        $BillController->show();
+        break;
+    case 'StatusOfBill':
+        $BillController = new BillController();
+        $BillController->status();
+        break;
+    case 'showBill_details':
+        $BillController = new BillController();
+        $BillController->showBill_detail();
+        break;
+    case 'process':
+        $BillController = new BillController();
+        $BillController->process();
+        break;
+    case 'checkOut':
+        $BillController = new BillController();
+        $BillController->checkOut();
+        break;
+
+    case 'historyBill':
+        $BillController = new BillController();
+        $BillController->history();
+        break;
+    case 'processReturn':
+        $BillController = new BillController();
+        $BillController->processReturn();
+        break;
+    case 'contact':
+        $homeController = new HomeController();
+        $homeController->contact();
+        break;
+    case 'chatBox':
+        $homeController = new HomeController();
+        $homeController->chatBox();
+        break;
+
+    default:
+        // Xử lý controller không hợp lệ
+        break;
+}

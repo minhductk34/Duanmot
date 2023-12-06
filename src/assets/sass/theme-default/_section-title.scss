@@ -104,7 +104,7 @@
 
 
 
-@include lg {
+@require_once lg {
   .sec-title1,
   .sec-title2 {
     font-size: 54px;
@@ -125,7 +125,7 @@
 }
 
 
-@include md {
+@require_once md {
   .sec-title1,
   .sec-title2 {
     font-size: 48px;
@@ -149,7 +149,7 @@
   }
 }
 
-@include sm {
+@require_once sm {
   .sec-title1,
   .sec-title2 {
     font-size: 36px;

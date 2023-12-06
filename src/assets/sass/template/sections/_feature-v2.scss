@@ -41,7 +41,7 @@
   }
 
   .feature-icon {
-    @include equal-size(100px);
+    @require_once equal-size(100px);
     line-height: 100px;
     text-align: center;
     font-size: 3rem;
@@ -67,7 +67,7 @@
 }
 
 
-@include lg {
+@require_once lg {
   .vs-feature-box2 {
     padding: 30px;
     
@@ -85,7 +85,7 @@
   }
 }
 
-@include md {
+@require_once md {
   .vs-feature-box2 {
     display: block;
     text-align: center;
@@ -109,7 +109,7 @@
   }
 }
 
-@include sm {
+@require_once sm {
   .vs-feature-box2 {
     border-right: none;
     border-bottom: 1px solid rgba($color: #fff, $alpha: 0.30);

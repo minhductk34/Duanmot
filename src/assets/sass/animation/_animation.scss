@@ -113,7 +113,7 @@
 
 
 
-@include md {
+@require_once md {
   .ani-md-none {
     animation: none;
   }

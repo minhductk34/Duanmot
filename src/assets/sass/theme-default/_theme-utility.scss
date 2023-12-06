@@ -178,13 +178,13 @@ body {
   border-radius: 5px;
 }
 
-@include md {
+@require_once md {
   .middle-box {
     margin-bottom: 60px;
   }
 }
 
-@include xs {
+@require_once xs {
   .middle-box {
     &.px-90.py-50 {
       padding: 20px;

@@ -207,7 +207,7 @@
       padding-left: 40px;
       margin-bottom: 15px;
 
-      @include inputPlaceholder {
+      @require_once inputPlaceholder {
         color: #202020;
       }
     }
@@ -246,7 +246,7 @@
   }
 }
 
-@include xl {
+@require_once xl {
   .footer-layout2 {
     &.footer-wrapper {
       padding-top: 145px;
@@ -254,7 +254,7 @@
   }
 }
 
-@include lg {
+@require_once lg {
   .footer-layout4 .widget_title {
     font-size: 26px;
     font-weight: 700;
@@ -263,7 +263,7 @@
   }
 }
 
-@include md {
+@require_once md {
   .footer-layout2 {
     &.footer-wrapper {
       padding-top: 0;
@@ -290,7 +290,7 @@
 }
 
 
-@include sm {
+@require_once sm {
   .footer-subscribe {
     width: 100%;
   }
@@ -310,7 +310,7 @@
 }
 
 
-@include xs {
+@require_once xs {
   .footer-subscribe {
     border: none;
     display: block;

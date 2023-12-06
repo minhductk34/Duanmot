@@ -114,7 +114,7 @@
 
 
 
-@include lg {
+@require_once lg {
   .vs-flash-sale {
     .flash-img {
       max-width: 120px;
@@ -136,7 +136,7 @@
 }
 
 
-@include sm {
+@require_once sm {
   .vs-flash-sale {
     text-align: center;
     

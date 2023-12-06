@@ -46,7 +46,7 @@
 }
 
 
-@include sm {
+@require_once sm {
   .pagination-layout1 {
     ul {
       li {

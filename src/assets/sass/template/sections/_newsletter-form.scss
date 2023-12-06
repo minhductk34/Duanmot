@@ -47,7 +47,7 @@
     border-radius: 9999px;
     margin-right: 12px;
 
-    @include inputPlaceholder {
+    @require_once inputPlaceholder {
       color: #202020;
     }
   }
@@ -106,7 +106,7 @@
 }
 
 
-@include lg {
+@require_once lg {
   .newsletter-style2 {
     padding: 85px 0 75px 0;
 
@@ -140,7 +140,7 @@
   }
 }
 
-@include md {
+@require_once md {
   .vs-newsletter-wrpper {
     .inner-wrap1 {
       &.px-70.py-70 {
@@ -180,7 +180,7 @@
 
 }
 
-@include sm {
+@require_once sm {
   .vs-newsletter-wrpper {
     .inner-wrap1 {
       &.px-70.py-70 {

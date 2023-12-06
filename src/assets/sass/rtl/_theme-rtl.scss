@@ -1,4 +1,4 @@
-@include rtl {
+@require_once rtl {
 
   /*-- margin Left --*/
   @for $i from 1 through $space-count {
@@ -700,8 +700,8 @@
 
 
 
-@include ml {
-  @include rtl {
+@require_once ml {
+  @require_once rtl {
     .cta-feature {
       .media-icon {
         &.mr-35 {
@@ -731,8 +731,8 @@
 }
 
 
-@include lg {
-  @include rtl {
+@require_once lg {
+  @require_once rtl {
     .cta-feature {
       .media-icon {
         &.mr-35 {
@@ -758,8 +758,8 @@
 }
 
 
-@include md {
-  @include rtl {
+@require_once md {
+  @require_once rtl {
     .vs-feature-box2 {
       .feature-icon {
         margin-right: auto;
@@ -770,8 +770,8 @@
 }
 
 
-@include sm {
-  @include rtl {
+@require_once sm {
+  @require_once rtl {
     .vs-comments-layout1 {
       .author-img {
         margin-left: 0;
@@ -810,8 +810,8 @@
   }
 }
 
-@include xs {
-  @include rtl {
+@require_once xs {
+  @require_once rtl {
     .vs-banner-box {
       .vs-cat-list {
         padding-right: 0;
@@ -842,7 +842,7 @@
 
 
 
-@include rtl {
+@require_once rtl {
   .vs-btn {
 
     &.style6:not(.ls-btn),
@@ -1403,8 +1403,8 @@
 }
 
 
-@include ml {
-  @include rtl {
+@require_once ml {
+  @require_once rtl {
     .about-box2 {
       margin-right: 0;
     }
@@ -1436,8 +1436,8 @@
   }
 }
 
-@include lg {
-  @include rtl {
+@require_once lg {
+  @require_once rtl {
     .filter-menu4 {
       button {
         padding-left: 30px;
@@ -1479,8 +1479,8 @@
   }
 }
 
-@include md {
-  @include rtl {
+@require_once md {
+  @require_once rtl {
     .feature-style2:last-child {
       border-right: none;
     }
@@ -1527,8 +1527,8 @@
 }
 
 
-@include sm {
-  @include rtl {
+@require_once sm {
+  @require_once rtl {
     .header-infos .info {
       margin: 0 0 0 0;
     }

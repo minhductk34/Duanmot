@@ -34,7 +34,7 @@
 
 
 
-@include sm {
+@require_once sm {
   .vs-sort-bar {
     label {
       margin-right: 10px;

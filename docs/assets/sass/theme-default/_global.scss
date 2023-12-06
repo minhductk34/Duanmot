@@ -134,7 +134,7 @@ ol,ul {
 
 
 
-@include desktop {
+@require_once desktop {
   .section-padding {
     padding-bottom: 200px;
   }
@@ -142,7 +142,7 @@ ol,ul {
 
 
 
-@include phone {
+@require_once phone {
   .section-padding {
     padding-bottom: 100px;
   }

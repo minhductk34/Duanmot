@@ -26,7 +26,7 @@ select,
     background-color: $white-color;
   }
 
-  @include inputPlaceholder {
+  @require_once inputPlaceholder {
     color: $body-color2;
     text-transform: capitalize;
   }

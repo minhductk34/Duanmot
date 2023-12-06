@@ -27,7 +27,7 @@
 
     li {
       >span {
-        @include equal-size(auto);
+        @require_once equal-size(auto);
         position: relative;
         background-color: transparent;
         color: $body-color;
@@ -308,7 +308,7 @@
 
 
 
-@include lg {
+@require_once lg {
   .footer-widget {
     .widget_title {
       font-size: 22px;
@@ -321,7 +321,7 @@
 }
 
 
-@include md {
+@require_once md {
   .widget-area {
     &.pt-100 {
       padding-top: 60px;
@@ -333,7 +333,7 @@
   }
 }
 
-@include xs {
+@require_once xs {
   .footer-links ul {
     display: block;
   }

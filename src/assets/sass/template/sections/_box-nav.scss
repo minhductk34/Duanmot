@@ -191,7 +191,7 @@
 }
 
 
-@include lg {
+@require_once lg {
   .box-nav-wrap {
     max-width: 100%;
     height: auto;

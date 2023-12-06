@@ -19,7 +19,7 @@
 }
 
 
-@include md {
+@require_once md {
   .space,
   .space-top {
     padding-top: $space-md;

@@ -23,7 +23,7 @@
 }
 
 
-@include md {
+@require_once md {
   .vs-comment-form {
     &.mt-60 {
       margin-top: 0;
@@ -36,7 +36,7 @@
 }
 
 
-@include md {
+@require_once md {
   .vs-comment-form textarea {
     padding-left: 15px;
     padding-top: 10px;

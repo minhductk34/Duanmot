@@ -169,7 +169,7 @@ h6 {
 }
 
 
-@include lg {
+@require_once lg {
 
 	.h3, 
 	h3 {
@@ -183,7 +183,7 @@ h6 {
 }
 
 
-@include md {
+@require_once md {
 	.h1, 
 	h1 {
 		font-size: 42px;
@@ -206,7 +206,7 @@ h6 {
 }
 
 
-@include sm {
+@require_once sm {
 	
 	.h1, 
 	h1 {

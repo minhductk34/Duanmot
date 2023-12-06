@@ -93,7 +93,7 @@
 
 
 
-@include ml {
+@require_once ml {
   .vs-vsadbox-box1 {
     .vsadbox-content {
       left: 5%;
@@ -108,7 +108,7 @@
   }
 }
 
-@include lg {
+@require_once lg {
   .vs-vsadbox-box5 .vsadbox-content,
   .vs-vsadbox-box4 .vsadbox-content,
   .vs-vsadbox-box3 .vsadbox-content {
@@ -132,7 +132,7 @@
 }
 
 
-@include xs {
+@require_once xs {
   .vs-vsadbox-box1 {
     .vsadbox-content {
       
