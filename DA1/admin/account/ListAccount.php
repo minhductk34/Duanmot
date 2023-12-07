@@ -39,7 +39,7 @@
                         extract($user);
                         $editUser = "index.php?act=editUser&id_user=" . $id_user;
                         $changeStsAcc = "index.php?act=changeStsAcc&id_user=" . $id_user;
-                        $imgPath = "uploads/accounts/" . $image;
+                        $imgPath = "../assets/imgs/logo/" . $image;
                         if (is_file($imgPath)) {
                             $image = "<img src='" . $imgPath . "' height='80'>";
                         } else {

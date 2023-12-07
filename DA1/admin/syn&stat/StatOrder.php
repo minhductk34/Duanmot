@@ -18,13 +18,13 @@
 
             <div class="card mb-4 py-3 border-left-secondary">
                 <div class="card-body">
-                    Order has been prepared: <span style="font-weight: bold; color: blue; font-size:20px;"><?= $orderPrepare ?> Orders</span>
+                    orderShipped <span style="font-weight: bold; color: blue; font-size:20px;"><?= $orderPrepare ?> Orders</span>
                 </div>
             </div>
 
             <div class="card mb-4 py-3 border-left-success">
                 <div class="card-body">
-                    Successful delivery: <span style="font-weight: bold; color: blue; font-size:20px;"><?= $orderSuccess ?> Orders</span>
+                    orderCompleted <span style="font-weight: bold; color: blue; font-size:20px;"><?= $orderDelivered?> Orders</span>
                 </div>
             </div>
 
@@ -40,15 +40,15 @@
 
             <div class="card mb-4 py-3 border-bottom-primary">
                 <div class="card-body">
-                    New Orders <span style="font-weight: bold; color: blue; font-size:20px;"><?= $orderNew ?> Orders</span>
+                    orderProcessing <span style="font-weight: bold; color: blue; font-size:20px;"><?= $orderNew ?> Orders</span>
                 </div>
             </div>
 
-            <div class="card mb-4 py-3 border-bottom-secondary">
+            <!-- <div class="card mb-4 py-3 border-bottom-secondary">
                 <div class="card-body">
                     Order is being delivered: <span style="font-weight: bold; color: blue; font-size:20px;"><?= $orderDelivered ?> Orders</span>
                 </div>
-            </div>
+            </div> -->
 
             <div class="card mb-4 py-3 border-bottom-success">
                 <div class="card-body">

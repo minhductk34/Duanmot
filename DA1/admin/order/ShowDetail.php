@@ -54,10 +54,11 @@
                                     if ( $status == 0 || $status == 1 ){
                                         echo ' <td><a href = "' . $changeStsBill . '"><input type="button" class="btn btn-info" value="Change Status"></a></td>
                                         </tr>';
-                                    } else if ($status == 3){
-                                        echo '<td><a href = "' . $refundConfirm . '"><input type="button" class="btn btn-danger" value="Refund Confirm"></a></td>
-                                        </tr>';
                                     }
+                                    // } else if ($returned == 1 && $status != 3) {
+                                    //     echo '<td><a href = "' . $refundConfirm . '"><input type="button" class="btn btn-danger" value="Refund Confirm"></a></td>
+                                    //     </tr>';
+                                    // }
                     }
                     ?>
                 </table>

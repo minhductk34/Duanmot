@@ -38,10 +38,8 @@
         // die($sql);
         pdo_execute($sql);
     }
-    function refundConfirm($status, $id_bill){
-        if ( $status == 3){
-            $sql = "update bill_details set status = '4'";
-        } 
+    function refundConfirm($id_bill){
+        $sql = "update bill_details set status = '3'";
         $sql.= " where id_bill=".$id_bill;
         // die($sql);
         pdo_execute($sql);
