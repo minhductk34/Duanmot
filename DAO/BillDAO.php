@@ -76,13 +76,12 @@ class BillDAO
         // die($query);
         $id_bill = $stmt->fetchColumn();
 
-        $query = "SELECT id_bill, id_user, id_product, number_phone, address, email, full_name, type_payment, create_at
+        $query = "SELECT id_bill, id_user, number_phone, address, email, full_name, type_payment, create_at
         FROM bill WHERE id_bill =$id_bill";
 
         // die($query);
         $stmt = $this->PDO->prepare($query);
         $stmt->execute();
-
 
         $lists = []; // Khởi tạo danh sách rỗng
 
@@ -92,7 +91,6 @@ class BillDAO
             $bill = new BillModel(
                 $row['id_bill'],
                 $row['id_user'],
-                $row['id_product'],
                 $row['number_phone'],
                 $row['address'],
                 $row['email'],

@@ -2,8 +2,8 @@
 session_start();
 
 require_once('../../config/pdo.php');
-
 $data = json_decode(file_get_contents("php://input"));
+     
 $quantity = $data->quantity + 1;
 $sql = "UPDATE `cart` SET `quantity`='$quantity'WHERE `id_cart`='$data->id'";
 $stmt = $pdo->prepare($sql);

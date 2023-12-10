@@ -8,10 +8,10 @@ class Product
     private $price_product;
     private $status;
     private $quantity;
-    private $id_category;
+    private $name_category;
     private $id_discount;
 
-    public function __construct($id, $name_product, $desc_product, $image_product, $price_product, $status, $quantity, $id_category, $id_discount)
+    public function __construct($id, $name_product, $desc_product, $image_product, $price_product, $status, $quantity, $name_category, $id_discount)
     {
         $this->id = $id;
         $this->name_product = $name_product;
@@ -20,10 +20,11 @@ class Product
         $this->price_product = $price_product;
         $this->status = $status;
         $this->quantity = $quantity;
-        $this->id_category = $id_category;
+        $this->name_category = $name_category;
         $this->id_discount = $id_discount;
     }
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
     public function getImage()
@@ -47,5 +48,13 @@ class Product
     public function getQuantity()
     {
         return $this->quantity;
+    }
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    public function getNameCategory()
+    {
+        return $this->name_category;
     }
 }

@@ -12,58 +12,63 @@ class CommentController
         // $this->ProductDAO = new ProductDAO();
         // $this->BillDAO = new BillDAO();
     }
-    // public function index()
-    // {
-
-    //     if (isset($_SESSION["permissions"])) {
-    //         if ($_SESSION["permissions"] == 1) {
-    //             $commentDAO = new CommentDAO();
-    //             $count = $commentDAO->count();
-    //             require_once('view/comment/admin/list.php');
-    //         } elseif ($_SESSION["permissions"] == 2) {
-    //             $commentDAO = new CommentDAO();
-    //             $count = $commentDAO->count();
-    //             require_once('view/comment/staff/list.php');
-    //         } else {
-    //             //code
-    //             $ProductDAO = new ProductDAO();
-    //             $CommentDAO = new CommentDAO();
-    //             $CategoryDAO = new CategoryDAO();
-
-    //             $timestamp = $CommentDAO->get_time_present();
-    //             $CommentDAO->add($_POST['id_pro'], $_POST['bl'], $_SESSION['acc'], $_POST['time']);
-    //             $product = $ProductDAO->SelectOneItem($_POST['id_pro']);
-    //             $products = $ProductDAO->lq($_POST['iddm']);
-    //             $comments =  $CommentDAO->show($_POST['id_pro']);
-    //             $categorys = $CategoryDAO->showCategory();
-    //             require_once('view/comment/user/list.php');
-    //         }
-    //     } else {
-    //         require_once('view/login/login.php');
-    //     }
-    // }
+   
     public function add()
-    {
-        $id_user = $_SESSION['user'];
-        $id_product=$_GET['id_product'];
-        $content=$_POST['content'];
+{
+    // Check if the user is logged in
+    if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+        $id_user = $_SESSION['user']['id_user'];
+        $id_product = isset($_GET['id_product']) ? intval($_GET['id_product']) : 0;
+        $content = isset($_POST['content']) ? htmlspecialchars($_POST['content']) : '';
         $create_at = date("Y-m-d H:i:s", strtotime("now"));
-        $rate ='';
-        $this->CommentDAO->add($id_user, $id_product, $content, $create_at,$rate);
-    }
+        $rate = '';  // You might want to handle rating input appropriately
 
-    public function show(){
-        $id_pro= $_POST['id_pro'];
-        $this->CommentDAO->show($id_pro);
-    }
-    public function status()
-    {
-        if (isset($_SESSION["permissions"])) {
-            //code
+        // Validate if the required inputs are provided
+        if ($id_user && $id_product && $content !== '') {
+            // Add the comment
+            $result = $this->CommentDAO->add($id_user, $id_product, $content, $create_at, $rate);
 
+            if ($result) {
+                // Comment added successfully, redirect or display a success message
+                header('Location: index.php?controller=product_details&id=' . $id_product);
+                exit();
+            } else {
+                // Handle the case when adding the comment fails (e.g., database error)
+                echo "Failed to add the comment. Please try again.";
+            }
         } else {
-            require_once('view/login/login.php');
+            // Handle the case when required inputs are missing or invalid
+            echo "Invalid input. Please provide the necessary information.";
         }
+    } else {
+        // User not logged in, handle accordingly (e.g., redirect to login)
+        header('Location: index.php?controller=login');
+        exit();
     }
+}
+
+
+public function show()
+{
+    // Validate and sanitize input
+    $id_pro = isset($_POST['id_pro']) ? intval($_POST['id_pro']) : 0;
+
+    // Validate if the required input is provided
+    if ($id_pro) {
+        // Fetch comments for the specified product
+        $comments = $this->CommentDAO->show($id_pro);
+
+        // Pass the comments to a view for rendering
+        // Example: require_once('view/comment/show.php');
+        // You would need to create a suitable view file to display the comments
+        // The view file could loop through $comments and display each comment
+    } else {
+        // Handle the case when required input is missing or invalid
+        echo "Invalid input. Please provide the necessary information.";
+        // You might want to redirect or display an error message
+    }
+}
+
+    
     
 }

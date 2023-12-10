@@ -28,7 +28,7 @@ require_once('view/home/user/page/header.php');
         // $user = $_SESSION['username'];
         // $user_id = $user['id_user'];
         // var_dump($user_id);
-        // print_r($item);
+        // var_dump($item);
         ?>
         <div class="row mb-5">
             <div class="col-md-6 col-xl-5 mb-30 mb-md-0">
@@ -52,72 +52,59 @@ require_once('view/home/user/page/header.php');
                     </div>
                     <p class="fs-xs my-4"><?php echo $item->getDescription(); ?></p>
                     <div class="mt-2 link-inherit fs-xs">
-                        <p><strong class="text-title me-3 font-theme">Availability :</strong><a href="#"><i class="far fa-check-square me-2 ms-1"></i>In Stock</a></p>
+                        <p><strong class="text-title me-3 font-theme">Availability :</strong><a href="#"><i class="far fa-check-square me-2 ms-1"></i><?php echo $item->getQuantity() ?></a></p>
                     </div>
                     <div class="actions mb-4 pb-2">
                         <div class="quantity style2 me-4">
-                            <input type="number" class="qty-input" value="1" min="1" max="99" name="quantity">
-                            <button class="quantity-minus qut-btn"><i class="far fa-chevron-down"></i></button>
-                            <button class="quantity-plus qut-btn"><i class="far fa-chevron-up"></i></button>
+                            <input type="number" class="qty-input" value="1" min="1" max="99" name="quantity" readonly>
+
                         </div>
                         <a href="index.php?controller=addCart&id=<?php echo $item->getId(); ?>" class="vs-btn shadow-none">Add To Cart</a>
                     </div>
                     <div class="product_meta">
-                        <span class="sku_wrapper">SKU: <span class="sku">D2300-3-1</span></span>
-                        <span class="posted_in">Category: <a href="#" rel="tag">Glassware</a> <a href="#" rel="tag">Fast Food</a></span>
+                        <span class="sku_wrapper">MD: <span class="sku"><?php echo $item->getId() ?></span></span>
+                        <span class="posted_in">Category: <a href="#" rel="tag"><?php echo $item->getNameCategory() ?></a> <a href="#" rel="tag"></a></span>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 d-none d-xl-block">
+                <?php
+                $best = $items->bestseller();
 
+
+
+
+
+
+                ?>
                 <div class="widget   ">
                     <h3 class="widget_title">Best Seller</h3>
-                    <div class="vs-widget-recent-post">
-                        <div class="recent-post d-flex align-items-center">
-                            <div class="media-img">
-                                <img src="./src/assets/img/widget/recent-1.jpg" width="100" height="73" alt="Recent Post Image">
+                    <?php foreach ($best as $value) : ?>
+                        <div class="vs-widget-recent-post">
+                            <div class="recent-post d-flex align-items-center">
+                                <div class="media-img">
+                                    <img src="admin_/uploads/products/<?php echo $value->getImage() ?>" width="100" height="73" alt="Best Seller Image">
+                                </div>
+                                <div class="media-body pl-30">
+                                    <h4 class="recent-post-title h5 mb-0"> <a href="#"><?php echo $value->getName(); ?></a>
+                                    </h4>
+                                    <p class="fs-14"><?php echo number_format($value->getPrice(), 0, ',', '.') . ' $'; ?></p>
+                                    <a href="#" class="text-theme fs-12">January 04, 2022</a>
+                                </div>
                             </div>
-                            <div class="media-body pl-30">
-                                <h4 class="recent-post-title h5 mb-0"><a href="blog.html">100% organic healthy</a>
-                                </h4>
-                                <a href="#" class="text-theme fs-12">January 04, 2022</a>
-                            </div>
+                            <?php endforeach; ?>
+                   
                         </div>
-                        <div class="recent-post d-flex align-items-center">
-                            <div class="media-img">
-                                <img src="./src/assets/img/widget/recent-2.jpg" width="100" height="73" alt="Recent Post Image">
-                            </div>
-                            <div class="media-body pl-30">
-                                <h4 class="recent-post-title h5 mb-0"><a href="blog.html">Keep Your Fruits frash</a>
-                                </h4>
-                                <a href="#" class="text-theme fs-12">March 04, 2022</a>
-                            </div>
-                        </div>
-                        <div class="recent-post d-flex align-items-center">
-                            <div class="media-img">
-                                <img src="./src/assets/img/widget/recent-3.jpg" width="100" height="73" alt="Recent Post Image">
-                            </div>
-                            <div class="media-body pl-30">
-                                <h4 class="recent-post-title h5 mb-0"><a href="blog.html">Get natural healthy
-                                        food</a></h4>
-                                <a href="#" class="text-theme fs-12">April 04, 2022</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
         <ul class="nav product-tab-style1 mb-30 justify-content-center mb-4" id="productTab" permissions="tablist">
-            <li class="nav-item" permissions="presentation">
-                <a class="nav-link " id="description-tab" data-bs-toggle="tab" href="#description" permissions="tab" aria-controls="description" aria-selected="false">description</a>
-            </li>
             <li class="nav-item" permissions="presentation">
                 <a class="nav-link active" id="reviews-tab" data-bs-toggle="tab" href="#reviews" permissions="tab" aria-controls="reviews" aria-selected="true">reviews</a>
             </li>
         </ul>
         <div class="tab-content mb-30" id="productTabContent">
             <?php
-            //    var_dump($_GET["idpro"]);
             require_once('DAO/CommentDAO.php');
             $comment = new CommentDAO();
             $comments = $comment->show(($_GET["idpro"]));

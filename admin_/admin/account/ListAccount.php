@@ -8,10 +8,10 @@
     <form action="index.php?act=list_account" method="post" style="margin-bottom: 10px">
         <input type="text" name="kyw">
         <select name="role">
-            <option value="0" selected>All</option>
-            <option value="1">Quản trị viên</option>
-            <option value="2">Nhân viên </option>
-            <option value="3">Khách hàng</option>
+            <option value="" selected>All</option>
+            <option value="1">Administration</option>
+            <option value="2">Staff </option>
+            <option value="0">Client</option>
         </select>
         <input type="submit" name="ok" value="GO">
     </form>
@@ -38,42 +38,49 @@
                     foreach ($users as $user) {
                         extract($user);
                         $editUser = "index.php?act=editUser&id_user=" . $id_user;
-                        $deleteUser = "index.php?act=deleteUser&id_user=" . $id_user;
-                        $imgPath = "uploads/accounts/" . $image;
+                        $changeStsAcc = "index.php?act=changeStsAcc&id_user=" . $id_user;
+                        $imgPath = "../assets/imgs/logo/" . $image;
                         if (is_file($imgPath)) {
                             $image = "<img src='" . $imgPath . "' height='80'>";
                         } else {
                             $image = "No Photo";
                         }
                         if ($permissions == 1) {
-                            $prn = "Quản trị viên";
+                            $prn = "Administration";
                         } else if ($permissions == 2) {
-                            $prn = "Nhân viên";
+                            $prn = "Staff";
                         } else {
-                            $prn = "Khách hàng";
+                            $prn = "Client";
                         }
                         if ($status == 0) {
-                            $check = "Đang hoạt động";
+                            $check = "<p style='color:blue;'>Active</p>";
                         } else {
-                            $check = "Vô hiệu";
+                            $check = "<p style='color:red;'>Disable</p>";
                         }
                         echo '<tr>
                             <td>' . $id_user . '</td>
                             <td>' . $full_name . '</td>
                             <td>' . $image . '</td>
                             <td>' . $username . '</td>
-                            <td>' . $password . '</td>
+                            <td style="width:200px;">' . $password . '</td>
                             <td>' . $email . '</td>
-                            <td>' . $number_phone . '</td>
+                            <td style="width:200px;">' . $number_phone . '</td>
                             <td>' . $address . '</td>
                             <td>' . $prn . '</td>
-                            <td>' . $check . '</td>
-                            <td><a href = "' . $editUser . '"><input type="button" class="btn btn-primary" value="Edit" style="margin-bottom: 10px"></a> 
-                            <a href = "' . $deleteUser . '"><input type="button" class="btn btn-danger" value="Change Status"></a></td>
-                            </tr>';
+                            <td>' . $check . '</td>';
+                            if ($_SESSION['user']['permissions'] == 1) {
+                                echo'<td><a href = "' . $editUser . '"><input type="button" class="btn btn-primary" value="Edit" style="margin-bottom: 10px"></a> 
+                                <a href = "' . $changeStsAcc . '"><input type="button" class="btn btn-danger" value="Change Status"></a></td>
+                                </tr>';
+                            } else {
+                                echo'<td><a href = "' . $changeStsAcc . '"><input type="button" class="btn btn-danger" value="Change Status"></a></td>
+                                </tr>';
+                            }
+                            
                     }
                     ?>
-                </table>
+                </table style="width:200px;">
+
             </div>
         </div>
     </div>

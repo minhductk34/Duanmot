@@ -26,19 +26,19 @@ require_once('view/home/user/page/header.php');
                             <?php foreach ($item as $key => $vl) { ?>
                                 <div class="col-12 form-group">
                                     <label>Name *</label>
-                                    <input type="text" class="form-control" name="name" value="<?php echo $vl->getFullName(); ?>">
+                                    <input type="text" class="form-control" name="name" value="<?php echo $vl->getFullName(); ?>" readonly>
                                     <a href=""><?php echo $vl->getFullName(); ?></a>
                                 </div>
 
                                 <div class="col-12 form-group">
                                     <label>Address *</label>
-                                    <input type="text" class="form-control" name="saddress" value="<?php echo $vl->getAddress(); ?>">
+                                    <input type="text" class="form-control" name="saddress" value="<?php echo $vl->getAddress(); ?>"readonly>
                                 </div>
 
                                 <div class="col-12 form-group">
                                     <label>Contact Info *</label>
-                                    <input type="text" class="form-control" value="<?php echo $vl->getEmail(); ?>">
-                                    <input type="text" class="form-control" value="<?php echo $vl->getPhoneNumber(); ?>">
+                                    <input type="text" class="form-control" value="<?php echo $vl->getEmail(); ?>"readonly>
+                                    <input type="text" class="form-control" value="<?php echo $vl->getPhoneNumber(); ?>"readonly>
                                 </div>
 
                             <?php } ?>
@@ -101,7 +101,7 @@ require_once('view/home/user/page/header.php');
                 </table>
             </form>
 
-            <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="init_payment.php">
+            <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="view\bill\user\init_payment.php">
 
                 <div class="pt-10 pt-lg-5 mb-30">
                     <div class="woocommerce-checkout-payment">

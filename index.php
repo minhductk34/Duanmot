@@ -1,5 +1,16 @@
 <?php
 session_start();
+if (isset($_GET['message'])) {
+    $errorMessage = "";
+  
+    if ($_GET['message'] === 'emptyCart') {
+        $errorMessage = "Your cart is empty.";
+    } elseif ($_GET['message'] === 'emptyProduct') {
+        $errorMessage = "Your product is sold out.";
+    }
+    echo '<script>alert("' . $errorMessage . '");</script>';
+    echo '<script>setTimeout(function(){ window.location.href = "index.php"; }, 100);</script>';
+}
 
 // var_dump( $_SESSION['user']);
 
@@ -68,10 +79,7 @@ switch ($controller) {
 
 
 
-    case 'commentStatus':
-        $CommentController = new CommentController();
-        $CommentController->status();
-        break;
+
     case 'addComment':
         $CommentController = new CommentController();
         $CommentController->add();
@@ -92,10 +100,6 @@ switch ($controller) {
         $CartController = new CartController();
         $CartController->add();
 
-        break;
-    case 'wishlistCart':
-        $CartController = new CartController();
-        $CartController->wishlist();
         break;
 
 

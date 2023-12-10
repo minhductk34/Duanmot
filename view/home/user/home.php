@@ -1135,8 +1135,8 @@ require_once('DAO/ProductDAO.php');
                   <a href="<?php echo $linkpro . $product->getId(); ?>"><img src="admin_/uploads/products/<?php echo $product->getImage() ?>" alt="Product Image" class="w-100" /></a>
                 </div>
                 <div class="actions-btn">
-                  <a href="<?php echo $linkpro . $product->getId(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                  <a href="index.php?controller=wishlistCart&id=<?php echo $product->getId(); ?>" class="icon-btn"><i class="fal fa-heart"></i></a>
+                  <a href="" class="icon-btn popup-image"><i class="far fa-search "> </i></a>
+                  <a href="<?php echo $linkpro . $product->getId(); ?>" class="icon-btn"><i class="fal fa-heart"></i></a>
                   <a href="index.php?controller=addCart&id=<?php echo $product->getId(); ?>" class="vs-btn style4 cart-btn" name="addToCart"><i class="fal fa-cart-plus"></i>Add To Cart</a>
                 </div>
 
@@ -1169,9 +1169,8 @@ require_once('DAO/ProductDAO.php');
     ==============================-->
 <?php
 require_once 'DAO/ProductDAO.php';
-
 $productDao = new ProductDao();
-$product = $productDao->selectOneItem($id = 41);
+$product = $productDao->newProduct();
 ?>
 <section class="mb-60 mb-xl-0">
   <div class="container">
@@ -1187,13 +1186,13 @@ $product = $productDao->selectOneItem($id = 41);
         <div class="content-style1">
 
 
-          <span class="about-subtitle"><?php echo $product->getName(); ?></span>
-          <h3 class="about-title"><?php echo $product->getName(); ?></h3>
+          <span class="about-subtitle"><?php echo $product[0]->getName(); ?></span>
+          <h3 class="about-title"><?php echo $product[0]->getName(); ?></h3>
           <p class="about-text">
-            <?php echo $product->getDescription(); ?>
+            <?php echo $product[0]->getDescription(); ?>
           </p>
-          <div class="about-price"><?php echo $product->getPrice(); ?>
-            <del><?php echo $product->getPrice(); ?></del>
+          <div class="about-price"><?php echo  $product[0]->getPrice(); ?>
+            <del><?php echo  $product[0]->getPrice() *1.2;?></del>
           </div>
 
           <div class="product-rating-box">
@@ -1203,13 +1202,13 @@ $product = $productDao->selectOneItem($id = 41);
             </div>
           </div>
           <div>
-            <a href="index.php?controller=addCart&id=<?php echo $product->getId(); ?>" name="addToCart" class="vs-btn style4"><i class="fal fa-cart-plus"></i>Add To Cart</a>
+            <a href="index.php?controller=addCart&id=<?php echo  $product[0]->getId(); ?>" name="addToCart" class="vs-btn style4"><i class="fal fa-cart-plus"></i>Add To Cart</a>
           </div>
         </div>
       </div>
       <div class="col-lg order-1 order-lg-2">
         <div class="img-box3">
-          <img src="admin_/uploads/products/<?php echo $product->getImage() ?>" alt="About Image" />
+          <img src="admin_/uploads/products/<?php echo  $product[0]->getImage() ?>" alt="About Image" />
         </div>
 
       </div>
@@ -1315,7 +1314,7 @@ $product = $productDao->selectOneItem($id = 41);
                 </div>
                 <div class="actions-btn">
                   <a href="<?php echo $linkpro . $product->getId(); ?>" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                  <a href="index.php?controller=wishlistCart&id=<?php echo $product->getId(); ?>" class="icon-btn"><i class="fal fa-heart"></i></a>
+                  <a href="<?php echo $linkpro . $product->getId(); ?>" class="icon-btn"><i class="fal fa-heart"></i></a>
                   <a href="index.php?controller=addCart&id=<?php echo $product->getId(); ?>" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus" name="addToCart"></i>Add To Cart</a>
                 </div>
 
@@ -1371,7 +1370,7 @@ $product = $productDao->selectOneItem($id = 41);
 
       require_once('DAO/ProductDAO.php');
       $productDao = new ProductDao();
-      $linkpro = "index.php?controller=product_details&idpro=" . $id;
+      $linkpro = "index.php?controller=product_details&idpro=" . 7;
       $result = $productDao->getProductsByCategory("Apple");
       // print_r($result);
       $products = $result['products'];

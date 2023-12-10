@@ -12,11 +12,10 @@ class BillModel
     private $paymentType;
     private $createdAt;
 
-    public function __construct($id, $userId, $productId, $phoneNumber, $address, $email, $fullName, $paymentType, $createdAt)
+    public function __construct($id, $userId,  $phoneNumber, $address, $email, $fullName, $paymentType, $createdAt)
     {
         $this->id = $id;
         $this->userId = $userId;
-        $this->productId = $productId;
         $this->phoneNumber = $phoneNumber;
         $this->address = $address;
         $this->email = $email;

@@ -13,7 +13,7 @@
  <div class="vs-checkout-wrapper space-top space-md-bottom">
      <div class="container">
          <div class="woocommerce-form-login-toggle">
-             <div class="woocommerce-info">Your information
+             <div class="woocommerce">
              </div>
          </div>
          <!-- <div class="row">
@@ -35,14 +35,14 @@
                  </form>
              </div>
          </div> -->
-       
 
 
-         <form action="index.php?controller=addToBill" method="post" id="myForm">
+
+         <form action="index.php?controller=addToBill" method="post" onsubmit="return validateForm()" id="myForm" >
              <form class="woocommerce-checkout mt-40" id="checkout-form">
                  <div class="row">
                      <div class="col-lg-6">
-                         <h2 class="h4">Billing Details</h2>
+                         <h2 class="h4">Enter Your Information</h2>
                          <div class="row gx-2">
                              <div class="col-12 form-group">
                                  <label>Country *</label>
@@ -77,8 +77,8 @@
                                      <input type="email" class="form-control" placeholder="Email Address" name="email" required>
                                      <input type="tel" class="form-control" placeholder="Phone number" name="phone" required>
                                  </div>
-                      
                              </form>
+
 
                          </div>
                      </div>
@@ -135,7 +135,7 @@
                                      <strong class="product-quantity"><?php echo $value->getQuantity(); ?></strong>
                                  </td>
                                  <td data-title="Total">
-                                     <span class="amount" ><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity(); ?></bdi></span>
+                                     <span class="amount"><bdi><span>$</span><?php echo $value->getPrice() * $value->getQuantity(); ?></bdi></span>
                                  </td>
                              </tr>
                          <?php } ?>
@@ -169,7 +169,7 @@
                                      <th></th>
                                      <th></th>
                                      <th></th>
-                                     <td><strong><span class="amount" ><bdi><span>$</span><?php echo $total ?></bdi></span></strong></td>
+                                     <td><strong><span class="amount"><bdi><span>$</span><?php echo $total ?></bdi></span></strong></td>
                                  </tr>
                              </tbody>
                          </table>
@@ -187,6 +187,28 @@
          </form>
      </div>
  </div>
+ <script>
+     function validateForm() {
+         var firstName = document.forms["myForm"]["first_name"].value;
+         var lastName = document.forms["myForm"]["last_name"].value;
+         var streetAddress = document.forms["myForm"]["street_address"].value;
+         var city = document.forms["myForm"]["city"].value;
+         var email = document.forms["myForm"]["email"].value;
+         var phone = document.forms["myForm"]["phone"].value;
+
+         if (firstName == "" || lastName == "" || streetAddress == "" || city == "" || email == "" || phone == "") {
+             alert("All fields must be filled out");
+             return false;
+         }
+
+         // Additional validation logic if needed
+
+         return true;
+     }
+ </script>
+
+
+
  <script>
      function submitForm() {
          // Get the form element

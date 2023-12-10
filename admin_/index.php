@@ -1,8 +1,7 @@
 <?php
-
 session_start();
 
-if (!isset($_SESSION['user']) || $_SESSION['user']['permissions'] != 1) {
+if (!isset($_SESSION['user']) || ($_SESSION['user']['permissions'] != 1 && $_SESSION['user']['permissions'] != 2)) {
     header('Location: ../index.php');
     exit();
 }
@@ -14,70 +13,138 @@ include "models/CommentModel.php";
 include "models/DiscountModel.php";
 include "models/OrderModel.php";
 include "models/Syn&StaModel.php";
-include "view/header.php";
+include "models/Validate.php";
+if ($_SESSION['user']['permissions'] == 1) {
+    include "view/headerAdmin.php";
+} else if ($_SESSION["user"]["permissions"] == 2) {
+    include "view/headerStaff.php";
+}
+
+$nameErr = $emailErr = $descErr = $priceErr = $imgErr = $quanErr = $emailErr = $passErr = $userErr =  "";
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
 
             // Categoty Controller
         case "add_category":
-            if (isset($_POST['add']) && $_POST['add']) {
-                $name_category = $_POST['name_category'];
-                $desc_category = $_POST['desc_category'];
-                insert_category($name_category, $desc_category);
-                $noti = "Success";
+            if ($_SESSION['user']['permissions'] == 1) {
+                if (isset($_POST['add']) && $_POST['add']) {
+                    $name_category = $_POST['name_category'];
+                    $desc_category = $_POST['desc_category'];
+                    $nameCategory = test_input($name_category);
+                    $descCategory = test_input($desc_category);
+                    // Validate
+                    if (!preg_match("/^[a-zA-Z ]*$/", $nameCategory)) {
+                        $nameErr = "Only letters and white space allowed";
+                        $noti = "Failed";
+                    } else if (strlen($descCategory) > 200) {
+                        $descErr = "Description is too long. Only 200 characters";
+                        $noti = "Failed";
+                    } else {
+                        insert_category($name_category, $desc_category);
+                        $noti = "Success";
+                    }
+                }
+                include "admin/category/AddCategory.php";
+            } else {
+                include "view/home.php";
             }
-            include "admin/category/AddCategory.php";
+
+
             break;
         case "list_category":
             $Categories = loadall_category();
             include "admin/category/ListCategory.php";
             break;
-            // Xóa hẳn ( nên thì cách khác )
-            // case "deleteCat":
-            //     if ( isset($_GET['id_category']) && ($_GET['id_category'] > 0)){
-            //         delete_category($_GET['id_category']);
-            //     }
-            //     $Categories = loadall_category();
-            //     include "admin/category/ListCategory.php";
-            //     break;
-        case "editCat":
-            if (isset($_GET['id_category']) && ($_GET['id_category'] > 0)) {
-                $category = loadone_category($_GET['id_category']);
-            }
-            include "admin/category/UpdateCategory.php";
-            break;
-        case "update_category":
-            if (isset($_POST['update']) && $_POST['update']) {
-                $name_category = $_POST['name_category'];
-                $desc_category = $_POST['desc_category'];
-                $status = $_POST['status'];
-                $id_category = $_POST['id_category'];
-                update_category($id_category, $name_category, $desc_category, $status);
-                $thongbao = "Success";
+        case "changeStsCat":
+            if (isset($_GET['id_category']) && ($_GET['id_category'] != "")) {
+                $id_category = $_GET['id_category'];
+                $status =  load_status_category($id_category);
+                change_status_category($status, $id_category);
             }
             $Categories = loadall_category();
             include "admin/category/ListCategory.php";
             break;
+        case "editCat":
+            if ($_SESSION['user']['permissions'] == 1) {
+                if (isset($_GET['id_category']) && ($_GET['id_category'] > 0)) {
+                    $category = loadone_category($_GET['id_category']);
+                }
+                include "admin/category/UpdateCategory.php";
+            } else {
+                include "view/home.php";
+            }
+
+            break;
+        case "update_category":
+            if ($_SESSION['user']['permissions'] == 1) {
+                if (isset($_POST['update']) && $_POST['update']) {
+                    $name_category = $_POST['name_category'];
+                    $desc_category = $_POST['desc_category'];
+                    $status = $_POST['status'];
+                    $id_category = $_POST['id_category'];
+                    // Validate
+                    $nameCategory = test_input($name_category);
+                    $descCategory = test_input($desc_category);
+                    if (!preg_match("/^[a-zA-Z ]*$/", $nameCategory)) {
+                        $nameErr = "Only letters and white space allowed";
+                    } else if (strlen($descCategory) > 200) {
+                        $descErr = "Description is too long. Only 200 characters";
+                    } else {
+                        update_category($id_category, $name_category, $desc_category, $status);
+                    }
+                }
+                $Categories = loadall_category();
+                include "admin/category/ListCategory.php";
+            } else {
+                include "view/home.php";
+            }
+
+            break;
 
             // Product Controller
         case "add_product":
-            if (isset($_POST['add']) && $_POST['add']) {
-                var_dump($_POST);
-                $id_cat = $_POST['id_category'];
-                $name_product = $_POST['name_product'];
-                $price_product = $_POST['price_product'];
-                $quantity = $_POST['quantity'];
-                $desc_product = $_POST['desc_product'];
-                $image_product = $_FILES['image_product']['name'];
-                $target_dir = "uploads/products/";
-                $target_file = $target_dir . basename($image_product);
-                move_uploaded_file($_FILES["image_product"]["tmp_name"], $target_file);
-                insert_product($name_product, $desc_product, $image_product, $price_product, $quantity, $id_cat);
-                $noti = "Success";
+            if ($_SESSION['user']['permissions'] == 1) {
+                if (isset($_POST['add']) && $_POST['add']) {
+                    $id_cat = $_POST['id_category'];
+                    $name_product = $_POST['name_product'];
+                    $namePro = test_input($name_product);
+                    $price_product = $_POST['price_product'];
+                    $price = test_input($price_product);
+                    $quantity = $_POST['quantity'];
+                    $SL = test_input($price);
+                    $desc_product = $_POST['desc_product'];
+                    $descripton = test_input($desc_product);
+                    $image_product = $_FILES['image_product']['name'];
+                    $target_dir = "uploads/products/";
+                    $target_file = $target_dir . basename($image_product);
+                    move_uploaded_file($_FILES["image_product"]["tmp_name"], $target_file);
+                    if (!isset($namePro) || $namePro = "") {
+                        $nameErr = "Only letters and white space allowed";
+                        $noti = "Failed";
+                    } else if (strlen($price) > 10) {
+                        $priceErr = "Unreasonable price. Only 9 numeric characters";
+                        $noti = "Failed";
+                    } else if (strlen($descripton) > 500) {
+                        $descErr = "Description is too long. Only 200 characters";
+                        $noti = "Failed";
+                    } else if (strlen($SL) > 9) {
+                        $quanErr = "Quantity is too much. Check again";
+                        $noti = "Failed";
+                    } else if ($_FILES['image_product']['size'] > (1024 * 1024 * 15)) {
+                        $imgErr = "Image size must not exceed 15 MB";
+                        $noti = "Failed";
+                    } else {
+                        insert_product($name_product, $desc_product, $image_product, $price_product, $quantity, $id_cat);
+                        $noti = "Success";
+                    }
+                }
+                $Categories = loadall_category();
+                include "admin/product/AddProduct.php";
+            } else {
+                include "view/home.php";
             }
-            $Categories = loadall_category();
-            include "admin/product/AddProduct.php";
+
             break;
         case "list_product":
             if (isset($_POST['ok']) && ($_POST['ok'])) {
@@ -92,40 +159,74 @@ if (isset($_GET['act'])) {
             include "admin/product/ListProduct.php";
             break;
         case "editPro":
-            if (isset($_GET['id_product']) && ($_GET['id_product'] > 0)) {
-                $product = loadone_product($_GET['id_product']);
+            if ($_SESSION['user']['permissions'] == 1) {
+                if (isset($_GET['id_product']) && ($_GET['id_product'] > 0)) {
+                    $product = loadone_product($_GET['id_product']);
+                }
+                $Categories = loadall_category();
+                include "admin/product/UpdateProduct.php";
+            } else {
+                include "view/home.php";
             }
-            $Categories = loadall_category();
-            include "admin/product/UpdateProduct.php";
+
             break;
         case "update_product":
-            if (isset($_POST['update']) && $_POST['update']) {
-                $id_product = $_POST['id_product'];
-                $id_category = $_POST['id_category'];
-                $name_product = $_POST['name_product'];
-                $price_product = $_POST['price_product'];
-                $desc_product = $_POST['desc_product'];
-                $quantity = $_POST['quantity'];
-                $status = $_POST['status'];
-                $image_product = $_FILES['image_product']['name'];
-                $target_dir = "uploads/products/";
-                $target_file = $target_dir . basename($image_product);
-                move_uploaded_file($_FILES["image_product"]["tmp_name"], $target_file);
-                update_product($id_product, $id_category, $name_product, $price_product, $desc_product, $image_product, $quantity, $status);
-                $noti = "Success";
+            if ($_SESSION['user']['permissions'] == 1) {
+                if (isset($_POST['update']) && $_POST['update']) {
+                    $id_product = $_POST['id_product'];
+                    $id_category = $_POST['id_category'];
+                    $name_product = $_POST['name_product'];
+                    $namePro = test_input($name_product);
+                    $price_product = $_POST['price_product'];
+                    $price = test_input($price_product);
+                    $desc_product = $_POST['desc_product'];
+                    $descripton = test_input($desc_product);
+                    $quantity = $_POST['quantity'];
+                    $SL = test_input($quantity);
+                    $status = $_POST['status'];
+                    $image_product = $_FILES['image_product']['name'];
+                    $target_dir = "uploads/products/";
+                    $target_file = $target_dir . basename($image_product);
+                    move_uploaded_file($_FILES["image_product"]["tmp_name"], $target_file);
+                    if (!isset($namePro) || $namePro = "") {
+                        $nameErr = "Only letters and white space allowed";
+                        $noti = "Failed";
+                    } else if (strlen($price) > 10) {
+                        $priceErr = "Unreasonable price. Only 9 numeric characters";
+                        $noti = "Failed";
+                    } else if (strlen($descripton) > 500) {
+                        $descErr = "Description is too long. Only 200 characters";
+                        $noti = "Failed";
+                    } else if (strlen($SL) > 9) {
+                        $quanErr = "Quantity is too much. Check again";
+                        $noti = "Failed";
+                    } else if ($_FILES['image_product']['size'] > (1024 * 1024 * 15)) {
+                        $imgErr = "Image size must not exceed 15 MB";
+                        $noti = "Failed";
+                    } else {
+                        update_product($id_product, $id_category, $name_product, $price_product, $desc_product, $image_product, $quantity, $status);
+                        $noti = "Success";
+                    }
+                    $noti = "Success";
+                }
+                $products = loadall_product('', 0);
+                $Categories = loadall_category();
+                include "admin/product/ListProduct.php";
+            } else {
+                include "view/home.php";
+            }
+
+            break;
+        case "changeStsPro":
+            if (isset($_GET['id_product']) && ($_GET['id_product'] != "")) {
+                $id_product = $_GET['id_product'];
+                $status =  load_status_product($id_product);
+                change_status_product($status, $id_product);
             }
             $products = loadall_product('', 0);
             $Categories = loadall_category();
             include "admin/product/ListProduct.php";
             break;
-            // // Xóa hẳn ( nên thì cách khác )
-            // case "deletePro":
-            //     if ( isset($_GET['id_product']) && ($_GET['id_product'] > 0)){
-            //         delete_product($_GET['id_product']);
-            //     }
-            //     $products = loadall_product('',0);
-            //     include "admin/product/ListProduct.php";
-            //     break;
 
             // Variant Porduct  
         case "addVariant":
@@ -138,50 +239,80 @@ if (isset($_GET['act'])) {
             }
             if (isset($_POST['add'])) {
                 $id_product = $_POST['id_product'];
-                $quantity = $_POST['$quantity'];
                 $name_product = loadone_name_product($id_product);
                 $id_box = $_POST['id_box'];
                 $box = load_box($id_box);
                 $id_size = $_POST['id_size'];
                 $size = load_size($id_size);
+                $quantity = $_POST['quantity'];
+                $SL = test_input($quantity);
                 $name_variant = $name_product . ' size ' .  $size . ' in ' . $box;
-                insert_variant($id_product, $id_size, $id_box, $name_variant, $quantity);
+                if (strlen($SL) > 9) {
+                    $quanErr = "Quantity is too much. Check again";
+                    $noti = "Failed";
+                } else {
+                    insert_variant($id_product, $id_size, $id_box, $name_variant, $quantity);
+                    $noti = "Success";
+                }
                 $products = loadall_product('', 0);
                 include './admin/product/ListProduct.php';
             }
             break;
         case "listVariant":
-            if (isset($_POST['ok']) && ($_POST['ok'])) {
-                $kyw = $_POST['kyw'];
-                $id_box = $_POST['id_box'];
-                $id_size = $_POST['id_size'];
-            } else {
-                $kyw = '';
-                $id_box = 0;
-                $id_size = 0;
-            }
             $boxs = loadall_box();
             $sizes = loadall_size();
-            $variants = loadall_variant($kyw, $id_box, $id_size);
+            $variants = loadall_variant();
+            include "admin/product/variant/ListVariant.php";
+            break;
+        case "changeStsVar":
+            if (isset($_GET['id_variant']) && ($_GET['id_variant'] != "")) {
+                $id_variant = $_GET['id_variant'];
+                $status =  load_status_variant($id_variant);
+                change_status_variant($status, $id_variant);
+            }
+            $variants = loadall_variant();
             include "admin/product/variant/ListVariant.php";
             break;
 
             // Account Controller
         case "add_account":
-            if (isset($_POST['add_account']) && $_POST['add_account']) {
-                $username = $_POST['username'];
-                $password = $_POST['password'];
-                $email = $_POST['email'];
-                $permission = $_POST['permission'];
-                $full_name = $_POST['username'];
-                $image = $_FILES['image']['name'];
-                $target_dir = "uploads/accounts/";
-                $target_file = $target_dir . basename($image);
-                move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
-                insert_account($username, $password, $email, $permission, $full_name, $image);
-                $noti = "Success";
+            if ($_SESSION['user']['permissions'] == 1) {
+                if (isset($_POST['add_account']) && $_POST['add_account']) {
+                    $username = $_POST['username'];
+                    $user = test_input($username);
+                    $password = $_POST['password'];
+                    $pass = test_input($password);
+                    $email = $_POST['email'];
+                    $mail = test_input($email);
+                    $permission = $_POST['permission'];
+                    $per = test_input($permission);
+                    $full_name = $_POST['username'];
+                    $image = $_FILES['image']['name'];
+                    $target_dir = "../assets/imgs/logo/";
+                    $target_file = $target_dir . basename($image);
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                    if (!preg_match('/^[a-zA-Z0-9\s]+$/', $user)) {
+                        $nameErr = "Only letters and numbers without special characters or spaces";
+                        $noti = "Failed";
+                    } else if (isValidPassword($password) == false) {
+                        $passErr = "Password must be at least 8 characters, contain at least one upper and lower case letter, one number and one special character";
+                        $noti = "Failed";
+                    } else if (!preg_match("/^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$/", $mail)) {
+                        $descErr = "Invalid email format";
+                        $noti = "Failed";
+                    } else if ($_FILES['image']['size'] > (1024 * 1024 * 15)) {
+                        $imgErr = "Image size must not exceed 15 MB";
+                        $noti = "Failed";
+                    } else {
+                        insert_account($username, $password, $email, $permission, $full_name, $image);
+                        $noti = "Success";
+                    }
+                }
+                include "admin/account/AddAccount.php";
+            } else {
+                include "view/home.php";
             }
-            include "admin/account/AddAccount.php";
+
             break;
         case "list_account":
             if (isset($_POST['ok']) && ($_POST['ok'])) {
@@ -189,39 +320,51 @@ if (isset($_GET['act'])) {
                 $role = $_POST['role'];
             } else {
                 $kyw = '';
-                $role = 0;
+                $role = '';
             }
             $users = loadall_account($kyw, $role);
             include "admin/account/ListAccount.php";
             break;
         case "editUser":
-            if (isset($_GET['id_user']) && ($_GET['id_user'] > 0)) {
-                $user = loadone_account($_GET['id_user']);
+            if ($_SESSION['user']['permissions'] == 1) {
+                if (isset($_GET['id_user']) && ($_GET['id_user'] > 0)) {
+                    $user = loadone_account($_GET['id_user']);
+                }
+                include "admin/account/UpdateAccount.php";
+            } else {
+                include "view/home.php";
             }
-            include "admin/account/UpdateAccount.php";
+
             break;
         case "update_account":
-            if (isset($_POST['update']) && $_POST['update']) {
-                $full_name = $_POST['full_name'];
-                $id_user = $_POST['id_user'];
-                $email = $_POST['email'];
-                $number_phone = $_POST['number_phone'];
-                $address = $_POST['address'];
-                $status = $_POST['status'];
-                $permission = $_POST['permission'];
-                update_account($id_user, $full_name, $email, $number_phone, $address, $status, $permission);
-                $noti = "Success";
+            if ($_SESSION['user']['permissions'] == 1) {
+                if (isset($_POST['update']) && $_POST['update']) {
+                    $full_name = $_POST['full_name'];
+                    $id_user = $_POST['id_user'];
+                    $email = $_POST['email'];
+                    $number_phone = $_POST['number_phone'];
+                    $address = $_POST['address'];
+                    $status = $_POST['status'];
+                    $permission = $_POST['permission'];
+                    update_account($id_user, $full_name, $email, $number_phone, $address, $status, $permission);
+                    $noti = "Success";
+                }
+                $users = loadall_account('', '');
+                include "admin/account/ListAccount.php";
+            } else {
+                include "view/home.php";
             }
-            $users = loadall_account('', 0);
+
+            break;
+        case "changeStsAcc":
+            if (isset($_GET['id_user']) && ($_GET['id_user'] != "")) {
+                $id_user = $_GET['id_user'];
+                $status =  load_status_account($id_user);
+                change_status_account($status, $id_user);
+            }
+            $users = loadall_account('', '');
             include "admin/account/ListAccount.php";
             break;
-            // case "deleteUser":
-            //     if ( isset($_GET['id_user']) && ($_GET['id_user'] > 0)){
-            //         delete_account($_GET['id_user']);
-            //     }
-            //     $users = loadall_account('', 0);
-            //     include "admin/account/ListAccount.php";
-            //     break;
 
             // Comment Controller
         case "list_comment":
@@ -302,43 +445,115 @@ if (isset($_GET['act'])) {
             }
             include "admin/order/ShowDetail.php";
             break;
-        case "editBill":
-            if (isset($_GET['id_bill']) && ($_GET['id_bill'] > 0)) {
-                $bill = loadone_bill($_GET['id_bill']);
-            }
-            include "admin/order/UpdateOrder.php";
-            break;
-        case "update_order":
-            if (isset($_POST['update']) && $_POST['update']) {
-                $type_payment = $_POST['type_payment'];
-                $status = $_POST['status'];
-                $id_bill = $_POST['id_bill'];
-                update_bill($id_bill, $type_payment, $status);
-                $thongbao = "Success";
-            }
-            $bills = loadall_bill("", 0);
-            include "admin/order/ListOrder.php";
-            break;
-            // case "changeStsBill":
-            //     if (isset($_GET['id_bill']) && ($_GET['id_bill'] != "")) {
-            //         $id_bill = $_GET['id_bill'];
-            //         $status =  load_status_bill($id_bill);
-            //         change_status_bill($status, $id_bill);
+            // case "editBill":
+            //     if (isset($_GET['id_bill']) && ($_GET['id_bill'] > 0)) {
+            //         $bill = loadone_bill($_GET['id_bill']);
+            //     }
+            //     include "admin/order/UpdateOrder.php";
+            //     break;
+            // case "update_order":
+            //     if (isset($_POST['update']) && $_POST['update']) {
+            //         $status = $_POST['status'];
+            //         $id_bill = $_POST['id_bill'];
+            //         update_bill($id_bill, $status);
+            //         $thongbao = "Success";
             //     }
             //     $bills = loadall_bill("", 0);
             //     include "admin/order/ListOrder.php";
             //     break;
+        case "changeStsBill":
+            if (isset($_GET['id_bill']) && ($_GET['id_bill'] != "")) {
+                $id_bill = $_GET['id_bill'];
+                $status =  load_status_bill($id_bill);
+                change_status_bill($status, $id_bill);
+                $details = showdetail($id_bill);
+            }
+            include "admin/order/ShowDetail.php";
+            break;
+            // case "refundConfirm":
+            //     if (isset($_GET['id_bill']) && ($_GET['id_bill'] != "")) {
+            //         $id_bill = $_GET['id_bill'];
+            //         refundConfirm($id_bill);
+            //         $details = showdetail($id_bill);
+            //     }
+            //     include "admin/order/ShowDetail.php";
+            //     break;
 
             //Synthetic & Statistical
-        case 'synStat':
-            $list = loadall();
-            include "admin/syn&stat/List.php";
+        case 'StatCat':
+            if ($_SESSION['user']['permissions'] == 1) {
+                $list = loadall();
+                include "admin/syn&stat/ListCat.php";
+            } else {
+                include "view/home.php";
+            }
+
             break;
         case 'showchart':
-            $list = loadall();
-            include "admin/syn&stat/Chart.php";
-            break;
+            if ($_SESSION['user']['permissions'] == 1) {
+                $list = loadall();
+                include "admin/syn&stat/Chart.php";
+            } else {
+                include "view/home.php";
+            }
 
+            break;
+        case 'StatPro':
+            if ($_SESSION['user']['permissions'] == 1) {
+                $totalPro = TotalPro();
+                $inStock = inStock();
+                $outOfStock = outOfStock();
+                $mostComOfPro = mostComOfPro();
+                $nameProCom = loadone_name_product($mostComOfPro[0][0]);
+                $mostComOfOrder = mostComOfOrder();
+                $nameProOrder = loadone_name_product($mostComOfPro[0][0]);
+                include "admin/syn&stat/StatPro.php";
+            } else {
+                include "view/home.php";
+            }
+
+            break;
+        case 'StatAcc':
+            if ($_SESSION['user']['permissions'] == 1) {
+                $TotalAcc = TotalAcc();
+                $quantity_admin = quantity_admin();
+                $quantity_staff = quantity_staff();
+                $quantity_client = quantity_client();
+                $is_Active = is_Active();
+                $is_Disable = is_Disable();
+                include "admin/syn&stat/StatAcc.php";
+            } else {
+                include "view/home.php";
+            }
+
+            break;
+        case 'StatCom':
+            if ($_SESSION['user']['permissions'] == 1) {
+                $TotalCom = TotalCom();
+                $comment_show = comment_show();
+                $comment_hidden = comment_hidden();
+                include "admin/syn&stat/StatCom.php";
+            } else {
+                include "view/home.php";
+            }
+
+            break;
+            // $int = (int)$num;
+            // $float = (float)$num;
+        case 'StatOrder':
+            if ($_SESSION['user']['permissions'] == 1) {
+                $TotalOrder = TotalOrder();
+                $total = toltal();
+                $orderNew = orderProcessing();
+                $orderPrepare = orderShipped();
+                $orderDelivered = orderCompleted();
+                $OrderCanceled = orderCancelled();
+                include "admin/syn&stat/StatOrder.php";
+            } else {
+                include "view/home.php";
+            }
+
+            break;
         default:
             include("view/home.php");
             break;

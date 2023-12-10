@@ -68,44 +68,18 @@ require_once('DAO/CartDAO.php');
   <link rel="stylesheet" href="./src/assets/css/animate.min.css">
   <!-- Theme Custom CSS -->
   <link rel="stylesheet" href="./src/assets/css/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 
 </head>
 
 <body class=" ">
 
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
 
-    .d-lg-flex.half {
-      min-height: 100vh;
-    }
+  <!--[if lte IE 9]>
+    	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
 
-    .contents {
-      padding: 20px;
-    }
-
-    .boxconter {
-      border: 1px solid #ccc;
-      padding: 20px;
-      border-radius: 8px;
-      background-color: #fff;
-    }
-
-    .form-group.last {
-      margin-bottom: 15px;
-    }
-
-    .form-group.last a {
-      color: #007bff;
-      text-decoration: none;
-    }
-
-    .form-group.last a:hover {
-      text-decoration: underline;
-    }
-  </style>
 
 
   <!--********************************
@@ -171,24 +145,15 @@ require_once('DAO/CartDAO.php');
                 <a href="index.php?controller=product_show">Shop</a>
                 <ul class="sub-menu">
                   <li><a href="index.php?controller=product_show">Shop</a></li>
-                  <!-- <li><a href="index.php?controller=product_favorite">Shop List</a></li>
-                                    <li><a href="index.php?controller=product_details">Shop Details</a></li> -->
                   <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
-                  <li><a href="index.php?controller=checkOut">Check Out</a></li>
-                  <li><a href="index.php?controller=wishlistCart">Wishlist</a></li>
+                  <!-- <li><a href="index.php?controller=checkOut">Check Out</a></li>
+                                    <li><a href="index.php?controller=wishlistCart">Wishlist</a></li> -->
                   <li><a href="index.php?controller=login">Login & Register</a></li>
                 </ul>
               </li>
-              <li class="menu-item-has-children">
-                <a href="blog.html">Blog</a>
-                <ul class="sub-menu">
-                  <li><a href="blog.html">Blog</a></li>
-                  <li><a href="blog-list.html">Blog List</a></li>
-                  <li><a href="blog-grid.html">Blog Grid</a></li>
-                  <li><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
-                  <li><a href="blog-masonry.html">Blog Masonry</a></li>
-                  <li><a href="blog-details.html">Blog Details</a></li>
-                </ul>
+              <li class="menu-item">
+                <a href="#">Blog</a>
+
               </li>
 
 
@@ -217,7 +182,7 @@ require_once('DAO/CartDAO.php');
   <!--==============================
     Sidemenu
 ============================== -->
- 
+
   <!--==============================
         Header Area
     ==============================-->
@@ -237,6 +202,8 @@ require_once('DAO/CartDAO.php');
             <a href="index.php?controller=home_user" class="icon-btn bg4">
               <i class="fal fa-user"></i>
             </a>
+
+
           </div>
         </div>
       </div>
@@ -255,28 +222,24 @@ require_once('DAO/CartDAO.php');
                   <a href="index.php?controller=product_show">Shop</a>
                   <ul class="sub-menu">
                     <li><a href="index.php?controller=product_show">Shop</a></li>
-                    <!-- <li><a href="index.php?controller=product_favorite">Shop List</a></li>
-                                        <li><a href="index.php?controller=product_details">Shop Details</a></li> -->
                     <li><a href="index.php?controller=listCart">Shopping Cart</a></li>
-                    <li><a href="index.php?controller=checkOut">Check Out</a></li>
-                    <li><a href="index.php?controller=wishlistCart">Wishlist</a></li>
                     <li><a href="index.php?controller=login">Login & Register</a></li>
                   </ul>
                 </li>
-                <li class="menu-item-has-children">
-                  <a href="blog.html">Blog</a>
-                  <ul class="sub-menu">
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="blog-list.html">Blog List</a></li>
-                    <li><a href="blog-grid.html">Blog Grid</a></li>
-                    <li><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
-                    <li><a href="blog-masonry.html">Blog Masonry</a></li>
-                    <li><a href="blog-details.html">Blog Details</a></li>
-                  </ul>
+                <li class="menu-item">
+                  <a href="#">Blog</a>
+                  <!-- <ul class="sub-menu">
+                                        <li><a href="blog.html">Blog</a></li>
+                                        <li><a href="blog-list.html">Blog List</a></li>
+                                        <li><a href="blog-grid.html">Blog Grid</a></li>
+                                        <li><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
+                                        <li><a href="blog-masonry.html">Blog Masonry</a></li>
+                                        <li><a href="blog-details.html">Blog Details</a></li>
+                                    </ul> -->
                 </li>
 
                 <li>
-                  <a href="index.php?controller=contact">Contact Us</a>
+                  <a href="#">Contact Us</a>
                 </li>
               </ul>
             </nav>
@@ -366,9 +329,9 @@ require_once('DAO/CartDAO.php');
                               <p><a href="index.php?controller=forgot_password" class="btn-inline">Forgot Your Password?</a></p>
                               <p><a href="index.php?controller=update" class="btn-inline">Update password</a></p>
                               <p><a href="index.php?controller=login" class="btn-inline">Forgot Your Password?</a></p>
-                              <p><a href="index.php?controller=historyBill" class="btn-inline">Your Bill</a></p>
-                             
-                              
+                              <p><a href="index.php?controller=historyBill" class="btn-inline" name="yourBill">Your Bill</a></p>
+
+
                             </form>
                           </div>
                         </div>

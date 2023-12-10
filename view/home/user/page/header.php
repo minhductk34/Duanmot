@@ -226,16 +226,16 @@ require_once('DAO/CartDAO.php');
                                         <li><a href="index.php?controller=login">Login & Register</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children">
-                                    <a href="blog.html">Blog</a>
-                                    <ul class="sub-menu">
+                                <li class="menu-item">
+                                    <a href="#">Blog</a>
+                                    <!-- <ul class="sub-menu">
                                         <li><a href="blog.html">Blog</a></li>
                                         <li><a href="blog-list.html">Blog List</a></li>
                                         <li><a href="blog-grid.html">Blog Grid</a></li>
                                         <li><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
                                         <li><a href="blog-masonry.html">Blog Masonry</a></li>
                                         <li><a href="blog-details.html">Blog Details</a></li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
                                
                                 <li>

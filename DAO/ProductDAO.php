@@ -186,17 +186,42 @@ class ProductDAO
     // Select item with id product
     public function selectOneItem($id)
     {
-    
-       
-        
-        $sql = "SELECT * FROM `products` WHERE  id_product = :id  AND status = 0 AND quantity > 0";
+        $sql = "SELECT products.*, category.name_category
+            FROM products
+            INNER JOIN category ON products.id_cat = category.id_category
+            WHERE products.id_product = :id
+                AND products.status = 0
+                AND products.quantity > 0";
+
         $stmt = $this->PDO->prepare($sql);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-
         $product = null;
-
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $product = new Product(
+                $row['id_product'],
+                $row['name_product'],
+                $row['desc_product'],
+                $row['image_product'],
+                $row['price_product'],
+                $row['status'],
+                $row['quantity'],
+                $row['name_category'],
+                $row['id_discount'] // thêm thông tin về tên category
+            );
+        }
+
+        return $product;
+    }
+    function bestseller()
+    {
+        $sql = "SELECT * FROM products WHERE quantity > 0 ORDER BY quantity ASC LIMIT 2";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+
+        $products = array();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $product = new Product(
                 $row['id_product'],
                 $row['name_product'],
@@ -208,11 +233,39 @@ class ProductDAO
                 $row['id_cat'],
                 $row['id_discount']
             );
+            $products[] = $product;
         }
 
-        return $product;
+        return $products;
     }
-    
+    function newProduct()
+    {
+        $sql = "SELECT * FROM products WHERE quantity > 0 ORDER BY id_product ASC LIMIT 1";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+
+        $products = array();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $product = new Product(
+                $row['id_product'],
+                $row['name_product'],
+                $row['desc_product'],
+                $row['image_product'],
+                $row['price_product'],
+                $row['status'],
+                $row['quantity'],
+                $row['id_cat'],
+                $row['id_discount']
+            );
+            $products[] = $product;
+        }
+
+        return $products;
+    }
+
+
+
 
     function SelectTop8()
     {
@@ -263,5 +316,16 @@ class ProductDAO
         $updateQuery = "UPDATE products SET quantity = $new_quantity_pro WHERE id_product = $productId";
         $updateStmt = $this->PDO->prepare($updateQuery);
         $updateStmt->execute();
+    }
+    public function getAvailableQuantity($productId)
+    {
+        // Lấy giá trị hiện tại của quantity từ bảng products
+        $query = "SELECT quantity FROM products WHERE id_product = :productId";
+        $stmt = $this->PDO->prepare($query);
+        $stmt->bindParam(':productId', $productId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        // Fetch and return the quantity value
+        return $stmt->fetchColumn();
     }
 }

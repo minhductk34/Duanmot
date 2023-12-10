@@ -267,7 +267,7 @@ require_once('view/home/user/page/header.php');
             </div>
             <div class="col-lg-4 col-xl-3">
                 <aside class="sidebar-area">
-                    <div class="widget  ">
+                    <!-- <div class="widget  ">
                         <h3 class="widget_title">Filter By</h3>
                         <div class="range-slider-area">
                             <strong class="fs-xs">Price</strong>
@@ -277,7 +277,7 @@ require_once('view/home/user/page/header.php');
                                 <span id="maxAmount"></span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Check sản phẩm -->
                     <script>
                         document.addEventListener("DOMContentLoaded", function() {
@@ -312,7 +312,7 @@ require_once('view/home/user/page/header.php');
                             <?php foreach ($categories as $category) : ?>
                                 <li>
                                     <!-- <input type="checkbox"> -->
-                                    <a href="index.php?controller=get_product_by_category&id=<?php echo $category->getId()?>"><?php echo $category->getName(); ?></a>
+                                    <a href="index.php?controller=get_product_by_category&id=<?php echo $category->getId() ?>"><?php echo $category->getName(); ?></a>
 
                                 </li>
                             <?php endforeach; ?>
@@ -335,6 +335,25 @@ require_once('view/home/user/page/header.php');
     </div>
     </div>
 </section>
+
+
+<!-- Đoạn mã JavaScript -->
+<!-- JavaScript code -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Check if the controller is "product_show"
+        var currentController = "<?php echo $_GET['controller']; ?>";
+        var currentMessage = "<?php echo $_GET['message']; ?>";
+
+        if (currentController === "product_show" && currentMessage === "notfound") {
+            // Display the product not found message
+            alert("Product not found!");
+        }
+    });
+</script>
+
+
+
 <!--==============================
 			Footer Area
 	==============================-->

@@ -10,7 +10,7 @@ $billDAO = new BillDAO();
 $user = $_SESSION['user'];
 $id_user = $user['id_user'];
 //  var_dump($id_user);
-    $data  =  $billDAO->showBillDetails($id_user);
+$data  =  $billDAO->showBillDetails($id_user);
 // print_r($data);
 ?>
 <style>
@@ -129,11 +129,16 @@ $id_user = $user['id_user'];
                                                     : "cancel-button-disabled";
                                             }
                                             ?>
-                                            <a href="<?php echo $cancelButtonHref; ?>" class="<?php echo $cancelButtonClass; ?>"><?php echo $cancelButtonText; ?></a>
-                                            
+                                            <!-- <a href="<?php echo $cancelButtonHref; ?>" class="<?php echo $cancelButtonClass; ?>"><?php echo $cancelButtonText; ?></a> -->
+
+                                            <a href="<?= $cancelButtonHref ?>" class="<?= $cancelButtonClass ?>" name="cancelButton" onclick="return confirmCancel()">
+                                                <?= $cancelButtonText ?>
+                                            </a>
+
                                             <?php $idDisplayed[$id_bill] = true; ?>
 
                                         <?php endif; ?>
+
                                         <td data-title="Name">
                                             <a class="cart-productname" href="#">MD<?php echo $id_bill; ?></a>
                                         </td>
@@ -180,6 +185,14 @@ $id_user = $user['id_user'];
             </form>
     </div>
 </div>
+
+
+<!-- JavaScript code -->
+<script>
+    function confirmCancel() {
+        return confirm("Are you sure you want to cancel?");
+    }
+</script>
 <!-- Thêm mã JavaScript vào file view/bill/user/history.php -->
 <script>
     $(document).ready(function() {

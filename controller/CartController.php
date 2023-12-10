@@ -20,24 +20,24 @@ class CartController
             $user = $_SESSION['user'];
             $id_user = $user['id_user'];
 
+            // Retrieve cart items
             $cartItems = $this->CartDAO->showCart($id_user);
 
-            // Kiểm tra xem giỏ hàng có trống không
+            // Check if the cart is empty
             if (empty($cartItems)) {
-                // Giỏ hàng trống, hiển thị một cảnh báo JavaScript
-                echo '<script>alert("Giỏ hàng của bạn đang trống.");</script>';
-                // Chuyển hướng người dùng về trang chủ
-                header('Location: index.php');
-                exit(); // Đảm bảo rằng kịch bản dừng thực thi sau khi chuyển hướng
+                // Redirect to the homepage with a message if the cart is empty
+                header('Location: index.php?message=emptyCart');
+                exit(); // Ensure script stops after redirect
             }
 
+            // Display cart items
             require_once('view/cart/user/list.php');
         } else {
-            // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
+            // Redirect to the login page if the user is not logged in
             header('Location: index.php?controller=login');
+            exit();
         }
     }
-
 
 
 
@@ -45,51 +45,53 @@ class CartController
     public function add()
     {
         if (isset($_SESSION['user']) && $_SESSION['user']) {
-            // print_r($_REQUEST);
-            if (isset($_GET['id']) && $_GET['id'] != '') {
+            if (!empty($_GET['id'])) {
                 $user = $_SESSION['user'];
                 $id_user = $user['id_user'];
-                $userId = $id_user;
 
+                $userId = $id_user;
                 $typePayment = '';
 
-                $this->CartDAO->addToCart($userId, $_GET['id']);
+                // Sanitize and validate input
+                $productId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+                // Add to cart
+                $this->CartDAO->addToCart($userId, $productId);
+
+                // Redirect to the appropriate page
                 header('Location: index.php?controller=addCart');
                 exit();
             } else {
+                // Show a JavaScript alert if 'id' is not set
+                echo '<script>alert("Product ID is missing.");</script>';
                 header('Location: index.php?controller=listCart');
-                exit();
+
             }
         } else {
-            // Không đăng nhập, hiển thị thông báo bằng JavaScript
-            echo "<script>alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng.')</script>";
+            // Show a JavaScript alert if the user is not logged in
+            echo '<script>alert("Please log in to add products to your cart.");</script>';
             header('Location: index.php?controller=login');
-            exit();
         }
     }
+
 
     public function delete()
     {
-
-        if (isset($_GET['id'])) {
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
             $id = $_GET['id'];
             $user = $_SESSION['user'];
             $id_user = $user['id_user'];
-            $this->CartDAO->deleteFromCart($_GET['id']);
-            $this->CartDAO->showCart($id_user);
+
+            // Delete from cart
+            $this->CartDAO->deleteFromCart($id);
+
+            // Redirect to the cart page
             header('Location: index.php?controller=listCart');
+            exit();
         } else {
+            // Handle the case when 'id' is not set or empty
+            // You may want to redirect or show an error message
+            // For example, header('Location: index.php?controller=listCart&error=1');
         }
-    }
-    public function history()
-    {
-        //echo 'historyCart';
-
-    }
-
-    public function wishlist()
-    {
-
-        require_once('view/cart/user/wishlist.php');
     }
 }
